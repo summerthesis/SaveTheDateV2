@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TimeManipuation;
 public class CarouselMaker : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed;
