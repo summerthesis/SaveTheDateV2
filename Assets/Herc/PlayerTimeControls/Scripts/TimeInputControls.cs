@@ -52,9 +52,9 @@ public class TimeInputControls : MonoBehaviour
 
     #region GamePad Vibration Variables
     private Gamepad m_pad; //This has technically to he on a separate script
-    [SerializeField, Tooltip("Low Frequency motor.\nKeep values between 0 and 1")]
+    [SerializeField, Range(0.0f, 1.0f), Tooltip("Motor speed")]
     private float m_lowFrequencySpeed;
-    [SerializeField, Tooltip("Right motor speed\nKeep values between 0 and 1")]
+    [SerializeField, Range(0.0f, 1.0f), Tooltip("Motor speed")]
     private float m_highFrequencySpeed;
     #endregion
 

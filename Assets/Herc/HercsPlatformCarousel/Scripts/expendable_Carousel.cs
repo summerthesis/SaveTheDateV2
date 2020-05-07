@@ -11,7 +11,7 @@ public enum PlatformRotation { NoRotation = 0,
 public class expendable_Carousel : MonoBehaviour
 {
     [SerializeField] private PrimitiveType m_pTypeToCreate;
-    [SerializeField] private TimeInteractable m_RotationSpeed;
+                     private TimeInteractable m_RotationSpeed;
     [SerializeField] private float m_fCarouselRadius;
     [SerializeField] private float m_fPlatformSize;
     [SerializeField] private PlatformRotation m_PlatformRotation;    
@@ -62,7 +62,7 @@ public class expendable_Carousel : MonoBehaviour
                         break;
                 }
             }
-            m_Platforms[i].gameObject.tag = this.gameObject.tag;
+            //m_Platforms[i].gameObject.tag = this.gameObject.tag;
             m_Platforms[i].AddComponent<expendable_PlatformParenting>();
         }
         m_RotationSpeed = GetComponent<TimeInteractable>();
