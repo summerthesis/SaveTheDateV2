@@ -103,11 +103,13 @@ public class TimeInputControls : MonoBehaviour
         foreach(var result in Physics.SphereCastAll(m_cam.ScreenPointToRay(temp), m_castRadius, m_castDistance)) {
             TimeInteractable timeComponent = result.transform.gameObject.GetComponentInParent<TimeInteractable>();
             if (timeComponent != null) {
+                timeComponent.gameObject.GetComponent<OutlineController>().ShowOutline();
                 //OBS: Still not sure where to implement vibration
                 //if (m_pad != null) { m_pad.SetMotorSpeeds(m_lowFrequencySpeed, m_highFrequencySpeed); }
                 if (m_slowInput ^ m_stopInput) {
                     if (m_slowInput) timeComponent.Slow();
                     if (m_stopInput) timeComponent.Stop();
+                    
                 }
                 //Debug.Log("Time interactable object found!");
             }
