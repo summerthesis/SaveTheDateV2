@@ -94,7 +94,9 @@ public class TimeInputControls : MonoBehaviour
     /// Time Interactable Detection Function
     /// SphereCasts from camera towards Camera's forward
     /// If it detects time interactable, reads time interaction inputs
-    /// Slows or stops object accordingly
+    /// Slows or stops object accordingly.
+    /// 
+    /// OBS.: Affects all detected time-interactable objects (for now)
     /// </summary>
     void Detect() {
         Vector3 temp = new Vector3(Screen.width / 2, Screen.height / 2, 0);
