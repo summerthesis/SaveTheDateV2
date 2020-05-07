@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class IntroController : MonoBehaviour
 {
-    void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
+    int count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +15,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public void StartNewGame()
-    {
-        SceneManager.LoadScene(1);
+        count++;
+        if (count > 220) SceneManager.LoadScene(2);
     }
 }
