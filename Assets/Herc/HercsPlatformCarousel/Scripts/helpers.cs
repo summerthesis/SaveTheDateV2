@@ -26,7 +26,7 @@ using UnityEngine;
 using UnityEngine.ProBuilder;
 
 namespace TimeManipuation {
-    public enum TimeStates { Normal, Slowed, Stopped, StateCount }
+    public enum TimeStates { Normal, Slowed, Stopped}
     public interface ITimeInteractable {
         void Slow();
         void Stop();
