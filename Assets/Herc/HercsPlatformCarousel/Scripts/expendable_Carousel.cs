@@ -7,6 +7,7 @@ public enum PlatformRotation { NoRotation = 0,
                                TowardsCenter = 1,
                                AwayFromCenter = 1 << 1}
 
+[RequireComponent(typeof(TimeInteractable))]
 public class expendable_Carousel : MonoBehaviour
 {
     [SerializeField] private PrimitiveType m_pTypeToCreate;
