@@ -114,12 +114,15 @@ public class TimeInputControls : MonoBehaviour
                 //Debug.Log("Time interactable object found!");
             }
         }
+        //Things in this region will likely have to go at the end
         #region Debug Draws
-        Debug.DrawLine(m_cam.ScreenPointToRay(temp).origin, m_cam.ScreenPointToRay(temp).direction*m_castDistance, Color.red);
-        Debug.DrawLine(m_cam.ScreenPointToRay(temp).origin + m_cam.transform.up * m_castRadius, (m_cam.ScreenPointToRay(temp).direction * m_castDistance) + m_cam.transform.up * m_castRadius, Color.red);
-        Debug.DrawLine(m_cam.ScreenPointToRay(temp).origin - m_cam.transform.up * m_castRadius, (m_cam.ScreenPointToRay(temp).direction * m_castDistance) - m_cam.transform.up * m_castRadius, Color.red);
-        Debug.DrawLine(m_cam.ScreenPointToRay(temp).origin + m_cam.transform.right * m_castRadius, (m_cam.ScreenPointToRay(temp).direction * m_castDistance) + m_cam.transform.right * m_castRadius, Color.red);
-        Debug.DrawLine(m_cam.ScreenPointToRay(temp).origin - m_cam.transform.right * m_castRadius, (m_cam.ScreenPointToRay(temp).direction * m_castDistance) - m_cam.transform.right * m_castRadius, Color.red);
+        Vector3 origin = m_cam.ScreenPointToRay(temp).origin;
+        Vector3 direction = m_cam.ScreenPointToRay(temp).direction;
+        Debug.DrawLine(origin, origin + direction * m_castDistance, Color.red);
+        Debug.DrawLine(origin + m_cam.transform.up * m_castRadius, origin + (direction * m_castDistance) + m_cam.transform.up * m_castRadius, Color.red);
+        Debug.DrawLine(origin - m_cam.transform.up * m_castRadius, origin + (direction * m_castDistance) - m_cam.transform.up * m_castRadius, Color.red);
+        Debug.DrawLine(origin + m_cam.transform.right * m_castRadius, origin + (direction * m_castDistance) + m_cam.transform.right * m_castRadius, Color.red);
+        Debug.DrawLine(origin - m_cam.transform.right * m_castRadius, origin + (direction * m_castDistance) - m_cam.transform.right * m_castRadius, Color.red);
         #endregion
     }
 
