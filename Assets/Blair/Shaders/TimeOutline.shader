@@ -3,8 +3,8 @@
 Shader "Outlined/Silhouetted Diffuse" {
 	Properties{
 		_Color("Main Color", Color) = (.5,.5,.5,1)
-		_OutlineColor("Outline Color", Color) = (0.1,0.3,0.4,0.25)
-		_Outline("Outline width", Range(0.0, 0.03)) = .005
+		_OutlineColor("Outline Color", Color) = (0,0,0,1)
+		_Outline("Outline width", Range(0.0, 3.03)) = .005
 		_MainTex("Base (RGB)", 2D) = "white" { }
 	}
 
@@ -71,7 +71,7 @@ Shader "Outlined/Silhouetted Diffuse" {
 				Name "BASE"
 				ZWrite On
 				//ZTest LEqual
-				Blend SrcAlpha OneMinusSrcAlpha
+				//Blend SrcAlpha OneMinusSrcAlpha
 				Material {
 					Diffuse[_Color]
 					Ambient[_Color]
@@ -79,7 +79,7 @@ Shader "Outlined/Silhouetted Diffuse" {
 				Lighting On
 				SetTexture[_MainTex] {
 					ConstantColor[_Color]
-					Combine texture * constant
+					//Combine texture * constant
 				}
 				SetTexture[_MainTex] {
 					Combine previous * primary DOUBLE
