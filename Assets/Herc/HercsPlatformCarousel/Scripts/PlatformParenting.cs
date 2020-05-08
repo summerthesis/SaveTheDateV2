@@ -10,10 +10,13 @@ public class PlatformParenting : MonoBehaviour
             collision.gameObject.transform.parent.parent = this.gameObject.transform;
         }
     }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player") {
-            collision.gameObject.transform.parent.parent = null;
+    void Update() {
+        PlayerMovement pm = this.gameObject.GetComponentInChildren<PlayerMovement>();
+
+        if (pm != null) {
+            if (!pm.GetIsGround()) {
+                pm.transform.parent.parent = null;
+            }
         }
     }
 }

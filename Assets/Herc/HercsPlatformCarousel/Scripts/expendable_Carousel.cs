@@ -63,7 +63,7 @@ public class expendable_Carousel : MonoBehaviour
                 }
             }
             //m_Platforms[i].gameObject.tag = this.gameObject.tag;
-            m_Platforms[i].AddComponent<expendable_PlatformParenting>();
+            m_Platforms[i].AddComponent<PlatformParenting>();
         }
         m_RotationSpeed = GetComponent<TimeInteractable>();
     }
