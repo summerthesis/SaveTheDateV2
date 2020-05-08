@@ -111,7 +111,7 @@ public class TimeInputControls : MonoBehaviour
                     if (m_slowInput) timeComponent.Slow();
                     if (m_stopInput) timeComponent.Stop();
                 }
-                //Debug.Log("Time interactable object found!");
+                //Debug.Log("Time interactable object found on"+ result.transform.gameObject.name);
             }
         }
         //Things in this region will likely have to go at the end
