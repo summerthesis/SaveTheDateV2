@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class OutlineController : MonoBehaviour
 {
+    public bool showing = false;
+    public int throttleShowing = 0;
     private MeshRenderer mRenderer;
+    public GameObject mPlayer;
     public float maxOutlineWidth;
     public Color OutlineColor;
+
     // Start is called before the first frame update
     void Start()
     {
-        mRenderer = this.GetComponent<MeshRenderer>();      
+        mRenderer = this.GetComponent<MeshRenderer>();
+        mPlayer = GameObject.Find("TimePart");
     }
 
     public void ShowOutline()
@@ -25,6 +30,16 @@ public class OutlineController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+            if (mPlayer.GetComponent<TimeInputControls>().viewedObject == this.gameObject)
+            {
+                if (showing == false) ShowOutline();
+                showing = true;
+            }
+            else
+            {
+                if (showing == true) HideOutline();
+                showing = false;
+            }
         
     }
 }

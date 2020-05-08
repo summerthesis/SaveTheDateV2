@@ -1288,6 +1288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad064d7f06817e47993e38c152ad431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showing: 0
+  throttleShowing: 0
+  mPlayer: {fileID: 0}
   maxOutlineWidth: 3
   OutlineColor: {r: 0.051270913, g: 0.05098039, b: 1, a: 0.13333334}
 --- !u!114 &421779291
@@ -2787,7 +2790,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &795386657
 GameObject:
@@ -3376,7 +3379,7 @@ PrefabInstance:
     - target: {fileID: 1132108133173039733, guid: 32ba4e4b262e8414dba73622ec93b72b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1132108133173039733, guid: 32ba4e4b262e8414dba73622ec93b72b,
         type: 3}
@@ -5680,7 +5683,7 @@ RectTransform:
   - {fileID: 2021884045}
   - {fileID: 1255952900}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6029,7 +6032,7 @@ PrefabInstance:
     - target: {fileID: 2112245064248167108, guid: f7aa1e0bad3fb34478dd3b046683cb04,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2112245064248167108, guid: f7aa1e0bad3fb34478dd3b046683cb04,
         type: 3}
@@ -6969,6 +6972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad064d7f06817e47993e38c152ad431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showing: 0
+  throttleShowing: 0
+  mPlayer: {fileID: 0}
   maxOutlineWidth: 3
   OutlineColor: {r: 0, g: 1, b: 0.045587063, a: 0.14117648}
 --- !u!114 &1880961930
