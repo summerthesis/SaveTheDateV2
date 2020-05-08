@@ -32,7 +32,7 @@ public class TimeInputControls : MonoBehaviour
 {
     [SerializeField, Tooltip("Actual character's transform")]
     private Transform m_playerTransform;
-
+    public GameObject viewedObject;
     #region Camera Detection
     [SerializeField, Tooltip("Player's Camera for SphereCast")]
     private Camera m_cam;
@@ -99,10 +99,12 @@ public class TimeInputControls : MonoBehaviour
     /// OBS.: Affects all detected time-interactable objects (for now)
     /// </summary>
     void Detect() {
+        viewedObject = null;
         Vector3 temp = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         foreach(var result in Physics.SphereCastAll(m_cam.ScreenPointToRay(temp), m_castRadius, m_castDistance)) {
             TimeInteractable timeComponent = result.transform.gameObject.GetComponentInParent<TimeInteractable>();
             if (timeComponent != null) {
+                viewedObject = timeComponent.gameObject;
                 //OBS: Still not sure where to implement vibration
                 //if (m_pad != null) { m_pad.SetMotorSpeeds(m_lowFrequencySpeed, m_highFrequencySpeed); }
                 if (m_slowInput ^ m_stopInput) {
