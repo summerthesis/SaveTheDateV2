@@ -10,6 +10,8 @@ public class IsoPlayerMove : MonoBehaviour
     float xAxis, yAxis;
     public Vector2 movementInput;
     public float Hmovement, Vmovement;
+    public GameObject mPlayer;
+    public Animator anim;
     void Awake()
     {
         controls = new PlayerInputAction();
@@ -23,6 +25,9 @@ public class IsoPlayerMove : MonoBehaviour
         forward.y = 0;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+        mPlayer = GameObject.Find("Character");
+        anim = mPlayer.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -34,6 +39,11 @@ public class IsoPlayerMove : MonoBehaviour
     void MovePlayer()
     {
         Hmovement = movementInput.x; Vmovement = movementInput.y;
+        if(Hmovement !=0 || Vmovement !=0)
+        {
+            anim.SetFloat("HSpeed", 1);
+        }
+
         Vector3 direction = new Vector3(Hmovement, 0, Vmovement);
         Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Hmovement;
         Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Vmovement;
