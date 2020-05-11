@@ -7,7 +7,6 @@ public class IsoPlayerMove : MonoBehaviour
     float moveSpeed = 4f;
     Vector3 forward, right;
     PlayerInputAction controls;
-    float xAxis, yAxis;
     public Vector2 movementInput;
     public float Hmovement, Vmovement;
     public GameObject mPlayer;
@@ -18,9 +17,10 @@ public class IsoPlayerMove : MonoBehaviour
         controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
     }
-    // Start is called before the first frame update
+    
     void Start()
     {
+        
         forward = Camera.main.transform.forward;
         forward.y = 0;
         forward = Vector3.Normalize(forward);
@@ -38,21 +38,28 @@ public class IsoPlayerMove : MonoBehaviour
 
     void MovePlayer()
     {
-        Hmovement = movementInput.x; Vmovement = movementInput.y;
-        if(Hmovement !=0 || Vmovement !=0)
-        {
-            anim.SetFloat("HSpeed", 1);
-        }
-
-        Vector3 direction = new Vector3(Hmovement, 0, Vmovement);
+        Hmovement = movementInput.x;
+        Vmovement = movementInput.y;
+        
         Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Hmovement;
         Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Vmovement;
         Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
-        
-        
+           
         transform.position += rightMovement;
         transform.position += upMovement;
-        transform.forward = heading;
+       
+ 
+        if (Hmovement != 0 || Vmovement != 0)
+        {
+            anim.SetFloat("HSpeed", 1);
+            transform.forward = heading;
+        }
+        else
+        {
+            anim.SetFloat("HSpeed", 0);
+
+        }
+      
     }
 
     private void OnEnable()
