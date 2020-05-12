@@ -26,8 +26,9 @@ using UnityEngine;
 using UnityEngine.ProBuilder;
 
 namespace TimeManipuation {
-    public enum TimeStates { Normal, Slowed, Stopped}
+    public enum TimeStates { Normal, Hastened, Slowed, Stopped, }
     public interface ITimeInteractable {
+        void Speedup();
         void Slow();
         void Stop();
         void Restore();
@@ -44,10 +45,16 @@ namespace TimeManipuation {
 
         #region Speeds
         [SerializeField] private float m_OriginalSpeed;
+        [SerializeField] private float m_QuickSpeed;
         [SerializeField] private float m_HalfSpeed;
         [SerializeField] private float m_StoppedSpeed;
         public float CurrentSpeed { get; private set; }
         #endregion
+
+        public void Speedup() {
+            m_CurrentState = TimeStates.Hastened;
+            CurrentSpeed = m_QuickSpeed;
+        }
         public void Slow() {
             m_CurrentState = TimeStates.Slowed;
             CurrentSpeed = m_HalfSpeed;

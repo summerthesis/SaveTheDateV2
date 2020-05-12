@@ -2,8 +2,8 @@
  * Time Interactable Class
  * 
  * Author: Hercules (HErC) Dias Campos
- * Created:         May 7, 2020
- * Last Modified:   May 7, 2020
+ * Created:         May  7, 2020
+ * Last Modified:   May 12, 2020
  * 
  * Inherits from MonoBehaviour
  * DOES NOT IMPLEMENT ITimeInteractable interface (for now)
@@ -14,6 +14,9 @@
  * scripts. The reason why it was implemented as its own class
  * was to enable this component being caught and manipulated
  * by the player
+ * 
+ * Changes in May 12:
+ * Included fast speed variable
  * 
  * **IMPORTANT**
  * Only allows transitions from Normal speed into others. Have
@@ -42,6 +45,8 @@ public class TimeInteractable : MonoBehaviour
     #region Speed Variables
     [SerializeField, Tooltip("Original Speed")]
     private float m_originalSpeed;
+    [SerializeField, Tooltip("Fast-speed(haste)")]
+    private float m_quickSpeed;
     [SerializeField, Tooltip("Half-speed(slow)")]
     private float m_halfSpeed;
     [SerializeField, Tooltip("Stopped Speed")]
@@ -69,6 +74,12 @@ public class TimeInteractable : MonoBehaviour
     #region Functionality
     //OBS: There are currently no checks for multiple inputs
     //OBS2: That said, multiple inputs do not affect cooldown until the state is reset
+    public void Speedup() {
+        if (CurrentState == TimeStates.Normal) {
+            CurrentState = TimeStates.Hastened;
+            CurrentSpeed = m_quickSpeed;
+        }
+    }
     public void Slow() {
         if (CurrentState == TimeStates.Normal) {
             CurrentState = TimeStates.Slowed;
