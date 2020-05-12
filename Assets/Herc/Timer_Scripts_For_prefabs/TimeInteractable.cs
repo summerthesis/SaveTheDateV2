@@ -34,7 +34,7 @@ using UnityEngine;
 
 public class TimeInteractable : MonoBehaviour
 {
-    #region Time States
+    #region Time States and Cooldown
     public TimeStates CurrentState { get; private set; }
     [SerializeField, Tooltip("Speed Cooldown Time")]
     private float m_cooldownTime;
@@ -46,7 +46,7 @@ public class TimeInteractable : MonoBehaviour
     [SerializeField, Tooltip("Original Speed")]
     private float m_originalSpeed;
     [SerializeField, Tooltip("Fast-speed(haste)")]
-    private float m_quickSpeed;
+    private float m_hasteSpeed;
     [SerializeField, Tooltip("Half-speed(slow)")]
     private float m_halfSpeed;
     [SerializeField, Tooltip("Stopped Speed")]
@@ -74,10 +74,10 @@ public class TimeInteractable : MonoBehaviour
     #region Functionality
     //OBS: There are currently no checks for multiple inputs
     //OBS2: That said, multiple inputs do not affect cooldown until the state is reset
-    public void Speedup() {
+    public void Hasten() {
         if (CurrentState == TimeStates.Normal) {
             CurrentState = TimeStates.Hastened;
-            CurrentSpeed = m_quickSpeed;
+            CurrentSpeed = m_hasteSpeed;
         }
     }
     public void Slow() {

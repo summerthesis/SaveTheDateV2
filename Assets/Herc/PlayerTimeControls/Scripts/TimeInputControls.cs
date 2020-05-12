@@ -48,6 +48,7 @@ public class TimeInputControls : MonoBehaviour
     //variables
     private bool m_slowInput;
     private bool m_stopInput;
+    private bool m_hasteInput;
     #endregion
 
     #region GamePad Vibration Variables
@@ -68,10 +69,15 @@ public class TimeInputControls : MonoBehaviour
         m_timeInput = new PlayerInputAction();
 
         m_timeInput.TimeControls.TimeSlow.performed += slowContext => m_slowInput = true;
-        m_timeInput.TimeControls.TimeSlow.canceled += slowCcontext => m_slowInput = false;
+        m_timeInput.TimeControls.TimeSlow.canceled += slowContext => m_slowInput = false;
 
         m_timeInput.TimeControls.TimeStop.performed += stopContext => m_stopInput = true;
         m_timeInput.TimeControls.TimeStop.canceled += stopContext => m_stopInput = false;
+
+        /* HASTEN (SPEEDUP) CONTROLS
+         * m_timeInput.TimeControls.___________.performed += hasteContext => m_hasteInput = true;
+         * m_timeInput.TimeControls.___________.canceled += hasteContext => m_hasteInput = false; 
+         */
     }
 
     // Start is called before the first frame update
@@ -110,6 +116,7 @@ public class TimeInputControls : MonoBehaviour
                 if (m_slowInput ^ m_stopInput) {
                     if (m_slowInput) timeComponent.Slow();
                     if (m_stopInput) timeComponent.Stop();
+                    if (m_hasteInput) timeComponent.Hasten();
                 }
                 //Debug.Log("Time interactable object found on"+ result.transform.gameObject.name);
             }
