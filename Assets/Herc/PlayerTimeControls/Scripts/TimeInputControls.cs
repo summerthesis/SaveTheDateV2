@@ -67,11 +67,11 @@ public class TimeInputControls : MonoBehaviour
         //Input startup
         m_timeInput = new PlayerInputAction();
 
-        m_timeInput.TimeControls.TimeSlow.performed += slowContext => m_slowInput = true;
-        m_timeInput.TimeControls.TimeSlow.canceled += slowCcontext => m_slowInput = false;
+        m_timeInput.TimeControls.TimeBackward.performed += slowContext => m_slowInput = true;
+        m_timeInput.TimeControls.TimeBackward.canceled += slowCcontext => m_slowInput = false;
 
-        m_timeInput.TimeControls.TimeStop.performed += stopContext => m_stopInput = true;
-        m_timeInput.TimeControls.TimeStop.canceled += stopContext => m_stopInput = false;
+        m_timeInput.TimeControls.TimeBackward.performed += stopContext => m_stopInput = true;
+        m_timeInput.TimeControls.TimeBackward.canceled += stopContext => m_stopInput = false;
     }
 
     // Start is called before the first frame update
