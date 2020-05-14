@@ -480,17 +480,17 @@
             "id": "136283d1-fea4-4205-a5f3-2b18bdd596b6",
             "actions": [
                 {
-                    "name": "TimeStop",
+                    "name": "TimeBackward",
                     "type": "Button",
-                    "id": "88ccf581-4ead-42a6-8641-9d04e3f02b65",
+                    "id": "85cce74a-33c6-4679-b429-929bdede1512",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "TimeSlow",
+                    "name": "TimeForward",
                     "type": "Button",
-                    "id": "01163390-b2b0-4d46-a260-6adbb23b0961",
+                    "id": "beeb6ae6-8c00-40f0-8b70-3fe079cdb8bf",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -499,23 +499,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "2c9dfff6-58a4-4d4a-8e29-5479eb8690ae",
-                    "path": "<Gamepad>/buttonNorth",
+                    "id": "8bc31d11-d30a-44be-b5d1-a504ab0f2c20",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "TimeStop",
+                    "groups": "",
+                    "action": "TimeBackward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "e7024019-ccb6-4997-86e1-64457e950784",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "8eb9dfe0-22a8-4fbd-a8b5-93563c78ecbf",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "TimeSlow",
+                    "groups": "",
+                    "action": "TimeForward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
