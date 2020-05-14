@@ -74,7 +74,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": ""MoveAxis"",
                     ""id"": ""2d998636-e2fc-4953-b329-7859f087a4f4"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -487,6 +487,52 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TimeControls"",
+            ""id"": ""136283d1-fea4-4205-a5f3-2b18bdd596b6"",
+            ""actions"": [
+                {
+                    ""name"": ""TimeStop"",
+                    ""type"": ""Button"",
+                    ""id"": ""88ccf581-4ead-42a6-8641-9d04e3f02b65"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TimeSlow"",
+                    ""type"": ""Button"",
+                    ""id"": ""01163390-b2b0-4d46-a260-6adbb23b0961"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2c9dfff6-58a4-4d4a-8e29-5479eb8690ae"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""TimeStop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7024019-ccb6-4997-86e1-64457e950784"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""TimeSlow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -534,6 +580,10 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_InventoryControls_Down = m_InventoryControls.FindAction("Down", throwIfNotFound: true);
         m_InventoryControls_Left = m_InventoryControls.FindAction("Left", throwIfNotFound: true);
         m_InventoryControls_Right = m_InventoryControls.FindAction("Right", throwIfNotFound: true);
+        // TimeControls
+        m_TimeControls = asset.FindActionMap("TimeControls", throwIfNotFound: true);
+        m_TimeControls_TimeStop = m_TimeControls.FindAction("TimeStop", throwIfNotFound: true);
+        m_TimeControls_TimeSlow = m_TimeControls.FindAction("TimeSlow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -757,6 +807,47 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         }
     }
     public InventoryControlsActions @InventoryControls => new InventoryControlsActions(this);
+
+    // TimeControls
+    private readonly InputActionMap m_TimeControls;
+    private ITimeControlsActions m_TimeControlsActionsCallbackInterface;
+    private readonly InputAction m_TimeControls_TimeStop;
+    private readonly InputAction m_TimeControls_TimeSlow;
+    public struct TimeControlsActions
+    {
+        private @PlayerInputAction m_Wrapper;
+        public TimeControlsActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TimeStop => m_Wrapper.m_TimeControls_TimeStop;
+        public InputAction @TimeSlow => m_Wrapper.m_TimeControls_TimeSlow;
+        public InputActionMap Get() { return m_Wrapper.m_TimeControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TimeControlsActions set) { return set.Get(); }
+        public void SetCallbacks(ITimeControlsActions instance)
+        {
+            if (m_Wrapper.m_TimeControlsActionsCallbackInterface != null)
+            {
+                @TimeStop.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
+                @TimeStop.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
+                @TimeStop.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
+                @TimeSlow.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeSlow;
+                @TimeSlow.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeSlow;
+                @TimeSlow.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeSlow;
+            }
+            m_Wrapper.m_TimeControlsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @TimeStop.started += instance.OnTimeStop;
+                @TimeStop.performed += instance.OnTimeStop;
+                @TimeStop.canceled += instance.OnTimeStop;
+                @TimeSlow.started += instance.OnTimeSlow;
+                @TimeSlow.performed += instance.OnTimeSlow;
+                @TimeSlow.canceled += instance.OnTimeSlow;
+            }
+        }
+    }
+    public TimeControlsActions @TimeControls => new TimeControlsActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -796,5 +887,10 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         void OnDown(InputAction.CallbackContext context);
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
+    }
+    public interface ITimeControlsActions
+    {
+        void OnTimeStop(InputAction.CallbackContext context);
+        void OnTimeSlow(InputAction.CallbackContext context);
     }
 }

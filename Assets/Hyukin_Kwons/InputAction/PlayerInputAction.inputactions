@@ -61,7 +61,7 @@
                 {
                     "name": "MoveAxis",
                     "id": "2d998636-e2fc-4953-b329-7859f087a4f4",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -470,6 +470,52 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "TimeControls",
+            "id": "136283d1-fea4-4205-a5f3-2b18bdd596b6",
+            "actions": [
+                {
+                    "name": "TimeStop",
+                    "type": "Button",
+                    "id": "88ccf581-4ead-42a6-8641-9d04e3f02b65",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TimeSlow",
+                    "type": "Button",
+                    "id": "01163390-b2b0-4d46-a260-6adbb23b0961",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2c9dfff6-58a4-4d4a-8e29-5479eb8690ae",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "TimeStop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7024019-ccb6-4997-86e1-64457e950784",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "TimeSlow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
