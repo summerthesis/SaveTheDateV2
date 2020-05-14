@@ -494,17 +494,17 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""TimeBackward"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""85cce74a-33c6-4679-b429-929bdede1512"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
                     ""name"": ""TimeForward"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""beeb6ae6-8c00-40f0-8b70-3fe079cdb8bf"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -516,7 +516,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""TimeBackward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -527,7 +527,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""TimeForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
