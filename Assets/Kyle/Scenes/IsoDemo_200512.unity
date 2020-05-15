@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 48106455}
   - component: {fileID: 48106454}
   - component: {fileID: 48106453}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor A (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6977,7 +6977,7 @@ GameObject:
   - component: {fileID: 929032235}
   - component: {fileID: 929032234}
   - component: {fileID: 929032233}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor A (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8885,7 +8885,7 @@ GameObject:
   - component: {fileID: 1225448513}
   - component: {fileID: 1225448512}
   - component: {fileID: 1225448511}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9010,11 +9010,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b61d9bcb8296464a85e31bf7fa42616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementInput: {x: 0, y: 0}
-  Hmovement: 0
-  Vmovement: 0
-  mPlayer: {fileID: 0}
-  anim: {fileID: 0}
+  moveSpeed: 5
+  jumpForce: 7
+  fallMultiplier: 1.5
+  lowJumpMultiplier: 1
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!4 &1226038157
 Transform:
   m_ObjectHideFlags: 0
@@ -10185,7 +10187,7 @@ GameObject:
   - component: {fileID: 1354162487}
   - component: {fileID: 1354162486}
   - component: {fileID: 1354162485}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor A (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
