@@ -74,7 +74,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": ""MoveAxis"",
                     ""id"": ""2d998636-e2fc-4953-b329-7859f087a4f4"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -493,18 +493,18 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
             ""id"": ""136283d1-fea4-4205-a5f3-2b18bdd596b6"",
             ""actions"": [
                 {
-                    ""name"": ""TimeStop"",
-                    ""type"": ""Button"",
-                    ""id"": ""88ccf581-4ead-42a6-8641-9d04e3f02b65"",
-                    ""expectedControlType"": """",
+                    ""name"": ""TimeBackward"",
+                    ""type"": ""Value"",
+                    ""id"": ""85cce74a-33c6-4679-b429-929bdede1512"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""TimeSlow"",
-                    ""type"": ""Button"",
-                    ""id"": ""01163390-b2b0-4d46-a260-6adbb23b0961"",
-                    ""expectedControlType"": """",
+                    ""name"": ""TimeForward"",
+                    ""type"": ""Value"",
+                    ""id"": ""beeb6ae6-8c00-40f0-8b70-3fe079cdb8bf"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -512,23 +512,23 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""2c9dfff6-58a4-4d4a-8e29-5479eb8690ae"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""id"": ""8bc31d11-d30a-44be-b5d1-a504ab0f2c20"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""TimeStop"",
+                    ""action"": ""TimeBackward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e7024019-ccb6-4997-86e1-64457e950784"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""id"": ""8eb9dfe0-22a8-4fbd-a8b5-93563c78ecbf"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""TimeSlow"",
+                    ""action"": ""TimeForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -582,8 +582,8 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_InventoryControls_Right = m_InventoryControls.FindAction("Right", throwIfNotFound: true);
         // TimeControls
         m_TimeControls = asset.FindActionMap("TimeControls", throwIfNotFound: true);
-        m_TimeControls_TimeStop = m_TimeControls.FindAction("TimeStop", throwIfNotFound: true);
-        m_TimeControls_TimeSlow = m_TimeControls.FindAction("TimeSlow", throwIfNotFound: true);
+        m_TimeControls_TimeBackward = m_TimeControls.FindAction("TimeBackward", throwIfNotFound: true);
+        m_TimeControls_TimeForward = m_TimeControls.FindAction("TimeForward", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -811,14 +811,14 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     // TimeControls
     private readonly InputActionMap m_TimeControls;
     private ITimeControlsActions m_TimeControlsActionsCallbackInterface;
-    private readonly InputAction m_TimeControls_TimeStop;
-    private readonly InputAction m_TimeControls_TimeSlow;
+    private readonly InputAction m_TimeControls_TimeBackward;
+    private readonly InputAction m_TimeControls_TimeForward;
     public struct TimeControlsActions
     {
         private @PlayerInputAction m_Wrapper;
         public TimeControlsActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @TimeStop => m_Wrapper.m_TimeControls_TimeStop;
-        public InputAction @TimeSlow => m_Wrapper.m_TimeControls_TimeSlow;
+        public InputAction @TimeBackward => m_Wrapper.m_TimeControls_TimeBackward;
+        public InputAction @TimeForward => m_Wrapper.m_TimeControls_TimeForward;
         public InputActionMap Get() { return m_Wrapper.m_TimeControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -828,22 +828,22 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_TimeControlsActionsCallbackInterface != null)
             {
-                @TimeStop.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
-                @TimeStop.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
-                @TimeStop.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
-                @TimeSlow.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeSlow;
-                @TimeSlow.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeSlow;
-                @TimeSlow.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeSlow;
+                @TimeBackward.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeBackward;
+                @TimeBackward.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeBackward;
+                @TimeBackward.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeBackward;
+                @TimeForward.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeForward;
+                @TimeForward.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeForward;
+                @TimeForward.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeForward;
             }
             m_Wrapper.m_TimeControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @TimeStop.started += instance.OnTimeStop;
-                @TimeStop.performed += instance.OnTimeStop;
-                @TimeStop.canceled += instance.OnTimeStop;
-                @TimeSlow.started += instance.OnTimeSlow;
-                @TimeSlow.performed += instance.OnTimeSlow;
-                @TimeSlow.canceled += instance.OnTimeSlow;
+                @TimeBackward.started += instance.OnTimeBackward;
+                @TimeBackward.performed += instance.OnTimeBackward;
+                @TimeBackward.canceled += instance.OnTimeBackward;
+                @TimeForward.started += instance.OnTimeForward;
+                @TimeForward.performed += instance.OnTimeForward;
+                @TimeForward.canceled += instance.OnTimeForward;
             }
         }
     }
@@ -890,7 +890,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     }
     public interface ITimeControlsActions
     {
-        void OnTimeStop(InputAction.CallbackContext context);
-        void OnTimeSlow(InputAction.CallbackContext context);
+        void OnTimeBackward(InputAction.CallbackContext context);
+        void OnTimeForward(InputAction.CallbackContext context);
     }
 }

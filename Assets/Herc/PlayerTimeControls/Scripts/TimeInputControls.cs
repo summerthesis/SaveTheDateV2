@@ -68,6 +68,7 @@ public class TimeInputControls : MonoBehaviour
         //Input startup
         m_timeInput = new PlayerInputAction();
 
+<<<<<<< HEAD
         m_timeInput.TimeControls.TimeSlow.performed += slowContext => m_slowInput = true;
         m_timeInput.TimeControls.TimeSlow.canceled += slowContext => m_slowInput = false;
 
@@ -78,6 +79,13 @@ public class TimeInputControls : MonoBehaviour
          * m_timeInput.TimeControls.___________.performed += hasteContext => m_hasteInput = true;
          * m_timeInput.TimeControls.___________.canceled += hasteContext => m_hasteInput = false; 
          */
+=======
+        m_timeInput.TimeControls.TimeBackward.performed += slowContext => m_slowInput = true;
+        m_timeInput.TimeControls.TimeBackward.canceled += slowCcontext => m_slowInput = false;
+
+        m_timeInput.TimeControls.TimeBackward.performed += stopContext => m_stopInput = true;
+        m_timeInput.TimeControls.TimeBackward.canceled += stopContext => m_stopInput = false;
+>>>>>>> TimeMech/BlairWhite
     }
 
     // Start is called before the first frame update
@@ -116,10 +124,15 @@ public class TimeInputControls : MonoBehaviour
                 if (m_slowInput ^ m_stopInput) {
                     if (m_slowInput) timeComponent.Slow();
                     if (m_stopInput) timeComponent.Stop();
+<<<<<<< HEAD
                     if (m_hasteInput) timeComponent.Hasten();
+=======
+                    
+>>>>>>> TimeMech/BlairWhite
                 }
                 //Debug.Log("Time interactable object found on"+ result.transform.gameObject.name);
             }
+            
         }
         //Things in this region will likely have to go at the end
         #region Debug Draws
