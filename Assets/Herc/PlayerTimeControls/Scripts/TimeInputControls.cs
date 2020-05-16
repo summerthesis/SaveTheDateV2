@@ -67,25 +67,22 @@ public class TimeInputControls : MonoBehaviour
         }
         //Input startup
         m_timeInput = new PlayerInputAction();
-
-<<<<<<< HEAD
+		/*
         m_timeInput.TimeControls.TimeSlow.performed += slowContext => m_slowInput = true;
         m_timeInput.TimeControls.TimeSlow.canceled += slowContext => m_slowInput = false;
 
         m_timeInput.TimeControls.TimeStop.performed += stopContext => m_stopInput = true;
         m_timeInput.TimeControls.TimeStop.canceled += stopContext => m_stopInput = false;
-
+		*/
         /* HASTEN (SPEEDUP) CONTROLS
          * m_timeInput.TimeControls.___________.performed += hasteContext => m_hasteInput = true;
          * m_timeInput.TimeControls.___________.canceled += hasteContext => m_hasteInput = false; 
          */
-=======
         m_timeInput.TimeControls.TimeBackward.performed += slowContext => m_slowInput = true;
         m_timeInput.TimeControls.TimeBackward.canceled += slowCcontext => m_slowInput = false;
 
         m_timeInput.TimeControls.TimeBackward.performed += stopContext => m_stopInput = true;
         m_timeInput.TimeControls.TimeBackward.canceled += stopContext => m_stopInput = false;
->>>>>>> TimeMech/BlairWhite
     }
 
     // Start is called before the first frame update
