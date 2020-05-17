@@ -2,8 +2,8 @@
  * Rotating Gear Class
  * 
  * Author: Hercules (HErC) Dias Campos
- * Created:         May 8, 2020
- * Last Modified:   May 8, 2020
+ * Created:         May  8, 2020
+ * Last Modified:   May 17, 2020
  * 
  * Inherits from MonoBehaviour
  * 
@@ -12,6 +12,9 @@
  * Reads its speed and state from a required TimeInteractable
  * instance, and applies rotations accordingly
  * 
+ * Changes in May 17, 2020:
+ *      Adapted the code to the new starndard
+ * 
  * ***REQUIRES THAT THE PREFAB HAVE A COLLIDER!***
  * 
  **************************************************************/
@@ -19,13 +22,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(TimeInteractable))]
 public class RotatingGear : MonoBehaviour
 {
     #region Time Controls
     //This syntax makes it so that the value of the variable is readonly.
     //Alternatively, this can be set on the script's Awake or Start functions
-    private TimeInteractable m_Time => this.gameObject.GetComponent<TimeInteractable>();
+    [SerializeField] private float m_fSpeed;
+    [SerializeField] private float m_fNormalSpeed;
+                     private float m_fSlowedSpeed;
     #endregion
 
     #region Prefab and Collider.
@@ -54,6 +58,21 @@ public class RotatingGear : MonoBehaviour
     {
         this.gameObject.transform.RotateAround(this.gameObject.transform.position, 
                                                this.gameObject.transform.up, 
-                                               m_Time.CurrentSpeed * Time.deltaTime);
+                                               m_fSpeed * Time.deltaTime);
     }
+
+    //Copied straight from Blair's script, changed variable names for consistency
+    void TimeSlow() {
+        if (m_fSpeed > m_fSlowedSpeed) m_fSpeed -= 0.1f;
+    }
+    void TimeStop() {
+        m_fSpeed = 0;
+    }
+    void TimeFastForward() {
+        m_fSpeed = m_fNormalSpeed * 2;
+    }
+    void RestoreToNormal() {
+        m_fSpeed = m_fNormalSpeed;
+    }
+    //End of the copy...
 }

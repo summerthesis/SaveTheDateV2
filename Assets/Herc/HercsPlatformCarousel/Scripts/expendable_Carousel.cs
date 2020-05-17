@@ -1,17 +1,39 @@
-﻿using System.Collections;
+﻿/***************************************************************
+ * Caroussel Maker Class
+ * 
+ * Author: Hercules (HErC) Dias Campos
+ * Created:         Feb 14, 2020
+ * Last Modified:   May 17, 2020
+ * 
+ * Inherits from MonoBehaviour
+ * 
+ * Caroussel class:
+ * 
+ * Creates a caroussel, based on config parameters in the inspector
+ * 
+ * Changes in May 17, 2020:
+ *      Adapted the code to the new starndard
+ *      Included ability to leave rotation controls to children
+ *          themselves
+ * 
+ **************************************************************/
+
+using System.Collections;
 using System.Collections.Generic;
 using TimeManipuation;
 using UnityEngine;
 
 public enum PlatformRotation { NoRotation = 0,
                                TowardsCenter = 1,
-                               AwayFromCenter = 1 << 1}
+                               AwayFromCenter = 1 << 1,
+                               DoNotSetRotation = 1 << 2}
 
-[RequireComponent(typeof(TimeInteractable))]
 public class expendable_Carousel : MonoBehaviour
 {
     [SerializeField] private PrimitiveType m_pTypeToCreate;
-                     private TimeInteractable m_RotationSpeed;
+    [SerializeField] private float m_fSpeed;
+    [SerializeField] private float m_fNormalSpeed;
+                     private float m_fSlowedSpeed;
     [SerializeField] private float m_fCarouselRadius;
     [SerializeField] private float m_fPlatformSize;
     [SerializeField] private PlatformRotation m_PlatformRotation;    
@@ -65,28 +87,29 @@ public class expendable_Carousel : MonoBehaviour
             //m_Platforms[i].gameObject.tag = this.gameObject.tag;
             m_Platforms[i].AddComponent<PlatformParenting>();
         }
-        m_RotationSpeed = GetComponent<TimeInteractable>();
+
+        m_fSlowedSpeed = m_fNormalSpeed / 2;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_RotationSpeed != null) { transform.RotateAround(transform.position, transform.up, m_RotationSpeed.CurrentSpeed * Time.deltaTime); }
-
         if (m_pTypeToCreate != PrimitiveType.Quad) {
             for (int i = 0; i < m_Platforms.Length; ++i) {
-                angleDiv = angle * i;
+                
                 if (m_PlatformRotation == PlatformRotation.NoRotation) {
                     m_Platforms[i].transform.rotation = Quaternion.identity;
                 }
                 else { 
                     Vector3 endResult = this.gameObject.transform.position;
                     endResult.y = m_Platforms[i].transform.position.y;
-                    m_Platforms[i].transform.LookAt(endResult);
-
+                    if (m_PlatformRotation == PlatformRotation.TowardsCenter) {
+                        m_Platforms[i].transform.LookAt(endResult);
+                    }
                     if (m_PlatformRotation == PlatformRotation.AwayFromCenter) {
                         m_Platforms[i].transform.Rotate(Vector3.up * 180);
                     }
+                    //Note: "Do not control rotation" script may have to go here...
                 }
             }
         } else {
@@ -96,7 +119,23 @@ public class expendable_Carousel : MonoBehaviour
                 g.transform.Rotate(this.gameObject.transform.up, 180, Space.Self);
             }
         }
+        transform.RotateAround(transform.position, transform.up, m_fSpeed * Time.deltaTime);
     }
+
+    //Copied straight from Blair's script, changed variable names for consistency
+    void TimeSlow() {
+        if (m_fSpeed > m_fSlowedSpeed) m_fSpeed -= 0.1f;
+    }
+    void TimeStop() {
+        m_fSpeed = 0;
+    }
+    void TimeFastForward() {
+        m_fSpeed = m_fNormalSpeed * 2;
+    }
+    void RestoreToNormal() {
+        m_fSpeed = m_fNormalSpeed;
+    }
+    //End of the copy...
 
     /// <summary>
     /// Calculates the platform's initial position based on the parent's initial position and the 

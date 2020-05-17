@@ -121,11 +121,7 @@ public class TimeInputControls : MonoBehaviour
                 if (m_slowInput ^ m_stopInput) {
                     if (m_slowInput) timeComponent.Slow();
                     if (m_stopInput) timeComponent.Stop();
-<<<<<<< HEAD
                     if (m_hasteInput) timeComponent.Hasten();
-=======
-                    
->>>>>>> TimeMech/BlairWhite
                 }
                 //Debug.Log("Time interactable object found on"+ result.transform.gameObject.name);
             }
