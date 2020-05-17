@@ -21,7 +21,6 @@ public class PlatformA_B : MonoBehaviour
         CustomEvent
     };
     ObjectStates ObjectState;
-    private bool isActive;
   
     void Start()
     {
@@ -82,7 +81,6 @@ public class PlatformA_B : MonoBehaviour
     void ChangeDirection()
     {
         if (this.transform.position == PointA) ObjectState = ObjectStates.MoveA_B;
-        else
         if (this.transform.position == PointB) ObjectState = ObjectStates.MoveB_A;
     }
 
