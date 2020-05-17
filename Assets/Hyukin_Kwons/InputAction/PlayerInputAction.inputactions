@@ -480,18 +480,34 @@
             "id": "136283d1-fea4-4205-a5f3-2b18bdd596b6",
             "actions": [
                 {
-                    "name": "TimeBackward",
-                    "type": "Value",
+                    "name": "TimeSlow",
+                    "type": "Button",
                     "id": "85cce74a-33c6-4679-b429-929bdede1512",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "TimeForward",
-                    "type": "Value",
+                    "name": "TimeFastForward",
+                    "type": "Button",
                     "id": "beeb6ae6-8c00-40f0-8b70-3fe079cdb8bf",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TimeStop",
+                    "type": "Button",
+                    "id": "b79dad23-a539-4be1-80eb-8537c3c9e281",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "TimeJumpForward",
+                    "type": "Button",
+                    "id": "f9888814-83ef-4054-965d-b884c2154ce8",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -504,7 +520,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "TimeBackward",
+                    "action": "TimeSlow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -515,7 +531,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "TimeForward",
+                    "action": "TimeFastForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a97dd005-b8c3-40d6-b1cc-40df864f7758",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TimeStop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47128d54-e06e-462d-8f18-f9c91261ceba",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TimeJumpForward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

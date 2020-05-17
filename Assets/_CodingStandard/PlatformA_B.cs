@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class PlatformA_B : MonoBehaviour
 {
-    //This Objects starting position is Point A, The GameObject B is Point B.
-    public GameObject B; //Set in prefab.
+    
+    public GameObject B; 
     private Vector3 PointA, PointB;
-    public float mSpeed; // The actual speed this moves at.
-    public float NormalSpeed; //Set in the inspector.
-    private float SlowedSpeed;
-    public int IdleDuration;//How long will the object pause at each end.
+    private float mSpeed; 
+    public float NormalSpeed; 
+    private float SlowedSpeed, FastSpeed, StopSpeed;
+    public int IdleDuration;
     private int IdleCount;
     private enum ObjectStates
     {
+        Unavailable,
         MoveA_B, 
         Idling,
         MoveB_A,
@@ -25,21 +26,25 @@ public class PlatformA_B : MonoBehaviour
     void Start()
     {
         SlowedSpeed = NormalSpeed / 2;
+        FastSpeed = NormalSpeed * 2;
+        StopSpeed = 0;
         PointA = this.transform.position;
         PointB = B.transform.position;
         Destroy(B);
         ObjectState = ObjectStates.MoveA_B;
-        isActive = true;
+    
         mSpeed = NormalSpeed;
         
     }
 
     void Update()
-    {
-        
-        if(isActive)
+    {     
           switch(ObjectState)
             {
+                case ObjectStates.Unavailable:
+
+                    break;
+
                 case ObjectStates.MoveA_B:
                     Move(PointB);
                     break;
@@ -67,8 +72,11 @@ public class PlatformA_B : MonoBehaviour
     {
         float step = mSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, Point, step);
-        if (this.transform.position == Point) ObjectState = ObjectStates.Idling;
-        IdleCount = IdleDuration;
+        if (this.transform.position == Point)
+        {
+            ObjectState = ObjectStates.Idling;  
+            IdleCount = IdleDuration;
+        }
     }
 
     void ChangeDirection()
@@ -80,7 +88,7 @@ public class PlatformA_B : MonoBehaviour
 
     void TimeSlow()
     {
-        if (mSpeed > SlowedSpeed) mSpeed -= 0.1f;
+        mSpeed = SlowedSpeed;
     }
     void TimeStop()
     {
@@ -88,12 +96,15 @@ public class PlatformA_B : MonoBehaviour
     }
     void TimeFastForward()
     {
-        mSpeed = NormalSpeed * 2;
+        mSpeed = FastSpeed;
+    }
+    void JumpForward()
+    {
+
     }
     void RestoreToNormal()
     {
         mSpeed = NormalSpeed;
-        IdleCount = IdleDuration;
     }
 
    

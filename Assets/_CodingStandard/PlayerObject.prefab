@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1640934634636284288}
   m_Layer: 0
   m_Name: PlayerObject
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,3 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e49f077cb4b0094ba03302fa3fcf93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxCastRange: 100
+  MaxEnergy: 1000
+  TimeTaggedObjects: []
+  mPlayer: {fileID: 0}

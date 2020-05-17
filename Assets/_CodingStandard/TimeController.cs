@@ -4,31 +4,29 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour
 {
-  
     PlayerInputAction controls;
-    private float SlowAxis, FastAxis, Energy;
-    public float MaxCastRange = 100;
-    public float MaxEnergy = 1000;
-    private int CoolDownDuration = 300;
-    private int Count;
-    GameObject[] TimeTaggedObjects;
-    GameObject mPlayer;
-    private enum TimeStates { Slowing, Stopping, FastForwarding, Available, Overheated, Cooldown}
-    private TimeStates TimeState;
+    private float Energy;
+    private float MaxEnergy = 1000;
+    private float MaxCastRange = 1000;
+    private float EnergyCost = 15;
+    private int Count;  
+    private GameObject[] TimeTaggedObjects;
+    private GameObject Player;
+    private GameObject EnergyBar;
+    private bool Stopping;
+    
+    private enum TimeStates
+    {
+        Available,
+        Slowing, 
+        FastForwarding
+    }
+    private TimeStates TimeState = TimeStates.Available;
     void Awake()
     {
-        controls = new PlayerInputAction();
-        controls.TimeControls.TimeForward.performed += ctx => FastAxis = ctx.ReadValue<float>();
-        controls.TimeControls.TimeBackward.performed += ctx => SlowAxis = ctx.ReadValue<float>();
-        controls.TimeControls.TimeForward.canceled += ctx => EndFastForward();
-        controls.TimeControls.TimeBackward.canceled += ctx => EndSlow();
-        
-        TimeTaggedObjects = GameObject.FindGameObjectsWithTag("TimeInteractable");
-        mPlayer = GameObject.FindGameObjectWithTag("Player");
-
-        TimeState = TimeStates.Available;
-
-        Energy = MaxEnergy;
+        SetupControls();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        EnergyBar = GameObject.FindGameObjectWithTag("EnergyBar");
     }
 
     void Update()
@@ -36,75 +34,122 @@ public class TimeController : MonoBehaviour
         switch (TimeState)
         {
             case TimeStates.Available:
-                if (SlowAxis != 0) { TimeState = TimeStates.Slowing; break; }
-                if (SlowAxis == 1) { TimeState = TimeStates.Stopping; break; }
-                if (FastAxis == 1) { TimeState = TimeStates.FastForwarding; break; }
-
-                if (Energy < MaxEnergy) Energy += 5;
-                if (Energy > MaxEnergy) Energy  = MaxEnergy;                
+                Energy += 10; if (Energy > MaxEnergy) Energy = MaxEnergy;
+                SetEnergyBarScale();
                 break;
 
             case TimeStates.Slowing:
-                Energy-=25;
-                break;
-
-            case TimeStates.Stopping:
-
+                Energy -= EnergyCost; if (Energy < 0) { Energy = 0; EndSlow(); }
+                SetEnergyBarScale();
                 break;
 
             case TimeStates.FastForwarding:
-
-                break;
-
-            case TimeStates.Overheated:
-                //Reserved for Events; sounds, animation etc.
-                TimeState = TimeStates.Cooldown;
-                break;
-           
-            case TimeStates.Cooldown:
-                Count++;
-                if (Count > CoolDownDuration)
-                {
-                    Count = 0;
-                    TimeState = TimeStates.Available;
-                }
+                Energy -= EnergyCost; if (Energy < 0) { Energy = 0; EndFastForward(); }
+                SetEnergyBarScale();
                 break;
 
             default:
                 break;
-
+        }
+        if(Stopping)
+        {
+            Count++; 
+            if(Count > 120) { Stopping = false; Count = 0; LoopThroughObjects("RestoreToNormal", false); }
+        }
+    }
+    void LoopThroughObjects(string SendThisMessage, bool CheckDistance)
+    {
+        TimeTaggedObjects = GameObject.FindGameObjectsWithTag("TimeInteractable");
+        
+        foreach (GameObject obj in TimeTaggedObjects)
+        {
+            float distance = Vector3.Distance(Player.transform.position, obj.transform.position);
+            if (CheckDistance)
+            {
+                if (distance < MaxCastRange)
+                obj.gameObject.SendMessage(SendThisMessage);
+            }
+            else
+                obj.gameObject.SendMessage(SendThisMessage);
         }
     }
 
+
     void Slow()
     {
-
-        foreach (GameObject obj in TimeTaggedObjects)
+        if(Energy >= EnergyCost)
         {
-            float distance = Vector3.Distance(mPlayer.transform.position, obj.transform.position);
-            if (distance < MaxCastRange)
-                obj.gameObject.SendMessage("TimeSlow");
+            LoopThroughObjects("TimeSlow", true);
+            TimeState = TimeStates.Slowing;
         }
-        TimeState = TimeStates.Slowing;
+        else
+        {
+            LoopThroughObjects("RestoreToNormal", false);
+            TimeState = TimeStates.Available;
+        }
+    }
+
+    void Stop()
+    {
+        if (Energy >= 750)
+        {
+            Stopping = true;
+            LoopThroughObjects("TimeStop", true);
+            Energy -= 750;
+            SetEnergyBarScale();
+        }
     }
 
     void FastForward()
     {
-        foreach (GameObject obj in TimeTaggedObjects)
-            {
-            float distance = Vector3.Distance(mPlayer.transform.position, obj.transform.position);
-            if (distance < MaxCastRange)
-            obj.gameObject.SendMessage("TimeFastForward");
-            }
-        TimeState = TimeStates.FastForwarding;
+        if(Energy >= EnergyCost)
+        {
+            LoopThroughObjects("TimeFastForward", true);
+            TimeState = TimeStates.FastForwarding;
+        }
+        else
+        {
+            LoopThroughObjects("RestoreToNormal", false);
+            TimeState = TimeStates.Available;
+        }
     }
-
+    void JumpForward()
+    {
+        if (Energy >= 750)
+        {
+            LoopThroughObjects("JumpForward", true);
+            Energy -= 750;
+            SetEnergyBarScale();
+        } 
+    }
     void EndSlow()
     {
 
+        LoopThroughObjects("RestoreToNormal", true);
+        TimeState = TimeStates.Available;
     }
     void EndFastForward()
     {
-
+        LoopThroughObjects("RestoreToNormal", false);
+        TimeState = TimeStates.Available;       
     }
+    void SetupControls()
+    {
+        controls = new PlayerInputAction();
+        controls.TimeControls.TimeFastForward.performed += ctx => FastForward();
+        controls.TimeControls.TimeFastForward.canceled += ctx => EndFastForward();
+        controls.TimeControls.TimeSlow.performed += ctx => Slow();
+        controls.TimeControls.TimeSlow.canceled += ctx => EndSlow();
+        
+        controls.TimeControls.TimeJumpForward.canceled += ctx => JumpForward();
+        
+        controls.TimeControls.TimeStop.canceled += ctx => Stop();
+    }
+    void SetEnergyBarScale()
+    {
+        float EnergyBarScale = Energy / MaxEnergy;
+        EnergyBar.transform.localScale = new Vector3(EnergyBarScale, 1, 1);
+    }
+    private void OnEnable() { controls.Enable(); }
+    private void OnDisable() { controls.Disable(); }
 }
