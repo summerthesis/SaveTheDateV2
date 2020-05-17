@@ -74,7 +74,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": ""MoveAxis"",
                     ""id"": ""2d998636-e2fc-4953-b329-7859f087a4f4"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -487,6 +487,90 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TimeControls"",
+            ""id"": ""136283d1-fea4-4205-a5f3-2b18bdd596b6"",
+            ""actions"": [
+                {
+                    ""name"": ""TimeSlow"",
+                    ""type"": ""Button"",
+                    ""id"": ""85cce74a-33c6-4679-b429-929bdede1512"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TimeFastForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""beeb6ae6-8c00-40f0-8b70-3fe079cdb8bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TimeStop"",
+                    ""type"": ""Button"",
+                    ""id"": ""b79dad23-a539-4be1-80eb-8537c3c9e281"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""TimeJumpForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9888814-83ef-4054-965d-b884c2154ce8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8bc31d11-d30a-44be-b5d1-a504ab0f2c20"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""TimeSlow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8eb9dfe0-22a8-4fbd-a8b5-93563c78ecbf"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""TimeFastForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a97dd005-b8c3-40d6-b1cc-40df864f7758"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TimeStop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47128d54-e06e-462d-8f18-f9c91261ceba"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TimeJumpForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -534,6 +618,12 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_InventoryControls_Down = m_InventoryControls.FindAction("Down", throwIfNotFound: true);
         m_InventoryControls_Left = m_InventoryControls.FindAction("Left", throwIfNotFound: true);
         m_InventoryControls_Right = m_InventoryControls.FindAction("Right", throwIfNotFound: true);
+        // TimeControls
+        m_TimeControls = asset.FindActionMap("TimeControls", throwIfNotFound: true);
+        m_TimeControls_TimeSlow = m_TimeControls.FindAction("TimeSlow", throwIfNotFound: true);
+        m_TimeControls_TimeFastForward = m_TimeControls.FindAction("TimeFastForward", throwIfNotFound: true);
+        m_TimeControls_TimeStop = m_TimeControls.FindAction("TimeStop", throwIfNotFound: true);
+        m_TimeControls_TimeJumpForward = m_TimeControls.FindAction("TimeJumpForward", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -757,6 +847,63 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         }
     }
     public InventoryControlsActions @InventoryControls => new InventoryControlsActions(this);
+
+    // TimeControls
+    private readonly InputActionMap m_TimeControls;
+    private ITimeControlsActions m_TimeControlsActionsCallbackInterface;
+    private readonly InputAction m_TimeControls_TimeSlow;
+    private readonly InputAction m_TimeControls_TimeFastForward;
+    private readonly InputAction m_TimeControls_TimeStop;
+    private readonly InputAction m_TimeControls_TimeJumpForward;
+    public struct TimeControlsActions
+    {
+        private @PlayerInputAction m_Wrapper;
+        public TimeControlsActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TimeSlow => m_Wrapper.m_TimeControls_TimeSlow;
+        public InputAction @TimeFastForward => m_Wrapper.m_TimeControls_TimeFastForward;
+        public InputAction @TimeStop => m_Wrapper.m_TimeControls_TimeStop;
+        public InputAction @TimeJumpForward => m_Wrapper.m_TimeControls_TimeJumpForward;
+        public InputActionMap Get() { return m_Wrapper.m_TimeControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TimeControlsActions set) { return set.Get(); }
+        public void SetCallbacks(ITimeControlsActions instance)
+        {
+            if (m_Wrapper.m_TimeControlsActionsCallbackInterface != null)
+            {
+                @TimeSlow.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeSlow;
+                @TimeSlow.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeSlow;
+                @TimeSlow.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeSlow;
+                @TimeFastForward.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeFastForward;
+                @TimeFastForward.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeFastForward;
+                @TimeFastForward.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeFastForward;
+                @TimeStop.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
+                @TimeStop.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
+                @TimeStop.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
+                @TimeJumpForward.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeJumpForward;
+                @TimeJumpForward.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeJumpForward;
+                @TimeJumpForward.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeJumpForward;
+            }
+            m_Wrapper.m_TimeControlsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @TimeSlow.started += instance.OnTimeSlow;
+                @TimeSlow.performed += instance.OnTimeSlow;
+                @TimeSlow.canceled += instance.OnTimeSlow;
+                @TimeFastForward.started += instance.OnTimeFastForward;
+                @TimeFastForward.performed += instance.OnTimeFastForward;
+                @TimeFastForward.canceled += instance.OnTimeFastForward;
+                @TimeStop.started += instance.OnTimeStop;
+                @TimeStop.performed += instance.OnTimeStop;
+                @TimeStop.canceled += instance.OnTimeStop;
+                @TimeJumpForward.started += instance.OnTimeJumpForward;
+                @TimeJumpForward.performed += instance.OnTimeJumpForward;
+                @TimeJumpForward.canceled += instance.OnTimeJumpForward;
+            }
+        }
+    }
+    public TimeControlsActions @TimeControls => new TimeControlsActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -796,5 +943,12 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         void OnDown(InputAction.CallbackContext context);
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
+    }
+    public interface ITimeControlsActions
+    {
+        void OnTimeSlow(InputAction.CallbackContext context);
+        void OnTimeFastForward(InputAction.CallbackContext context);
+        void OnTimeStop(InputAction.CallbackContext context);
+        void OnTimeJumpForward(InputAction.CallbackContext context);
     }
 }
