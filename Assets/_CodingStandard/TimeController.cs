@@ -8,7 +8,7 @@ public class TimeController : MonoBehaviour
     private float Energy;
     private float MaxEnergy = 1000;
     private float MaxCastRange = 1000;
-    private float EnergyCost = 15;
+    private float EnergyCost = 9;
     private int Count;  
     private GameObject[] TimeTaggedObjects;
     private GameObject Player;
@@ -34,7 +34,7 @@ public class TimeController : MonoBehaviour
         switch (TimeState)
         {
             case TimeStates.Available:
-                Energy += 10; if (Energy > MaxEnergy) Energy = MaxEnergy;
+                Energy += 4; if (Energy > MaxEnergy) Energy = MaxEnergy;
                 SetEnergyBarScale();
                 break;
 
