@@ -6,12 +6,12 @@ public class PlatformA_B : MonoBehaviour
 {
     
     public GameObject B; 
-    private Vector3 PointA, PointB;
-    private float mSpeed; 
-    public float NormalSpeed; 
-    private float SlowedSpeed, FastSpeed, StopSpeed;
+    private Vector3 PointA, PointB; 
+    public float StopSpeed, NormalSpeed; 
+    private float mSpeed, SlowedSpeed, FastSpeed;
     public int IdleDuration;
     private int IdleCount;
+    
     private enum ObjectStates
     {
         Unavailable,
@@ -100,12 +100,37 @@ public class PlatformA_B : MonoBehaviour
     }
     void JumpForward()
     {
-
+        if (ObjectState == ObjectStates.MoveA_B)
+        {
+            Vector3 NewPosition =
+            transform.position + transform.TransformDirection(GetLocalDirection(transform, PointB));
+            if (Vector3.Distance(transform.position, NewPosition) > Vector3.Distance(transform.position, PointB))
+            {
+                transform.position = PointB;
+            }
+            else
+                transform.Translate(GetLocalDirection(transform, PointB));
+        }
+        
+        if (ObjectState == ObjectStates.MoveB_A)
+        {
+            Vector3 NewPosition =
+            transform.position + transform.TransformDirection(GetLocalDirection(transform, PointA));
+            if (Vector3.Distance(transform.position, NewPosition) > Vector3.Distance(transform.position, PointA))
+            {
+                transform.position = PointA;
+            }
+            else
+                transform.Translate(GetLocalDirection(transform, PointA));
+        }
     }
     void RestoreToNormal()
     {
         mSpeed = NormalSpeed;
     }
+    Vector3 GetLocalDirection(Transform transform, Vector3 destination)
+    {
+        return transform.InverseTransformDirection((destination - transform.position).normalized);
+    }
 
-   
 }
