@@ -14,6 +14,8 @@ public class KH_PlayerController : MonoBehaviour
     private PlayerInputAction controls;
     private Vector2 movementInput;
     private bool jumpInput;
+    private int numJumpInputPressed;
+    private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
     private Animator anim;
@@ -25,8 +27,7 @@ public class KH_PlayerController : MonoBehaviour
         controls = new PlayerInputAction();
         controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
-        controls.PlayerControls.Jump.performed += ctx => jumpInput = true;
-        controls.PlayerControls.Jump.canceled += ctx => jumpInput = false;
+        controls.PlayerControls.Jump.started += ctx => jumpInput = true;
     }
     
     void Start()
@@ -71,11 +72,26 @@ public class KH_PlayerController : MonoBehaviour
         rb.velocity = new Vector3(groundMovement.x, rb.velocity.y, groundMovement.z);
 
         // JUMPING
-        if (IsGrounded() && jumpInput)
+        if (IsGrounded())
         {
-            rb.velocity = Vector3.up * jumpForce;
+            canDoubleJump = true;
         }
-        
+
+        if (jumpInput)
+        {
+            if (IsGrounded())
+            {
+                rb.velocity = Vector3.up * jumpForce;
+            }
+            else if (canDoubleJump)
+            {
+                rb.velocity = Vector3.up * jumpForce;
+                canDoubleJump = false;
+            }
+            
+        }
+        jumpInput = false; //from https://forum.unity.com/threads/how-would-you-handle-a-getbuttondown-situaiton-with-the-new-input-system.627184/#post-5015597
+
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime; //using Time.deltaTime due to acceleration
