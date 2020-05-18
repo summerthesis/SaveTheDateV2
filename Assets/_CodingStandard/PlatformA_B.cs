@@ -4,42 +4,46 @@ using UnityEngine;
 
 public class PlatformA_B : MonoBehaviour
 {
-    //This Objects starting position is Point A, The GameObject B is Point B.
-    public GameObject B; //Set in prefab.
-    private Vector3 PointA, PointB;
-    public float mSpeed; // The actual speed this moves at.
-    public float NormalSpeed; //Set in the inspector.
-    private float SlowedSpeed;
-    public int IdleDuration;//How long will the object pause at each end.
+    
+    public GameObject B; 
+    private Vector3 PointA, PointB; 
+    public float StopSpeed, NormalSpeed; 
+    private float mSpeed, SlowedSpeed, FastSpeed;
+    public int IdleDuration;
     private int IdleCount;
+    
     private enum ObjectStates
     {
+        Unavailable,
         MoveA_B, 
         Idling,
         MoveB_A,
         CustomEvent
     };
     ObjectStates ObjectState;
-    private bool isActive;
   
     void Start()
     {
         SlowedSpeed = NormalSpeed / 2;
+        FastSpeed = NormalSpeed * 2;
+        StopSpeed = 0;
         PointA = this.transform.position;
         PointB = B.transform.position;
         Destroy(B);
         ObjectState = ObjectStates.MoveA_B;
-        isActive = true;
+    
         mSpeed = NormalSpeed;
         
     }
 
     void Update()
-    {
-        
-        if(isActive)
+    {     
           switch(ObjectState)
             {
+                case ObjectStates.Unavailable:
+
+                    break;
+
                 case ObjectStates.MoveA_B:
                     Move(PointB);
                     break;
@@ -67,20 +71,22 @@ public class PlatformA_B : MonoBehaviour
     {
         float step = mSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, Point, step);
-        if (this.transform.position == Point) ObjectState = ObjectStates.Idling;
-        IdleCount = IdleDuration;
+        if (this.transform.position == Point)
+        {
+            ObjectState = ObjectStates.Idling;  
+            IdleCount = IdleDuration;
+        }
     }
 
     void ChangeDirection()
     {
         if (this.transform.position == PointA) ObjectState = ObjectStates.MoveA_B;
-        else
         if (this.transform.position == PointB) ObjectState = ObjectStates.MoveB_A;
     }
 
     void TimeSlow()
     {
-        if (mSpeed > SlowedSpeed) mSpeed -= 0.1f;
+        mSpeed = SlowedSpeed;
     }
     void TimeStop()
     {
@@ -88,13 +94,41 @@ public class PlatformA_B : MonoBehaviour
     }
     void TimeFastForward()
     {
-        mSpeed = NormalSpeed * 2;
+        mSpeed = FastSpeed;
+    }
+    void JumpForward()
+    {
+        if (ObjectState == ObjectStates.MoveA_B)
+        {
+            Vector3 NewPosition =
+            transform.position + transform.TransformDirection(GetLocalDirection(transform, PointB));
+            if (Vector3.Distance(transform.position, NewPosition) > Vector3.Distance(transform.position, PointB))
+            {
+                transform.position = PointB;
+            }
+            else
+                transform.Translate(GetLocalDirection(transform, PointB));
+        }
+        
+        if (ObjectState == ObjectStates.MoveB_A)
+        {
+            Vector3 NewPosition =
+            transform.position + transform.TransformDirection(GetLocalDirection(transform, PointA));
+            if (Vector3.Distance(transform.position, NewPosition) > Vector3.Distance(transform.position, PointA))
+            {
+                transform.position = PointA;
+            }
+            else
+                transform.Translate(GetLocalDirection(transform, PointA));
+        }
     }
     void RestoreToNormal()
     {
         mSpeed = NormalSpeed;
-        IdleCount = IdleDuration;
+    }
+    Vector3 GetLocalDirection(Transform transform, Vector3 destination)
+    {
+        return transform.InverseTransformDirection((destination - transform.position).normalized);
     }
 
-   
 }
