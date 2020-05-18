@@ -2945,7 +2945,7 @@ GameObject:
   - component: {fileID: 2386069406091510258}
   - component: {fileID: 2386069406091510269}
   - component: {fileID: 2386069406091510268}
-  - component: {fileID: 2386069406091510271}
+  - component: {fileID: 311798264749209060}
   m_Layer: 0
   m_Name: PlayerCharacterIso
   m_TagString: Player
@@ -2997,7 +2997,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2386069406091510271
+--- !u!114 &311798264749209060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3006,14 +3006,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2386069406091510270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0ca759e45daf1c48a7979d492ca00dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b61d9bcb8296464a85e31bf7fa42616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementInput: {x: 0, y: 0}
-  Hmovement: 0
-  Vmovement: 0
-  mPlayer: {fileID: 0}
-  anim: {fileID: 0}
+  moveSpeed: 4
+  jumpForce: 10
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &2386069406091683759
 GameObject:
   m_ObjectHideFlags: 0
