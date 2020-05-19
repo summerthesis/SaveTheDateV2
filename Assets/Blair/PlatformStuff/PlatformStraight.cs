@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class PlatformStraight : MonoBehaviour
 {
     private float  SlowedSpeed, FastSpeed;
     public float mSpeed, NormalSpeed;
-
+    private bool Despawn;
     void Start()
     {
         transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -14,12 +15,23 @@ public class PlatformStraight : MonoBehaviour
         SlowedSpeed = mSpeed / 2;
         FastSpeed = mSpeed * 2;
         NormalSpeed = mSpeed;
+        transform.DOPunchScale(new Vector3(.25f,.25f,.25f), 3, 5, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.left * Time.deltaTime * mSpeed;
+        
+        if(Despawn)
+        {
+            transform.position += Vector3.left * Time.deltaTime * mSpeed * 2;
+            transform.DOScale(0, .2f);
+            if (transform.localScale == Vector3.zero)
+                Destroy(gameObject);
+
+        }
+        else
+            transform.position += Vector3.left * Time.deltaTime * mSpeed;
     }
 
      void TimeSlow()
@@ -48,10 +60,10 @@ public class PlatformStraight : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
+       
         if (col.gameObject.name == "Despawner")
-        {  
-            Destroy(this.gameObject);
-            Debug.Log("Collided");
+        {
+            Despawn = true;
         }
     }
 }
