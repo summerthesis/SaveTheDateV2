@@ -56,22 +56,11 @@ public class KH_PlayerController : MonoBehaviour
         horizontalMovement = movementInput.x;
         verticalMovement = movementInput.y;
 
-        //Vector3 rightMovement = right * moveSpeed * Time.deltaTime * horizontalMovement;
-        //Vector3 upMovement = forward * moveSpeed * Time.deltaTime * verticalMovement;
-        //Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
-
-        //transform.position += rightMovement;
-        //transform.position += upMovement;
-
-        //Vector3 rightMovement = right * moveSpeed * Time.deltaTime * horizontalMovement;
-        //Vector3 upMovement = forward * moveSpeed * Time.deltaTime * verticalMovement;
         Vector3 rightMovement = right * moveSpeed * horizontalMovement;
         Vector3 upMovement = forward * moveSpeed * verticalMovement;
         Vector3 groundMovement = rightMovement + upMovement;
         Vector3 heading = Vector3.Normalize(groundMovement);
 
-        //rb.MovePosition(transform.position + movement);
-        //rb.AddForce(movement, ForceMode.Acceleration);
         rb.velocity = new Vector3(groundMovement.x, rb.velocity.y, groundMovement.z);
 
         // JUMPING
