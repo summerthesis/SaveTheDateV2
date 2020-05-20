@@ -14,13 +14,16 @@ public class KH_PlayerController : MonoBehaviour
     private PlayerInputAction controls;
     private Vector2 movementInput;
     private bool jumpInput;
-    private int numJumpInputPressed;
     private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
     private Animator anim;
     private Rigidbody rb;
-    private BoxCollider playerCollider;
+    public Collider playerCollider;
+    [TextArea]
+    public string Notes = "1st Box Collider is the actual Collider, referenced in the movement script.\n" +
+        "2nd Box Collider is slightly wider with NoFriction PhysicsMaterial to prevent player from sticking to the wall mid-jump.\n" +
+        "The ground needs to be tagged w/ Platform for Jumping to work.";
 
     void Awake()
     {
@@ -39,7 +42,7 @@ public class KH_PlayerController : MonoBehaviour
         mPlayer = GameObject.Find("Character");
         anim = mPlayer.GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        playerCollider = GetComponent<BoxCollider>();
+        //playerCollider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -77,10 +80,10 @@ public class KH_PlayerController : MonoBehaviour
                 rb.velocity = Vector3.up * jumpForce;
                 canDoubleJump = false;
             }
-            
         }
         jumpInput = false; //from https://forum.unity.com/threads/how-would-you-handle-a-getbuttondown-situaiton-with-the-new-input-system.627184/#post-5015597
 
+        // JUMP MODIFIERS FOR BETTER FEEL
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime; //using Time.deltaTime due to acceleration
@@ -102,7 +105,11 @@ public class KH_PlayerController : MonoBehaviour
         if (horizontalMovement != 0 || verticalMovement != 0)
         {
             anim.SetFloat("HSpeed", 1);
-            transform.forward = heading;
+            if (heading.sqrMagnitude > 0.1f) //better turning, from https://answers.unity.com/questions/422744/rotation-of-character-resets-when-joystick-is-rele.html
+            {
+                transform.forward = heading;
+            }
+                
         }
         else
         {

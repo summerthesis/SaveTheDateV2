@@ -8976,8 +8976,8 @@ GameObject:
   - component: {fileID: 1226038157}
   - component: {fileID: 1226038154}
   - component: {fileID: 1226038158}
-  - component: {fileID: 1226038159}
   - component: {fileID: 1226038155}
+  - component: {fileID: 1226038156}
   m_Layer: 0
   m_Name: PlayerCharacterIso
   m_TagString: Untagged
@@ -8996,8 +8996,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.84547424, y: 0.9397818, z: 1}
-  m_Center: {x: 0.0028076172, y: -0.0045190947, z: 0}
+  m_Size: {x: 0.8261312, y: 0.9571816, z: 0.5960598}
+  m_Center: {x: 0, y: 0.010538812, z: -0.018162727}
 --- !u!114 &1226038155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9017,6 +9017,26 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 256
+  playerCollider: {fileID: 1226038154}
+  Notes: '1st Box Collider is the actual Collider, referenced in the movement script.
+
+    2nd Box Collider is slightly wider with NoFriction PhysicsMaterial to prevent
+    player from sticking to the wall mid-jump.
+
+    The ground needs to be tagged w/ Platform for Jumping to work.'
+--- !u!65 &1226038156
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226038153}
+  m_Material: {fileID: 13400000, guid: 4e07127b7e8d9144d907a9dba1eaff0a, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94196635, y: 0.9150236, z: 0.6513519}
+  m_Center: {x: 0, y: 0.015541361, z: -0.016145706}
 --- !u!4 &1226038157
 Transform:
   m_ObjectHideFlags: 0
@@ -9046,25 +9066,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1226038159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226038153}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0ca759e45daf1c48a7979d492ca00dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementInput: {x: 0, y: 0}
-  Hmovement: 0
-  Vmovement: 0
-  mPlayer: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!1 &1231628937
 GameObject:
   m_ObjectHideFlags: 0
