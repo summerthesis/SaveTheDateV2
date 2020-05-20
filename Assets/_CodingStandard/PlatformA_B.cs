@@ -107,7 +107,7 @@ public class PlatformA_B : MonoBehaviour
                 transform.position = PointB;
             }
             else
-                transform.Translate(GetLocalDirection(transform, PointB));
+                transform.Translate(GetLocalDirection(transform, PointB)*4);
         }
         
         if (ObjectState == ObjectStates.MoveB_A)
@@ -119,7 +119,7 @@ public class PlatformA_B : MonoBehaviour
                 transform.position = PointA;
             }
             else
-                transform.Translate(GetLocalDirection(transform, PointA));
+                transform.Translate(GetLocalDirection(transform, PointA)*4);
         }
     }
     void RestoreToNormal()
