@@ -73,6 +73,7 @@ public class InventoryUI : MonoBehaviour
         if (state == "Opening")
         {
             openAnim();
+            audioSource.gameObject.SetActive(true);
         }
         if (state == "Open")
         {

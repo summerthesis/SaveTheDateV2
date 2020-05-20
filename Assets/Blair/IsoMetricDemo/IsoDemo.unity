@@ -1176,6 +1176,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8820169524559002259, guid: 52127e3a72bb66643bbed2a7878de743,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52127e3a72bb66643bbed2a7878de743, type: 3}
 --- !u!1 &337692218
@@ -2302,6 +2307,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1713672540}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1139547224 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 2386069406091510269, guid: 502a3d4cd96337e4ba5b82debb413d04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1713672540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1139547226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3174,6 +3185,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 311798264749209060, guid: 502a3d4cd96337e4ba5b82debb413d04,
+        type: 3}
+      propertyPath: playerCollider
+      value: 
+      objectReference: {fileID: 1139547224}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 502a3d4cd96337e4ba5b82debb413d04, type: 3}
 --- !u!1 &1733377347
