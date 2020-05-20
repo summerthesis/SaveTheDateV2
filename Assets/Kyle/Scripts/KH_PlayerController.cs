@@ -116,7 +116,11 @@ public class KH_PlayerController : MonoBehaviour
         if (horizontalMovement != 0 || verticalMovement != 0)
         {
             anim.SetFloat("HSpeed", 1);
-            transform.forward = heading;
+            if (heading.sqrMagnitude > 0.1f) //better turning, from https://answers.unity.com/questions/422744/rotation-of-character-resets-when-joystick-is-rele.html
+            {
+                transform.forward = heading;
+            }
+                
         }
         else
         {
