@@ -7,9 +7,11 @@ public class PlatformStraight : MonoBehaviour
 {
     private float  SlowedSpeed, FastSpeed;
     public float mSpeed, NormalSpeed;
-    private bool Despawn;
+    private bool Despawn, Parenting;
     private GameObject mPlayer;
+    public GameObject Despawner;
     Tween mTween;
+
     void Start()
     {
         transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -20,7 +22,6 @@ public class PlatformStraight : MonoBehaviour
         mPlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Despawn)
@@ -32,9 +33,13 @@ public class PlatformStraight : MonoBehaviour
 
         }
         else
-            transform.position += Vector3.left * Time.deltaTime * mSpeed;
-    }
+        {
+            float step = NormalSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, Despawner.transform.position, step);
+        }   
 
+      
+    }
      void TimeSlow()
     {
         mSpeed = SlowedSpeed;
@@ -66,5 +71,7 @@ public class PlatformStraight : MonoBehaviour
         {
             Despawn = true;
         }
+   
     }
+
 }

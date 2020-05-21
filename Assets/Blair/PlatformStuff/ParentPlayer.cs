@@ -6,24 +6,33 @@ public class ParentPlayer : MonoBehaviour
 {
     private GameObject mPlayer;
     private bool Parenting;
-    // Start is called before the first frame update
+    private float mSpeed;
+    private Vector3 mPrevPos, mCurrentPos;
+    public float xx, yy, zz;//the change in
+    
     void Start()
     {
+        mSpeed = this.GetComponent<PlatformStraight>().mSpeed;
         mPlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
     void LateUpdate()
     {
-       if(Parenting)
-        {
-            mPlayer.transform.position += 
-                Vector3.left * Time.deltaTime * this.GetComponent<PlatformStraight>().mSpeed;
-        }
+      
     }
     void Update()
     {
-     
-                
+        mCurrentPos = this.transform.position;
+        xx = mCurrentPos.x - mPrevPos.x;
+        yy = mCurrentPos.y - mPrevPos.y;
+        zz = mCurrentPos.z - mPrevPos.z;
+        mPrevPos = mCurrentPos;
+        if (Parenting)
+        {
+            mPlayer.transform.position += new Vector3(xx, yy, zz);
+        }
+      
+
     }
 
     void OnCollisionEnter(Collision Col)
