@@ -20,6 +20,8 @@ public class KH_PlayerController : MonoBehaviour
     private Animator anim;
     private Rigidbody rb;
     public Collider playerCollider;
+    private Vector3 OriginalScale;
+    
     [TextArea]
     public string Notes = "1st Box Collider is the actual Collider, referenced in the movement script.\n" +
         "2nd Box Collider is slightly wider with NoFriction PhysicsMaterial to prevent player from sticking to the wall mid-jump.\n" +
@@ -27,6 +29,7 @@ public class KH_PlayerController : MonoBehaviour
 
     void Awake()
     {
+        OriginalScale = this.transform.localScale;
         controls = new PlayerInputAction();
         controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
@@ -42,6 +45,7 @@ public class KH_PlayerController : MonoBehaviour
         mPlayer = GameObject.Find("Character");
         anim = mPlayer.GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+       
         //playerCollider = GetComponent<BoxCollider>();
     }
 
@@ -54,9 +58,10 @@ public class KH_PlayerController : MonoBehaviour
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
         MovePlayer();
     }
-
+    
     void MovePlayer()
     {
+
         horizontalMovement = movementInput.x;
         verticalMovement = movementInput.y;
 
@@ -125,6 +130,11 @@ public class KH_PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, playerCollider.bounds.extents.y + 0.1f, groundLayers);
+    }
+
+    void ResetScale()
+    {
+        transform.localScale = OriginalScale;
     }
 
     private void OnEnable()

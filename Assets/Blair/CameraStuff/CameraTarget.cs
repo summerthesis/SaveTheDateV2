@@ -41,7 +41,6 @@ public class CameraTarget : MonoBehaviour
             else
             {
             Tween mTween = this.transform.DORotateQuaternion(CameraAngles[AngleState], 1);
-          
             }
 
         }

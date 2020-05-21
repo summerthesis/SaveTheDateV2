@@ -3017,6 +3017,13 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+  playerCollider: {fileID: 0}
+  Notes: '1st Box Collider is the actual Collider, referenced in the movement script.
+
+    2nd Box Collider is slightly wider with NoFriction PhysicsMaterial to prevent
+    player from sticking to the wall mid-jump.
+
+    The ground needs to be tagged w/ Platform for Jumping to work.'
 --- !u!1 &2386069406091683759
 GameObject:
   m_ObjectHideFlags: 0
