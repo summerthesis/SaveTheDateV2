@@ -571,6 +571,33 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""CameraDebugAngles"",
+            ""id"": ""445bd6c3-500f-4cb5-9394-b89d77440fd5"",
+            ""actions"": [
+                {
+                    ""name"": ""CycleAngles"",
+                    ""type"": ""Button"",
+                    ""id"": ""252539c8-1ad4-4947-9811-4c918c4d4c91"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""99a588db-cc91-4b00-a3f7-0a4707b22ecc"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""CycleAngles"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -624,6 +651,9 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_TimeControls_TimeFastForward = m_TimeControls.FindAction("TimeFastForward", throwIfNotFound: true);
         m_TimeControls_TimeStop = m_TimeControls.FindAction("TimeStop", throwIfNotFound: true);
         m_TimeControls_TimeJumpForward = m_TimeControls.FindAction("TimeJumpForward", throwIfNotFound: true);
+        // CameraDebugAngles
+        m_CameraDebugAngles = asset.FindActionMap("CameraDebugAngles", throwIfNotFound: true);
+        m_CameraDebugAngles_CycleAngles = m_CameraDebugAngles.FindAction("CycleAngles", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -904,6 +934,39 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         }
     }
     public TimeControlsActions @TimeControls => new TimeControlsActions(this);
+
+    // CameraDebugAngles
+    private readonly InputActionMap m_CameraDebugAngles;
+    private ICameraDebugAnglesActions m_CameraDebugAnglesActionsCallbackInterface;
+    private readonly InputAction m_CameraDebugAngles_CycleAngles;
+    public struct CameraDebugAnglesActions
+    {
+        private @PlayerInputAction m_Wrapper;
+        public CameraDebugAnglesActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CycleAngles => m_Wrapper.m_CameraDebugAngles_CycleAngles;
+        public InputActionMap Get() { return m_Wrapper.m_CameraDebugAngles; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CameraDebugAnglesActions set) { return set.Get(); }
+        public void SetCallbacks(ICameraDebugAnglesActions instance)
+        {
+            if (m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface != null)
+            {
+                @CycleAngles.started -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnCycleAngles;
+                @CycleAngles.performed -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnCycleAngles;
+                @CycleAngles.canceled -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnCycleAngles;
+            }
+            m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @CycleAngles.started += instance.OnCycleAngles;
+                @CycleAngles.performed += instance.OnCycleAngles;
+                @CycleAngles.canceled += instance.OnCycleAngles;
+            }
+        }
+    }
+    public CameraDebugAnglesActions @CameraDebugAngles => new CameraDebugAnglesActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -950,5 +1013,9 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         void OnTimeFastForward(InputAction.CallbackContext context);
         void OnTimeStop(InputAction.CallbackContext context);
         void OnTimeJumpForward(InputAction.CallbackContext context);
+    }
+    public interface ICameraDebugAnglesActions
+    {
+        void OnCycleAngles(InputAction.CallbackContext context);
     }
 }

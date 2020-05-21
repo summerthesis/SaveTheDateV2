@@ -48,6 +48,10 @@ public class KH_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        forward = Camera.main.transform.forward;
+        forward.y = 0;
+        forward = Vector3.Normalize(forward);
+        right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
         MovePlayer();
     }
 
