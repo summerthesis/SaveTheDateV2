@@ -2946,6 +2946,8 @@ GameObject:
   - component: {fileID: 2386069406091510269}
   - component: {fileID: 2386069406091510268}
   - component: {fileID: 311798264749209060}
+  - component: {fileID: 6516972053799053894}
+  - component: {fileID: 5967593976019697777}
   m_Layer: 0
   m_Name: PlayerCharacterIso
   m_TagString: Player
@@ -3024,6 +3026,31 @@ MonoBehaviour:
     player from sticking to the wall mid-jump.
 
     The ground needs to be tagged w/ Platform for Jumping to work.'
+--- !u!114 &6516972053799053894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2386069406091510270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31be47322bc3f624599b557547c47fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5967593976019697777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2386069406091510270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312f1a024605fcc42b14b22f1bae4c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDead: 0
 --- !u!1 &2386069406091683759
 GameObject:
   m_ObjectHideFlags: 0
