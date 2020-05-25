@@ -34,7 +34,7 @@ public class PlatformStraight : MonoBehaviour
         }
         else
         {
-            float step = NormalSpeed * Time.deltaTime;
+            float step = mSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, Despawner.transform.position, step);
         }   
 
@@ -42,7 +42,7 @@ public class PlatformStraight : MonoBehaviour
     }
      void TimeSlow()
     {
-        mSpeed = SlowedSpeed;
+        NormalSpeed = SlowedSpeed;
     }
     void TimeStop()
     {
@@ -54,7 +54,8 @@ public class PlatformStraight : MonoBehaviour
     }
     void JumpForward()
     {
-        transform.Translate(-transform.right * 4);
+        float step = NormalSpeed * 100 * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, Despawner.transform.position, step);
     }
     void RestoreToNormal()
     {
