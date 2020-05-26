@@ -11,7 +11,10 @@ public class PlatformA_B : MonoBehaviour
     private float mSpeed, SlowedSpeed, FastSpeed;
     public int IdleDuration;
     private int IdleCount;
-    
+    private GameObject mPlayer;
+    private bool Parenting;
+    private Vector3 mPrevPos, mCurrentPos;
+    private float xx, yy, zz;//the change in
     private enum ObjectStates
     {
         Unavailable,
@@ -31,9 +34,8 @@ public class PlatformA_B : MonoBehaviour
         PointB = B.transform.position;
         Destroy(B);
         ObjectState = ObjectStates.MoveA_B;
-    
         mSpeed = NormalSpeed;
-        
+        mPlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -64,7 +66,12 @@ public class PlatformA_B : MonoBehaviour
                 default:
                     break;
             }
-
+        
+        mCurrentPos = this.transform.position;
+        xx = mCurrentPos.x - mPrevPos.x;
+        yy = mCurrentPos.y = mPrevPos.y;
+        zz = mCurrentPos.z = mPrevPos.z;
+        mPrevPos = mCurrentPos;
     }
 
     void Move(Vector3 Point)
@@ -75,6 +82,10 @@ public class PlatformA_B : MonoBehaviour
         {
             ObjectState = ObjectStates.Idling;  
             IdleCount = IdleDuration;
+        }
+        if(Parenting)
+        {
+            mPlayer.transform.position += new Vector3(xx, yy, zz);
         }
     }
 
@@ -131,4 +142,20 @@ public class PlatformA_B : MonoBehaviour
         return transform.InverseTransformDirection((destination - transform.position).normalized);
     }
 
+    void OnCollisionEnter(Collision Col)
+    {
+        if (Col.transform.position.y - Col.gameObject.GetComponent<BoxCollider>().size.y / 2
+                  > this.transform.position.y + this.GetComponent<BoxCollider>().size.y / 2)
+        if (Col.gameObject.tag == "Player") 
+        {
+            Parenting = true;
+        }
+    }
+    void OnCollisionExit(Collision Col)
+    {
+        if (Col.gameObject.tag == "Player")
+        {
+            Parenting = false;
+        }
+    }
 }

@@ -23,8 +23,9 @@ public class PlatformSpawner : MonoBehaviour
         if (Count >= Interval)
         {
             Count = 0;
-            NewPlatform = Instantiate(SimplePlatformPrefab, this.transform.position, Quaternion.identity);
+            NewPlatform = Instantiate(SimplePlatformPrefab, this.transform.position, this.transform.rotation);
             NewPlatform.GetComponent<PlatformStraight>().mSpeed = PlatformMoveSpeed;
+            NewPlatform.GetComponent<PlatformStraight>().Despawner = Despawner;
         }
     }
 }
