@@ -85,29 +85,30 @@ public class KH_PlayerController : MonoBehaviour
         {
             if (IsGrounded())
             {
+                anim.SetBool("IsJumping", true);
                 rb.velocity = Vector3.up * jumpForce;
             }
             else if (canDoubleJump)
             {
+                anim.SetBool("IsJumping", true);
                 rb.velocity = Vector3.up * jumpForce;
                 canDoubleJump = false;
             }
         }
         jumpInput = false; //from https://forum.unity.com/threads/how-would-you-handle-a-getbuttondown-situaiton-with-the-new-input-system.627184/#post-5015597
-
+        
         // JUMP MODIFIERS FOR BETTER FEEL
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime; //using Time.deltaTime due to acceleration
             anim.SetFloat("VSpeed", -1);
+            anim.SetBool("IsJumping", false);
         }
         else if (rb.velocity.y > 0)
         {
             anim.SetFloat("VSpeed", 1);
             rb.velocity += Vector3.up * Physics.gravity.y * lowJumpMultiplier * Time.deltaTime; //using Time.deltaTime due to acceleration
         }
-
-
 
         // FULL STOP WHEN JOYSTICK IS RELEASED
         if (horizontalMovement == 0 && verticalMovement == 0)
@@ -131,7 +132,23 @@ public class KH_PlayerController : MonoBehaviour
         {
             anim.SetFloat("HSpeed", 0);
         }
-      
+
+        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        //{
+        //    Debug.Log("Idle");
+        //}
+        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+        //{
+        //    Debug.Log("Walk");
+        //}
+        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+        //{
+        //    Debug.Log("Jump");
+        //}
+        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Land"))
+        //{
+        //    Debug.Log("Land");
+        //}
     }
 
     private bool IsGrounded()
