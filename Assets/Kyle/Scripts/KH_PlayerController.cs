@@ -79,6 +79,8 @@ public class KH_PlayerController : MonoBehaviour
         {
             canDoubleJump = true;
             anim.SetFloat("VSpeed", 0);
+            anim.SetBool("IsJumping", false);
+            anim.SetBool("IsDoubleJumping", false);
         }
 
         if (jumpInput)
@@ -91,6 +93,7 @@ public class KH_PlayerController : MonoBehaviour
             else if (canDoubleJump)
             {
                 anim.SetBool("IsJumping", true);
+                anim.SetBool("IsDoubleJumping", true);
                 rb.velocity = Vector3.up * jumpForce;
                 canDoubleJump = false;
             }
