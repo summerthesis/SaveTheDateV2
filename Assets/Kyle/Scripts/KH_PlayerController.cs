@@ -17,8 +17,8 @@ public class KH_PlayerController : MonoBehaviour
     private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
-    private Animator anim;
-    private Rigidbody rb;
+    public Animator anim;
+    public Rigidbody rb;
     public Collider playerCollider;
     [TextArea]
     public string Notes = "1st Box Collider is the actual Collider, referenced in the movement script.\n" +
@@ -40,8 +40,8 @@ public class KH_PlayerController : MonoBehaviour
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
         mPlayer = GameObject.Find("Character");
-        anim = mPlayer.GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
+        //anim = mPlayer.GetComponent<Animator>();
+        //rb = GetComponent<Rigidbody>();
         //playerCollider = GetComponent<BoxCollider>();
     }
 
@@ -78,6 +78,7 @@ public class KH_PlayerController : MonoBehaviour
         if (IsGrounded())
         {
             canDoubleJump = true;
+            anim.SetFloat("VSpeed", 0);
         }
 
         if (jumpInput)
@@ -98,11 +99,15 @@ public class KH_PlayerController : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime; //using Time.deltaTime due to acceleration
+            anim.SetFloat("VSpeed", -1);
         }
         else if (rb.velocity.y > 0)
         {
+            anim.SetFloat("VSpeed", 1);
             rb.velocity += Vector3.up * Physics.gravity.y * lowJumpMultiplier * Time.deltaTime; //using Time.deltaTime due to acceleration
         }
+
+
 
         // FULL STOP WHEN JOYSTICK IS RELEASED
         if (horizontalMovement == 0 && verticalMovement == 0)
@@ -113,6 +118,7 @@ public class KH_PlayerController : MonoBehaviour
         // DISABLE RIGIDBODY FUMBLING
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
+        // MOVE PLAYER WHEN JOYSTICK MOVES
         if (horizontalMovement != 0 || verticalMovement != 0)
         {
             anim.SetFloat("HSpeed", 1);
@@ -120,7 +126,6 @@ public class KH_PlayerController : MonoBehaviour
             {
                 transform.forward = heading;
             }
-                
         }
         else
         {
