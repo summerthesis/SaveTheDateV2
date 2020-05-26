@@ -42,7 +42,7 @@ public class PlatformStraight : MonoBehaviour
     }
      void TimeSlow()
     {
-        NormalSpeed = SlowedSpeed;
+        mSpeed = SlowedSpeed;
     }
     void TimeStop()
     {
