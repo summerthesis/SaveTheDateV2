@@ -3019,7 +3019,9 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  playerCollider: {fileID: 0}
+  anim: {fileID: 2386069407459230650}
+  rb: {fileID: 2386069406091510268}
+  playerCollider: {fileID: 2386069406091510269}
   Notes: '1st Box Collider is the actual Collider, referenced in the movement script.
 
     2nd Box Collider is slightly wider with NoFriction PhysicsMaterial to prevent
@@ -3050,6 +3052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312f1a024605fcc42b14b22f1bae4c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RecordedTransforms: []
   isDead: 0
 --- !u!1 &2386069406091683759
 GameObject:
@@ -12052,11 +12055,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2386069406091510258}
     m_Modifications:
-    - target: {fileID: 3816895153299686310, guid: ecfd7e1b3205b614cb25776623cc21e8,
-        type: 3}
-      propertyPath: m_Name
-      value: EnergyBarUI
-      objectReference: {fileID: 0}
     - target: {fileID: 3816895153299686234, guid: ecfd7e1b3205b614cb25776623cc21e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12161,6 +12159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816895153299686310, guid: ecfd7e1b3205b614cb25776623cc21e8,
+        type: 3}
+      propertyPath: m_Name
+      value: EnergyBarUI
       objectReference: {fileID: 0}
     - target: {fileID: 8693706964526637518, guid: ecfd7e1b3205b614cb25776623cc21e8,
         type: 3}
