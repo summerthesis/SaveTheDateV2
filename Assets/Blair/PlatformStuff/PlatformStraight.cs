@@ -15,9 +15,9 @@ public class PlatformStraight : MonoBehaviour
     void Start()
     {
         transform.rotation = new Quaternion(0, 0, 0, 0);
-        SlowedSpeed = mSpeed / 2;
-        FastSpeed = mSpeed * 2;
-        NormalSpeed = mSpeed;
+        SlowedSpeed = NormalSpeed / 2;
+        FastSpeed = NormalSpeed * 2;
+        mSpeed = NormalSpeed;
         mTween = transform.DOPunchScale(new Vector3(.25f,.25f,.25f), 3, 5, 1);
         mPlayer = GameObject.FindGameObjectWithTag("Player");
     }
@@ -34,7 +34,7 @@ public class PlatformStraight : MonoBehaviour
         }
         else
         {
-            float step = NormalSpeed * Time.deltaTime;
+            float step = mSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, Despawner.transform.position, step);
         }   
 
@@ -54,7 +54,8 @@ public class PlatformStraight : MonoBehaviour
     }
     void JumpForward()
     {
-        transform.Translate(-transform.right * 4);
+        float step = mSpeed * 120 * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, Despawner.transform.position, step);
     }
     void RestoreToNormal()
     {
