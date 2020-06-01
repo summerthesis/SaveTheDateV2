@@ -34,7 +34,6 @@ public class Pickup: MonoBehaviour
     Collider m_Collider;
     Vector3 m_StartPosition;
     Vector3 m_FlyingTarget;
-    bool m_HasPlayedFeedback = false;
     enum State
     {
         BEFOREPICKED,
@@ -81,7 +80,7 @@ public class Pickup: MonoBehaviour
             Vector3 translation = flyingSpeed * (target - transform.position).normalized;            
             transform.Translate(translation, Space.World);
             transform.localScale = transform.localScale - new Vector3(scalingDownSpeed, scalingDownSpeed, scalingDownSpeed);
-            if (transform.localScale.x < 0 || Vector3.Distance(transform.position, target) < 0.5)
+            if (transform.localScale.x < 0 || Vector3.Distance(transform.position, target) < flyingSpeed)
             {
                 Destroy(gameObject);
             }
@@ -94,15 +93,13 @@ public class Pickup: MonoBehaviour
         if (pickingPlayer != null)
         {
             pickupState = State.AFTERPICKED;
+            m_Collider.enabled = false;
             PlayPickupFeedback();
         }
     }
 
     public void PlayPickupFeedback()
     {
-        if (m_HasPlayedFeedback)
-            return;
-
         if (pickupSFX)
         {
             //AudioUtility.CreateSFX(pickupSFX, transform.position, AudioUtility.AudioGroups.Pickup, 0f);
@@ -113,7 +110,5 @@ public class Pickup: MonoBehaviour
         {
             var pickupVFXInstance = Instantiate(pickupVFXPrefab, transform.position, Quaternion.identity);
         }
-
-        m_HasPlayedFeedback = true;
     }
 }
