@@ -8,7 +8,8 @@ public class TimeController : MonoBehaviour
     private float Energy;
     private float MaxEnergy = 1000;
     private float MaxCastRange = 1000;
-    private float EnergyCost = 9;
+    public float EnergyCost = 9;
+    public float StopCost = 750;
     private int Count;  
     private GameObject[] TimeTaggedObjects;
     private GameObject Player;
@@ -91,11 +92,11 @@ public class TimeController : MonoBehaviour
 
     void Stop()
     {
-        if (Energy >= 750)
+        if (Energy >= StopCost)
         {
             Stopping = true;
             LoopThroughObjects("TimeStop", true);
-            Energy -= 750;
+            Energy -= StopCost;
             SetEnergyBarScale();
         }
     }
@@ -115,10 +116,10 @@ public class TimeController : MonoBehaviour
     }
     void JumpForward()
     {
-        if (Energy >= 750)
+        if (Energy >= StopCost)
         {
             LoopThroughObjects("JumpForward", true);
-            Energy -= 750;
+            Energy -= StopCost;
             SetEnergyBarScale();
         } 
     }

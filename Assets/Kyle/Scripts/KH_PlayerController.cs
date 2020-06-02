@@ -20,8 +20,6 @@ public class KH_PlayerController : MonoBehaviour
     public Animator anim;
     public Rigidbody rb;
     public Collider playerCollider;
-    private Vector3 OriginalScale;
-    
     [TextArea]
     public string Notes = "1st Box Collider is the actual Collider, referenced in the movement script.\n" +
         "2nd Box Collider is slightly wider with NoFriction PhysicsMaterial to prevent player from sticking to the wall mid-jump.\n" +
@@ -29,7 +27,6 @@ public class KH_PlayerController : MonoBehaviour
 
     void Awake()
     {
-        OriginalScale = this.transform.localScale;
         controls = new PlayerInputAction();
         controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
@@ -57,18 +54,28 @@ public class KH_PlayerController : MonoBehaviour
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
         MovePlayer();
     }
-    
+
     void MovePlayer()
     {
-
         horizontalMovement = movementInput.x;
         verticalMovement = movementInput.y;
 
+        //Vector3 rightMovement = right * moveSpeed * Time.deltaTime * horizontalMovement;
+        //Vector3 upMovement = forward * moveSpeed * Time.deltaTime * verticalMovement;
+        //Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
+
+        //transform.position += rightMovement;
+        //transform.position += upMovement;
+
+        //Vector3 rightMovement = right * moveSpeed * Time.deltaTime * horizontalMovement;
+        //Vector3 upMovement = forward * moveSpeed * Time.deltaTime * verticalMovement;
         Vector3 rightMovement = right * moveSpeed * horizontalMovement;
         Vector3 upMovement = forward * moveSpeed * verticalMovement;
         Vector3 groundMovement = rightMovement + upMovement;
         Vector3 heading = Vector3.Normalize(groundMovement);
 
+        //rb.MovePosition(transform.position + movement);
+        //rb.AddForce(movement, ForceMode.Acceleration);
         rb.velocity = new Vector3(groundMovement.x, rb.velocity.y, groundMovement.z);
 
         // JUMPING
@@ -154,11 +161,6 @@ public class KH_PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, playerCollider.bounds.extents.y + 0.1f, groundLayers);
-    }
-
-    void ResetScale()
-    {
-        transform.localScale = OriginalScale;
     }
 
     private void OnEnable()
