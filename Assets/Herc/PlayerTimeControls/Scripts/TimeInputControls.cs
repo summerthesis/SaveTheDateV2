@@ -48,6 +48,7 @@ public class TimeInputControls : MonoBehaviour
     //variables
     private bool m_slowInput;
     private bool m_stopInput;
+    private bool m_hasteInput;
     #endregion
 
     #region GamePad Vibration Variables
@@ -66,10 +67,10 @@ public class TimeInputControls : MonoBehaviour
         }
         //Input startup
         m_timeInput = new PlayerInputAction();
-
+        m_timeInput.TimeControls.TimeSlow.performed += slowContext => m_slowInput = true;
+        m_timeInput.TimeControls.TimeSlow.canceled += slowContext => m_slowInput = false;
         m_timeInput.TimeControls.TimeSlow.performed += slowContext => m_slowInput = true;
         m_timeInput.TimeControls.TimeSlow.canceled += slowCcontext => m_slowInput = false;
-
         m_timeInput.TimeControls.TimeSlow.performed += stopContext => m_stopInput = true;
         m_timeInput.TimeControls.TimeSlow.canceled += stopContext => m_stopInput = false;
     }
@@ -110,18 +111,20 @@ public class TimeInputControls : MonoBehaviour
                 if (m_slowInput ^ m_stopInput) {
                     if (m_slowInput) timeComponent.Slow();
                     if (m_stopInput) timeComponent.Stop();
-                    
                 }
-                //Debug.Log("Time interactable object found!");
+                //Debug.Log("Time interactable object found on"+ result.transform.gameObject.name);
             }
             
         }
+        //Things in this region will likely have to go at the end
         #region Debug Draws
-        Debug.DrawLine(m_cam.ScreenPointToRay(temp).origin, m_cam.ScreenPointToRay(temp).direction*m_castDistance, Color.red);
-        Debug.DrawLine(m_cam.ScreenPointToRay(temp).origin + m_cam.transform.up * m_castRadius, (m_cam.ScreenPointToRay(temp).direction * m_castDistance) + m_cam.transform.up * m_castRadius, Color.red);
-        Debug.DrawLine(m_cam.ScreenPointToRay(temp).origin - m_cam.transform.up * m_castRadius, (m_cam.ScreenPointToRay(temp).direction * m_castDistance) - m_cam.transform.up * m_castRadius, Color.red);
-        Debug.DrawLine(m_cam.ScreenPointToRay(temp).origin + m_cam.transform.right * m_castRadius, (m_cam.ScreenPointToRay(temp).direction * m_castDistance) + m_cam.transform.right * m_castRadius, Color.red);
-        Debug.DrawLine(m_cam.ScreenPointToRay(temp).origin - m_cam.transform.right * m_castRadius, (m_cam.ScreenPointToRay(temp).direction * m_castDistance) - m_cam.transform.right * m_castRadius, Color.red);
+        Vector3 origin = m_cam.ScreenPointToRay(temp).origin;
+        Vector3 direction = m_cam.ScreenPointToRay(temp).direction;
+        Debug.DrawLine(origin, origin + direction * m_castDistance, Color.red);
+        Debug.DrawLine(origin + m_cam.transform.up * m_castRadius, origin + (direction * m_castDistance) + m_cam.transform.up * m_castRadius, Color.red);
+        Debug.DrawLine(origin - m_cam.transform.up * m_castRadius, origin + (direction * m_castDistance) - m_cam.transform.up * m_castRadius, Color.red);
+        Debug.DrawLine(origin + m_cam.transform.right * m_castRadius, origin + (direction * m_castDistance) + m_cam.transform.right * m_castRadius, Color.red);
+        Debug.DrawLine(origin - m_cam.transform.right * m_castRadius, origin + (direction * m_castDistance) - m_cam.transform.right * m_castRadius, Color.red);
         #endregion
     }
 

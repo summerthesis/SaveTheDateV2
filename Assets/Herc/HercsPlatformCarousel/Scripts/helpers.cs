@@ -1,8 +1,8 @@
 ﻿/**************************************************************
  * Time Interaction Helpers File
  * Author: Hercules (HErC) Dias Campos
- * Created on: May 5, 2020
- * Last Modified: May 5, 2020
+ * Created on:      May  5, 2020
+ * Last Modified:   May 12, 2020
  * 
  * Namespace TimeManipulation
  * 
@@ -16,6 +16,9 @@
  *      -> A struct that returns speeds based on the object's
  *          current state
  * 
+ * ***May 12 change:
+ *      -> Added "Hastened" state and functionality
+ * 
  * Such an approach offers a bit more flexibility and code
  * reuse possibilities to the time mechanics
  * 
@@ -26,8 +29,9 @@ using UnityEngine;
 using UnityEngine.ProBuilder;
 
 namespace TimeManipuation {
-    public enum TimeStates { Normal, Slowed, Stopped}
+    public enum TimeStates { Normal, Hastened, Slowed, Stopped, }
     public interface ITimeInteractable {
+        void Hasten();
         void Slow();
         void Stop();
         void Restore();
@@ -44,10 +48,16 @@ namespace TimeManipuation {
 
         #region Speeds
         [SerializeField] private float m_OriginalSpeed;
+        [SerializeField] private float m_HasteSpeed;
         [SerializeField] private float m_HalfSpeed;
         [SerializeField] private float m_StoppedSpeed;
         public float CurrentSpeed { get; private set; }
         #endregion
+
+        public void Hasten() {
+            m_CurrentState = TimeStates.Hastened;
+            CurrentSpeed = m_HasteSpeed;
+        }
         public void Slow() {
             m_CurrentState = TimeStates.Slowed;
             CurrentSpeed = m_HalfSpeed;
