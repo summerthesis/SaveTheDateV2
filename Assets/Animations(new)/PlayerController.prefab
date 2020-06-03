@@ -33,7 +33,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7379670353441437268}
-  - {fileID: 9138331704270395577}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -85,6 +84,8 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 256
+  anim: {fileID: 1601032495992415255}
+  rb: {fileID: 1601032495992415253}
   playerCollider: {fileID: 1601032495992415254}
   Notes: '1st Box Collider is the actual Collider, referenced in the movement script.
 
@@ -136,11 +137,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SD_Character_T_Pose
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 84c7c8c90a248a941a814a646d206cc1,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 84c7c8c90a248a941a814a646d206cc1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -196,6 +192,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 84c7c8c90a248a941a814a646d206cc1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84c7c8c90a248a941a814a646d206cc1, type: 3}
 --- !u!4 &7379670353441437268 stripped
@@ -204,12 +205,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2527486793041976654}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4315406142911442041
+--- !u!1001 &6242879855657787873
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1601032495992415252}
+    m_TransformParent: {fileID: 7379670353441437268}
     m_Modifications:
     - target: {fileID: 4986196451793859806, guid: 65ca54d799bcd14438ca522c70676ca4,
         type: 3}
@@ -254,7 +255,7 @@ PrefabInstance:
     - target: {fileID: 4986196451793859776, guid: 65ca54d799bcd14438ca522c70676ca4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4986196451793859776, guid: 65ca54d799bcd14438ca522c70676ca4,
         type: 3}
@@ -273,9 +274,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65ca54d799bcd14438ca522c70676ca4, type: 3}
---- !u!4 &9138331704270395577 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4986196451793859776, guid: 65ca54d799bcd14438ca522c70676ca4,
-    type: 3}
-  m_PrefabInstance: {fileID: 4315406142911442041}
-  m_PrefabAsset: {fileID: 0}

@@ -6,7 +6,7 @@ public class PlatformParenting : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player")) {
+        if (collision.gameObject.tag == "Player") {
             collision.gameObject.transform.parent.parent = this.gameObject.transform;
         }
     }
