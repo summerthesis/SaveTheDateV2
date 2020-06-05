@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/OldBuildMisc/Hyukin_Kwons/InputAction/CameraInputAction.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Hyukin_Kwons/InputAction/CameraInputAction.inputactions'
 
 using System;
 using System.Collections;
