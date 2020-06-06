@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TimeManipuation;
 using UnityEngine;
 
 public enum PlatformRotation { NoRotation = 0,
                                TowardsCenter = 1,
                                AwayFromCenter = 1 << 1}
 
+[RequireComponent(typeof(TimeInteractable))]
 public class expendable_Carousel : MonoBehaviour
 {
     [SerializeField] private PrimitiveType m_pTypeToCreate;
-    [SerializeField] private float m_fRotationSpeed;
+                     private TimeInteractable m_RotationSpeed;
     [SerializeField] private float m_fCarouselRadius;
     [SerializeField] private float m_fPlatformSize;
     [SerializeField] private PlatformRotation m_PlatformRotation;    
@@ -60,14 +62,16 @@ public class expendable_Carousel : MonoBehaviour
                         break;
                 }
             }
-            m_Platforms[i].AddComponent<expendable_PlatformParenting>();
+            //m_Platforms[i].gameObject.tag = this.gameObject.tag;
+            m_Platforms[i].AddComponent<PlatformParenting>();
         }
+        m_RotationSpeed = GetComponent<TimeInteractable>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(transform.position, transform.up, m_fRotationSpeed*Time.deltaTime);
+        if (m_RotationSpeed != null) { transform.RotateAround(transform.position, transform.up, m_RotationSpeed.CurrentSpeed * Time.deltaTime); }
 
         if (m_pTypeToCreate != PrimitiveType.Quad) {
             for (int i = 0; i < m_Platforms.Length; ++i) {

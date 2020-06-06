@@ -73,6 +73,7 @@ public class InventoryUI : MonoBehaviour
         if (state == "Opening")
         {
             openAnim();
+            audioSource.gameObject.SetActive(true);
         }
         if (state == "Open")
         {
@@ -132,8 +133,8 @@ public class InventoryUI : MonoBehaviour
         MenuTabs[1].GetComponent<Image>().color = new Color(100 / 255, 100 / 255, 100 / 255, alpha0);
         MenuTabs[2].GetComponent<Image>().color = new Color(100 / 255, 100 / 255, 100 / 255, alpha0);
         MenuSelector.GetComponent<Image>().color = new Color(1, 1, 1, alpha0);
-        AudioSelector.GetComponent<Image>().color = new Color(0, 1, 0, alpha0);
-        NoteSelector.GetComponent<Image>().color = new Color(0, 1, 0, alpha0);
+        AudioSelector.GetComponent<Image>().color = new Color(0, 0.9f, 0.9f, alpha0);
+        NoteSelector.GetComponent<Image>().color = new Color(0, 0.9f, 0.9f, alpha0);
         for (int i = 0; i < 15; i++)//todo get total number of all elements 
         {
             if (i < MainMenuCogs.Length)
