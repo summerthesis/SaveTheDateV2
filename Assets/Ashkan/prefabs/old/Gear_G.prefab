@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5879147778601176282}
   - component: {fileID: 192076615982198819}
   - component: {fileID: 3234208154759747305}
-  m_Layer: 0
+  - component: {fileID: 7714081348250990160}
+  m_Layer: 8
   m_Name: Gear3
-  m_TagString: Untagged
+  m_TagString: TimeInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: e6e689ae9c4b4db4c99de5c023af99d5, type: 3}
+  - {fileID: 2100000, guid: f16cc73471b7c9e4f8a151d495658c58, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,6 +92,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0921351, y: 1.0945219, z: 0.14000003}
   m_Center: {x: -0.00000038743016, y: 0.0000014603137, z: 0.050001185}
+--- !u!114 &7714081348250990160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915915120024028415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc3f4ca2fd334c45b5781a4de879745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xForceDirection: 0
+  yForceDirection: 0
+  zForceDirection: 1
+  speedMultiplier: 2
+  worldPivote: 0
 --- !u!1 &1915915120507217355
 GameObject:
   m_ObjectHideFlags: 0
