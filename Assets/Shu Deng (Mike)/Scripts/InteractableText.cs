@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Pickup))]
-public class PickupGear : MonoBehaviour
+public class InteractableText : MonoBehaviour
 {
-    public GameObject gearsCollectionInfo;
-
-    void OnPickedUp()
-    {
-        gearsCollectionInfo.GetComponent<GearUIController>().GearCollected();
-    }
+    public GameObject TextUIPrefab;
+    public Canvas ScreenCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +17,10 @@ public class PickupGear : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnInteract()
+    {
+        Instantiate(TextUIPrefab, ScreenCanvas.transform, false);
     }
 }
