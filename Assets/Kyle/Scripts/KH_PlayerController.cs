@@ -12,8 +12,8 @@ public class KH_PlayerController : MonoBehaviour
     public LayerMask groundLayers;
     private Vector3 forward, right;
     private PlayerInputAction controls;
-    private Vector2 movementInput;
-    private bool jumpInput;
+    public Vector2 movementInput; //private
+    public bool jumpInput; //private
     private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
@@ -24,6 +24,12 @@ public class KH_PlayerController : MonoBehaviour
     public string Notes = "1st Box Collider is the actual Collider, referenced in the movement script.\n" +
         "2nd Box Collider is slightly wider with NoFriction PhysicsMaterial to prevent player from sticking to the wall mid-jump.\n" +
         "The ground needs to be tagged w/ Platform for Jumping to work.";
+
+    private string hspeed_anim_param = "HSpeed";
+    private string vspeed_anim_param = "VSpeed";
+    private string is_jump_input_anim_param = "IsJumpInput";
+    private string is_grounded_anim_param = "IsGrounded";
+    private string can_double_jump_anim_param = "CanDoubleJump";
 
     void Awake()
     {
@@ -39,7 +45,7 @@ public class KH_PlayerController : MonoBehaviour
         forward.y = 0;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
-        mPlayer = GameObject.Find("Character");
+        mPlayer = GameObject.Find("Char_KyRos");
         //anim = mPlayer.GetComponent<Animator>();
         //rb = GetComponent<Rigidbody>();
         //playerCollider = GetComponent<BoxCollider>();
@@ -81,40 +87,45 @@ public class KH_PlayerController : MonoBehaviour
         // JUMPING
         if (IsGrounded())
         {
+            Debug.Log("GROUNDED");
             canDoubleJump = true;
-            anim.SetFloat("VSpeed", 0);
-            anim.SetBool("IsJumping", false);
-            anim.SetBool("IsDoubleJumping", false);
+            anim.SetBool(can_double_jump_anim_param, true);
+            anim.SetFloat(vspeed_anim_param, 0);
+            anim.SetBool(is_grounded_anim_param, true);
+        }
+        else
+        {
+            Debug.Log("not grounded");
+            anim.SetBool(is_grounded_anim_param, false);
         }
 
         if (jumpInput)
         {
+            anim.SetBool(is_jump_input_anim_param, true);
             if (IsGrounded())
             {
-                anim.SetBool("IsJumping", true);
                 rb.velocity = Vector3.up * jumpForce;
             }
             else if (canDoubleJump)
             {
-                anim.SetBool("IsJumping", true);
-                anim.SetBool("IsDoubleJumping", true);
                 rb.velocity = Vector3.up * jumpForce;
                 canDoubleJump = false;
+                anim.SetBool(can_double_jump_anim_param, false);
             }
         }
         jumpInput = false; //from https://forum.unity.com/threads/how-would-you-handle-a-getbuttondown-situaiton-with-the-new-input-system.627184/#post-5015597
-        
+        anim.SetBool(is_jump_input_anim_param, false);
+
         // JUMP MODIFIERS FOR BETTER FEEL
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime; //using Time.deltaTime due to acceleration
-            anim.SetFloat("VSpeed", -1);
-            anim.SetBool("IsJumping", false);
+            anim.SetFloat(vspeed_anim_param, rb.velocity.y);
         }
         else if (rb.velocity.y > 0)
         {
-            anim.SetFloat("VSpeed", 1);
             rb.velocity += Vector3.up * Physics.gravity.y * lowJumpMultiplier * Time.deltaTime; //using Time.deltaTime due to acceleration
+            anim.SetFloat(vspeed_anim_param, rb.velocity.y);
         }
 
         // FULL STOP WHEN JOYSTICK IS RELEASED
@@ -129,16 +140,13 @@ public class KH_PlayerController : MonoBehaviour
         // MOVE PLAYER WHEN JOYSTICK MOVES
         if (horizontalMovement != 0 || verticalMovement != 0)
         {
-            anim.SetFloat("HSpeed", 1);
             if (heading.sqrMagnitude > 0.1f) //better turning, from https://answers.unity.com/questions/422744/rotation-of-character-resets-when-joystick-is-rele.html
             {
                 transform.forward = heading;
             }
         }
-        else
-        {
-            anim.SetFloat("HSpeed", 0);
-        }
+        anim.SetFloat(hspeed_anim_param, Mathf.Abs(groundMovement.x) + Mathf.Abs(groundMovement.z));
+
 
         //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         //{
@@ -148,14 +156,16 @@ public class KH_PlayerController : MonoBehaviour
         //{
         //    Debug.Log("Walk");
         //}
-        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Run"))
         //{
-        //    Debug.Log("Jump");
+        //    Debug.Log("Run");
         //}
-        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Land"))
+        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("JumpStart"))
         //{
-        //    Debug.Log("Land");
+        //    Debug.Log("JumpStart");
         //}
+        Debug.Log(transform.position);
+        Debug.DrawRay(transform.position, Vector3.down * 2, Color.green);
     }
 
     private bool IsGrounded()
