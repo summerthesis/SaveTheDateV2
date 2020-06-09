@@ -87,16 +87,10 @@ public class KH_PlayerController : MonoBehaviour
         // JUMPING
         if (IsGrounded())
         {
-            Debug.Log("GROUNDED");
             canDoubleJump = true;
+            anim.SetBool(is_jump_input_anim_param, false);
             anim.SetBool(can_double_jump_anim_param, true);
             anim.SetFloat(vspeed_anim_param, 0);
-            anim.SetBool(is_grounded_anim_param, true);
-        }
-        else
-        {
-            Debug.Log("not grounded");
-            anim.SetBool(is_grounded_anim_param, false);
         }
 
         if (jumpInput)
@@ -114,7 +108,7 @@ public class KH_PlayerController : MonoBehaviour
             }
         }
         jumpInput = false; //from https://forum.unity.com/threads/how-would-you-handle-a-getbuttondown-situaiton-with-the-new-input-system.627184/#post-5015597
-        anim.SetBool(is_jump_input_anim_param, false);
+        
 
         // JUMP MODIFIERS FOR BETTER FEEL
         if (rb.velocity.y < 0)
@@ -164,7 +158,16 @@ public class KH_PlayerController : MonoBehaviour
         //{
         //    Debug.Log("JumpStart");
         //}
-        Debug.Log(transform.position);
+
+        //if (IsGrounded())
+        //{
+        //    anim.SetBool(is_grounded_anim_param, true);
+        //}
+        //else
+        //{
+        //    anim.SetBool(is_grounded_anim_param, false);
+        //}
+
         Debug.DrawRay(transform.position, Vector3.down * 2, Color.green);
     }
 
