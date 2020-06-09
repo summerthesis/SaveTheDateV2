@@ -2,16 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Pickup))]
-public class PickupGear : MonoBehaviour
+public class PopupInteractable : MonoBehaviour
 {
-    public GameObject gearsCollectionInfo;
-
-    void OnPickedUp()
-    {
-        gearsCollectionInfo.GetComponent<GearUIController>().GearCollected();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +13,6 @@ public class PickupGear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.rotation = Camera.main.transform.rotation;
     }
 }

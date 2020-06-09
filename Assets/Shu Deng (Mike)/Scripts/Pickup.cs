@@ -94,6 +94,7 @@ public class Pickup: MonoBehaviour
         {
             pickupState = State.AFTERPICKED;
             m_Collider.enabled = false;
+            SendMessage("OnPickedUp");
             PlayPickupFeedback();
         }
     }

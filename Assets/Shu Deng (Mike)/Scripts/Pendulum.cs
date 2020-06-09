@@ -6,11 +6,11 @@ public class Pendulum : MonoBehaviour
 {
     public float RotationAngle;
     public float StopSpeed, NormalSpeed;
-    private float mAngle, mTime, mSpeed, SlowedSpeed, FastSpeed;
+    float mAngle, mTime, mSpeed, SlowedSpeed, FastSpeed;
     public int IdleDuration;
-    private int IdleCount;
+    int IdleCount;
 
-    private enum ObjectStates
+    enum ObjectStates
     {
         Unavailable,
         Move,
