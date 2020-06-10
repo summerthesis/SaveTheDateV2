@@ -27,9 +27,8 @@ public class Pickup: MonoBehaviour
     }
     [Tooltip("Target in screen to fly to")]
     public Target flyingTargetInScreen;
-    public float flyingSpeed;
-    [Tooltip("Speed of scaling down")]
-    public float scalingDownSpeed;
+    public float targetOffsetToScreen = 5f;
+    public float flyingSpeed;    
 
     Collider m_Collider;
     Vector3 m_StartPosition;
@@ -51,16 +50,16 @@ public class Pickup: MonoBehaviour
         switch (flyingTargetInScreen)
         {
             case Target.TopLeft:
-                m_FlyingTarget = new Vector3(0, Camera.main.pixelHeight, Camera.main.nearClipPlane);
+                m_FlyingTarget = new Vector3(0, Camera.main.pixelHeight, targetOffsetToScreen);
                 break;
             case Target.TopRight:
-                m_FlyingTarget = new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, Camera.main.nearClipPlane);
+                m_FlyingTarget = new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, targetOffsetToScreen);
                 break;
             case Target.BottomLeft:
-                m_FlyingTarget = new Vector3(0, 0, Camera.main.nearClipPlane);
+                m_FlyingTarget = new Vector3(0, 0, targetOffsetToScreen);
                 break;
             case Target.BottomRight:
-                m_FlyingTarget = new Vector3(Camera.main.pixelWidth, 0, Camera.main.nearClipPlane);
+                m_FlyingTarget = new Vector3(Camera.main.pixelWidth, 0, targetOffsetToScreen);
                 break;
         }
     }
@@ -78,9 +77,8 @@ public class Pickup: MonoBehaviour
         {
             Vector3 target = Camera.main.ScreenToWorldPoint(m_FlyingTarget);
             Vector3 translation = flyingSpeed * (target - transform.position).normalized;            
-            transform.Translate(translation, Space.World);
-            transform.localScale = transform.localScale - new Vector3(scalingDownSpeed, scalingDownSpeed, scalingDownSpeed);
-            if (transform.localScale.x < 0 || Vector3.Distance(transform.position, target) < flyingSpeed)
+            transform.Translate(translation, Space.World);            
+            if (Vector3.Distance(transform.position, target) < flyingSpeed)
             {
                 Destroy(gameObject);
             }
