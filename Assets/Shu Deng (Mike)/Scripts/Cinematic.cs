@@ -51,7 +51,7 @@ public class Cinematic : MonoBehaviour
         }
         Camera.main.gameObject.SetActive(false);
         m_Player = GameObject.FindWithTag("Player");
-        m_Player.GetComponent<KH_PlayerController>().controls.Disable();
+        //m_Player.GetComponent<KH_PlayerController>().controls.Disable();
         m_PlayerPosition = m_Player.transform.position;
         m_InteractablePosition = GetComponentsInParent<Transform>()[1].position;
         m_CameraEndingTransform.rotation = Quaternion.LookRotation(m_InteractablePosition - m_PlayerPosition);
@@ -137,7 +137,7 @@ public class Cinematic : MonoBehaviour
                     camera.SetActive(true);
                 }
                 Camera.main.gameObject.SetActive(true);
-                m_Player.GetComponent<KH_PlayerController>().controls.Enable();
+                //m_Player.GetComponent<KH_PlayerController>().controls.Enable();
                 Destroy(this.gameObject);
                 break;
         }        

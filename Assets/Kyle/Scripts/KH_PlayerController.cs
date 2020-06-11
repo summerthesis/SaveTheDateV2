@@ -11,7 +11,7 @@ public class KH_PlayerController : MonoBehaviour
     public float lowJumpMultiplier = 2.0f;
     public LayerMask groundLayers;
     private Vector3 forward, right;
-    public PlayerInputAction controls { get; private set; }
+    private PlayerInputAction controls;
     private Vector2 movementInput;
     private bool jumpInput;
     private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
@@ -42,7 +42,7 @@ public class KH_PlayerController : MonoBehaviour
         mPlayer = GameObject.Find("Character");
         //anim = mPlayer.GetComponent<Animator>();
         //rb = GetComponent<Rigidbody>();
-        //playerCollider = GetComponent<BoxCollider>();
+        //playerCollider = GetComponent<BoxCollider>();        
     }
 
     // Update is called once per frame
