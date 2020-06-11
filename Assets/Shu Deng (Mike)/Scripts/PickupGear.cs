@@ -7,7 +7,7 @@ public class PickupGear : MonoBehaviour
 {
     public GameObject gearsCollectionInfo;
 
-    void OnTriggerEnter(Collider other)
+    void OnPickedUp()
     {
         gearsCollectionInfo.GetComponent<GearUIController>().GearCollected();
     }

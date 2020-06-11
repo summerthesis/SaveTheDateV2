@@ -44,20 +44,17 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "7811d3be-02ce-4c56-be3a-53df1b884565",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "3f26004c-f9e5-4d87-a20a-823650b55901",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "MoveAxis",
                     "id": "2d998636-e2fc-4953-b329-7859f087a4f4",
@@ -231,6 +228,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "ActivateMagArm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b24a664-9a05-412e-9d2e-4576b5cc5c4e",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -57,20 +57,17 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""7811d3be-02ce-4c56-be3a-53df1b884565"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""3f26004c-f9e5-4d87-a20a-823650b55901"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""MoveAxis"",
                     ""id"": ""2d998636-e2fc-4953-b329-7859f087a4f4"",
@@ -244,6 +241,17 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""ActivateMagArm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b24a664-9a05-412e-9d2e-4576b5cc5c4e"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -632,6 +640,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_PlayerControls_ActivateHook = m_PlayerControls.FindAction("ActivateHook", throwIfNotFound: true);
         m_PlayerControls_ElecArm = m_PlayerControls.FindAction("ElecArm", throwIfNotFound: true);
         m_PlayerControls_ActivateMagArm = m_PlayerControls.FindAction("ActivateMagArm", throwIfNotFound: true);
+        m_PlayerControls_Interact = m_PlayerControls.FindAction("Interact", throwIfNotFound: true);
         // InventoryControls
         m_InventoryControls = asset.FindActionMap("InventoryControls", throwIfNotFound: true);
         m_InventoryControls_LeftBumper = m_InventoryControls.FindAction("Left Bumper", throwIfNotFound: true);
@@ -708,6 +717,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_ActivateHook;
     private readonly InputAction m_PlayerControls_ElecArm;
     private readonly InputAction m_PlayerControls_ActivateMagArm;
+    private readonly InputAction m_PlayerControls_Interact;
     public struct PlayerControlsActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -717,6 +727,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         public InputAction @ActivateHook => m_Wrapper.m_PlayerControls_ActivateHook;
         public InputAction @ElecArm => m_Wrapper.m_PlayerControls_ElecArm;
         public InputAction @ActivateMagArm => m_Wrapper.m_PlayerControls_ActivateMagArm;
+        public InputAction @Interact => m_Wrapper.m_PlayerControls_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -741,6 +752,9 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @ActivateMagArm.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnActivateMagArm;
                 @ActivateMagArm.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnActivateMagArm;
                 @ActivateMagArm.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnActivateMagArm;
+                @Interact.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -760,6 +774,9 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @ActivateMagArm.started += instance.OnActivateMagArm;
                 @ActivateMagArm.performed += instance.OnActivateMagArm;
                 @ActivateMagArm.canceled += instance.OnActivateMagArm;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -992,6 +1009,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         void OnActivateHook(InputAction.CallbackContext context);
         void OnElecArm(InputAction.CallbackContext context);
         void OnActivateMagArm(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IInventoryControlsActions
     {
