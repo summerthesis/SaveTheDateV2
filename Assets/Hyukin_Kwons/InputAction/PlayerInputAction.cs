@@ -15,7 +15,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     ""name"": ""PlayerInputAction"",
     ""maps"": [
         {
-            ""name"": ""Player Controls"",
+            ""name"": ""PlayerControls"",
             ""id"": ""47558235-f427-4844-94fd-6e669c4852a2"",
             ""actions"": [
                 {
@@ -581,13 +581,40 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""CameraDebugAngles"",
+            ""name"": ""MenuControls"",
             ""id"": ""445bd6c3-500f-4cb5-9394-b89d77440fd5"",
+            ""actions"": [
+                {
+                    ""name"": ""Cancel/Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""252539c8-1ad4-4947-9811-4c918c4d4c91"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1d2f590f-b61c-410a-b3ae-75aac7ec6c89"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel/Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""CameraDebugAngles"",
+            ""id"": ""d4da769c-d12d-4ca5-9830-5f2a8b7b925c"",
             ""actions"": [
                 {
                     ""name"": ""CycleAngles"",
                     ""type"": ""Button"",
-                    ""id"": ""252539c8-1ad4-4947-9811-4c918c4d4c91"",
+                    ""id"": ""318a9c58-fc23-4f0c-94b9-7a5f6fc6d45b"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -633,8 +660,8 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         }
     ]
 }");
-        // Player Controls
-        m_PlayerControls = asset.FindActionMap("Player Controls", throwIfNotFound: true);
+        // PlayerControls
+        m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
         m_PlayerControls_Move = m_PlayerControls.FindAction("Move", throwIfNotFound: true);
         m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
         m_PlayerControls_ActivateHook = m_PlayerControls.FindAction("ActivateHook", throwIfNotFound: true);
@@ -660,6 +687,9 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_TimeControls_TimeFastForward = m_TimeControls.FindAction("TimeFastForward", throwIfNotFound: true);
         m_TimeControls_TimeStop = m_TimeControls.FindAction("TimeStop", throwIfNotFound: true);
         m_TimeControls_TimeJumpForward = m_TimeControls.FindAction("TimeJumpForward", throwIfNotFound: true);
+        // MenuControls
+        m_MenuControls = asset.FindActionMap("MenuControls", throwIfNotFound: true);
+        m_MenuControls_CancelBack = m_MenuControls.FindAction("Cancel/Back", throwIfNotFound: true);
         // CameraDebugAngles
         m_CameraDebugAngles = asset.FindActionMap("CameraDebugAngles", throwIfNotFound: true);
         m_CameraDebugAngles_CycleAngles = m_CameraDebugAngles.FindAction("CycleAngles", throwIfNotFound: true);
@@ -709,7 +739,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Player Controls
+    // PlayerControls
     private readonly InputActionMap m_PlayerControls;
     private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
     private readonly InputAction m_PlayerControls_Move;
@@ -952,6 +982,39 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     }
     public TimeControlsActions @TimeControls => new TimeControlsActions(this);
 
+    // MenuControls
+    private readonly InputActionMap m_MenuControls;
+    private IMenuControlsActions m_MenuControlsActionsCallbackInterface;
+    private readonly InputAction m_MenuControls_CancelBack;
+    public struct MenuControlsActions
+    {
+        private @PlayerInputAction m_Wrapper;
+        public MenuControlsActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CancelBack => m_Wrapper.m_MenuControls_CancelBack;
+        public InputActionMap Get() { return m_Wrapper.m_MenuControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuControlsActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuControlsActions instance)
+        {
+            if (m_Wrapper.m_MenuControlsActionsCallbackInterface != null)
+            {
+                @CancelBack.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
+                @CancelBack.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
+                @CancelBack.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
+            }
+            m_Wrapper.m_MenuControlsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @CancelBack.started += instance.OnCancelBack;
+                @CancelBack.performed += instance.OnCancelBack;
+                @CancelBack.canceled += instance.OnCancelBack;
+            }
+        }
+    }
+    public MenuControlsActions @MenuControls => new MenuControlsActions(this);
+
     // CameraDebugAngles
     private readonly InputActionMap m_CameraDebugAngles;
     private ICameraDebugAnglesActions m_CameraDebugAnglesActionsCallbackInterface;
@@ -1031,6 +1094,10 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         void OnTimeFastForward(InputAction.CallbackContext context);
         void OnTimeStop(InputAction.CallbackContext context);
         void OnTimeJumpForward(InputAction.CallbackContext context);
+    }
+    public interface IMenuControlsActions
+    {
+        void OnCancelBack(InputAction.CallbackContext context);
     }
     public interface ICameraDebugAnglesActions
     {

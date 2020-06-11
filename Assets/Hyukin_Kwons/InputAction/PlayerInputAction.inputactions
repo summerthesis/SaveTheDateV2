@@ -2,7 +2,7 @@
     "name": "PlayerInputAction",
     "maps": [
         {
-            "name": "Player Controls",
+            "name": "PlayerControls",
             "id": "47558235-f427-4844-94fd-6e669c4852a2",
             "actions": [
                 {
@@ -568,13 +568,40 @@
             ]
         },
         {
-            "name": "CameraDebugAngles",
+            "name": "MenuControls",
             "id": "445bd6c3-500f-4cb5-9394-b89d77440fd5",
+            "actions": [
+                {
+                    "name": "Cancel/Back",
+                    "type": "Button",
+                    "id": "252539c8-1ad4-4947-9811-4c918c4d4c91",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1d2f590f-b61c-410a-b3ae-75aac7ec6c89",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Cancel/Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "CameraDebugAngles",
+            "id": "d4da769c-d12d-4ca5-9830-5f2a8b7b925c",
             "actions": [
                 {
                     "name": "CycleAngles",
                     "type": "Button",
-                    "id": "252539c8-1ad4-4947-9811-4c918c4d4c91",
+                    "id": "318a9c58-fc23-4f0c-94b9-7a5f6fc6d45b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
