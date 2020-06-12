@@ -16,10 +16,10 @@ public class CameraTarget : MonoBehaviour
     
     void Awake()
     {
-        AngleState = 7; CurrentAngle = CameraAngles[AngleState];
+        //AngleState = 0; CurrentAngle = CameraAngles[AngleState];
             
-        controls = new PlayerInputAction();
-        controls.CameraDebugAngles.CycleAngles.performed += ctx => CycleAngle();
+        //controls = new PlayerInputAction();
+        //controls.CameraDebugAngles.CycleAngles.performed += ctx => CycleAngle();
         
     }
     void Start()
@@ -29,46 +29,46 @@ public class CameraTarget : MonoBehaviour
 
     void Update()
     {
-        CurrentAngle = this.transform.rotation;
+        //CurrentAngle = this.transform.rotation;
         transform.position = mPlayer.transform.position;
 
-        if(!AngleSet)
-        {
-            if (CurrentAngle == TargetAngle)
-            {
-            AngleSet = true; 
-            }
-            else
-            {
-            Tween mTween = this.transform.DORotateQuaternion(CameraAngles[AngleState], 1);
-            }
+        //if(!AngleSet)
+        //{
+        //    if (CurrentAngle == TargetAngle)
+        //    {
+        //    AngleSet = true; 
+        //    }
+        //    else
+        //    {
+        //    Tween mTween = this.transform.DORotateQuaternion(CameraAngles[AngleState], 1);
+        //    }
 
-        }
+        //}
 
     }
     
     void CycleAngle()
     {
-        if(AngleState == 7)
-        {
-            AngleState = 0;
-            AngleSet = false;
-        }
-        else
-        {
-            AngleState++;
-            AngleSet = false;
-        }
-        TargetAngle = CameraAngles[AngleState];
+        //if(AngleState == 7)
+        //{
+        //    AngleState = 0;
+        //    AngleSet = false;
+        //}
+        //else
+        //{
+        //    AngleState++;
+        //    AngleSet = false;
+        //}
+        //TargetAngle = CameraAngles[AngleState];
     }
 
     private void OnEnable()
     {
-        controls.Enable();
+    //    controls.Enable();
     }
 
     private void OnDisable()
     {
-        controls.Disable();
+    //    controls.Disable();
     }
 }

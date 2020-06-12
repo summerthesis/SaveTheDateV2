@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -61,9 +62,10 @@ public class TimeController : MonoBehaviour
     void LoopThroughObjects(string SendThisMessage, bool CheckDistance)
     {
         TimeTaggedObjects = GameObject.FindGameObjectsWithTag("TimeInteractable");
-        
-        foreach (GameObject obj in TimeTaggedObjects)
-        {
+
+        if (TimeTaggedObjects.Length > 0)
+            foreach (GameObject obj in TimeTaggedObjects)
+            {
             float distance = Vector3.Distance(Player.transform.position, obj.transform.position);
             if (CheckDistance)
             {
@@ -72,7 +74,7 @@ public class TimeController : MonoBehaviour
             }
             else
                 obj.gameObject.SendMessage(SendThisMessage);
-        }
+            }
     }
 
 
@@ -125,7 +127,6 @@ public class TimeController : MonoBehaviour
     }
     void EndSlow()
     {
-
         LoopThroughObjects("RestoreToNormal", true);
         TimeState = TimeStates.Available;
     }
