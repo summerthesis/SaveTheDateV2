@@ -26,9 +26,9 @@ public class Pickup: MonoBehaviour
         BottomRight
     }
     [Tooltip("Target in screen to fly to")]
-    public Target flyingTargetInScreen;
+    public Target flyingTargetInScreen = Target.TopLeft;
     public float targetOffsetToScreen = 5f;
-    public float flyingSpeed;    
+    public float flyingSpeed = 0.3f;    
 
     Collider m_Collider;
     Vector3 m_StartPosition;
