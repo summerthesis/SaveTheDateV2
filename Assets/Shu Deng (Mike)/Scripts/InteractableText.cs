@@ -29,7 +29,9 @@ public class InteractableText : MonoBehaviour
     void OnInteract()
     {
         m_textUI = Instantiate(TextUIPrefab, ScreenCanvas.transform, false);
-        m_textUI.GetComponentInChildren<Text>().text = Text;
+        TextUITypewrite typewriter = m_textUI.GetComponentInChildren<TextUITypewrite>();
+        typewriter.Input(Text);
+        typewriter.Output();
         m_playerInput.PlayerControls.Disable();
         StartCoroutine(WaitThenRespond());
     }

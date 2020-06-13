@@ -78,9 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Hi! This is cinematic text!
-
-    This is another line of text!'
+  m_Text: 
 --- !u!1 &5482376676321744609
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8581683977714495923}
   - component: {fileID: 3078059550600980056}
+  - component: {fileID: 4709456817517474513}
   m_Layer: 0
   m_Name: Cinematic
   m_TagString: Untagged
@@ -131,6 +130,25 @@ MonoBehaviour:
   TextRenderInterval: 2
   AngularAdjustSpeed: 25
   LinearAdjustSpeed: 0.25
+--- !u!95 &4709456817517474513
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482376676321744609}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7aea55c926d1fe34ca39457aac61b1b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5522228376720969304
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outputInterval: 0.1
+  clearOnNewLine: 1
 --- !u!1 &6049585236643471512
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class InteractableCinematic : MonoBehaviour
 {
-    public GameObject CinematicPrefab;   
+    public GameObject CinematicPrefab;
+
+    private PlayerInputAction m_playerInput;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        m_playerInput = InputManagerSingleton.Instance;
     }
 
     // Update is called once per frame
@@ -20,6 +22,7 @@ public class InteractableCinematic : MonoBehaviour
     
     void OnInteract()
     {
-        Instantiate(CinematicPrefab, transform);        
+        Instantiate(CinematicPrefab, transform);
+        m_playerInput.PlayerControls.Disable();
     }
 }
