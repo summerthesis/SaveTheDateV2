@@ -8,9 +8,14 @@ using UnityEngine.UI;
 // Use finished to test if the typewriting is done
 public class TextUITypewrite : MonoBehaviour
 {
-    public float outputInterval = 0.07f;
+    [Tooltip("Interval of outputing each characters")]
+    public float outputInterval = 0.07f;    
     [Tooltip("If clear the text after changing to a new line")]
     public bool clearOnNewLine = false;
+    [Tooltip("Invertal of changing to a new line, only works when ClearOnNewLine is set")]
+    public float changeLineInterval = 2f;
+    [Tooltip("Time delay to call this behavior finished after outputing the last character")]
+    public float delayToFinish = 2f;
     public bool finished { get; private set; } = false;
 
     private Text m_textObject;
@@ -20,9 +25,7 @@ public class TextUITypewrite : MonoBehaviour
     {
         m_textObject = GetComponentInChildren<Text>();
         m_wholeText = m_textObject.text;
-        m_textObject.text = "";
-        m_currentText = "";
-        m_currentPosition = 0;
+        Reset();
     }
 
     void Start()
@@ -43,7 +46,7 @@ public class TextUITypewrite : MonoBehaviour
             if (clearOnNewLine == true && m_wholeText[m_currentPosition] == '\n')
             {
                 m_currentText = "";
-                                  
+                yield return new WaitForSeconds(changeLineInterval);                                  
             }
             else
             {
@@ -53,17 +56,26 @@ public class TextUITypewrite : MonoBehaviour
             m_textObject.text = m_currentText;
             yield return new WaitForSeconds(outputInterval);
         }
+        yield return new WaitForSeconds(delayToFinish);
         finished = true;
     }  
 
     public void Input(string inputText)
     {
         m_wholeText = inputText;
+        Reset();
         finished = false;
     }
     
     public void Output()
     {
         StartCoroutine(TypeWrite());
+    }
+
+    private void Reset()
+    {
+        m_textObject.text = "";
+        m_currentText = "";
+        m_currentPosition = 0;
     }
 }

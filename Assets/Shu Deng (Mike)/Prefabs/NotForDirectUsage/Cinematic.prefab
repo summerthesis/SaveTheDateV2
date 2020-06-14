@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: -100, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2945212766179702742
 CanvasRenderer:
@@ -72,7 +72,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -88,8 +88,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8581683977714495923}
-  - component: {fileID: 3078059550600980056}
-  - component: {fileID: 4709456817517474513}
+  - component: {fileID: 8925142654814281935}
+  - component: {fileID: 5142451101313103305}
   m_Layer: 0
   m_Name: Cinematic
   m_TagString: Untagged
@@ -113,7 +113,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3078059550600980056
+--- !u!114 &8925142654814281935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,30 +125,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797360f5d15e1d144999936797a47f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeInSpeed: 0
-  FadeOutSpeed: 0
-  TextRenderInterval: 2
+  FadeInSpeed: 0.5
+  FadeOutSpeed: 0.5
   AngularAdjustSpeed: 25
   LinearAdjustSpeed: 0.25
---- !u!95 &4709456817517474513
-Animator:
-  serializedVersion: 3
+  TextContent: 
+  CameraTargetTransform: {fileID: 0}
+--- !u!114 &5142451101313103305
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5482376676321744609}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7aea55c926d1fe34ca39457aac61b1b3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98068d2af38a9da4b877ade85c51d980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outputInterval: 0.07
+  clearOnNewLine: 1
+  changeLineInterval: 2
 --- !u!1 &5522228376720969304
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +158,6 @@ GameObject:
   - component: {fileID: 3751301669089443817}
   - component: {fileID: 7918772995254036303}
   - component: {fileID: 2392676867970979223}
-  - component: {fileID: 6729090781088522824}
   m_Layer: 10
   m_Name: Cinematic Canvas
   m_TagString: Untagged
@@ -251,20 +247,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6729090781088522824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5522228376720969304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98068d2af38a9da4b877ade85c51d980, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outputInterval: 0.1
-  clearOnNewLine: 1
 --- !u!1 &6049585236643471512
 GameObject:
   m_ObjectHideFlags: 0
