@@ -1220,7 +1220,9 @@ MonoBehaviour:
   xForceDirection: 0
   yForceDirection: 0
   zForceDirection: 0.2
-  speedMultiplier: 1
+  StopSpeed: 0
+  NormalSpeed: 20
+  mSpeed: 0
   worldPivote: 0
 --- !u!64 &94527220
 MeshCollider:
@@ -2690,6 +2692,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1422419673390278770, guid: 1cce5641a2bcefb4b80009806b45e5a6,
+        type: 3}
+      propertyPath: m_Name
+      value: FFGear_Horizontal
+      objectReference: {fileID: 0}
     - target: {fileID: 5139098577379727697, guid: 1cce5641a2bcefb4b80009806b45e5a6,
         type: 3}
       propertyPath: m_Size.y
@@ -2709,11 +2716,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 0.072021306
-      objectReference: {fileID: 0}
-    - target: {fileID: 1422419673390278770, guid: 1cce5641a2bcefb4b80009806b45e5a6,
-        type: 3}
-      propertyPath: m_Name
-      value: FFGear_Horizontal
       objectReference: {fileID: 0}
     - target: {fileID: 1422419673390278768, guid: 1cce5641a2bcefb4b80009806b45e5a6,
         type: 3}
@@ -5362,7 +5364,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424037402}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 37016aa9fa0e8b34b803d27f4cb59623, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -6412,7 +6414,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 76a4ec6dd44f5c7499b580b86e019a9a,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: TimeInteractable
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 76a4ec6dd44f5c7499b580b86e019a9a,
         type: 3}
@@ -8359,7 +8361,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 76a4ec6dd44f5c7499b580b86e019a9a,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: TimeInteractable
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 76a4ec6dd44f5c7499b580b86e019a9a,
         type: 3}
@@ -11854,7 +11856,9 @@ MonoBehaviour:
   xForceDirection: 0
   yForceDirection: 0
   zForceDirection: -0.2
-  speedMultiplier: 1
+  StopSpeed: 0
+  NormalSpeed: 10
+  mSpeed: 0
   worldPivote: 0
 --- !u!64 &1058780039
 MeshCollider:
@@ -16387,7 +16391,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 76a4ec6dd44f5c7499b580b86e019a9a,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: TimeInteractable
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 76a4ec6dd44f5c7499b580b86e019a9a,
         type: 3}
@@ -16941,7 +16945,9 @@ MonoBehaviour:
   xForceDirection: 0
   yForceDirection: 0
   zForceDirection: 0.2
-  speedMultiplier: 1
+  StopSpeed: 0
+  NormalSpeed: 10
+  mSpeed: 0
   worldPivote: 0
 --- !u!64 &1477406598
 MeshCollider:
@@ -19377,6 +19383,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2639328179078919380, guid: 1aea3d01888762a4aadb4815993090ef,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2639328179078919380, guid: 1aea3d01888762a4aadb4815993090ef,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1633800183066715332, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: orthographic size
@@ -19502,30 +19518,20 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 2639328179078919380, guid: 1aea3d01888762a4aadb4815993090ef,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 2639328179078919380, guid: 1aea3d01888762a4aadb4815993090ef,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.9
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 200.3
+      value: 5.1
       objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
@@ -19764,7 +19770,9 @@ MonoBehaviour:
   xForceDirection: 0
   yForceDirection: 0
   zForceDirection: -1
-  speedMultiplier: 1
+  StopSpeed: 0
+  NormalSpeed: 0
+  mSpeed: 0
   worldPivote: 0
 --- !u!43 &1718662263
 Mesh:
@@ -20523,7 +20531,9 @@ MonoBehaviour:
   xForceDirection: 0
   yForceDirection: 0
   zForceDirection: -0.2
-  speedMultiplier: 1
+  StopSpeed: 0
+  NormalSpeed: 20
+  mSpeed: 0
   worldPivote: 0
 --- !u!64 &1774938247
 MeshCollider:
@@ -23181,7 +23191,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 76a4ec6dd44f5c7499b580b86e019a9a,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: TimeInteractable
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 76a4ec6dd44f5c7499b580b86e019a9a,
         type: 3}
