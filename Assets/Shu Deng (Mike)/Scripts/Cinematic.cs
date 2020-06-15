@@ -7,12 +7,10 @@ using UnityEngine.UI;
 public class Cinematic : MonoBehaviour
 {
     public float FadeInSpeed = 0.5f, FadeOutSpeed = 0.5f;
-    public float AngularAdjustSpeed = 25f, LinearAdjustSpeed = 0.25f;   
+    public float CameraRotateSpeed = 2.5f, CameraTranslateSpeed = 2.5f;   
     [TextArea]
     public string TextContent = "";
     public Transform CameraTargetTransform;
-
-    public bool finished { get; private set; } = false;
     
     private GameObject[] m_OtherCameras;
     private GameObject m_MainCameraObject;
@@ -20,7 +18,8 @@ public class Cinematic : MonoBehaviour
     private Camera m_Camera;
     private TextUITypewrite m_Text;
     private PlayerInputAction m_PlayerInput;
-
+    private Transform OriginalCameraTransform;
+    private const float epsilon = 0.01f;  // A small value approximating to zero
     private enum State
     {
         IDLING,
@@ -39,8 +38,6 @@ public class Cinematic : MonoBehaviour
         {
             m_State = State.LETTERBOX_FADEIN;
             m_LetterBoxes = GetComponentsInChildren<Image>();
-            m_LetterBoxes[0].color = new Color(0, 0, 0, 0);
-            m_LetterBoxes[1].color = new Color(0, 0, 0, 0);
         }
         else
         {
@@ -48,6 +45,7 @@ public class Cinematic : MonoBehaviour
         }
         
         m_Camera = GetComponentInChildren<Camera>();
+        OriginalCameraTransform = Camera.main.transform;
         m_Camera.transform.position = Camera.main.transform.position;
         m_Camera.transform.rotation = Camera.main.transform.rotation;
         m_OtherCameras = GameObject.FindGameObjectsWithTag("Camera");
@@ -84,12 +82,15 @@ public class Cinematic : MonoBehaviour
                 m_LetterBoxes[1].color = new Color(0, 0, 0, a1);
                 break;
             case State.CAMERA_ADJUST:
-
-                if (true)
+                m_Camera.transform.position = Vector3.Lerp(
+                    m_Camera.transform.position, CameraTargetTransform.position, Time.deltaTime * CameraTranslateSpeed);
+                m_Camera.transform.rotation = Quaternion.Slerp(
+                    m_Camera.transform.rotation, CameraTargetTransform.rotation, Time.deltaTime * CameraRotateSpeed);
+                if ((m_Camera.transform.position - CameraTargetTransform.position).sqrMagnitude < epsilon)
                 {
+                    m_State = State.TEXT_RENDERING;
                     if (TextContent != "")
-                    {
-                        m_State = State.TEXT_RENDERING;
+                    {                        
                         m_Text.Input(TextContent);
                         m_Text.Output();
                     }
@@ -113,14 +114,19 @@ public class Cinematic : MonoBehaviour
                 if (a2 < 0)
                 {
                     a2 = 0f;
-                    m_State = State.CAMERA_RESTORE;                    
+                    m_State = State.IDLING;
+                    m_PlayerInput.MenuControls.CancelBack.performed += OnCancelCamera;
+                    m_PlayerInput.MenuControls.Enable();                   
                 }
                 m_LetterBoxes[0].color = new Color(0, 0, 0, a2);
                 m_LetterBoxes[1].color = new Color(0, 0, 0, a2);
                 break;
-            case State.CAMERA_RESTORE: 
-                
-                if (true)
+            case State.CAMERA_RESTORE:
+                m_Camera.transform.position = Vector3.Lerp(
+                    m_Camera.transform.position, OriginalCameraTransform.position, Time.deltaTime * CameraTranslateSpeed);
+                m_Camera.transform.rotation = Quaternion.Slerp(
+                    m_Camera.transform.rotation, OriginalCameraTransform.rotation, Time.deltaTime * CameraRotateSpeed);
+                if ((m_Camera.transform.position - OriginalCameraTransform.position).sqrMagnitude < epsilon)
                 {
                     m_State = State.EXIT;
                 }
@@ -142,6 +148,5 @@ public class Cinematic : MonoBehaviour
         m_State = State.CAMERA_RESTORE;
         m_PlayerInput.MenuControls.CancelBack.performed -= OnCancelCamera;
         m_PlayerInput.MenuControls.Disable();
-    }
-    
+    }    
 }
