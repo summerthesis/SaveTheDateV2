@@ -9,7 +9,7 @@ public class PickupGear : MonoBehaviour
 
     void OnPickedUp()
     {
-        gearsCollectionInfo.GetComponent<GearUIController>().GearCollected();
+        gearsCollectionInfo.GetComponentInChildren<GearUIController>().GearCollected();
     }
 
     // Start is called before the first frame update
