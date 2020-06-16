@@ -7,14 +7,14 @@ public class PlatformA_B : MonoBehaviour
     
     public GameObject B; 
     private Vector3 PointA, PointB; 
-    public float StopSpeed, NormalSpeed; 
-    private float mSpeed, SlowedSpeed, FastSpeed;
+    public float StopSpeed, NormalSpeed, mSpeed; 
+    private float SlowedSpeed, FastSpeed;
     public int IdleDuration;
     private int IdleCount;
-    private GameObject mPlayer;
-    private bool Parenting;
-    private Vector3 mPrevPos, mCurrentPos;
-    private float xx, yy, zz;//the change in
+    public GameObject mPlayer;
+    public bool Parenting;
+    public Vector3 mPrevPos, mCurrentPos;
+    public float xx, yy, zz;//the change in
     private enum ObjectStates
     {
         Unavailable,
@@ -67,11 +67,12 @@ public class PlatformA_B : MonoBehaviour
                     break;
             }
         
-        mCurrentPos = this.transform.position;
+        mCurrentPos = transform.position;
         xx = mCurrentPos.x - mPrevPos.x;
-        yy = mCurrentPos.y = mPrevPos.y;
-        zz = mCurrentPos.z = mPrevPos.z;
+        yy = mCurrentPos.y - mPrevPos.y;
+        zz = mCurrentPos.z - mPrevPos.z;
         mPrevPos = mCurrentPos;
+     
     }
 
     void Move(Vector3 Point)
@@ -144,12 +145,13 @@ public class PlatformA_B : MonoBehaviour
 
     void OnCollisionEnter(Collision Col)
     {
-        if (Col.transform.position.y - Col.gameObject.GetComponent<BoxCollider>().size.y / 2
-                  > this.transform.position.y + this.GetComponent<BoxCollider>().size.y / 2)
-        if (Col.gameObject.tag == "Player") 
-        {
-            Parenting = true;
-        }
+        //Debug.Log("Collided");
+        //if (Col.transform.position.y - Col.gameObject.GetComponent<BoxCollider>().size.y / 2
+        //          > this.transform.position.y + this.GetComponent<BoxCollider>().size.y / 2)
+            if (Col.gameObject.tag == "Player")
+            {
+                Parenting = true;
+            }
     }
     void OnCollisionExit(Collision Col)
     {

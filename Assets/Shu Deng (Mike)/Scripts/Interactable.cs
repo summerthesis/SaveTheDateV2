@@ -40,7 +40,7 @@ public class Interactable : MonoBehaviour
                     m_Popup.transform.localPosition = PopupPosition;
                 }               
                 m_PopupShowed = true;
-                playerController.controls.PlayerControls.Interact.performed += OnInteractPerformed;
+                InputManagerSingleton.Instance.PlayerControls.Interact.performed += OnInteractPerformed;
             }
         }
     }
@@ -54,7 +54,7 @@ public class Interactable : MonoBehaviour
             {
                 Destroy(m_Popup);
                 m_PopupShowed = false;
-                playerController.controls.PlayerControls.Interact.performed -= OnInteractPerformed;
+                InputManagerSingleton.Instance.PlayerControls.Interact.performed -= OnInteractPerformed;
             }
         }
     }

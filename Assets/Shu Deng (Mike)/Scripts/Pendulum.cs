@@ -5,10 +5,10 @@ using UnityEngine;
 public class Pendulum : MonoBehaviour
 {
     public float RotationAngle;
-    public float StopSpeed, NormalSpeed;
-    float mAngle, mTime, mSpeed, SlowedSpeed, FastSpeed;
+    public float StopFactor = 0, SlowFactor = 0.5f, FastFactor = 2f, NormalSpeed = 3f;    
     public int IdleDuration;
-    int IdleCount;
+    private float m_Angle, m_Time, m_TimeFactor;
+    private int m_IdleCount;
 
     enum ObjectStates
     {
@@ -23,11 +23,8 @@ public class Pendulum : MonoBehaviour
     void Start()
     {
         ObjectState = ObjectStates.Move;
-        SlowedSpeed = NormalSpeed / 2;
-        FastSpeed = NormalSpeed * 2;
-        StopSpeed = 0;
-        mSpeed = NormalSpeed;
-        mTime = 0;
+        m_Time = 0;
+        m_TimeFactor = 1f;
     }
 
     // Update is called once per frame
@@ -44,8 +41,8 @@ public class Pendulum : MonoBehaviour
                 break;
 
             case ObjectStates.Idling:
-                IdleCount--;
-                if (IdleCount <= 0) ObjectState = ObjectStates.Move;
+                m_IdleCount--;
+                if (m_IdleCount <= 0) ObjectState = ObjectStates.Move;
                 break;
 
             case ObjectStates.CustomEvent:
@@ -59,33 +56,38 @@ public class Pendulum : MonoBehaviour
 
     void Move()
     {
-        mAngle = Mathf.Sin(mTime * mSpeed) * RotationAngle * 0.5f;
-        if (RotationAngle * 0.5f - Mathf.Abs(mAngle) < 1.0f)
+        m_Angle = Mathf.Sin(m_Time * NormalSpeed) * RotationAngle * 0.5f;
+        if (RotationAngle * 0.5f - Mathf.Abs(m_Angle) < 1.0f)
         {
             ObjectState = ObjectStates.Idling;
-            IdleCount = IdleDuration;
+            m_IdleCount = IdleDuration;
         }
-        transform.eulerAngles = new Vector3(0, 0, mAngle);
-        mTime += Time.deltaTime;
+        transform.eulerAngles = new Vector3(0, 0, m_Angle);
+        m_Time += Time.deltaTime * m_TimeFactor;
     }
 
     void TimeSlow()
     {
-        mSpeed = SlowedSpeed;
+        m_TimeFactor = SlowFactor;
     }
 
     void TimeStop()
     {
-        mSpeed = 0;
+        m_TimeFactor = StopFactor;
     }
 
     void TimeFastForward()
     {
-        mSpeed = FastSpeed;
+        m_TimeFactor = FastFactor;
     }
 
     void RestoreToNormal()
     {
-        mSpeed = NormalSpeed;
+        m_TimeFactor = 1f;
+    }
+
+    void JumpForward()
+    {
+
     }
 }
