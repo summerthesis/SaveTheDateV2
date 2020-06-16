@@ -12,7 +12,7 @@ public class ParentPlayer : MonoBehaviour
     
     void Start()
     {
-        mSpeed = this.GetComponent<PlatformStraight>().mSpeed;
+        //mSpeed = this.GetComponent<PlatformStraight>().mSpeed;
         mPlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
