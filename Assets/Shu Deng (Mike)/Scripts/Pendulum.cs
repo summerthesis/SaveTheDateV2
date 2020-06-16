@@ -85,4 +85,9 @@ public class Pendulum : MonoBehaviour
     {
         m_TimeFactor = 1f;
     }
+
+    void JumpForward()
+    {
+
+    }
 }
