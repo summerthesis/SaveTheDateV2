@@ -11,9 +11,9 @@ public class KH_PlayerController : MonoBehaviour
     public float lowJumpMultiplier = 2.0f;
     public LayerMask groundLayers;
     private Vector3 forward, right;
-    public PlayerInputAction controls;
-    public Vector2 movementInput; //private
-    public bool jumpInput; //private
+    public PlayerInputAction controls; //public for other scripts
+    private Vector2 movementInput; //private
+    private bool jumpInput; //private
     private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
@@ -21,7 +21,7 @@ public class KH_PlayerController : MonoBehaviour
     public Rigidbody rb;
     public Collider playerCollider;
     [TextArea]
-    public string Notes = "1st Box Collider is the actual Collider, referenced in the movement script.\n" +
+    public string Notes = "1st Box Collider is the actual Collider, referenced in the movement script, MUST EXTEND SLIGHTLY BEYOND THE FEET OR IsGrounded CHECK WON'T WORK.\n" +
         "2nd Box Collider is slightly wider with NoFriction PhysicsMaterial to prevent player from sticking to the wall mid-jump.\n" +
         "The ground needs to be tagged w/ Platform for Jumping to work.";
 
@@ -29,7 +29,7 @@ public class KH_PlayerController : MonoBehaviour
     private string vspeed_anim_param = "VSpeed";
     private string is_jump_input_anim_param = "IsJumpInput";
     private string is_grounded_anim_param = "IsGrounded";
-    private string can_double_jump_anim_param = "CanDoubleJump";
+    private string double_jump_anim_param = "IsDoubleJumping";
 
     void Awake()
     {
@@ -48,7 +48,7 @@ public class KH_PlayerController : MonoBehaviour
         mPlayer = GameObject.Find("Char_KyRos");
         //anim = mPlayer.GetComponent<Animator>();
         //rb = GetComponent<Rigidbody>();
-        //playerCollider = GetComponent<BoxCollider>();        
+        //playerCollider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -88,9 +88,14 @@ public class KH_PlayerController : MonoBehaviour
         if (IsGrounded())
         {
             canDoubleJump = true;
+            anim.SetBool(is_grounded_anim_param, true);
             anim.SetBool(is_jump_input_anim_param, false);
-            anim.SetBool(can_double_jump_anim_param, true);
+            anim.SetBool(double_jump_anim_param, false);
             anim.SetFloat(vspeed_anim_param, 0);
+        }
+        else
+        {
+            anim.SetBool(is_grounded_anim_param, false);
         }
 
         if (jumpInput)
@@ -104,8 +109,12 @@ public class KH_PlayerController : MonoBehaviour
             {
                 rb.velocity = Vector3.up * jumpForce;
                 canDoubleJump = false;
-                anim.SetBool(can_double_jump_anim_param, false);
+                anim.SetBool(double_jump_anim_param, true);
             }
+        }
+        else
+        {
+            anim.SetBool(is_jump_input_anim_param, false);
         }
         jumpInput = false; //from https://forum.unity.com/threads/how-would-you-handle-a-getbuttondown-situaiton-with-the-new-input-system.627184/#post-5015597
         
@@ -159,21 +168,12 @@ public class KH_PlayerController : MonoBehaviour
         //    Debug.Log("JumpStart");
         //}
 
-        //if (IsGrounded())
-        //{
-        //    anim.SetBool(is_grounded_anim_param, true);
-        //}
-        //else
-        //{
-        //    anim.SetBool(is_grounded_anim_param, false);
-        //}
-
-        Debug.DrawRay(transform.position, Vector3.down * 2, Color.green);
+        Debug.DrawRay(playerCollider.transform.position, Vector3.down, Color.green);
     }
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, playerCollider.bounds.extents.y + 0.1f, groundLayers);
+        return Physics.Raycast(playerCollider.transform.position, Vector3.down, 0.1f, groundLayers);
     }
 
     private void OnEnable()
