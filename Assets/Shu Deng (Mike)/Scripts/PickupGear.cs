@@ -5,11 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Pickup))]
 public class PickupGear : MonoBehaviour
 {
-    public GameObject gearsCollectionInfo;
-
     void OnPickedUp()
     {
-        gearsCollectionInfo.GetComponentInChildren<GearUIController>().GearCollected();
+        FindObjectOfType<GearUIController>().GearCollected();        
     }
 
     // Start is called before the first frame update
