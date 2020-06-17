@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1422419673390278768}
   - component: {fileID: 1422419673390278769}
+  - component: {fileID: 5139098577379727697}
   m_Layer: 8
   m_Name: FFGear_Horizontal
   m_TagString: TimeInteractable
@@ -48,7 +49,22 @@ MonoBehaviour:
   B: {fileID: 6961613114139102404}
   StopSpeed: 0
   NormalSpeed: 4
+  mSpeed: 0
   IdleDuration: 120
+  Parenting: 0
+--- !u!65 &5139098577379727697
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422419673390278770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.4309263, y: 1, z: 5.582933}
+  m_Center: {x: -0.21312548, y: 0, z: 0.49491295}
 --- !u!1 &6961613114139102404
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +153,6 @@ GameObject:
   - component: {fileID: 9028958569290260517}
   - component: {fileID: 9028958569290260515}
   - component: {fileID: 9028958569290260516}
-  - component: {fileID: 375974665781697296}
   m_Layer: 8
   m_Name: Gear3
   m_TagString: Untagged
@@ -204,16 +219,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &375974665781697296
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9028958569290260518}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.6725831, y: 1.6725831, z: 0.30000016}
-  m_Center: {x: -0.0000009149308, y: 0.0000031977886, z: 0.15000236}
