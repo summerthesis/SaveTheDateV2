@@ -61,7 +61,7 @@ public class GearUIController : MonoBehaviour
                 {
                     for (int i = 1; i <= m_MaxGearCount; ++i)
                     {
-                        m_GearsRectTransform[i].Rotate(new Vector3(0, 0, 1), rotateSpeed * Mathf.Pow(-1, i));
+                        m_GearsRectTransform[i].Rotate(new Vector3(0, 1, 0), rotateSpeed * Mathf.Pow(-1, i));
                     }
                 }
                 break;
@@ -78,7 +78,7 @@ public class GearUIController : MonoBehaviour
         }
         for (int i = 1; i <= m_MaxGearCount; ++i)
         {
-            m_GearsRectTransform[i].eulerAngles = new Vector3(90, 0, 0);
+            m_GearsRectTransform[i].eulerAngles = new Vector3(0, 0, 0);
         }
     }
 }
