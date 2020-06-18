@@ -62,6 +62,7 @@ public class Cinematic : MonoBehaviour
         m_Text = GetComponentInChildren<TextUITypewrite>();
         m_PlayerInput = InputManagerSingleton.Instance;
         m_PlayerInput.PlayerControls.Disable();
+        m_PlayerInput.TimeControls.Disable();
     }
 
     // Update is called once per frame
@@ -138,6 +139,7 @@ public class Cinematic : MonoBehaviour
                 }
                 m_MainCameraObject.SetActive(true);
                 m_PlayerInput.PlayerControls.Enable();
+                m_PlayerInput.TimeControls.Enable();
                 Destroy(this.gameObject);
                 break;
         }        

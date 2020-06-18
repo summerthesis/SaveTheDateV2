@@ -33,10 +33,7 @@ public class KH_PlayerController : MonoBehaviour
 
     void Awake()
     {
-        controls = new PlayerInputAction();
-        controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
-        controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
-        controls.PlayerControls.Jump.started += ctx => jumpInput = true;
+        
     }
     
     void Start()
@@ -49,6 +46,10 @@ public class KH_PlayerController : MonoBehaviour
         //anim = mPlayer.GetComponent<Animator>();
         //rb = GetComponent<Rigidbody>();
         //playerCollider = GetComponent<BoxCollider>();
+        controls = InputManagerSingleton.Instance;
+        controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
+        controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
+        controls.PlayerControls.Jump.started += ctx => jumpInput = true;
     }
 
     // Update is called once per frame
@@ -167,22 +168,11 @@ public class KH_PlayerController : MonoBehaviour
         //{
         //    Debug.Log("JumpStart");
         //}
-
-        Debug.DrawRay(playerCollider.transform.position, Vector3.down * 0.1f, Color.red);
+        Debug.DrawRay(playerCollider.transform.position, Vector3.down * 0.1f, Color.green);
     }
 
     private bool IsGrounded()
     {
         return Physics.Raycast(playerCollider.transform.position, Vector3.down, 0.1f, groundLayers);
-    }
-
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
     }
 }

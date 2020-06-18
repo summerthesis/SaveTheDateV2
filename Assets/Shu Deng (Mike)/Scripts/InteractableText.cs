@@ -15,7 +15,7 @@ public class InteractableText : MonoBehaviour
     private PlayerInputAction m_playerInput;
     private GameObject m_textUI;
 
-    void Awake()
+    void Start()
     {
         m_playerInput = InputManagerSingleton.Instance;
     }
@@ -33,6 +33,7 @@ public class InteractableText : MonoBehaviour
         typewriter.Input(Text);
         typewriter.Output();
         m_playerInput.PlayerControls.Disable();
+        m_playerInput.TimeControls.Disable();
         StartCoroutine(WaitThenRespond());
     }
 
@@ -42,6 +43,7 @@ public class InteractableText : MonoBehaviour
         Destroy(m_textUI);
         m_playerInput.MenuControls.Disable();
         m_playerInput.PlayerControls.Enable();
+        m_playerInput.TimeControls.Enable();
     }
 
     IEnumerator WaitThenRespond()
