@@ -168,7 +168,7 @@ public class KH_PlayerController : MonoBehaviour
         //    Debug.Log("JumpStart");
         //}
 
-        Debug.DrawRay(playerCollider.transform.position, Vector3.down, Color.green);
+        Debug.DrawRay(playerCollider.transform.position, Vector3.down * 0.1f, Color.red);
     }
 
     private bool IsGrounded()
