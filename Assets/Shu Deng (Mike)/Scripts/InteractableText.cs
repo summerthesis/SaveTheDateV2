@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Interactable))]
 public class InteractableText : MonoBehaviour
 {
     public GameObject TextUIPrefab;
