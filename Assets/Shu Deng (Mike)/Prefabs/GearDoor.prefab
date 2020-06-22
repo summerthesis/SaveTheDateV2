@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &339984809799231589
 Transform:
   m_ObjectHideFlags: 0
@@ -78,10 +78,168 @@ MonoBehaviour:
   RotationAxis: {fileID: 8422551751596522312}
   GearDoorModel: {fileID: 323274694699377483}
   OpenOnStart: 0
-  DoorOpenAngle: 90
-  DoorSpinningAngle: 360
-  OpenSpeed: 50
-  SpinningSpeed: 100
+  Spinning:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 41.48446
+      outSlope: 6.9057355
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.22841601
+    - serializedVersion: 3
+      time: 0.68151855
+      value: 43.239136
+      inSlope: 118.66149
+      outSlope: 118.66149
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2.5021973
+      value: 359.81458
+      inSlope: 189.07686
+      outSlope: -158.56677
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.06542072
+      outWeight: 0.9948418
+    - serializedVersion: 3
+      time: 2.623667
+      value: 342.857
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2.7451363
+      value: 359.81458
+      inSlope: 165.32823
+      outSlope: -170.03416
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.8216374
+      outWeight: 1
+    - serializedVersion: 3
+      time: 2.8058712
+      value: 351.33575
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2.8666058
+      value: 359.81458
+      inSlope: 155.96577
+      outSlope: -162.52945
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 1
+    - serializedVersion: 3
+      time: 2.8969731
+      value: 355.5752
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2.9273405
+      value: 359.81458
+      inSlope: 160.38837
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3.2918046
+      value: 359.81458
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Ejecting:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 5
+      outSlope: 5
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.5
+      inSlope: 5
+      outSlope: 0
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Rotating:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 30
+      outSlope: 30
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 90
+      inSlope: 30
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4
+      value: 90
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &4685489988043032657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,12 +322,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -5178661895559278292, guid: d8d141e3b0680484c9087004426b2dfa,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 8691780276856062721, guid: d8d141e3b0680484c9087004426b2dfa,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8d141e3b0680484c9087004426b2dfa, type: 3}
 --- !u!4 &323274694699377483 stripped

@@ -31,9 +31,9 @@ public class GearDoorController: MonoBehaviour
             m_DoorState = State.Open;
         }
 
-        m_ReverseSpinning = ReverseAnimationCurve(Spinning);
-        m_ReverseEjecting = ReverseAnimationCurve(Ejecting);
-        m_ReverseRotating = ReverseAnimationCurve(Rotating);
+        m_ReverseSpinning = Spinning.ReverseAnimationCurve();
+        m_ReverseEjecting = Ejecting.ReverseAnimationCurve();
+        m_ReverseRotating = Rotating.ReverseAnimationCurve();
     }
 
     public void OpenOrClose()
@@ -138,20 +138,5 @@ public class GearDoorController: MonoBehaviour
         GearDoorModel.Rotate(GearDoorModel.forward, m_CurValue - m_LastValue);        
 
         m_DoorState = State.Closed;
-    }
-
-    private AnimationCurve ReverseAnimationCurve(AnimationCurve toReverse)
-    {
-        AnimationCurve result = new AnimationCurve();
-        float endValue = toReverse.Evaluate(float.MaxValue);
-
-        for (int i = 0; i < toReverse.length; ++i)
-        {
-            Keyframe tempKey = new Keyframe(toReverse[i].time, endValue - toReverse[i].value, 
-                - toReverse[i].inTangent, - toReverse[i].outTangent);
-            result.AddKey(tempKey);
-        }
-
-        return result;
-    }
+    }   
 }
