@@ -11,7 +11,8 @@ public class InputManagerSingleton : MonoBehaviour
         if (Instance == null)
         {
             Instance = new PlayerInputAction();
-            Instance.Enable();
+            Instance.PlayerControls.Enable();
+            Instance.TimeControls.Enable();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -24,15 +25,5 @@ public class InputManagerSingleton : MonoBehaviour
     void Update()
     {
         
-    }
-
-    private void OnEnable()
-    {
-        Instance.Enable();
-    }
-
-    private void OnDisable()
-    {
-        Instance.Disable();
     }
 }

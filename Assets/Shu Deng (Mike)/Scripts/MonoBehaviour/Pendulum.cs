@@ -62,7 +62,7 @@ public class Pendulum : MonoBehaviour
             ObjectState = ObjectStates.Idling;
             m_IdleCount = IdleDuration;
         }
-        transform.eulerAngles = new Vector3(0, 0, m_Angle);
+        transform.localEulerAngles = new Vector3(0, 0, m_Angle);
         m_Time += Time.deltaTime * m_TimeFactor;
     }
 

@@ -57,9 +57,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 5
+  field of view: 44.8
+  orthographic: 0
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -112,14 +112,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633800183441449415}
-  m_LocalRotation: {x: -0.11955044, y: -0.95473915, z: -0.04660808, w: 0.26834407}
-  m_LocalPosition: {x: 8.678526, y: -10.766302, z: -7.8242264}
+  m_LocalRotation: {x: -0.11569487, y: -0.9561598, z: -0.03204273, w: 0.26710773}
+  m_LocalPosition: {x: 0, y: -6.35, z: -7.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1633800183066715337}
   m_Father: {fileID: 4588472109618953070}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -1.11, y: -9.75, z: -17.18}
+  m_LocalEulerAnglesHint: {x: -7.07, y: -149.52, z: 11.87}
 --- !u!114 &1633800183441449412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPlayer: {fileID: 1633800183986277159}
   CameraAngles:
-  - {x: -0.11955044, y: -0.95473915, z: -0.046608075, w: 0.26834399}
-  TargetAngle: {x: 0, y: 0, z: 0, w: 0}
+  - {x: 0, y: 0, z: 0, w: 1}
+  TargetAngle: {x: 0, y: 0, z: 0, w: 1}
   AngleState: 0
 --- !u!1 &1633800183986277159
 GameObject:
@@ -201,8 +201,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.64668995, y: 1.7212772, z: 0.4706745}
-  m_Center: {x: 0, y: 0.86962223, z: 0.016726494}
+  m_Size: {x: 0.64668995, y: 1.7599087, z: 0.4706745}
+  m_Center: {x: 0, y: 0.8503065, z: 0.016726494}
 --- !u!114 &1633800183986277157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 8
+  jumpForce: 10
   fallMultiplier: 1.5
   lowJumpMultiplier: 1
   groundLayers:
@@ -259,7 +259,7 @@ BoxCollider:
   m_GameObject: {fileID: 1633800183986277159}
   m_Material: {fileID: 13400000, guid: 4e07127b7e8d9144d907a9dba1eaff0a, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.69919497, y: 1.6666107, z: 0.5291748}
   m_Center: {x: 0, y: 0.8701496, z: 0.016181946}
@@ -275,8 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e49f077cb4b0094ba03302fa3fcf93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnergyCost: 9
-  StopCost: 750
+  EnergyCost: 1
+  StopCost: 500
 --- !u!1 &2639328179078919380
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,11 +521,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3816895153628507045, guid: ecfd7e1b3205b614cb25776623cc21e8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 140.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfd7e1b3205b614cb25776623cc21e8, type: 3}

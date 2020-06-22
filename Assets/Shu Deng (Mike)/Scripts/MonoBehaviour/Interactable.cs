@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Interactable : MonoBehaviour
 {
-    public GameObject PopupPrefab;
+    public GameObject PopupHintPrefab;
     public Vector3 PopupPosition;
     public bool PopupInWorld = false;
     bool m_PopupShowed = false;
@@ -30,7 +30,7 @@ public class Interactable : MonoBehaviour
         {
             if (m_PopupShowed == false)
             {
-                m_Popup = Instantiate(PopupPrefab, this.transform);
+                m_Popup = Instantiate(PopupHintPrefab, this.transform);
                 if (PopupInWorld == true)
                 {
                     m_Popup.transform.position = PopupPosition;
