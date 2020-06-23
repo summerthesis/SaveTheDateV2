@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Pickup))]
-public class PickupGear : MonoBehaviour
+public class LifeCountHUDController : MonoBehaviour
 {
-    void OnPickedUp()
-    {
-        FindObjectOfType<GearIconHUDController>().GearCollected();        
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +14,10 @@ public class PickupGear : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void GainedLife()
+    {
+
     }
 }

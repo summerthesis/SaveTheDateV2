@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GearUIController : MonoBehaviour
+public class GearUI3DController : MonoBehaviour
 {
     public float rotationTimeLength, rotateSpeed;
 
