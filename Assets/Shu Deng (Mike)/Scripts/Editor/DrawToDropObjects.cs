@@ -45,29 +45,36 @@ public class DrawToDropObjects : EditorWindow
         if (GUILayout.Button("Create Objects Group"))
         {
             // Create parent
-            GameObject parent = new GameObject();            
+            Transform parent = new GameObject().transform;            
             parent.name = "Group_" + m_ObjectToDrop.name + "_" + m_Index;
-            parent.transform.position = (m_StartTransform.position + m_EndTransform.position) * 0.5f;
+            parent.position = (m_StartTransform.position + m_EndTransform.position) * 0.5f;
 
-            m_StartTransform = Instantiate(m_StartTransform.gameObject, m_StartTransform.position, m_StartTransform.rotation).transform;
-            m_StartTransform.SetParent(parent.transform, true);
-            m_EndTransform = Instantiate(m_EndTransform.gameObject, m_EndTransform.position, m_EndTransform.rotation).transform;
-            m_EndTransform.SetParent(parent.transform, true);
+            Transform tempTransform = new GameObject().transform;
+            tempTransform.name = "StartPoint";
+            tempTransform.position = m_StartTransform.position;
+            m_StartTransform = tempTransform;
+            m_StartTransform.SetParent(parent, true);
+
+            tempTransform = new GameObject().transform;
+            tempTransform.name = "EndPoint";
+            tempTransform.position = m_EndTransform.position;
+            m_EndTransform = tempTransform;
+            m_EndTransform.SetParent(parent, true);
 
             // Create target objects
             Vector3 displacement = (m_EndTransform.position - m_StartTransform.position).normalized * m_Spacing;
             int numbers = (int)((m_EndTransform.position - m_StartTransform.position).magnitude / m_Spacing);
             for (int i = 0; i < numbers; ++i)
             {
-                GameObject temp = (GameObject)PrefabUtility.InstantiatePrefab(m_ObjectToDrop);
-                temp.SetActive(true);
-                temp.name = temp.name + "_" + m_Index;
+                GameObject tempGameObject = (GameObject)PrefabUtility.InstantiatePrefab(m_ObjectToDrop);
+                tempGameObject.SetActive(true);
+                tempGameObject.name = tempGameObject.name + "_" + m_Index;
                 ++m_Index;
-                temp.transform.position = m_StartTransform.position + displacement * i;
-                temp.transform.SetParent(parent.transform, true);
+                tempGameObject.transform.position = m_StartTransform.position + displacement * i;
+                tempGameObject.transform.SetParent(parent, true);
             }
             m_Index -= numbers;
-            m_GroupTransform = parent.transform;
+            m_GroupTransform = parent;
         }
 
         GUILayout.Label("Objects Group Update", EditorStyles.boldLabel);

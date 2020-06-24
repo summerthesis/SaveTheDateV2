@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2358863558533643982}
   - component: {fileID: 4405626511224686517}
   m_Layer: 5
-  m_Name: 3
+  m_Name: Life Count_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1954794844720427651
 RectTransform:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5857850768065051196}
   - component: {fileID: 54486980661076317}
   m_Layer: 5
-  m_Name: 4
+  m_Name: Life Count_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 61226537959182517}
   - component: {fileID: 2850172844823592283}
   m_Layer: 5
-  m_Name: 1
+  m_Name: Life Count_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 8977565452043711832}
   - component: {fileID: 6273056423464563416}
   m_Layer: 5
-  m_Name: 2
+  m_Name: Life Count_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,6 +848,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b37f3e9938e14bbe7db8e38086b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LifeCountIconScaling:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 6.469511
+      outSlope: 6.469511
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.03425571
+    - serializedVersion: 3
+      time: 0.5
+      value: 2
+      inSlope: 0.03194197
+      outSlope: -2
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0.09857112
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -2
+      outSlope: -2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  InitialNumberOfLives: 3
 --- !u!1 &4038440366519726024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,7 +1116,7 @@ GameObject:
   - component: {fileID: 2683337742976224516}
   - component: {fileID: 2320160972170444004}
   m_Layer: 5
-  m_Name: 5
+  m_Name: Life Count_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
