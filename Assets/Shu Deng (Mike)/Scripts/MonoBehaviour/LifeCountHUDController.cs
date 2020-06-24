@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LifeCountHUDController : MonoBehaviour
 {
-    public AnimationCurve LifeCountIconScaling;
-    public int InitialNumberOfLives = 3;
+    public AnimationCurve lifeCountIconScaling;
+    public int initialNumberOfLives = 3;
     private Transform[] m_LifeCountIcons = new Transform[5];
     private int m_NumOfLifes;
     private float m_Time = 0;
@@ -23,7 +23,7 @@ public class LifeCountHUDController : MonoBehaviour
         {
             m_LifeCountIcons[i] = transform.Find("Life Counts").GetChild(i);
         }
-        m_NumOfLifes = InitialNumberOfLives;
+        m_NumOfLifes = initialNumberOfLives;
         m_LifeCountIcons[m_NumOfLifes - 1].gameObject.SetActive(true);
     }
 
@@ -49,7 +49,7 @@ public class LifeCountHUDController : MonoBehaviour
     {
         while (m_Time < 1f)
         {
-            float value = LifeCountIconScaling.Evaluate(m_Time);
+            float value = lifeCountIconScaling.Evaluate(m_Time);
             m_LifeCountIcons[m_NumOfLifes - 1].localScale = new Vector3(value, value, value);
             m_Time += Time.deltaTime;
             yield return null;

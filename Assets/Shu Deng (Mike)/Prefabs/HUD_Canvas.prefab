@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 4038440365576065383}
   m_Layer: 5
   m_Name: HUD_Canvas
-  m_TagString: Untagged
+  m_TagString: HUD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -848,40 +848,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96b37f3e9938e14bbe7db8e38086b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeCountIconScaling:
+  lifeCountIconScaling:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 6.469511
-      outSlope: 6.469511
+      inSlope: 6.6231337
+      outSlope: 6.6231337
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.03425571
+      outWeight: 0.06091225
     - serializedVersion: 3
       time: 0.5
       value: 2
-      inSlope: 0.03194197
+      inSlope: 0
       outSlope: -2
       tangentMode: 65
       weightedMode: 0
-      inWeight: 0.09857112
+      inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
       inSlope: -2
-      outSlope: -2
-      tangentMode: 34
+      outSlope: 0
+      tangentMode: 5
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  InitialNumberOfLives: 3
+  initialNumberOfLives: 3
 --- !u!1 &4038440366519726024
 GameObject:
   m_ObjectHideFlags: 0
