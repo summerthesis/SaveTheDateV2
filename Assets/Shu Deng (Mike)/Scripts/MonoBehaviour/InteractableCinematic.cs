@@ -29,8 +29,8 @@ public class InteractableCinematic : MonoBehaviour
         m_Cinematic = Instantiate(CinematicPrefab, transform).GetComponent<Cinematic>();
         if (CinematicText != "")
         {
-            m_Cinematic.TextContent = CinematicText;
+            m_Cinematic.textContent = CinematicText;
         }
-        m_Cinematic.CameraTargetTransform = CameraMoveTarget;
+        m_Cinematic.cameraTargetTransform = CameraMoveTarget;
     }
 }

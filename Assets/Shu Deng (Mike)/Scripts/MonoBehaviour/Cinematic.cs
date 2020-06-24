@@ -6,20 +6,20 @@ using UnityEngine.UI;
 
 public class Cinematic : MonoBehaviour
 {
-    public float FadeInSpeed = 0.5f, FadeOutSpeed = 0.5f;
-    public float CameraRotateSpeed = 2.5f, CameraTranslateSpeed = 2.5f;   
+    public float fadeInSpeed = 0.5f, fadeOutSpeed = 0.5f;
+    public float cameraRotateSpeed = 2.5f, cameraTranslateSpeed = 2.5f;   
     [TextArea]
-    public string TextContent = "";
-    public Transform CameraTargetTransform;
-    
+    public string textContent = "";
+    public Transform cameraTargetTransform;
+
     private GameObject[] m_OtherCameras;
-    private GameObject m_MainCameraObject;
+    private GameObject m_MainCameraObject, m_OverlayUI;
     private Image[] m_LetterBoxes;
     private Camera m_Camera;
     private TextUITypewrite m_Text;
     private PlayerInputAction m_PlayerInput;
-    private Transform OriginalCameraTransform;
-    private const float epsilon = 0.01f;  // A small value approximating to zero
+    private Transform m_OriginalCameraTransform;
+    private const float m_Epsilon = 0.01f;  // A small value approximating to zero
     private enum State
     {
         IDLING,
@@ -34,7 +34,7 @@ public class Cinematic : MonoBehaviour
         
     void Start()
     {
-        if (TextContent != "")
+        if (textContent != "")
         {
             m_State = State.LETTERBOX_FADEIN;
             m_LetterBoxes = GetComponentsInChildren<Image>();
@@ -45,7 +45,7 @@ public class Cinematic : MonoBehaviour
         }
         
         m_Camera = GetComponentInChildren<Camera>();
-        OriginalCameraTransform = Camera.main.transform;
+        m_OriginalCameraTransform = Camera.main.transform;
         m_Camera.transform.position = Camera.main.transform.position;
         m_Camera.transform.rotation = Camera.main.transform.rotation;
         m_OtherCameras = GameObject.FindGameObjectsWithTag("Camera");
@@ -58,6 +58,9 @@ public class Cinematic : MonoBehaviour
         }
         m_MainCameraObject = Camera.main.gameObject;
         m_MainCameraObject.SetActive(false);
+
+        m_OverlayUI = GameObject.FindGameObjectWithTag("HUD");
+        m_OverlayUI.SetActive(false);
 
         m_Text = GetComponentInChildren<TextUITypewrite>();
         m_PlayerInput = InputManagerSingleton.Instance;
@@ -73,7 +76,7 @@ public class Cinematic : MonoBehaviour
             case State.IDLING:
                 break;
             case State.LETTERBOX_FADEIN:
-                float a1 = m_LetterBoxes[0].color.a + Time.deltaTime * FadeInSpeed;
+                float a1 = m_LetterBoxes[0].color.a + Time.deltaTime * fadeInSpeed;
                 if (a1 > 1)
                 {
                     a1 = 1f;
@@ -84,15 +87,15 @@ public class Cinematic : MonoBehaviour
                 break;
             case State.CAMERA_ADJUST:
                 m_Camera.transform.position = Vector3.Lerp(
-                    m_Camera.transform.position, CameraTargetTransform.position, Time.deltaTime * CameraTranslateSpeed);
+                    m_Camera.transform.position, cameraTargetTransform.position, Time.deltaTime * cameraTranslateSpeed);
                 m_Camera.transform.rotation = Quaternion.Slerp(
-                    m_Camera.transform.rotation, CameraTargetTransform.rotation, Time.deltaTime * CameraRotateSpeed);
-                if ((m_Camera.transform.position - CameraTargetTransform.position).sqrMagnitude < epsilon)
+                    m_Camera.transform.rotation, cameraTargetTransform.rotation, Time.deltaTime * cameraRotateSpeed);
+                if ((m_Camera.transform.position - cameraTargetTransform.position).sqrMagnitude < m_Epsilon)
                 {
                     m_State = State.TEXT_RENDERING;
-                    if (TextContent != "")
+                    if (textContent != "")
                     {                        
-                        m_Text.Input(TextContent);
+                        m_Text.Input(textContent);
                         m_Text.Output();
                     }
                     else
@@ -111,7 +114,7 @@ public class Cinematic : MonoBehaviour
                 }
                 break;
             case State.LETTERBOX_FADEOUT:
-                float a2 = m_LetterBoxes[0].color.a - Time.deltaTime * FadeOutSpeed;
+                float a2 = m_LetterBoxes[0].color.a - Time.deltaTime * fadeOutSpeed;
                 if (a2 < 0)
                 {
                     a2 = 0f;
@@ -124,10 +127,10 @@ public class Cinematic : MonoBehaviour
                 break;
             case State.CAMERA_RESTORE:
                 m_Camera.transform.position = Vector3.Lerp(
-                    m_Camera.transform.position, OriginalCameraTransform.position, Time.deltaTime * CameraTranslateSpeed);
+                    m_Camera.transform.position, m_OriginalCameraTransform.position, Time.deltaTime * cameraTranslateSpeed);
                 m_Camera.transform.rotation = Quaternion.Slerp(
-                    m_Camera.transform.rotation, OriginalCameraTransform.rotation, Time.deltaTime * CameraRotateSpeed);
-                if ((m_Camera.transform.position - OriginalCameraTransform.position).sqrMagnitude < epsilon)
+                    m_Camera.transform.rotation, m_OriginalCameraTransform.rotation, Time.deltaTime * cameraRotateSpeed);
+                if ((m_Camera.transform.position - m_OriginalCameraTransform.position).sqrMagnitude < m_Epsilon)
                 {
                     m_State = State.EXIT;
                 }
@@ -138,6 +141,7 @@ public class Cinematic : MonoBehaviour
                     camera.SetActive(true);
                 }
                 m_MainCameraObject.SetActive(true);
+                m_OverlayUI.SetActive(true);
                 m_PlayerInput.PlayerControls.Enable();
                 m_PlayerInput.TimeControls.Enable();
                 Destroy(this.gameObject);

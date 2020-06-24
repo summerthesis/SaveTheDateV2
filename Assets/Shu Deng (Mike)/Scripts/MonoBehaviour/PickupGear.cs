@@ -7,7 +7,7 @@ public class PickupGear : MonoBehaviour
 {
     void OnPickedUp()
     {
-        FindObjectOfType<GearUIController>().GearCollected();        
+        FindObjectOfType<GearIconHUDController>().GearCollected();        
     }
 
     // Start is called before the first frame update
