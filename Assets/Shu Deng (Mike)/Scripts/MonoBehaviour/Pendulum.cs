@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Pendulum : MonoBehaviour
 {
-    public float RotationAngle;
-    public float StopFactor = 0, SlowFactor = 0.5f, FastFactor = 2f, NormalSpeed = 3f;    
-    public int IdleDuration;
+    public float rotationAngle;
+    public float stopFactor = 0, slowFactor = 0.5f, fastFactor = 2f, normalSpeed = 3f;    
+    public int idleDuration;
     private float m_Angle, m_Time, m_TimeFactor;
     private int m_IdleCount;
 
@@ -56,11 +56,11 @@ public class Pendulum : MonoBehaviour
 
     void Move()
     {
-        m_Angle = Mathf.Sin(m_Time * NormalSpeed) * RotationAngle * 0.5f;
-        if (RotationAngle * 0.5f - Mathf.Abs(m_Angle) < 1.0f)
+        m_Angle = Mathf.Sin(m_Time * normalSpeed) * rotationAngle * 0.5f;
+        if (rotationAngle * 0.5f - Mathf.Abs(m_Angle) < 1.0f)
         {
             ObjectState = ObjectStates.Idling;
-            m_IdleCount = IdleDuration;
+            m_IdleCount = idleDuration;
         }
         transform.localEulerAngles = new Vector3(0, 0, m_Angle);
         m_Time += Time.deltaTime * m_TimeFactor;
@@ -68,17 +68,17 @@ public class Pendulum : MonoBehaviour
 
     void TimeSlow()
     {
-        m_TimeFactor = SlowFactor;
+        m_TimeFactor = slowFactor;
     }
 
     void TimeStop()
     {
-        m_TimeFactor = StopFactor;
+        m_TimeFactor = stopFactor;
     }
 
     void TimeFastForward()
     {
-        m_TimeFactor = FastFactor;
+        m_TimeFactor = fastFactor;
     }
 
     void RestoreToNormal()
