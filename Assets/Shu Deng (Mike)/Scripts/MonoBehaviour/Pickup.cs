@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider))]
 public class Pickup: MonoBehaviour
@@ -23,10 +24,13 @@ public class Pickup: MonoBehaviour
         TopLeft,
         TopRight,
         BottomLeft,
-        BottomRight
+        BottomRight,
+        Custom
     }
     [Tooltip("Target in screen to fly to")]
     public Target flyingTargetInScreen = Target.TopLeft;
+    [Tooltip("If choose Custom, put UI RectTransform here")]
+    public RectTransform customTarget;
     public float targetOffsetToScreen = 5f;
     public float flyingTime = 0.5f;
     public AnimationCurve flyingPattern;
@@ -61,6 +65,11 @@ public class Pickup: MonoBehaviour
                 break;
             case Target.BottomRight:
                 m_FlyingTarget = new Vector3(Camera.main.pixelWidth, 0, targetOffsetToScreen);
+                break;
+            case Target.Custom:
+                float scale = customTarget.gameObject.GetComponentInParent<CanvasScaler>().scaleFactor;
+                m_FlyingTarget = customTarget.position / scale;
+                m_FlyingTarget.z = targetOffsetToScreen;
                 break;
         }
     }
