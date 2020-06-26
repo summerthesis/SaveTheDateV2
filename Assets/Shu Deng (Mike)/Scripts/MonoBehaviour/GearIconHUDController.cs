@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GearIconHUDController : MonoBehaviour
 {
+    public Transform gearCountUI;
+
     private Transform[] m_GearIcons = new Transform[5];
     private LifeCountHUDController m_LifeCount;
     private int m_NumOfGears = 0;
@@ -19,10 +21,10 @@ public class GearIconHUDController : MonoBehaviour
     {
         for (int i = 0; i < 5; ++i)
         {
-            m_GearIcons[i] = transform.Find("Gear Icon_" + i);
+            m_GearIcons[i] = gearCountUI.GetChild(i);
         }
 
-        m_LifeCount = FindObjectOfType<LifeCountHUDController>();
+        m_LifeCount = GetComponent<LifeCountHUDController>();
     }
 
     // Update is called once per frame
