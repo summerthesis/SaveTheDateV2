@@ -48,7 +48,15 @@ MonoBehaviour:
   B: {fileID: 5502129289124388156}
   StopSpeed: 0
   NormalSpeed: 4
+  mSpeed: 0
   IdleDuration: 120
+  mPlayer: {fileID: 0}
+  Parenting: 0
+  mPrevPos: {x: 0, y: 0, z: 0}
+  mCurrentPos: {x: 0, y: 0, z: 0}
+  xx: 0
+  yy: 0
+  zz: 0
 --- !u!1 &5502129289124388156
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +104,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5502129289124388156}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
