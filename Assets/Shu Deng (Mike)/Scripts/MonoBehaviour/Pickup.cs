@@ -6,15 +6,18 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Collider))]
 public class Pickup: MonoBehaviour
 {
-    [Header("Effects before picked up")]
+    public enum CallbackBehaviour
+    {
+        OnPicked,
+        OnDestroyed
+    }
+    public CallbackBehaviour effectiveTime = CallbackBehaviour.OnDestroyed;
     [Tooltip("Frequency at which the item will move up and down")]
     public float verticalBobFrequency = 1f;
     [Tooltip("Distance the item will move up and down")]
     public float bobbingAmount = 0.5f;
     [Tooltip("Rotation angle per second")]
     public float rotatingSpeed = 360f;
-
-    [Header("Effects after picked up")]
     [Tooltip("Sound played on pickup")]
     public AudioClip pickupSFX;
     [Tooltip("VFX spawned on pickup")]
@@ -25,17 +28,25 @@ public class Pickup: MonoBehaviour
         TopRight,
         BottomLeft,
         BottomRight,
-        Custom
+        CustomUIPosition,
     }
     [Tooltip("Target in screen to fly to")]
     public Target flyingTargetInScreen = Target.TopLeft;
-    [Tooltip("If choose Custom, put UI RectTransform here")]
-    public RectTransform customTarget;
+    public enum Anchor
+    {
+        TopLeft,
+        TopRight,
+        BottomLeft,
+        BottomRight
+    }
+    public Anchor uIPositionAnchor = Anchor.BottomLeft;
+    public Vector2 customUITarget = new Vector2(0, 0);
     public float targetOffsetToScreen = 5f;
     public float flyingTime = 0.5f;
     public AnimationCurve flyingPattern;
 
     Collider m_Collider;
+    Canvas m_HUDCanvas;
     Vector3 m_StartPosition;
     Vector3 m_FlyingTarget;
     enum State
@@ -50,6 +61,7 @@ public class Pickup: MonoBehaviour
     {
         m_Collider = GetComponent<Collider>();
         m_Collider.isTrigger = true;
+        m_HUDCanvas = GameObject.FindGameObjectWithTag("HUD").GetComponentInChildren<Canvas>();
         m_StartPosition = transform.position;
         pickupState = State.BEFOREPICKED;
         switch (flyingTargetInScreen)
@@ -66,9 +78,28 @@ public class Pickup: MonoBehaviour
             case Target.BottomRight:
                 m_FlyingTarget = new Vector3(Camera.main.pixelWidth, 0, targetOffsetToScreen);
                 break;
-            case Target.Custom:
-                float scale = customTarget.gameObject.GetComponentInParent<CanvasScaler>().scaleFactor;
-                m_FlyingTarget = customTarget.position / scale;
+            case Target.CustomUIPosition:
+                float width = m_HUDCanvas.GetComponent<RectTransform>().rect.width;
+                float height = m_HUDCanvas.GetComponent<RectTransform>().rect.height;
+                switch (uIPositionAnchor)
+                {
+                    case Anchor.BottomLeft:
+                        m_FlyingTarget.x = customUITarget.x / width * Camera.main.pixelWidth;
+                        m_FlyingTarget.y = customUITarget.y / height * Camera.main.pixelHeight;                        
+                        break;
+                    case Anchor.BottomRight:
+                        m_FlyingTarget.x = (1 + customUITarget.x / width) * Camera.main.pixelWidth;
+                        m_FlyingTarget.y = customUITarget.y / height * Camera.main.pixelHeight;
+                        break;
+                    case Anchor.TopLeft:
+                        m_FlyingTarget.x = customUITarget.x / width * Camera.main.pixelWidth;
+                        m_FlyingTarget.y = (1 + customUITarget.y / height) * Camera.main.pixelHeight;
+                        break;
+                    case Anchor.TopRight:
+                        m_FlyingTarget.x = (1 + customUITarget.x / width) * Camera.main.pixelWidth;
+                        m_FlyingTarget.y = (1 + customUITarget.y / height) * Camera.main.pixelHeight;
+                        break;
+                }
                 m_FlyingTarget.z = targetOffsetToScreen;
                 break;
         }
@@ -93,7 +124,10 @@ public class Pickup: MonoBehaviour
             pickupState = State.AFTERPICKED;
             StartCoroutine(PlayFlyingEffect());
             m_Collider.enabled = false;
-            SendMessage("OnPickedUp");
+            if (effectiveTime == CallbackBehaviour.OnPicked)
+            {
+                SendMessage("OnPickedUp");
+            }            
             PlayPickupFeedback();
         }
     }
@@ -109,11 +143,16 @@ public class Pickup: MonoBehaviour
         while (z > 0)
         {
             float y = flyingPattern.Evaluate(z / distance);
-            transform.position = matrix.MultiplyPoint3x4(new Vector3(0, y, z));
+            Vector3 curTarget = Camera.main.ScreenToWorldPoint(m_FlyingTarget);
+            transform.position = matrix.MultiplyPoint3x4(new Vector3(0, y, z)) + curTarget - target;
             z -= flyingSpeed * Time.deltaTime;
             yield return null;
         }
         
+        if (effectiveTime == CallbackBehaviour.OnDestroyed)
+        {
+            SendMessage("OnPickedUp");
+        }
         Destroy(gameObject);
     }
 

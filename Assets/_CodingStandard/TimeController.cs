@@ -14,8 +14,11 @@ public class TimeController : MonoBehaviour
     private int Count;  
     private GameObject[] TimeTaggedObjects;
     private GameObject Player;
-    private GameObject EnergyBar;
+    //private GameObject EnergyBar;
     private bool Stopping;
+
+    // Added by Shu Deng (Mike)
+    public EnergyBarController EnergyBarController;
     
     private enum TimeStates
     {
@@ -28,7 +31,7 @@ public class TimeController : MonoBehaviour
     {
         SetupControls();
         Player = GameObject.FindGameObjectWithTag("Player");
-        EnergyBar = GameObject.FindGameObjectWithTag("EnergyBar");
+        //EnergyBar = GameObject.FindGameObjectWithTag("EnergyBar");
     }
 
     void Update()
@@ -150,7 +153,10 @@ public class TimeController : MonoBehaviour
     void SetEnergyBarScale()
     {
         float EnergyBarScale = Energy / MaxEnergy;
-        EnergyBar.transform.localScale = new Vector3(EnergyBarScale, 1, 1);
+        //EnergyBar.transform.localScale = new Vector3(EnergyBarScale, 1, 1);
+
+        // Added by Shu Deng (Mike)
+        EnergyBarController.UpdateEnergyBar(EnergyBarScale);
     }
     private void OnEnable() { controls.Enable(); }
     private void OnDisable() { controls.Disable(); }

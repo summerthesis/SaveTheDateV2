@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6901200087934372802}
   - component: {fileID: 6901200087934372801}
   - component: {fileID: 3872519226570611716}
+  - component: {fileID: 209761675026800268}
   m_Layer: 0
-  m_Name: CalendarPiece
+  m_Name: CalendarPiece_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,17 +105,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7009dd75456d24ea23fab61e15c207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectiveTime: 1
   verticalBobFrequency: 1
   bobbingAmount: 0.5
-  rotatingSpeed: 360
+  rotatingSpeed: 180
   pickupSFX: {fileID: 0}
   pickupVFXPrefab: {fileID: 0}
-  flyingTargetInScreen: 0
+  flyingTargetInScreen: 4
+  uIPositionAnchor: 2
+  customUITarget: {x: 106.5, y: 90.5}
   targetOffsetToScreen: 5
-  flyingSpeed: 0.3
+  flyingTime: 0.5
   flyingPattern:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0022573364
+      value: 0.0029629627
+      inSlope: 0
+      outSlope: 7.517186
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.058082733
+    - serializedVersion: 3
+      time: 0.5
+      value: 2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -8.077022
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.049832344
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &209761675026800268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901200087934372800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0611effc752c24646800af7baf86c840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieceNumber: 1

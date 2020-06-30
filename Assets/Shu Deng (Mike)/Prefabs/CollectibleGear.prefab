@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 9043965908844920405}
   - component: {fileID: 3368154280027112108}
   - component: {fileID: 5017904310839946558}
-  - component: {fileID: 5017904310839946556}
   - component: {fileID: 5017904310839946559}
+  - component: {fileID: 5017904310839946556}
   m_Layer: 0
   m_Name: CollectibleGear
   m_TagString: Untagged
@@ -93,18 +93,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5017904310839946556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3927913430612735600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50ce8fd4814b5c4f9a32150054e137c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5017904310839946559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,13 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7009dd75456d24ea23fab61e15c207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectiveTime: 1
   verticalBobFrequency: 1
   bobbingAmount: 0.5
   rotatingSpeed: 180
   pickupSFX: {fileID: 0}
   pickupVFXPrefab: {fileID: 0}
   flyingTargetInScreen: 4
-  customTarget: {fileID: 0}
+  uIPositionAnchor: 2
+  customUITarget: {x: 45, y: 190}
   targetOffsetToScreen: 5
   flyingTime: 0.5
   flyingPattern:
@@ -143,7 +133,7 @@ MonoBehaviour:
       value: 2
       inSlope: 0
       outSlope: 0
-      tangentMode: 136
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
@@ -159,3 +149,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5017904310839946556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3927913430612735600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50ce8fd4814b5c4f9a32150054e137c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
