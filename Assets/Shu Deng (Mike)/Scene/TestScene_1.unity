@@ -462,11 +462,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 2639328179078919380, guid: 1aea3d01888762a4aadb4815993090ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -522,45 +517,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8314765179419985370, guid: 1aea3d01888762a4aadb4815993090ef,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1633800183441449415, guid: 1aea3d01888762a4aadb4815993090ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1633800183441449412, guid: 1aea3d01888762a4aadb4815993090ef,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8314765179419985190, guid: 1aea3d01888762a4aadb4815993090ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3009779140736207936, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
-      propertyPath: EnergyBarController
+      propertyPath: energyBarController
       value: 
       objectReference: {fileID: 4196192071130337351}
     - target: {fileID: 3009779140736207936, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
-      propertyPath: HighlightFastForwad
-      value: 
+      propertyPath: energyReplenishRate
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3009779140736207936, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
-      propertyPath: HighlightFastForwad.g
-      value: 1.064641
-      objectReference: {fileID: 0}
-    - target: {fileID: 3009779140736207936, guid: 1aea3d01888762a4aadb4815993090ef,
-        type: 3}
-      propertyPath: HighlightFastForwad.b
-      value: 0.3576114
+      propertyPath: stopEnergyCost
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aea3d01888762a4aadb4815993090ef, type: 3}
