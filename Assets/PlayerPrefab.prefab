@@ -199,7 +199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1633800183441449413
 Transform:
   m_ObjectHideFlags: 0
@@ -370,9 +370,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e49f077cb4b0094ba03302fa3fcf93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnergyCost: 1
-  StopCost: 500
-  EnergyBarController: {fileID: 0}
+  energyBarController: {fileID: 0}
+  slowEnergyCostRate: 9
+  fastforwardEnergyCostRate: 9
+  stopEnergyCost: 100
+  stopDuration: 5
+  energyReplenishRate: 50
+  maxEnergy: 500
+  maxCastRange: 15
+  highlightFastforward: {r: 0, g: 1.064641, b: 0.3576114, a: 0}
+  highlightNeutral: {r: 1.4146746, g: 1.4213793, b: 1.4169564, a: 0}
+  highlightPause: {r: 2.64151, g: 0, b: 0.1279345, a: 0}
+  highlightSlow: {r: 2.595062, g: 1.4123695, b: 0, a: 0}
 --- !u!1 &2639328179078919380
 GameObject:
   m_ObjectHideFlags: 0
