@@ -164,10 +164,10 @@ public class KH_PlayerController : MonoBehaviour
         }
 
         // FULL STOP WHEN JOYSTICK IS RELEASED
-        if (horizontalMovement == 0 && verticalMovement == 0)
-        {
-            rb.velocity = new Vector3(0, rb.velocity.y, 0);
-        }
+        //if (horizontalMovement == 0 && verticalMovement == 0)
+        //{
+        //    rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        //}
 
         // DISABLE RIGIDBODY FUMBLING
         rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -207,8 +207,7 @@ public class KH_PlayerController : MonoBehaviour
         FlyingDirection = Dir;
         Vector3 impulse = Dir;
         GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
-        isFlying = true;
-        
+        isFlying = true; 
     }
     private bool IsGrounded()
     {

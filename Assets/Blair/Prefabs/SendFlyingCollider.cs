@@ -18,10 +18,12 @@ public class SendFlyingCollider : MonoBehaviour
     {
         
     }
-    void OnCollision(Collision col)
+    void OnCollisionEnter(Collision col)
     {
         if(col.gameObject.tag == "Player")
         {
+            if(mParent.GetComponent<GiantGearScript>().mSpeed ==
+               mParent.GetComponent<GiantGearScript>().FastSpeed)
             mPlayer.SendMessage("SendFlying", mAngle);
         }
     }

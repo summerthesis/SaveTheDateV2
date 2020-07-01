@@ -5,14 +5,14 @@ using UnityEngine;
 public class GiantGearScript : MonoBehaviour
 {
     public float mSpeed, FastSpeed, SlowedSpeed, NormalSpeed;
-    public Collider ColliderA, ColliderB, ColliderC, ColliderD;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         mSpeed = NormalSpeed;
-        SlowedSpeed = NormalSpeed / 2;
-        FastSpeed = NormalSpeed * 2;
+        SlowedSpeed = NormalSpeed / 3;
+        FastSpeed = NormalSpeed * 5;
       
     }
 
