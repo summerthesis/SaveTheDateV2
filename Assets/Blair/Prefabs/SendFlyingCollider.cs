@@ -5,10 +5,16 @@ using UnityEngine;
 public class SendFlyingCollider : MonoBehaviour
 {
     private GameObject mParent, mPlayer;
-    public Vector3 mAngle;
+    public Vector3 mAngle, mStartPos, mStartRot;
+    private float xRot, yRot, zRot;
     // Start is called before the first frame update
     void Start()
     {
+        mStartPos = this.transform.position;
+        xRot = this.transform.eulerAngles.x;
+        yRot = this.transform.eulerAngles.y;
+        zRot = this.transform.eulerAngles.z;
+        mStartRot = new Vector3(xRot, yRot, zRot);
         mParent = this.transform.parent.gameObject;
         mPlayer = GameObject.FindGameObjectWithTag("Player");
     }
@@ -16,7 +22,8 @@ public class SendFlyingCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        this.transform.position = mStartPos;
+        this.transform.eulerAngles = mStartRot;
     }
     void OnCollisionEnter(Collision col)
     {
