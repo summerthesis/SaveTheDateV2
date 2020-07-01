@@ -22,26 +22,20 @@ public class TimeVfxController : MonoBehaviour
     {
         this.transform.position = mPlayer.transform.position;
     }
-    void TimeSlow()
+    void Slow()
     {
         oSlow.SetActive(false);
         oSlow.SetActive(true);
     }
-    void TimeStop()
+    void Stop()
     {
         oStop.SetActive(false);
         oStop.SetActive(true);
     }
-    void TimeFastForward()
+    void Fast()
     {
         oFast.SetActive(false);
         oFast.SetActive(true);
     }
-    void RestoreToNormal()
-    {
-       
-    }
-    void JumpForward()
-    {
-    }
+
 }

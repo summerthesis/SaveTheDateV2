@@ -103,6 +103,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &-5942043945869811708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Slow_Time/SlowTimeEnd
+  m_EditorClassIdentifier: 
+  Name: SlowTimeEnd
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-5728171297784416934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,12 +257,13 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 6258444613814617518}
+  - {fileID: 8076054286488596217}
+  - {fileID: 7986118219122405003}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 5353830904676214795}
+  - {fileID: 990858263048046756}
   MinDistance: 1
   MaxDistance: 20
   Length: 8150
@@ -335,7 +353,8 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 6258444613814617518}
+  - {fileID: 8076054286488596217}
+  - {fileID: 7986118219122405003}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -392,7 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 8636068476132930779}
-  - {fileID: 6258444613814617518}
+  - {fileID: 7986118219122405003}
   EditorEvents:
   - {fileID: 7497132717696206845}
   - {fileID: 2932221285481454929}
@@ -403,10 +422,10 @@ MonoBehaviour:
   - {fileID: 762792398599557943}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 6258444613814617518}
+  - {fileID: 7986118219122405003}
   StringsBanks:
   - {fileID: 8636068476132930779}
-  stringsBankWriteTime: 637273967517995866
+  stringsBankWriteTime: 637290319699639326
   cacheVersion: 3
 --- !u!114 &2784193328307980
 MonoBehaviour:
@@ -462,6 +481,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &611400750781436895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Slow_Time/SlowTimeEnd
+  m_EditorClassIdentifier: 
+  Name: SlowTimeEnd
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &762792398599557943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +515,8 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 6258444613814617518}
+  - {fileID: 8076054286488596217}
+  - {fileID: 7986118219122405003}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -504,6 +541,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &990858263048046756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Rewind/Respawning
+  m_EditorClassIdentifier: 
+  Name: Respawning
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &1904753998273422488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,7 +646,8 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 6258444613814617518}
+  - {fileID: 8076054286488596217}
+  - {fileID: 7986118219122405003}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -600,6 +655,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2195
+--- !u!114 &3095812276331294170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Rewind/Respawning
+  m_EditorClassIdentifier: 
+  Name: Respawning
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &3334208528551354040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,7 +828,8 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 6258444613814617518}
+  - {fileID: 8076054286488596217}
+  - {fileID: 7986118219122405003}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -798,12 +871,13 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 6258444613814617518}
+  - {fileID: 8076054286488596217}
+  - {fileID: 7986118219122405003}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -7321021080146683964}
+  - {fileID: -5942043945869811708}
   MinDistance: 0
   MaxDistance: 0
   Length: 9299
@@ -841,7 +915,8 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 6258444613814617518}
+  - {fileID: 8076054286488596217}
+  - {fileID: 7986118219122405003}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -864,6 +939,42 @@ MonoBehaviour:
   Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
   SubDir: 
   lastModified: 637272936416686509
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &7986118219122405003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637290319699629620
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &8076054286488596217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637290319699629620
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -915,7 +1026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637273967517995866
+  lastModified: 637290319699639326
   LoadResult: 0
   FileSizes:
   - Name: Desktop
