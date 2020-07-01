@@ -141,9 +141,9 @@ public class TimeController : MonoBehaviour
     void SetupControls()
     {
         controls = new PlayerInputAction();
-        controls.TimeControls.TimeFastForward.performed += ctx => FastForward();
+        controls.TimeControls.TimeFastForward.started += ctx => FastForward();
         controls.TimeControls.TimeFastForward.canceled += ctx => EndFastForward();
-        controls.TimeControls.TimeSlow.performed += ctx => Slow();
+        controls.TimeControls.TimeSlow.started += ctx => Slow();
         controls.TimeControls.TimeSlow.canceled += ctx => EndSlow();
         
         controls.TimeControls.TimeJumpForward.canceled += ctx => JumpForward();
