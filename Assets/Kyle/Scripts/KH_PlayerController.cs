@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class KH_PlayerController : MonoBehaviour
 {
+    private bool isFlying; private Vector3 FlyingDirection;
     public float moveSpeed = 4.0f; //from https://youtu.be/XhliRnzJe5g (How to Make An Isometric Camera and Character Controller in Unity3D)
     public float jumpForce = 7.0f; //from https://youtu.be/vdOFUFMiPDU (How To Jump in Unity - Unity Jumping Tutorial | Make Your Characters Jump in Unity)
     public float fallMultiplier = 2.5f; //from https://youtu.be/7KiK0Aqtmzc (Better Jumping in Unity With Four Lines of Code)
@@ -84,6 +85,36 @@ public class KH_PlayerController : MonoBehaviour
         //rb.MovePosition(transform.position + movement);
         //rb.AddForce(movement, ForceMode.Acceleration);
         rb.velocity = new Vector3(groundMovement.x, rb.velocity.y, groundMovement.z);
+
+        if (isFlying)
+        {
+            rb.velocity = FlyingDirection;
+            if (FlyingDirection.x != 0)
+            {
+                if (FlyingDirection.x > 0) FlyingDirection.x -= 0.2f;
+                if (FlyingDirection.x < 0) FlyingDirection.x += 0.2f;
+            }
+            if (FlyingDirection.y != 0)
+            {
+                if (FlyingDirection.y > 0) FlyingDirection.y -= 0.2f;
+                if (FlyingDirection.y < 0) FlyingDirection.y += 0.2f;
+            }
+            if (FlyingDirection.z != 0)
+            {
+                if (FlyingDirection.z > 0) FlyingDirection.z -= 0.2f;
+                if (FlyingDirection.z < 0) FlyingDirection.z += 0.2f;
+            }
+            if (FlyingDirection.x < 0.3f && FlyingDirection.x > -0.3f)
+                FlyingDirection.x = 0;
+            if (FlyingDirection.y < 0.3f && FlyingDirection.y > -0.3f)
+                FlyingDirection.y = 0;
+            if (FlyingDirection.z < 0.3f && FlyingDirection.z > -0.3f)
+                FlyingDirection.z = 0;
+            if (FlyingDirection.x == 0 &&
+                FlyingDirection.y == 0 &&
+                FlyingDirection.z == 0)
+                isFlying = false;
+        }
 
         // JUMPING
         if (IsGrounded())
@@ -171,6 +202,14 @@ public class KH_PlayerController : MonoBehaviour
         Debug.DrawRay(playerCollider.transform.position, Vector3.down * 0.1f, Color.green);
     }
 
+    void SendFlying(Vector3 Dir)
+    {
+        FlyingDirection = Dir;
+        Vector3 impulse = Dir;
+        GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
+        isFlying = true;
+        
+    }
     private bool IsGrounded()
     {
         return Physics.Raycast(playerCollider.transform.position, Vector3.down, 0.1f, groundLayers);
