@@ -5,8 +5,8 @@ using UnityEngine;
 public class InputManagerSingleton : MonoBehaviour
 {
     public static PlayerInputAction Instance { get; private set; }
-   
-    void Awake()
+
+    public void Awake()
     {
         if (Instance == null)
         {
@@ -19,11 +19,5 @@ public class InputManagerSingleton : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

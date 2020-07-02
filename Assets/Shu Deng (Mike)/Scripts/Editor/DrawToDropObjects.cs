@@ -45,7 +45,8 @@ public class DrawToDropObjects : EditorWindow
         if (GUILayout.Button("Create Objects Group"))
         {
             // Create parent
-            Transform parent = new GameObject().transform;            
+            Transform parent = new GameObject().transform;
+            Undo.RegisterCreatedObjectUndo(parent.gameObject, "Created Objects Group");
             parent.name = "Group_" + m_ObjectToDrop.name + "_" + m_Index;
             parent.position = (m_StartTransform.position + m_EndTransform.position) * 0.5f;
 

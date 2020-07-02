@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pendulum : MonoBehaviour
 {
+    public Transform pendulumTransform;
     public float rotationAngle;
     public float stopFactor = 0, slowFactor = 0.5f, fastFactor = 2f, normalSpeed = 3f;    
     public int idleDuration;
@@ -62,7 +63,7 @@ public class Pendulum : MonoBehaviour
             ObjectState = ObjectStates.Idling;
             m_IdleCount = idleDuration;
         }
-        transform.localEulerAngles = new Vector3(0, 0, m_Angle);
+        pendulumTransform.localEulerAngles = new Vector3(0, 0, m_Angle);
         m_Time += Time.deltaTime * m_TimeFactor;
     }
 

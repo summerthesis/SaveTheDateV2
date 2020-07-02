@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LifeCountHUDController : MonoBehaviour
 {
+    public Transform lifeCountUI;
     public AnimationCurve lifeCountIconScaling;
     public int initialNumberOfLives = 3;
+
     private Transform[] m_LifeCountIcons = new Transform[5];
     private int m_NumOfLifes;
     private float m_Time = 0;
@@ -21,7 +23,7 @@ public class LifeCountHUDController : MonoBehaviour
     {
         for (int i = 0; i < 5; ++i)
         {
-            m_LifeCountIcons[i] = transform.Find("Life Counts").GetChild(i);
+            m_LifeCountIcons[i] = lifeCountUI.GetChild(i);
         }
         m_NumOfLifes = initialNumberOfLives;
         m_LifeCountIcons[m_NumOfLifes - 1].gameObject.SetActive(true);

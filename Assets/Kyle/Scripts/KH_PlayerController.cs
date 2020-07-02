@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class KH_PlayerController : MonoBehaviour
 {
+    private bool isFlying; private Vector3 FlyingDirection;
     public float moveSpeed = 4.0f; //from https://youtu.be/XhliRnzJe5g (How to Make An Isometric Camera and Character Controller in Unity3D)
     public float jumpForce = 7.0f; //from https://youtu.be/vdOFUFMiPDU (How To Jump in Unity - Unity Jumping Tutorial | Make Your Characters Jump in Unity)
     public float fallMultiplier = 2.5f; //from https://youtu.be/7KiK0Aqtmzc (Better Jumping in Unity With Four Lines of Code)
@@ -14,6 +15,7 @@ public class KH_PlayerController : MonoBehaviour
     public PlayerInputAction controls; //public for other scripts
     private Vector2 movementInput; //private
     private bool jumpInput; //private
+    private bool castInput; //private
     private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
@@ -28,6 +30,7 @@ public class KH_PlayerController : MonoBehaviour
     private string hspeed_anim_param = "HSpeed";
     private string vspeed_anim_param = "VSpeed";
     private string is_jump_input_anim_param = "IsJumpInput";
+    private string is_cast_input_anim_param = "IsCasting";
     private string is_grounded_anim_param = "IsGrounded";
     private string double_jump_anim_param = "IsDoubleJumping";
 
@@ -50,6 +53,8 @@ public class KH_PlayerController : MonoBehaviour
         controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
         controls.PlayerControls.Jump.started += ctx => jumpInput = true;
+        controls.TimeControls.TimeFastForward.performed += ctx => castInput = true;
+        controls.TimeControls.TimeSlow.performed += ctx => castInput = true;
     }
 
     // Update is called once per frame
@@ -85,6 +90,36 @@ public class KH_PlayerController : MonoBehaviour
         //rb.AddForce(movement, ForceMode.Acceleration);
         rb.velocity = new Vector3(groundMovement.x, rb.velocity.y, groundMovement.z);
 
+        if (isFlying)
+        {
+            rb.velocity = FlyingDirection;
+            if (FlyingDirection.x != 0)
+            {
+                if (FlyingDirection.x > 0) FlyingDirection.x -= 0.2f;
+                if (FlyingDirection.x < 0) FlyingDirection.x += 0.2f;
+            }
+            if (FlyingDirection.y != 0)
+            {
+                if (FlyingDirection.y > 0) FlyingDirection.y -= 0.2f;
+                if (FlyingDirection.y < 0) FlyingDirection.y += 0.2f;
+            }
+            if (FlyingDirection.z != 0)
+            {
+                if (FlyingDirection.z > 0) FlyingDirection.z -= 0.2f;
+                if (FlyingDirection.z < 0) FlyingDirection.z += 0.2f;
+            }
+            if (FlyingDirection.x < 0.3f && FlyingDirection.x > -0.3f)
+                FlyingDirection.x = 0;
+            if (FlyingDirection.y < 0.3f && FlyingDirection.y > -0.3f)
+                FlyingDirection.y = 0;
+            if (FlyingDirection.z < 0.3f && FlyingDirection.z > -0.3f)
+                FlyingDirection.z = 0;
+            if (FlyingDirection.x == 0 &&
+                FlyingDirection.y == 0 &&
+                FlyingDirection.z == 0)
+                isFlying = false;
+        }
+
         // JUMPING
         if (IsGrounded())
         {
@@ -118,7 +153,17 @@ public class KH_PlayerController : MonoBehaviour
             anim.SetBool(is_jump_input_anim_param, false);
         }
         jumpInput = false; //from https://forum.unity.com/threads/how-would-you-handle-a-getbuttondown-situaiton-with-the-new-input-system.627184/#post-5015597
-        
+
+        // TIME CASTING
+        if (castInput)
+        {
+            anim.SetBool(is_cast_input_anim_param, true);
+        }
+        else
+        {
+            anim.SetBool(is_cast_input_anim_param, false);
+        }
+        castInput = false;
 
         // JUMP MODIFIERS FOR BETTER FEEL
         if (rb.velocity.y < 0)
@@ -133,10 +178,10 @@ public class KH_PlayerController : MonoBehaviour
         }
 
         // FULL STOP WHEN JOYSTICK IS RELEASED
-        if (horizontalMovement == 0 && verticalMovement == 0)
-        {
-            rb.velocity = new Vector3(0, rb.velocity.y, 0);
-        }
+        //if (horizontalMovement == 0 && verticalMovement == 0)
+        //{
+        //    rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        //}
 
         // DISABLE RIGIDBODY FUMBLING
         rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -171,6 +216,13 @@ public class KH_PlayerController : MonoBehaviour
         Debug.DrawRay(playerCollider.transform.position, Vector3.down * 0.1f, Color.green);
     }
 
+    void SendFlying(Vector3 Dir)
+    {
+        FlyingDirection = Dir;
+        Vector3 impulse = Dir;
+        GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
+        isFlying = true; 
+    }
     private bool IsGrounded()
     {
         return Physics.Raycast(playerCollider.transform.position, Vector3.down, 0.1f, groundLayers);

@@ -22,6 +22,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2628077708731984378}
+  - component: {fileID: 8595075134491876798}
   m_Layer: 0
   m_Name: Pendulum
   m_TagString: TimeInteractable
@@ -44,24 +45,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6468859502260595977
+--- !u!114 &8595075134491876798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6294101357516086064}
+  m_GameObject: {fileID: 2628077708731984381}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3b1004f3d156b1489bff7ae6dcfff14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationAngle: 90
-  StopFactor: 0
-  SlowFactor: 0.5
-  FastFactor: 2
-  NormalSpeed: 3
-  IdleDuration: 0
+  pendulumTransform: {fileID: 6990283774942128419}
+  rotationAngle: 90
+  stopFactor: 0
+  slowFactor: 0.5
+  fastFactor: 2
+  normalSpeed: 3
+  idleDuration: 0
 --- !u!65 &4071804728591381174
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -176,20 +178,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 52a964319a3400244be75f52af61c258, type: 2}
+      objectReference: {fileID: 2100000, guid: 96c5d36d3a84c46489f7399e00fee39f, type: 2}
     - target: {fileID: -8064706628530862883, guid: b629551443b6f194a9e9224a11720e4d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 52a964319a3400244be75f52af61c258, type: 2}
+      objectReference: {fileID: 2100000, guid: 96c5d36d3a84c46489f7399e00fee39f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b629551443b6f194a9e9224a11720e4d, type: 3}
---- !u!1 &6294101357516086064 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: b629551443b6f194a9e9224a11720e4d,
-    type: 3}
-  m_PrefabInstance: {fileID: 2628077707220714041}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6990283774942128419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: b629551443b6f194a9e9224a11720e4d,
