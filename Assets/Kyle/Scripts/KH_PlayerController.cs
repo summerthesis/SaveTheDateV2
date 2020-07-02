@@ -15,6 +15,7 @@ public class KH_PlayerController : MonoBehaviour
     public PlayerInputAction controls; //public for other scripts
     private Vector2 movementInput; //private
     private bool jumpInput; //private
+    private bool castInput; //private
     private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
@@ -29,6 +30,7 @@ public class KH_PlayerController : MonoBehaviour
     private string hspeed_anim_param = "HSpeed";
     private string vspeed_anim_param = "VSpeed";
     private string is_jump_input_anim_param = "IsJumpInput";
+    private string is_cast_input_anim_param = "IsCasting";
     private string is_grounded_anim_param = "IsGrounded";
     private string double_jump_anim_param = "IsDoubleJumping";
 
@@ -51,6 +53,8 @@ public class KH_PlayerController : MonoBehaviour
         controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
         controls.PlayerControls.Jump.started += ctx => jumpInput = true;
+        controls.TimeControls.TimeFastForward.performed += ctx => castInput = true;
+        controls.TimeControls.TimeSlow.performed += ctx => castInput = true;
     }
 
     // Update is called once per frame
@@ -149,7 +153,17 @@ public class KH_PlayerController : MonoBehaviour
             anim.SetBool(is_jump_input_anim_param, false);
         }
         jumpInput = false; //from https://forum.unity.com/threads/how-would-you-handle-a-getbuttondown-situaiton-with-the-new-input-system.627184/#post-5015597
-        
+
+        // TIME CASTING
+        if (castInput)
+        {
+            anim.SetBool(is_cast_input_anim_param, true);
+        }
+        else
+        {
+            anim.SetBool(is_cast_input_anim_param, false);
+        }
+        castInput = false;
 
         // JUMP MODIFIERS FOR BETTER FEEL
         if (rb.velocity.y < 0)
@@ -164,10 +178,10 @@ public class KH_PlayerController : MonoBehaviour
         }
 
         // FULL STOP WHEN JOYSTICK IS RELEASED
-        if (horizontalMovement == 0 && verticalMovement == 0)
-        {
-            rb.velocity = new Vector3(0, rb.velocity.y, 0);
-        }
+        //if (horizontalMovement == 0 && verticalMovement == 0)
+        //{
+        //    rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        //}
 
         // DISABLE RIGIDBODY FUMBLING
         rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -207,8 +221,7 @@ public class KH_PlayerController : MonoBehaviour
         FlyingDirection = Dir;
         Vector3 impulse = Dir;
         GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
-        isFlying = true;
-        
+        isFlying = true; 
     }
     private bool IsGrounded()
     {
