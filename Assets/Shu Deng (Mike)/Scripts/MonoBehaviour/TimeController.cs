@@ -25,6 +25,7 @@ public class TimeController : MonoBehaviour
     private float m_Energy = 0, m_StopTimer = 0;
     private GameObject[] m_AllTimeTaggedObjects, 
         m_TimeTaggedObjects;
+    private GameObject oTimeVfx;
     private PlayerInputAction m_Controls;
     private EnergyBarController m_EnergyBarController;
     private enum TimeStates
@@ -44,6 +45,7 @@ public class TimeController : MonoBehaviour
         m_ShaderIDColor = Shader.PropertyToID("_FresnelColour");
         m_ShaderIDIsTwinkling = Shader.PropertyToID("_IsTwinkling");
         m_ShaderIDIsHighlighted = Shader.PropertyToID("_IsHighlighted");
+        oTimeVfx = GameObject.Find("TimeVfx");
     }
 
     void Update()
@@ -167,13 +169,27 @@ public class TimeController : MonoBehaviour
     {
         m_Controls = InputManagerSingleton.Instance;
         m_Controls.TimeControls.TimeFastForward.performed += ctx => FastForward();
+        m_Controls.TimeControls.TimeFastForward.started += ctx => SendVfxFast();
         m_Controls.TimeControls.TimeFastForward.canceled += ctx => EndFastForward();
         m_Controls.TimeControls.TimeSlow.performed += ctx => Slow();
+        m_Controls.TimeControls.TimeSlow.started += ctx => SendVfxSlow();
         m_Controls.TimeControls.TimeSlow.canceled += ctx => EndSlow();        
         m_Controls.TimeControls.TimeJumpForward.canceled += ctx => JumpForward();        
         m_Controls.TimeControls.TimeStop.canceled += ctx => Stop();
+        m_Controls.TimeControls.TimeStop.canceled += ctx => SendVfxStop();
     }
-
+    private void SendVfxSlow()
+    {
+        oTimeVfx.SendMessage("Slow");
+    }
+    private void SendVfxStop()
+    {
+        oTimeVfx.SendMessage("Stop");
+    }
+    private void SendVfxFast()
+    {
+        oTimeVfx.SendMessage("Fast");
+    }
     private void SetEnergyBarScale()
     {
         float EnergyBarScale = m_Energy / maxEnergy;
