@@ -35,6 +35,9 @@
 		<relationship name="timeline">
 			<destination>{5bac61f4-8d15-421e-9118-7939c846713f}</destination>
 		</relationship>
+		<relationship name="parameters">
+			<destination>{88176b70-b4fa-4d22-a5d7-f3667850b7f7}</destination>
+		</relationship>
 		<relationship name="banks">
 			<destination>{2fa4427d-23b8-4bdb-a24b-92682ed2d2e4}</destination>
 		</relationship>
@@ -45,9 +48,6 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{373e414f-9c70-46e7-9eee-9b0368da8101}">
-		<property name="uiTrackHeight">
-			<value>100</value>
-		</property>
 		<relationship name="modules">
 			<destination>{ba40c42e-3a5f-42b0-9ba5-6a0855741dc8}</destination>
 			<destination>{e0e6a6d3-865d-44b5-8ca7-01f0336d4451}</destination>
@@ -140,6 +140,11 @@
 			<destination>{ba6e1ab9-abf4-4430-9b3d-59c70da78441}</destination>
 			<destination>{606a5656-96c8-4c20-924f-f4dea2d08e8e}</destination>
 			<destination>{9f15adf9-8671-437f-a5f6-263183bb23e5}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProxy" id="{88176b70-b4fa-4d22-a5d7-f3667850b7f7}">
+		<relationship name="preset">
+			<destination>{8f626752-9076-4e85-b7a1-7433e2186253}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{84f2ad4c-2d89-424b-b7d3-2f70e8e31bdb}">
