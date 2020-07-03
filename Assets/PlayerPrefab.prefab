@@ -195,11 +195,11 @@ GameObject:
   - component: {fileID: 1633800183441449412}
   m_Layer: 0
   m_Name: Camera Target
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1633800183441449413
 Transform:
   m_ObjectHideFlags: 0
@@ -370,7 +370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e49f077cb4b0094ba03302fa3fcf93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyBarController: {fileID: 0}
   slowEnergyCostRate: 9
   fastforwardEnergyCostRate: 9
   stopEnergyCost: 100
