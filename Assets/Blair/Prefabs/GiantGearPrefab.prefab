@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2428786005139828609}
   - component: {fileID: 6745821013722216396}
   - component: {fileID: 4138899376520295428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColliderA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2986680147279905900}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.209115, y: 0.30600232, z: 0.15247557}
@@ -58,6 +58,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAngle: {x: 0, y: 15, z: 25}
+  mStartPos: {x: 0, y: 0, z: 0}
+  mStartRot: {x: 0, y: 0, z: 0}
 --- !u!64 &8754070171150664937
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65,7 +67,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7384257085927492916}
-  m_Material: {fileID: 13400000, guid: 4e07127b7e8d9144d907a9dba1eaff0a, type: 2}
+  m_Material: {fileID: 13400000, guid: 37016aa9fa0e8b34b803d27f4cb59623, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -97,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2151532140149303269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiantGearPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,6 +128,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2151532140149303269}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 89001819d02400a45a9681e7cd150af9,
+        type: 3}
+      propertyPath: m_Name
+      value: GiantGear04
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89001819d02400a45a9681e7cd150af9,
+        type: 3}
+      propertyPath: m_TagString
+      value: TimeInteractable
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 89001819d02400a45a9681e7cd150af9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 89001819d02400a45a9681e7cd150af9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -195,21 +212,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 89001819d02400a45a9681e7cd150af9,
-        type: 3}
-      propertyPath: m_Name
-      value: GiantGear04
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 89001819d02400a45a9681e7cd150af9,
-        type: 3}
-      propertyPath: m_TagString
-      value: TimeInteractable
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 89001819d02400a45a9681e7cd150af9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89001819d02400a45a9681e7cd150af9, type: 3}

@@ -108,11 +108,11 @@ public class KH_PlayerController : MonoBehaviour
                 if (FlyingDirection.z > 0) FlyingDirection.z -= 0.2f;
                 if (FlyingDirection.z < 0) FlyingDirection.z += 0.2f;
             }
-            if (FlyingDirection.x < 0.3f && FlyingDirection.x > -0.3f)
+            if (FlyingDirection.x < 1.3f && FlyingDirection.x > -1.3f)
                 FlyingDirection.x = 0;
-            if (FlyingDirection.y < 0.3f && FlyingDirection.y > -0.3f)
+            if (FlyingDirection.y < 0.3f && FlyingDirection.y > -1.3f)
                 FlyingDirection.y = 0;
-            if (FlyingDirection.z < 0.3f && FlyingDirection.z > -0.3f)
+            if (FlyingDirection.z < 1.3f && FlyingDirection.z > -1.3f)
                 FlyingDirection.z = 0;
             if (FlyingDirection.x == 0 &&
                 FlyingDirection.y == 0 &&
