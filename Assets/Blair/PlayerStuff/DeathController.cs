@@ -14,15 +14,27 @@ public class DeathController : MonoBehaviour
     private float journeyLength;
     private float startTime;
     private float speed =0.15f;
+    [FMODUnity.EventRef]
+    public string DeathSound = "event:/Characters/Player/Health/Rewind";
+    FMOD.Studio.EventInstance DeathSoundEvent;
+    
+    public bool triggerDeathSound;
+    
+    void Awake()
+    {
+        DeathSoundEvent = FMODUnity.RuntimeManager.CreateInstance(DeathSound);
+    }
     void Start()
     {
         mPlayer = GameObject.FindGameObjectWithTag("Player");
         mDeathTransform = GameObject.Find("DeathTransform");
         RecordedTransforms.Add(mDeathTransform.transform.position);
+        
     }
 
     void Update()
     {
+        
         if(!isDead)
         {
             RecordCount++;
@@ -59,6 +71,17 @@ public class DeathController : MonoBehaviour
            
             }
         }
+
+        if (!triggerDeathSound && isDead)
+        {
+            PlaySoundOneShot("event:/Characters/Player/Health/Rewind");            
+            triggerDeathSound = true;
+        }
+        if(triggerDeathSound && !isDead)
+        {
+            DeathSoundEvent.setParameterByName("Respawning", 1.0f, true);
+            triggerDeathSound = false;
+        }
     }
     
     void OnTriggerEnter(Collider Col)
@@ -75,5 +98,10 @@ public class DeathController : MonoBehaviour
     void OnCollisionEnter()
     {
 
+    }
+
+    void PlaySoundOneShot(string path)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path, GetComponent<Transform>().position);
     }
 }

@@ -343,6 +343,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-4018429837270758601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Portal Loop/Portal Enter
+  m_EditorClassIdentifier: 
+  Name: Portal Enter
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-3928440699633522852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,12 +377,12 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -2725787023474509784}
+  - {fileID: 2392149311914354562}
   MinDistance: 1
   MaxDistance: 20
   Length: 8150
@@ -420,6 +437,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &-3304328562596626643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Terrain
+  m_EditorClassIdentifier: 
+  Name: Terrain
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 1
 --- !u!114 &-3287648701723268741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,6 +471,24 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-3067325616775301737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637294550828664686
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-2784634602798353929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,7 +558,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -529,7 +581,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Locomotion/Landing
   guid: 76a27e21e2d61c49b167700705da7b8e
   Banks:
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -586,7 +638,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Locomotion/Jump
   guid: 5d8e38dfb857f043a36c2a8d537205f4
   Banks:
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -644,7 +696,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Locomotion/Double Jump
   guid: f6ac3e4c35b70c4f97c9c9a77a3f13ca
   Banks:
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -685,7 +737,7 @@ MonoBehaviour:
   Path: event:/Level/Onboarding/Portal Enter
   guid: d04bc0d1d32eb540b57a2cd798c84749
   Banks:
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -707,7 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 8636068476132930779}
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   EditorEvents:
   - {fileID: 7497132717696206845}
   - {fileID: 2932221285481454929}
@@ -727,10 +779,10 @@ MonoBehaviour:
   - {fileID: -133411341466312799}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   StringsBanks:
   - {fileID: 8636068476132930779}
-  stringsBankWriteTime: 637294048420545320
+  stringsBankWriteTime: 637294550828674675
   cacheVersion: 3
 --- !u!114 &2784193328307980
 MonoBehaviour:
@@ -783,7 +835,7 @@ MonoBehaviour:
   Path: event:/Level/Onboarding/Big_Door_Open
   guid: 36cf78cf2a04f54e8912a3c511055e06
   Banks:
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -882,12 +934,12 @@ MonoBehaviour:
   Path: event:/Level/Onboarding/Portal Loop
   guid: 93babc5132598f49aeb3455b92c02913
   Banks:
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 8592406739203308747}
+  - {fileID: -4018429837270758601}
   MinDistance: 1
   MaxDistance: 20
   Length: 3788
@@ -1012,6 +1064,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &2392149311914354562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Rewind/Respawning
+  m_EditorClassIdentifier: 
+  Name: Respawning
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &2493562710198213127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,7 +1134,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1088,7 +1157,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Locomotion/Tools
   guid: c5c26c5f1feed8449971c3fa972cc9c8
   Banks:
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1163,12 +1232,12 @@ MonoBehaviour:
   Path: event:/Characters/Player/Locomotion/Footsteps
   guid: 9b5d383d15d2654db1569bd41a5e622a
   Banks:
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 1137611789124637271}
+  - {fileID: -3304328562596626643}
   MinDistance: 1
   MaxDistance: 10000
   Length: 194
@@ -1346,7 +1415,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1369,7 +1438,7 @@ MonoBehaviour:
   Path: event:/Level/Onboarding/Train_Tunnel
   guid: cbe363546ffb3748aed9003759819905
   Banks:
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -1411,12 +1480,12 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 8140630871227537039}
+  - {fileID: 7766019329245442808}
   MinDistance: 0
   MaxDistance: 0
   Length: 9299
@@ -1433,6 +1502,23 @@ MonoBehaviour:
   m_Name: parameter:/Rewind/Respawning
   m_EditorClassIdentifier: 
   Name: Respawning
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &7766019329245442808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Slow_Time/SlowTimeEnd
+  m_EditorClassIdentifier: 
+  Name: SlowTimeEnd
   Min: 0
   Max: 1
   Default: 0
@@ -1454,7 +1540,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: 2256095961123974119}
+  - {fileID: -3067325616775301737}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1597,7 +1683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637294048420545320
+  lastModified: 637294550828674675
   LoadResult: 0
   FileSizes:
   - Name: Desktop
