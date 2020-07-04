@@ -8,7 +8,7 @@
 			<value>The loop will continue playing as long as the player is rewinding. Once the player is respawning. The respawn sound activates and ends the event. There needs to be a reset value at the end of the event.</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{e4ce7f8f-d874-4f2c-b50b-67a6061814a8}</destination>
@@ -410,7 +410,6 @@
 	<object class="MixerBusEffectChain" id="{1986ee43-5459-4586-b72f-c788f955992c}">
 		<relationship name="effects">
 			<destination>{eb148e78-952f-45c8-92a9-9a3fa433a4ce}</destination>
-			<destination>{498d2986-b3f5-4cf3-90fe-82de97b69833}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8c06612b-7017-4ed9-9a1f-5725216a255e}" />
@@ -515,7 +514,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{eb148e78-952f-45c8-92a9-9a3fa433a4ce}" />
-	<object class="SpatialiserEffect" id="{498d2986-b3f5-4cf3-90fe-82de97b69833}" />
 	<object class="AutomationPoint" id="{50e70e75-f844-4838-8326-5bf581a91ae4}">
 		<property name="position">
 			<value>0</value>
