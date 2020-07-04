@@ -34,9 +34,10 @@ public class KH_PlayerController : MonoBehaviour
     private string is_grounded_anim_param = "IsGrounded";
     private string double_jump_anim_param = "IsDoubleJumping";
 
+    private FMODUnity.StudioEventEmitter eventEmitterRef;
     void Awake()
     {
-        
+        eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
     }
     
     void Start()
@@ -66,9 +67,13 @@ public class KH_PlayerController : MonoBehaviour
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
         MovePlayer();
     }
-
+    void PlaySound(string path)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path, GetComponent<Transform>().position);
+    }
     void MovePlayer()
     {
+        
         horizontalMovement = movementInput.x;
         verticalMovement = movementInput.y;
 
