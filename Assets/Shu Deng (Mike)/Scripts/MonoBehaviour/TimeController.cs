@@ -32,8 +32,7 @@ public class TimeController : MonoBehaviour
         m_TimeTaggedObjects;
     private GameObject oTimeVfx;
     private PlayerInputAction m_Controls;
-    private float SlowSoundEnd;
-
+    
     private enum TimeStates
     {
         Available,

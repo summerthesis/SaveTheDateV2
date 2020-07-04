@@ -8,7 +8,7 @@
 			<value>The loop will continue playing as long as the player is rewinding. Once the player is respawning. The respawn sound activates and ends the event. There needs to be a reset value at the end of the event.</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{e4ce7f8f-d874-4f2c-b50b-67a6061814a8}</destination>
@@ -37,6 +37,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{acaf283c-29d2-45b3-a658-27baa1589e95}</destination>
+		</relationship>
+		<relationship name="parameters">
+			<destination>{4b791df5-c38c-4d8a-8f62-ed6300955a7b}</destination>
 		</relationship>
 		<relationship name="banks">
 			<destination>{2fa4427d-23b8-4bdb-a24b-92682ed2d2e4}</destination>
@@ -120,6 +123,11 @@
 			<destination>{b7d39d79-56ed-45e0-8ca7-d52bc9a87066}</destination>
 			<destination>{a5a45b51-c38f-4b21-a86b-b17f8462cfc3}</destination>
 			<destination>{f0ef17aa-73d9-40bc-bda9-c20ae89d5c99}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProxy" id="{4b791df5-c38c-4d8a-8f62-ed6300955a7b}">
+		<relationship name="preset">
+			<destination>{8e1a9e7a-c5ad-4515-959a-723b02103701}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{f20f370d-ca37-4054-8527-69a67792256b}">
@@ -410,7 +418,6 @@
 	<object class="MixerBusEffectChain" id="{1986ee43-5459-4586-b72f-c788f955992c}">
 		<relationship name="effects">
 			<destination>{eb148e78-952f-45c8-92a9-9a3fa433a4ce}</destination>
-			<destination>{498d2986-b3f5-4cf3-90fe-82de97b69833}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8c06612b-7017-4ed9-9a1f-5725216a255e}" />
@@ -515,7 +522,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{eb148e78-952f-45c8-92a9-9a3fa433a4ce}" />
-	<object class="SpatialiserEffect" id="{498d2986-b3f5-4cf3-90fe-82de97b69833}" />
 	<object class="AutomationPoint" id="{50e70e75-f844-4838-8326-5bf581a91ae4}">
 		<property name="position">
 			<value>0</value>
