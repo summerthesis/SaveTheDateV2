@@ -25,7 +25,7 @@ public class SendFlyingCollider : MonoBehaviour
         this.transform.position = mStartPos;
         this.transform.eulerAngles = mStartRot;
     }
-    void OnCollisionEnter(Collision col)
+    void OnTriggerStay(Collider col)
     {
         if(col.gameObject.tag == "Player")
         {

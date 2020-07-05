@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TimeController : MonoBehaviour
-{
-    public EnergyBarController energyBarController;
+{    
     public float slowEnergyCostRate = 9,
         fastforwardEnergyCostRate = 9,
         stopEnergyCost = 100,
@@ -28,6 +27,7 @@ public class TimeController : MonoBehaviour
         m_TimeTaggedObjects;
     private GameObject oTimeVfx;
     private PlayerInputAction m_Controls;
+    private EnergyBarController m_EnergyBarController;
     private enum TimeStates
     {
         Available,
@@ -40,10 +40,11 @@ public class TimeController : MonoBehaviour
     void Awake()
     {
         SetupControls();
+        m_EnergyBarController = GameObject.FindGameObjectWithTag("HUD").GetComponentInChildren<EnergyBarController>();
         m_AllTimeTaggedObjects = GameObject.FindGameObjectsWithTag("TimeInteractable");
-        m_ShaderIDColor = Shader.PropertyToID("Color_5D1C9DC");
-        m_ShaderIDIsTwinkling = Shader.PropertyToID("Boolean_CFDDD5C1");
-        m_ShaderIDIsHighlighted = Shader.PropertyToID("Boolean_82F39996");
+        m_ShaderIDColor = Shader.PropertyToID("_FresnelColour");
+        m_ShaderIDIsTwinkling = Shader.PropertyToID("_IsTwinkling");
+        m_ShaderIDIsHighlighted = Shader.PropertyToID("_IsHighlighted");
         oTimeVfx = GameObject.Find("TimeVfx");
     }
 
@@ -192,7 +193,7 @@ public class TimeController : MonoBehaviour
     private void SetEnergyBarScale()
     {
         float EnergyBarScale = m_Energy / maxEnergy;
-        energyBarController.UpdateEnergyBar(EnergyBarScale);
+        m_EnergyBarController.UpdateEnergyBar(EnergyBarScale);
     }
 
     private IEnumerable<GameObject> FindObjectsWithinRange()
