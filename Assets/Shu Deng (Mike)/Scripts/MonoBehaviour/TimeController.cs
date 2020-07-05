@@ -5,12 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TimeController : MonoBehaviour
-{
-    [FMODUnity.EventRef]
-    public string SlowSound = "event:/Characters/Player/Ability/Slow_Time";
-    FMOD.Studio.EventInstance SlowSoundEvent;
-    
-    public EnergyBarController energyBarController;
+{    
     public float slowEnergyCostRate = 9,
         fastforwardEnergyCostRate = 9,
         stopEnergyCost = 100,
@@ -32,7 +27,7 @@ public class TimeController : MonoBehaviour
         m_TimeTaggedObjects;
     private GameObject oTimeVfx;
     private PlayerInputAction m_Controls;
-    
+    private EnergyBarController m_EnergyBarController;
     private enum TimeStates
     {
         Available,
@@ -45,14 +40,12 @@ public class TimeController : MonoBehaviour
     void Awake()
     {
         SetupControls();
+        m_EnergyBarController = GameObject.FindGameObjectWithTag("HUD").GetComponentInChildren<EnergyBarController>();
         m_AllTimeTaggedObjects = GameObject.FindGameObjectsWithTag("TimeInteractable");
-        m_ShaderIDColor = Shader.PropertyToID("Color_5D1C9DC");
-        m_ShaderIDIsTwinkling = Shader.PropertyToID("Boolean_CFDDD5C1");
-        m_ShaderIDIsHighlighted = Shader.PropertyToID("Boolean_82F39996");
+        m_ShaderIDColor = Shader.PropertyToID("_FresnelColour");
+        m_ShaderIDIsTwinkling = Shader.PropertyToID("_IsTwinkling");
+        m_ShaderIDIsHighlighted = Shader.PropertyToID("_IsHighlighted");
         oTimeVfx = GameObject.Find("TimeVfx");
-        
-        SlowSoundEvent = FMODUnity.RuntimeManager.CreateInstance(SlowSound);
-                   
     }
 
     void Update()
@@ -137,7 +130,6 @@ public class TimeController : MonoBehaviour
     private void EndSlow()
     {        
         m_TimeState = TimeStates.Available;
-        SlowSoundEvent.setParameterByName("SlowTimeEnd", 1.0f, true);
     }
     
     private void FastForward()
@@ -186,16 +178,13 @@ public class TimeController : MonoBehaviour
         m_Controls.TimeControls.TimeStop.canceled += ctx => Stop();
         m_Controls.TimeControls.TimeStop.canceled += ctx => SendVfxStop();
     }
-      private void SendVfxSlow()
+    private void SendVfxSlow()
     {
         oTimeVfx.SendMessage("Slow");
-        SlowSoundEvent.setParameterByName("SlowTimeEnd", 0.0f, true);
-        SlowSoundEvent.start();
     }
     private void SendVfxStop()
     {
         oTimeVfx.SendMessage("Stop");
-        PlaySoundOneShot("event:/Characters/Player/Ability/Pause Time");
     }
     private void SendVfxFast()
     {
@@ -204,7 +193,7 @@ public class TimeController : MonoBehaviour
     private void SetEnergyBarScale()
     {
         float EnergyBarScale = m_Energy / maxEnergy;
-        energyBarController.UpdateEnergyBar(EnergyBarScale);
+        m_EnergyBarController.UpdateEnergyBar(EnergyBarScale);
     }
 
     private IEnumerable<GameObject> FindObjectsWithinRange()
@@ -254,14 +243,5 @@ public class TimeController : MonoBehaviour
             }
             obj.SendMessage(message);
         }
-    }
-    void PlaySoundOneShot(string path)
-    {
-        FMODUnity.RuntimeManager.PlayOneShot(path, GetComponent<Transform>().position);
-    }
-    
-    void EndSound(string path)
-    { 
-        
     }
 }
