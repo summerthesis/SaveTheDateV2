@@ -17,6 +17,7 @@ public class KH_PlayerController : MonoBehaviour
     private bool jumpInput; //private
     private bool castInput; //private
     private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
+    private bool jumping;
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
     public Animator anim;
@@ -34,9 +35,10 @@ public class KH_PlayerController : MonoBehaviour
     private string is_grounded_anim_param = "IsGrounded";
     private string double_jump_anim_param = "IsDoubleJumping";
 
+    private FMODUnity.StudioEventEmitter eventEmitterRef;
     void Awake()
     {
-        
+        eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
     }
     
     void Start()
@@ -66,9 +68,13 @@ public class KH_PlayerController : MonoBehaviour
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
         MovePlayer();
     }
-
+    void PlaySound(string path)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path, GetComponent<Transform>().position);
+    }
     void MovePlayer()
     {
+        
         horizontalMovement = movementInput.x;
         verticalMovement = movementInput.y;
 
@@ -123,6 +129,11 @@ public class KH_PlayerController : MonoBehaviour
         // JUMPING
         if (IsGrounded())
         {
+            if (jumping)
+            {
+             PlaySound("event:/Characters/Player/Locomotion/Landing");
+             jumping = false;
+            }
             canDoubleJump = true;
             anim.SetBool(is_grounded_anim_param, true);
             anim.SetBool(is_jump_input_anim_param, false);
@@ -139,10 +150,13 @@ public class KH_PlayerController : MonoBehaviour
             anim.SetBool(is_jump_input_anim_param, true);
             if (IsGrounded())
             {
+                PlaySound("event:/Characters/Player/Locomotion/Jump");
                 rb.velocity = Vector3.up * jumpForce;
+                jumping = true;
             }
             else if (canDoubleJump)
             {
+                PlaySound("event:/Characters/Player/Locomotion/Double Jump");
                 rb.velocity = Vector3.up * jumpForce;
                 canDoubleJump = false;
                 anim.SetBool(double_jump_anim_param, true);
@@ -227,4 +241,5 @@ public class KH_PlayerController : MonoBehaviour
     {
         return Physics.Raycast(playerCollider.transform.position, Vector3.down, 0.1f, groundLayers);
     }
+ 
 }
