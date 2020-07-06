@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1633800183066715332}
   - component: {fileID: 1633800183066715334}
   - component: {fileID: 2237519218626499587}
+  - component: {fileID: 4760427705946371398}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -183,6 +184,19 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!114 &4760427705946371398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633800183066715336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: -1
 --- !u!1 &1633800183441449415
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,11 +209,11 @@ GameObject:
   - component: {fileID: 1633800183441449412}
   m_Layer: 0
   m_Name: Camera Target
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1633800183441449413
 Transform:
   m_ObjectHideFlags: 0
@@ -248,6 +262,8 @@ GameObject:
   - component: {fileID: 1633800183986277156}
   - component: {fileID: 3009779140736207936}
   - component: {fileID: 4775347328259354072}
+  - component: {fileID: 2936295333274101177}
+  - component: {fileID: 8972702327200628703}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
@@ -372,6 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e49f077cb4b0094ba03302fa3fcf93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlowSound: event:/Characters/Player/Ability/Slow_Time
+  energyBarController: {fileID: 0}
   slowEnergyCostRate: 9
   fastforwardEnergyCostRate: 9
   stopEnergyCost: 100
@@ -397,6 +415,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RecordedTransforms: []
   isDead: 0
+  DeathSound: event:/Characters/Player/Health/Rewind
+--- !u!114 &2936295333274101177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633800183986277159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Characters/Player/Locomotion/Footsteps
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 10000
+--- !u!114 &8972702327200628703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633800183986277159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Characters/Player/Locomotion/Tools
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 10000
 --- !u!1 &2639328179078919380
 GameObject:
   m_ObjectHideFlags: 0
