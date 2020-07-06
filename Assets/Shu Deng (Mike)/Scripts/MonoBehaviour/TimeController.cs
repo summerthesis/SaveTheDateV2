@@ -227,7 +227,7 @@ public class TimeController : MonoBehaviour
                         }
                     }
                 }
-                member.SendMessage("RestoreToNormal");
+                member.SendMessage("RestoreToNormal", SendMessageOptions.DontRequireReceiver);
             }
         }
     }
