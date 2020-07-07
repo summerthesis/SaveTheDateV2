@@ -62,7 +62,7 @@
 			<destination>{cf116cac-e2a6-4f48-b997-ac5b4cf5ebb1}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{2de36431-b6d8-4f2c-a4a7-61d6e6e79eab}</destination>
+			<destination>{379ec811-5a20-482a-bfb2-ee11df5a44d3}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{b997b36c-e620-41f5-a7bc-9ac7e78ead07}">
@@ -156,6 +156,9 @@
 		<property name="looping">
 			<value>true</value>
 		</property>
+		<relationship name="fadeInCurve">
+			<destination>{cb336837-96df-43d0-92ba-ea7a4530e4a7}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{e333bf67-29d2-4c99-af08-8ec426db41d6}</destination>
 		</relationship>
@@ -233,6 +236,9 @@
 		<property name="looping">
 			<value>true</value>
 		</property>
+		<relationship name="fadeInCurve">
+			<destination>{33fc4dd0-36a8-433e-882c-58f12ccbef85}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{b0b79276-8161-47f8-9962-afeea0278985}</destination>
 		</relationship>
@@ -302,6 +308,14 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{066bf478-91d5-4fb6-b414-35e8a2d8d80b}" />
+	<object class="FadeCurve" id="{cb336837-96df-43d0-92ba-ea7a4530e4a7}">
+		<relationship name="startPoint">
+			<destination>{5288c903-e198-45b7-988b-115b6a5e46a2}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{22df2d62-9503-4096-a361-ccdbe2356ead}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{b8392c33-2002-4a50-93b0-c81ca8e7014a}">
 		<relationship name="effects">
 			<destination>{fb1120ee-44e0-4244-9dd5-7431c33b8d75}</destination>
@@ -332,6 +346,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{0bf81fa7-5632-4510-a356-4d333809f352}" />
+	<object class="FadeCurve" id="{33fc4dd0-36a8-433e-882c-58f12ccbef85}">
+		<relationship name="startPoint">
+			<destination>{a9dcea22-eaa2-47f9-81cc-25d7e33a1a35}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{84280588-1389-455c-98ea-74d378c8ae00}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{96d126da-2c67-416f-a605-f26ad21842f7}">
 		<relationship name="effects">
 			<destination>{e8bc7146-e664-4d77-a3db-8779ccf75259}</destination>
@@ -355,6 +377,25 @@
 	</object>
 	<object class="MixerBusFader" id="{793614c1-c28c-4551-9e11-9db8a704752c}" />
 	<object class="SpatialiserEffect" id="{91e92594-c6dd-446e-a76b-2a70e9be0f24}" />
+	<object class="AutomationPoint" id="{5288c903-e198-45b7-988b-115b6a5e46a2}">
+		<property name="position">
+			<value>2.2204460492503131e-16</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{22df2d62-9503-4096-a361-ccdbe2356ead}">
+		<property name="position">
+			<value>0.050000000000000003</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MultibandEqEffect" id="{fb1120ee-44e0-4244-9dd5-7431c33b8d75}">
 		<property name="filterTypeA">
 			<value>4</value>
@@ -412,6 +453,25 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{f64067b9-4012-4c9c-950e-445ba596d49f}" />
+	<object class="AutomationPoint" id="{a9dcea22-eaa2-47f9-81cc-25d7e33a1a35}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{84280588-1389-455c-98ea-74d378c8ae00}">
+		<property name="position">
+			<value>0.050000000000000003</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{e8bc7146-e664-4d77-a3db-8779ccf75259}" />
 	<object class="MixerBusFader" id="{38cf05cf-174c-40b1-bb55-fc5850ef4d64}" />
 	<object class="AutomationPoint" id="{a74303cd-2efb-4b5d-8cf5-2c2f4a2aa2a0}">
