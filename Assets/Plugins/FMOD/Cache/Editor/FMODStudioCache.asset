@@ -102,23 +102,6 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
---- !u!114 &-8264975435509646163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Footsteps/Terrain
-  m_EditorClassIdentifier: 
-  Name: Terrain
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 1
 --- !u!114 &-8062414954312564079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +206,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-6106547682853237981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Portal Loop/Portal Enter
+  m_EditorClassIdentifier: 
+  Name: Portal Enter
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-6097447418832815904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,24 +361,6 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
---- !u!114 &-4823396354508370717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637296358052072389
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
 --- !u!114 &-4822638227582515271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,23 +430,6 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
---- !u!114 &-4422024581901674393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Slow_Time/SlowTimeEnd
-  m_EditorClassIdentifier: 
-  Name: SlowTimeEnd
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
 --- !u!114 &-4382918225071949070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,12 +516,12 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 7504280267845925707}
+  - {fileID: 838704164628582755}
   MinDistance: 0
   MaxDistance: 0
   Length: 8150
@@ -624,6 +589,23 @@ MonoBehaviour:
   m_Name: parameter:/Rewind/Respawning
   m_EditorClassIdentifier: 
   Name: Respawning
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-3471988281918343062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Slow_Time/SlowTimeEnd
+  m_EditorClassIdentifier: 
+  Name: SlowTimeEnd
   Min: 0
   Max: 1
   Default: 0
@@ -766,7 +748,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -789,7 +771,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Locomotion/Landing
   guid: 76a27e21e2d61c49b167700705da7b8e
   Banks:
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -863,7 +845,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Locomotion/Jump
   guid: 5d8e38dfb857f043a36c2a8d537205f4
   Banks:
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -906,23 +888,6 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
---- !u!114 &-784168598057504521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Portal Loop/Portal Enter
-  m_EditorClassIdentifier: 
-  Name: Portal Enter
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
 --- !u!114 &-394634554013454994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,7 +920,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Locomotion/Double Jump
   guid: f6ac3e4c35b70c4f97c9c9a77a3f13ca
   Banks:
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -996,7 +961,7 @@ MonoBehaviour:
   Path: event:/Level/Onboarding/Portal Enter
   guid: d04bc0d1d32eb540b57a2cd798c84749
   Banks:
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1018,7 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 8636068476132930779}
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   EditorEvents:
   - {fileID: 7497132717696206845}
   - {fileID: 2932221285481454929}
@@ -1038,10 +1003,10 @@ MonoBehaviour:
   - {fileID: -133411341466312799}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   StringsBanks:
   - {fileID: 8636068476132930779}
-  stringsBankWriteTime: 637296358052072389
+  stringsBankWriteTime: 637296708397340357
   cacheVersion: 3
 --- !u!114 &2784193328307980
 MonoBehaviour:
@@ -1077,7 +1042,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 0
+  Exists: 1
 --- !u!114 &101031000587865630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,7 +1076,7 @@ MonoBehaviour:
   Path: event:/Level/Onboarding/Big_Door_Open
   guid: 36cf78cf2a04f54e8912a3c511055e06
   Banks:
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1136,6 +1101,24 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &254275697782827304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637295621006583532
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &268184571037756398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,6 +1136,23 @@ MonoBehaviour:
   lastModified: 637272936416686509
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &619188088523325494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Terrain
+  m_EditorClassIdentifier: 
+  Name: Terrain
+  Min: 0
+  Max: 4
+  Default: 0
   Exists: 1
 --- !u!114 &762792398599557943
 MonoBehaviour:
@@ -1178,6 +1178,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 10196
+--- !u!114 &838704164628582755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Rewind/Respawning
+  m_EditorClassIdentifier: 
+  Name: Respawning
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &926754235037702258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,6 +1246,23 @@ MonoBehaviour:
   Max: 4
   Default: 0
   Exists: 0
+--- !u!114 &1082432030451383462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Rewind/Respawning
+  m_EditorClassIdentifier: 
+  Name: Respawning
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &1137611789124637271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1261,12 +1295,12 @@ MonoBehaviour:
   Path: event:/Level/Onboarding/Portal Loop
   guid: 93babc5132598f49aeb3455b92c02913
   Banks:
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -784168598057504521}
+  - {fileID: -6106547682853237981}
   MinDistance: 1
   MaxDistance: 20
   Length: 3788
@@ -1337,6 +1371,24 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+  Exists: 1
+--- !u!114 &1815995954989872794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637296708397340357
+  LoadResult: 0
+  FileSizes: []
   Exists: 1
 --- !u!114 &1873304713232707272
 MonoBehaviour:
@@ -1512,7 +1564,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1536,7 +1588,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 0
+  Exists: 1
 --- !u!114 &3056182674648398145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1552,7 +1604,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Locomotion/Tools
   guid: c5c26c5f1feed8449971c3fa972cc9c8
   Banks:
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1560,6 +1612,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 10000
   Length: 204
+--- !u!114 &3174662326261248958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Slow_Time/SlowTimeEnd
+  m_EditorClassIdentifier: 
+  Name: SlowTimeEnd
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &3334208528551354040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,12 +1714,12 @@ MonoBehaviour:
   Path: event:/Characters/Player/Locomotion/Footsteps
   guid: 9b5d383d15d2654db1569bd41a5e622a
   Banks:
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: -8264975435509646163}
+  - {fileID: 4890971854526012794}
   MinDistance: 1
   MaxDistance: 10000
   Length: 194
@@ -1724,6 +1793,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &4890971854526012794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Terrain
+  m_EditorClassIdentifier: 
+  Name: Terrain
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 1
 --- !u!114 &4908839533297872793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1737,6 +1823,23 @@ MonoBehaviour:
   m_Name: parameter:/Slow_Time/SlowTimeEnd
   m_EditorClassIdentifier: 
   Name: SlowTimeEnd
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &5111299295503751746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Portal Loop/Portal Enter
+  m_EditorClassIdentifier: 
+  Name: Portal Enter
   Min: 0
   Max: 1
   Default: 0
@@ -1774,7 +1877,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 0
+  Exists: 1
 --- !u!114 &5285141027988017246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,7 +1895,7 @@ MonoBehaviour:
   lastModified: 637294819566227816
   LoadResult: 0
   FileSizes: []
-  Exists: 0
+  Exists: 1
 --- !u!114 &5294060859989386389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1932,7 +2035,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1972,7 +2075,7 @@ MonoBehaviour:
   Path: event:/Level/Onboarding/Train_Tunnel
   guid: cbe363546ffb3748aed9003759819905
   Banks:
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -2014,32 +2117,15 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -4422024581901674393}
+  - {fileID: -3471988281918343062}
   MinDistance: 0
   MaxDistance: 0
   Length: 9299
---- !u!114 &7504280267845925707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Rewind/Respawning
-  m_EditorClassIdentifier: 
-  Name: Respawning
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
 --- !u!114 &7747770264834919337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2091,7 +2177,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 7974283442395319989}
   - {fileID: -4057741006976326423}
-  - {fileID: -4823396354508370717}
+  - {fileID: 1815995954989872794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2150,7 +2236,7 @@ MonoBehaviour:
   Min: 0
   Max: 4
   Default: 0
-  Exists: 0
+  Exists: 1
 --- !u!114 &7967864632095939165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2268,7 +2354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637296358052072389
+  lastModified: 637296708397340357
   LoadResult: 0
   FileSizes:
   - Name: Desktop
