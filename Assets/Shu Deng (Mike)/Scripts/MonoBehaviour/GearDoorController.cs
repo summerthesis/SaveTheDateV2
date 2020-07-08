@@ -16,7 +16,8 @@ public class GearDoorController: MonoBehaviour
     {
         Open,
         Closed,
-        Operating
+        OperatingOpen,
+        OperatingClose
     }
     private State m_DoorState = State.Closed;
     private float m_CurTime = 0, m_LastValue, m_CurValue;
@@ -43,9 +44,13 @@ public class GearDoorController: MonoBehaviour
 
     private void Update()
     {
-        if (m_DoorState == State.Operating)
+        if (m_DoorState == State.OperatingOpen)
         {
             m_SmallGear.Rotate(Vector3.forward, Time.deltaTime * smallGearSpeed, Space.Self);
+        }
+        else if (m_DoorState == State.OperatingClose)
+        {
+            m_SmallGear.Rotate(- Vector3.forward, Time.deltaTime * smallGearSpeed, Space.Self);
         }
     }
 
@@ -53,12 +58,12 @@ public class GearDoorController: MonoBehaviour
     {
         if (m_DoorState == State.Open)
         {
-            m_DoorState = State.Operating;
+            m_DoorState = State.OperatingClose;
             StartCoroutine(Close());            
         }
         else if (m_DoorState == State.Closed)
         {
-            m_DoorState = State.Operating;
+            m_DoorState = State.OperatingOpen;
             StartCoroutine(Open());
         }
     }
