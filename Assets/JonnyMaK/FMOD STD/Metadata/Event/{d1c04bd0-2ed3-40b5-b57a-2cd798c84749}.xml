@@ -5,7 +5,7 @@
 			<value>Portal Enter</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{436daadd-099d-4130-8119-f6a5323b1ad0}</destination>
@@ -114,9 +114,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{bff961c8-260f-4dae-be4a-5bac06d69a4e}">
-		<property name="volume">
-			<value>4.5</value>
-		</property>
 		<property name="name">
 			<value>Portal Enter</value>
 		</property>
@@ -147,7 +144,6 @@
 	<object class="MixerBusEffectChain" id="{5ebb3ee3-ba76-498f-9de2-db33a9133f3b}">
 		<relationship name="effects">
 			<destination>{694557aa-fb09-46f6-b57f-f30c3fba3799}</destination>
-			<destination>{ab2861ec-6268-4745-90b0-6be8b6df0f4d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4f8d01e0-ab5c-4066-aaab-546bb492eb64}" />
@@ -181,7 +177,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{9c1fe5c6-5557-43fb-879f-3f880254f0ec}" />
 	<object class="MixerBusFader" id="{694557aa-fb09-46f6-b57f-f30c3fba3799}" />
-	<object class="SpatialiserEffect" id="{ab2861ec-6268-4745-90b0-6be8b6df0f4d}" />
 	<object class="AutomationPoint" id="{96052902-d7c1-42a0-8c7e-548496b75b7c}">
 		<property name="position">
 			<value>0</value>
