@@ -7,7 +7,12 @@ public class SendFlyingCollider : MonoBehaviour
     private GameObject mParent, mPlayer;
     public Vector3 mAngle, mStartPos, mStartRot;
     private float xRot, yRot, zRot;
-    // Start is called before the first frame update
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(this.transform.position, mAngle);
+    }
     void Start()
     {
         mStartPos = this.transform.position;
@@ -19,6 +24,7 @@ public class SendFlyingCollider : MonoBehaviour
         mPlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
+  
     // Update is called once per frame
     void Update()
     {
