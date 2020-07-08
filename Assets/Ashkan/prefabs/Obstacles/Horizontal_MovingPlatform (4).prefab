@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4464780212173788852}
   - component: {fileID: 7476128519327425177}
   - component: {fileID: 2209458136795452787}
+  - component: {fileID: 8302493952950078423}
   m_Layer: 8
   m_Name: Horizontal_MovingPlatform (4)
   m_TagString: TimeInteractable
@@ -126,8 +127,8 @@ MonoBehaviour:
   mSpeed: 0
   StopSpeed: 0
   NormalSpeed: 4
-  SlowFactor: 0
-  FastFactor: 0
+  SlowFactor: 2
+  FastFactor: 2
   IdleDuration: 0
   mPlayer: {fileID: 0}
   Parenting: 0
@@ -149,3 +150,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13.2, y: 3.6042714, z: 10}
   m_Center: {x: 0, y: -0.37763572, z: 0}
+--- !u!114 &8302493952950078423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476128519327425176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9867e9b246406749ab38b52f9281672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LinkedObjects: []
