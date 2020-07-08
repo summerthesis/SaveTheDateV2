@@ -9,6 +9,7 @@ public class HrGlassA : MonoBehaviour
     private bool TweenCompleted;
     private int DelayCount, loops = 1;
     public int DelayDuration;
+    public float SlowFactor, FastFactor;
     void Start()
     {
        mTween = GetComponent<DOTweenAnimation>();
@@ -41,7 +42,7 @@ public class HrGlassA : MonoBehaviour
     }
     void TimeSlow()
     {
-        mTween.tween.timeScale = 0.5f;
+        mTween.tween.timeScale = SlowFactor;
     }
     void TimeStop()
     {
@@ -49,7 +50,7 @@ public class HrGlassA : MonoBehaviour
     }
     void TimeFastForward()
     {
-        mTween.tween.timeScale = 2.0f;
+        mTween.tween.timeScale = FastFactor;
     }
     void RestoreToNormal()
     {
