@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class PlatformStraight : MonoBehaviour
 {
-    private float  SlowedSpeed, FastSpeed;
-    public float mSpeed, NormalSpeed;
+    private float   SlowedSpeed, FastSpeed;
+    [HideInInspector] public float mSpeed;
+    public float NormalSpeed, SlowFactor, FastFactor;
     private bool Despawn, Parenting;
     private GameObject mPlayer;
     public GameObject Despawner;
@@ -15,8 +16,8 @@ public class PlatformStraight : MonoBehaviour
     void Start()
     {
         transform.rotation = new Quaternion(0, 0, 0, 0);
-        SlowedSpeed = NormalSpeed / 2;
-        FastSpeed = NormalSpeed * 2;
+        SlowedSpeed = NormalSpeed / SlowFactor;
+        FastSpeed = NormalSpeed * FastFactor;
         mSpeed = NormalSpeed;
         mTween = transform.DOPunchScale(new Vector3(.25f,.25f,.25f), 3, 5, 1);
         mPlayer = GameObject.FindGameObjectWithTag("Player");

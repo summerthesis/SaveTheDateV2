@@ -6,14 +6,20 @@ public class PlatformA_B : MonoBehaviour
 {
     
     public GameObject B; 
-    private Vector3 PointA, PointB; 
-    public float StopSpeed, NormalSpeed, mSpeed; 
+    private Vector3 PointA, PointB;
+    [HideInInspector]
+    public float mSpeed, StopSpeed;
+    public float  NormalSpeed, SlowFactor, FastFactor; 
     private float SlowedSpeed, FastSpeed;
     public int IdleDuration;
     private int IdleCount;
+    [HideInInspector]
     public GameObject mPlayer;
+    [HideInInspector]
     public bool Parenting;
+    [HideInInspector]
     public Vector3 mPrevPos, mCurrentPos;
+    [HideInInspector]
     public float xx, yy, zz;//the change in
     private enum ObjectStates
     {
@@ -27,8 +33,8 @@ public class PlatformA_B : MonoBehaviour
   
     void Start()
     {
-        SlowedSpeed = NormalSpeed / 2;
-        FastSpeed = NormalSpeed * 2;
+        SlowedSpeed = NormalSpeed / SlowFactor;
+        FastSpeed = NormalSpeed * FastFactor;
         StopSpeed = 0;
         PointA = this.transform.position;
         PointB = B.transform.position;
