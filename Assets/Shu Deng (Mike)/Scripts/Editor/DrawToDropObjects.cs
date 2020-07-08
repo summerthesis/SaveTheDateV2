@@ -13,8 +13,8 @@ public class DrawToDropObjects : EditorWindow
     private float m_Spacing;
     private int m_Index;
 
-    private static GUIContent m_SurfaceAnchorText = new GUIContent("Surface Anchor", 
-        "Anchor point that locates a surface with start and end, will be assigned with +y direction if omitted");
+    private static GUIContent m_SurfaceAnchorText = new GUIContent("Layout Surface Anchor", 
+        "Anchor point that locates a layout surface with start and end, will be assigned with +y direction if omitted");
     private static GUIContent m_LayoutPatternText = new GUIContent("Layout Pattern", 
         "Only y-axis (value) matters for the layout, x-axis will be auto-scaled");
 

@@ -173,7 +173,7 @@ public class TimeController : MonoBehaviour
     
     private void SetupControls()
     {
-        m_Controls = InputManagerSingleton.Instance;
+        m_Controls = GameManager.PlayerInput;
         m_Controls.TimeControls.TimeFastForward.performed += ctx => FastForward();
         m_Controls.TimeControls.TimeFastForward.started += ctx => SendVfxFast();
         m_Controls.TimeControls.TimeFastForward.canceled += ctx => EndFastForward();

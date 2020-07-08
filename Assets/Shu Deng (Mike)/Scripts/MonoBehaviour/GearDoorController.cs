@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.VFX;
 
 public class GearDoorController: MonoBehaviour
 {
-    public Transform RotationAxis;
-    public Transform GearDoorModel;    
+    public Transform rotationAxis, gearDoorModel;
     [Tooltip("If this door is open on start")]
-    public bool OpenOnStart = false;
-    public AnimationCurve Spinning, Ejecting, Rotating;
+    public bool openOnStart = false;
+    public AnimationCurve spinningPattern, ejectingPattern, rotatingPattern;
+    public float smallGearSpeed = 180f;
+    public GameObject openVFX;
     
     private enum State
     {
@@ -19,21 +21,32 @@ public class GearDoorController: MonoBehaviour
     private State m_DoorState = State.Closed;
     private float m_CurTime = 0, m_LastValue, m_CurValue;
     private AnimationCurve m_ReverseSpinning, m_ReverseEjecting, m_ReverseRotating;
+    private Transform m_SmallGear;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {        
-        if (OpenOnStart == true)
+        if (openOnStart == true)
         {
-            GearDoorModel.Rotate(GearDoorModel.forward, Spinning.Evaluate(float.MaxValue));
-            GearDoorModel.Translate(new Vector3(0, 0, 1) * Ejecting.Evaluate(float.MaxValue));
-            GearDoorModel.RotateAround(RotationAxis.position, RotationAxis.up, Rotating.Evaluate(float.MaxValue));            
+            gearDoorModel.Rotate(gearDoorModel.forward, spinningPattern.Evaluate(float.MaxValue));
+            gearDoorModel.Translate(new Vector3(0, 0, 1) * ejectingPattern.Evaluate(float.MaxValue));
+            gearDoorModel.RotateAround(rotationAxis.position, rotationAxis.up, rotatingPattern.Evaluate(float.MaxValue));            
             m_DoorState = State.Open;
         }
 
-        m_ReverseSpinning = Spinning.ReverseAnimationCurve();
-        m_ReverseEjecting = Ejecting.ReverseAnimationCurve();
-        m_ReverseRotating = Rotating.ReverseAnimationCurve();
+        m_ReverseSpinning = spinningPattern.ReverseAnimationCurve();
+        m_ReverseEjecting = ejectingPattern.ReverseAnimationCurve();
+        m_ReverseRotating = rotatingPattern.ReverseAnimationCurve();
+
+        m_SmallGear = gearDoorModel.GetChild(0);
+    }
+
+    private void Update()
+    {
+        if (m_DoorState == State.Operating)
+        {
+            m_SmallGear.Rotate(Vector3.forward, Time.deltaTime * smallGearSpeed, Space.Self);
+        }
     }
 
     public void OpenOrClose()
@@ -52,45 +65,47 @@ public class GearDoorController: MonoBehaviour
 
     private IEnumerator Open()
     {
+        openVFX.SetActive(true);
+
         m_CurTime = 0f;
 
-        m_LastValue = Spinning.Evaluate(0f);        
-        while (m_CurTime < Spinning.keys[Spinning.length - 1].time)
+        m_LastValue = spinningPattern.Evaluate(0f);        
+        while (m_CurTime < spinningPattern.keys[spinningPattern.length - 1].time)
         {            
-            m_CurValue = Spinning.Evaluate(m_CurTime);
-            GearDoorModel.Rotate(GearDoorModel.forward, m_CurValue - m_LastValue);
+            m_CurValue = spinningPattern.Evaluate(m_CurTime);
+            gearDoorModel.Rotate(Vector3.forward, m_CurValue - m_LastValue, Space.Self);
             m_LastValue = m_CurValue;
             yield return null;
             m_CurTime += Time.deltaTime;
         }
-        m_CurValue = Spinning.Evaluate(m_CurTime);
-        GearDoorModel.Rotate(GearDoorModel.forward, m_CurValue - m_LastValue);
-        
-        m_CurTime -= Spinning.keys[Spinning.length - 1].time;
-        m_LastValue = Ejecting.Evaluate(0f);
-        while (m_CurTime < Ejecting.keys[Ejecting.length - 1].time)
-        {
-            m_CurValue = Ejecting.Evaluate(m_CurTime);
-            GearDoorModel.Translate(new Vector3(0, 0, 1) * (m_CurValue - m_LastValue));
-            m_LastValue = m_CurValue;
-            yield return null;
-            m_CurTime += Time.deltaTime;
-        }
-        m_CurValue = Ejecting.Evaluate(m_CurTime);
-        GearDoorModel.Translate(new Vector3(0, 0, 1) * (m_CurValue - m_LastValue));
+        m_CurValue = spinningPattern.Evaluate(m_CurTime);
+        gearDoorModel.Rotate(gearDoorModel.forward, m_CurValue - m_LastValue);
 
-        m_CurTime -= Ejecting.keys[Ejecting.length - 1].time;
-        m_LastValue = Rotating.Evaluate(0f);
-        while (m_CurTime < Rotating.keys[Rotating.length - 1].time)
+        m_CurTime -= spinningPattern.keys[spinningPattern.length - 1].time;
+        m_LastValue = ejectingPattern.Evaluate(0f);
+        while (m_CurTime < ejectingPattern.keys[ejectingPattern.length - 1].time)
         {
-            m_CurValue = Rotating.Evaluate(m_CurTime);
-            GearDoorModel.RotateAround(RotationAxis.position, RotationAxis.up, m_CurValue - m_LastValue);
+            m_CurValue = ejectingPattern.Evaluate(m_CurTime);
+            gearDoorModel.Translate(new Vector3(0, 0, 1) * (m_CurValue - m_LastValue));
             m_LastValue = m_CurValue;
             yield return null;
             m_CurTime += Time.deltaTime;
         }
-        m_CurValue = Rotating.Evaluate(m_CurTime);
-        GearDoorModel.RotateAround(RotationAxis.position, RotationAxis.up, m_CurValue - m_LastValue);
+        m_CurValue = ejectingPattern.Evaluate(m_CurTime);
+        gearDoorModel.Translate(new Vector3(0, 0, 1) * (m_CurValue - m_LastValue));
+
+        m_CurTime -= ejectingPattern.keys[ejectingPattern.length - 1].time;
+        m_LastValue = rotatingPattern.Evaluate(0f);
+        while (m_CurTime < rotatingPattern.keys[rotatingPattern.length - 1].time)
+        {
+            m_CurValue = rotatingPattern.Evaluate(m_CurTime);
+            gearDoorModel.RotateAround(rotationAxis.position, rotationAxis.up, m_CurValue - m_LastValue);
+            m_LastValue = m_CurValue;
+            yield return null;
+            m_CurTime += Time.deltaTime;
+        }
+        m_CurValue = rotatingPattern.Evaluate(m_CurTime);
+        gearDoorModel.RotateAround(rotationAxis.position, rotationAxis.up, m_CurValue - m_LastValue);
 
         m_DoorState = State.Open;
     }
@@ -103,39 +118,41 @@ public class GearDoorController: MonoBehaviour
         while (m_CurTime < m_ReverseRotating.keys[m_ReverseRotating.length - 1].time)
         {
             m_CurValue = m_ReverseRotating.Evaluate(m_CurTime);
-            GearDoorModel.RotateAround(RotationAxis.position, RotationAxis.up, m_CurValue - m_LastValue);
+            gearDoorModel.RotateAround(rotationAxis.position, rotationAxis.up, m_CurValue - m_LastValue);
             m_LastValue = m_CurValue;
             yield return null;
             m_CurTime += Time.deltaTime;
         }
         m_CurValue = m_ReverseRotating.Evaluate(m_CurTime);
-        GearDoorModel.RotateAround(RotationAxis.position, RotationAxis.up, m_CurValue - m_LastValue);
+        gearDoorModel.RotateAround(rotationAxis.position, rotationAxis.up, m_CurValue - m_LastValue);
 
         m_CurTime -= m_ReverseRotating.keys[m_ReverseRotating.length - 1].time;
         m_LastValue = m_ReverseEjecting.Evaluate(0f);
         while (m_CurTime < m_ReverseEjecting.keys[m_ReverseEjecting.length - 1].time)
         {
             m_CurValue = m_ReverseEjecting.Evaluate(m_CurTime);
-            GearDoorModel.Translate(new Vector3(0, 0, 1) * (m_CurValue - m_LastValue));
+            gearDoorModel.Translate(new Vector3(0, 0, 1) * (m_CurValue - m_LastValue));
             m_LastValue = m_CurValue;
             yield return null;
             m_CurTime += Time.deltaTime;
         }
         m_CurValue = m_ReverseEjecting.Evaluate(m_CurTime);
-        GearDoorModel.Translate(new Vector3(0, 0, 1) * (m_CurValue - m_LastValue));
+        gearDoorModel.Translate(new Vector3(0, 0, 1) * (m_CurValue - m_LastValue));
+
+        openVFX.SetActive(false);
 
         m_CurTime -= m_ReverseEjecting.keys[m_ReverseEjecting.length - 1].time;
         m_LastValue = m_ReverseSpinning.Evaluate(0f);
         while (m_CurTime < m_ReverseSpinning.keys[m_ReverseSpinning.length - 1].time)
         {
             m_CurValue = m_ReverseSpinning.Evaluate(m_CurTime);
-            GearDoorModel.Rotate(GearDoorModel.forward, m_CurValue - m_LastValue);
+            gearDoorModel.Rotate(Vector3.forward, m_CurValue - m_LastValue, Space.Self);
             m_LastValue = m_CurValue;
             yield return null;
             m_CurTime += Time.deltaTime;
         }
         m_CurValue = m_ReverseSpinning.Evaluate(m_CurTime);
-        GearDoorModel.Rotate(GearDoorModel.forward, m_CurValue - m_LastValue);        
+        gearDoorModel.Rotate(gearDoorModel.forward, m_CurValue - m_LastValue);        
 
         m_DoorState = State.Closed;
     }   
