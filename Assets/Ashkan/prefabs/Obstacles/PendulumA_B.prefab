@@ -216,9 +216,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   B: {fileID: 5684608378121954592}
+  mSpeed: 0
   StopSpeed: 0
   NormalSpeed: 200
+  SlowFactor: 2
+  FastFactor: 2
   IdleDuration: 60
+  mPlayer: {fileID: 0}
+  Parenting: 0
+  mPrevPos: {x: 0, y: 0, z: 0}
+  mCurrentPos: {x: 0, y: 0, z: 0}
+  xx: 0
+  yy: 0
+  zz: 0
 --- !u!1 &5684608378121954592
 GameObject:
   m_ObjectHideFlags: 0
