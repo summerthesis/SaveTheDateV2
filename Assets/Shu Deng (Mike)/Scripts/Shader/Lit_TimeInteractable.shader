@@ -233,10 +233,10 @@
         [HideInInspector] _DiffusionProfileAsset("Diffusion Profile Asset", Vector) = (0, 0, 0, 0)
         [HideInInspector] _DiffusionProfileHash("Diffusion Profile Hash", Float) = 0
 
-
         // START: Added by Shu Deng (Mike)
         [HDR]_FresnelColour("Fresnel Colour", Color) = (1.414675,1.421379,1.416956,0)
         _FresnelPower("Fresnel Power", Float) = 2
+        _EmissionAlpha("Emission Alpha", Float) = 0.3
         [ToggleUI] _IsTwinkling("IsTwinkling", Float) = 0
         [ToggleUI] _IsHighlighted("IsHighlighted", Float) = 1
         // END: Added by Shu Deng (Mike)
@@ -802,6 +802,7 @@
             CBUFFER_START(UnityPerMaterial)
             float4 _FresnelColour;
             float _FresnelPower;
+            float _EmissionAlpha;
             float _IsTwinkling;
             float _IsHighlighted;
             CBUFFER_END
@@ -826,11 +827,6 @@
                 float3 WorldSpaceNormal : TEXCOORD0;
                 float3 WorldSpaceViewDirection : TEXCOORD1;
 
-            };
-
-            struct SurfaceDescription
-            {
-                float4 Out_3;
             };
 
             void Unity_FresnelEffect_float(float3 Normal, float3 ViewDir, float Power, out float Out)
@@ -863,43 +859,32 @@
                 return v;
             }
 
-            SurfaceDescription PopulateSurfaceData(SurfaceDescriptionInputs IN)
+            float4 PopulateSurfaceData(SurfaceDescriptionInputs IN)
             {
-                SurfaceDescription surface = (SurfaceDescription)0;
-                float _Property_FA3225F3_Out_0 = _IsHighlighted;
-                float _Property_89CB00E8_Out_0 = _FresnelPower;
+                float4 surface;
                 float _FresnelEffect_E7A0EDB3_Out_3;
-                Unity_FresnelEffect_float(IN.WorldSpaceNormal, IN.WorldSpaceViewDirection, _Property_89CB00E8_Out_0, _FresnelEffect_E7A0EDB3_Out_3);
-                float4 _Property_AA8A1668_Out_0 = _FresnelColour;
+                Unity_FresnelEffect_float(IN.WorldSpaceNormal, IN.WorldSpaceViewDirection, _FresnelPower, _FresnelEffect_E7A0EDB3_Out_3);
                 float4 _Multiply_CCE9D4BB_Out_2;
-                Unity_Multiply_float((_FresnelEffect_E7A0EDB3_Out_3.xxxx), _Property_AA8A1668_Out_0, _Multiply_CCE9D4BB_Out_2);
+                Unity_Multiply_float((_FresnelEffect_E7A0EDB3_Out_3.xxxx), _FresnelColour, _Multiply_CCE9D4BB_Out_2);
 
-                float _Property_24968761_Out_0 = _IsTwinkling;
                 float _Remap_F11A93D1_Out_3;
-                Unity_Remap_float(_SinTime.w, float2 (-1, 1), float2 (0.1, 1), _Remap_F11A93D1_Out_3);
+                Unity_Remap_float(_SinTime.z, float2 (-1, 1), float2 (0.1, 1), _Remap_F11A93D1_Out_3);
                 float _Branch_CB18BEDC_Out_3;
-                Unity_Branch_float(_Property_24968761_Out_0, _Remap_F11A93D1_Out_3, 1, _Branch_CB18BEDC_Out_3);
+                Unity_Branch_float(_IsTwinkling, _Remap_F11A93D1_Out_3, 1, _Branch_CB18BEDC_Out_3);
                 float4 _Multiply_4220803C_Out_2;
                 Unity_Multiply_float(_Multiply_CCE9D4BB_Out_2, (_Branch_CB18BEDC_Out_3.xxxx), _Multiply_4220803C_Out_2);
 
-                float4 _Branch_154D0961_Out_3;
-                Unity_Branch_float4(_Property_FA3225F3_Out_0, _Multiply_4220803C_Out_2, float4(0, 0, 0, 0), _Branch_154D0961_Out_3);
-                surface.Out_3 = _Branch_154D0961_Out_3;
+                Unity_Branch_float4(_IsHighlighted, _Multiply_4220803C_Out_2, float4(0, 0, 0, 0), surface);
                 return surface;
             }
 
             GraphVertexOutput vert(GraphVertexInput v)
             {
                 v = PopulateVertexData(v);
-
                 GraphVertexOutput o;
-                float3 positionWS = TransformObjectToWorld(v.vertex);
-                o.position = TransformWorldToHClip(positionWS);
-                float3 WorldSpaceNormal = normalize(mul(v.normal, (float3x3)UNITY_MATRIX_I_M));
-                float3 WorldSpaceViewDirection = _WorldSpaceCameraPos.xyz - mul(GetObjectToWorldMatrix(), float4(v.vertex.xyz, 1.0)).xyz;
-                o.WorldSpaceNormal = WorldSpaceNormal;
-                o.WorldSpaceViewDirection = WorldSpaceViewDirection;
-
+                o.position = TransformWorldToHClip(TransformObjectToWorld(v.vertex));
+                o.WorldSpaceNormal = normalize(mul(v.normal, (float3x3)UNITY_MATRIX_I_M));
+                o.WorldSpaceViewDirection = _WorldSpaceCameraPos.xyz - mul(GetObjectToWorldMatrix(), float4(v.vertex.xyz, 1.0)).xyz;
                 return o;
             }
 
@@ -912,8 +897,8 @@
                 surfaceInput.WorldSpaceNormal = WorldSpaceNormal;
                 surfaceInput.WorldSpaceViewDirection = WorldSpaceViewDirection;
 
-                SurfaceDescription surf = PopulateSurfaceData(surfaceInput);
-                return all(isfinite(surf.Out_3)) ? half4(surf.Out_3.x, surf.Out_3.y, surf.Out_3.z, 0.3) : float4(1.0f, 0.0f, 1.0f, 1.0f);
+                float4 surf = PopulateSurfaceData(surfaceInput);
+                return all(isfinite(surf)) ? half4(surf.x, surf.y, surf.z, _EmissionAlpha) : float4(1.0f, 0.0f, 1.0f, 1.0f);
             }
 
             ENDHLSL
@@ -1031,5 +1016,5 @@
         }
     }
 
-    CustomEditor "Experimental.Rendering.HDPipeline.LitGUI"
+    CustomEditor "com.savethedate.editor.rendering.LitTimeInteractableGUI"
 }
