@@ -7,10 +7,11 @@ public class PlatformSpawner : MonoBehaviour
     public GameObject Despawner;
     public GameObject SimplePlatformPrefab;
     public float PlatformMoveSpeed;
-    public int Interval;
+    public int Interval, StartDelay, startCount;
     private int Count;
     private Vector3 Forward;
     private GameObject NewPlatform;
+    private bool started;
     void Start()
     {
         Forward = this.transform.forward;
@@ -19,13 +20,19 @@ public class PlatformSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Count++;
-        if (Count >= Interval)
+        if (!started) startCount++;
+        if (!started && startCount > StartDelay) started = true;
+        if(started)
         {
-            Count = 0;
-            NewPlatform = Instantiate(SimplePlatformPrefab, this.transform.position, this.transform.rotation);
-            NewPlatform.GetComponent<PlatformStraight>().mSpeed = PlatformMoveSpeed;
-            NewPlatform.GetComponent<PlatformStraight>().Despawner = Despawner;
+            Count++;
+            if (Count >= Interval)
+            {
+                Count = 0;
+                NewPlatform = Instantiate(SimplePlatformPrefab, this.transform.position, this.transform.rotation);
+                NewPlatform.GetComponent<PlatformStraight>().mSpeed = PlatformMoveSpeed;
+                NewPlatform.GetComponent<PlatformStraight>().Despawner = Despawner;
+            }
         }
+        
     }
 }
