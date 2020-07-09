@@ -12,6 +12,7 @@ public class OnBoardingLevelEnd : MonoBehaviour
         {            
             GameManager.HUD.SetActive(false);
             GameManager.PlayerInput.PlayerControls.Jump.Disable();
+            GameManager.PlayerInput.TimeControls.Disable();
             m_Started = true;
         }
     }
@@ -23,6 +24,7 @@ public class OnBoardingLevelEnd : MonoBehaviour
         {
             GameManager.HUD.SetActive(true);
             GameManager.PlayerInput.PlayerControls.Jump.Enable();
+            GameManager.PlayerInput.TimeControls.Enable();
             m_Ended = true;
         }
     }

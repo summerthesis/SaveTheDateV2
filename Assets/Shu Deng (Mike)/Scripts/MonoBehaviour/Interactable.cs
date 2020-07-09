@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,13 +10,16 @@ public class Interactable : MonoBehaviour
     public GameObject PopupHintPrefab;
     public Vector3 PopupPosition;
     public bool PopupInWorld = false;
-    bool m_PopupShowed = false;
-    GameObject m_Popup;
+
+    private bool m_PopupShowed = false;
+    private GameObject m_Popup;
+    private static bool m_InteractBinded = false;
+    private static Interactable m_CurrentBinded;
 
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<BoxCollider>().isTrigger = true;        
+        GetComponent<BoxCollider>().isTrigger = true;     
     }
 
     // Update is called once per frame
@@ -28,20 +33,7 @@ public class Interactable : MonoBehaviour
         KH_PlayerController playerController = other.GetComponent<KH_PlayerController>();
         if (playerController != null)
         {
-            if (m_PopupShowed == false)
-            {
-                m_Popup = Instantiate(PopupHintPrefab, this.transform);
-                if (PopupInWorld == true)
-                {
-                    m_Popup.transform.position = PopupPosition;
-                }
-                else
-                {
-                    m_Popup.transform.localPosition = PopupPosition;
-                }               
-                m_PopupShowed = true;
-                GameManager.PlayerInput.PlayerControls.Interact.performed += OnInteractPerformed;
-            }
+            StartCoroutine(SubscribeInteract());
         }
     }
 
@@ -54,13 +46,42 @@ public class Interactable : MonoBehaviour
             {
                 Destroy(m_Popup);
                 m_PopupShowed = false;
-                GameManager.PlayerInput.PlayerControls.Interact.performed -= OnInteractPerformed;
+                StopCoroutine(SubscribeInteract());
+                if (m_CurrentBinded == this)
+                {
+                    GameManager.PlayerInput.PlayerControls.Interact.performed -= OnInteractPerformed;
+                    m_InteractBinded = false;
+                }                
             }
         }
     }
 
-    void OnInteractPerformed(InputAction.CallbackContext ctx)
+    private void OnInteractPerformed(InputAction.CallbackContext ctx)
     {
         SendMessage("OnInteract");
+    }
+
+    private IEnumerator SubscribeInteract()
+    {
+        while (m_InteractBinded == true)
+        {
+            yield return null;
+        }
+        if (m_PopupShowed == false)
+        {
+            m_Popup = Instantiate(PopupHintPrefab, this.transform);
+            if (PopupInWorld == true)
+            {
+                m_Popup.transform.position = PopupPosition;
+            }
+            else
+            {
+                m_Popup.transform.localPosition = PopupPosition;
+            }
+            m_PopupShowed = true;
+            GameManager.PlayerInput.PlayerControls.Interact.performed += OnInteractPerformed;
+            m_InteractBinded = true;
+            m_CurrentBinded = this;
+        }        
     }
 }
