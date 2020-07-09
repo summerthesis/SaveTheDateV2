@@ -51,7 +51,7 @@ public class KH_PlayerController : MonoBehaviour
         //anim = mPlayer.GetComponent<Animator>();
         //rb = GetComponent<Rigidbody>();
         //playerCollider = GetComponent<BoxCollider>();
-        controls = InputManagerSingleton.Instance;
+        controls = GameManager.PlayerInput;
         controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
         controls.PlayerControls.Jump.started += ctx => jumpInput = true;
@@ -62,11 +62,14 @@ public class KH_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        forward = Camera.main.transform.forward;
-        forward.y = 0;
-        forward = Vector3.Normalize(forward);
-        right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
-        MovePlayer();
+        if (Camera.main != null)
+        {
+            forward = Camera.main.transform.forward;
+            forward.y = 0;
+            forward = Vector3.Normalize(forward);
+            right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+            MovePlayer();
+        }
     }
     void PlaySound(string path)
     {
