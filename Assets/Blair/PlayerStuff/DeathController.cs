@@ -66,7 +66,7 @@ public class DeathController : MonoBehaviour
                 journeyLength = Vector3.Distance(transform.position, RecordedTransforms.Last());
                 float distCovered = (Time.time - startTime) * speed;
                 float fractionOfJourney = distCovered / journeyLength;
-                transform.position = Vector3.Slerp
+                transform.position = Vector3.Lerp
                 (transform.position, RecordedTransforms.Last(), fractionOfJourney);
                
                 if(Vector3.Distance(mPlayer.transform.position,RecordedTransforms.Last()) < 1.0f)
