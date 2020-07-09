@@ -1351,6 +1351,7 @@ GameObject:
   - component: {fileID: 319305930627646912}
   - component: {fileID: 8988928632114446759}
   - component: {fileID: 6603505439714525444}
+  - component: {fileID: 1222491426}
   m_Layer: 5
   m_Name: FadingCurtain
   m_TagString: Untagged
@@ -1414,6 +1415,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &1222491426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563077428339006133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745d23e53a62c2049a6a0a1560a35ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInSpeed: 0.5
+  fadeOutSpeed: 0.25
 --- !u!1 &5498392806394945871
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,10 +62,10 @@ public class Cinematic : MonoBehaviour
             m_MainCamera.gameObject.SetActive(false);
         }
 
-        if (GameManager.HUD.activeInHierarchy == true)
+        if (GameManager.HUD.transform.GetChild(0).gameObject.activeInHierarchy == true)
         {
             m_HUDActive = true;
-            GameManager.HUD.SetActive(false);
+            GameManager.HUD.transform.GetChild(0).gameObject.SetActive(false);
         }
         else
         {
@@ -167,7 +167,7 @@ public class Cinematic : MonoBehaviour
 
                 if (m_HUDActive == true)
                 {
-                    GameManager.HUD.SetActive(true);
+                    GameManager.HUD.transform.GetChild(0).gameObject.SetActive(true);
                 }
                 
                 GameManager.PlayerInput.PlayerControls.Move.Enable();
