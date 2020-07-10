@@ -1,13 +1,12 @@
 [LOG] System::create                           : Header version = 2.00.09. Current version = 2.00.09.
-[LOG] Manager::init                            : maxchannels = 256 studioflags = 00000006 flags 00000000 extradriverdata 0000000000000000.
+[LOG] Manager::init                            : maxchannels = 256 studioflags = 00000006 flags 00000000 extradriverdata 0x0.
 [LOG] SystemI::init                            : Initialize version=20009 (109255), maxchannels=256, flags=0x00020000
-[LOG] SystemI::setOutputInternal               : Setting output to 'FMOD WASAPI Output'
-[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEX): wFormatTag=0xFFFE, nChannels=2, nSamplesPerSec=48000, nAvgBytesPerSec=384000, nBlockAlign=8, wBitsPerSample=32, cbSize=22.
-[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEXTENSIBLE): wValidBitsPerSample=32, dwChannelMask=0x00000003, SubFormat=00000003-0000-0010-8000-00AA00389B71.
-[LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
+[LOG] SystemI::setOutputInternal               : Setting output to 'FMOD Core Audio Output'
+[LOG] OutputCoreAudio::init                    : Output running 2 channels at 48000Hz sample rate.
+[LOG] OutputCoreAudio::init                    : Maximum hardware read size: 1024 samples, Software buffer size: 512 samples, Number of software buffers: 4.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
-[LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000296278190A8 isAsync 0 updatePeriod 0.02
+[LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 81920, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+[LOG] AsyncManager::init                       : manager 0x7ff54f87de08 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Priority: 0, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,34 +17,64 @@
 [LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
 [LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 3
-[LOG] SoundI::release                          :  (000002962768C008)
-[LOG] SoundI::release                          :     Spinning Click (0000029674814998)
-[LOG] SoundI::release                          :  (000002962768BD28)
-[LOG] SoundI::release                          :     SlowDown_Clock (00000296748137B8)
-[LOG] SoundI::release                          :  (0000029627689C18)
-[LOG] SoundI::release                          :     Tick_02 (00000296748144B8)
-[LOG] SoundI::release                          :  (000002962768BBB8)
-[LOG] SoundI::release                          :     Tick_04 (0000029674814658)
-[LOG] SoundI::release                          :  (000002962768B768)
-[LOG] SoundI::release                          :     Tick_06 (00000296748147F8)
-[LOG] SoundI::release                          :  (000002962768A908)
-[LOG] SoundI::release                          :     Slowdown (0000029674813C98)
-[LOG] SoundI::release                          :  (000002962768BA48)
-[LOG] SoundI::release                          :     Tick_01 (0000029674813AF8)
-[LOG] SoundI::release                          :  (000002962768CA18)
-[LOG] SoundI::release                          :     Tick_03 (0000029674814178)
-[LOG] SoundI::release                          :  (0000029627689098)
-[LOG] SoundI::release                          :     Tick_05 (0000029674814B38)
-[LOG] SoundI::release                          :  (000002962768ABE8)
-[LOG] SoundI::release                          :     Tick_07 (0000029674814318)
-[LOG] SoundI::release                          :  (000002962768B1A8)
-[LOG] SoundI::release                          :     SlowDown_End (0000029674813E38)
-[LOG] SoundI::release                          :  (000002962768B318)
-[LOG] SoundI::release                          :      Respawn (0000029674814CD8)
-[LOG] SoundI::release                          :  (000002962768B8D8)
-[LOG] SoundI::release                          :      Rewind Loop (0000029674813FD8)
-[LOG] SoundI::release                          :  (000002962768AEC8)
-[LOG] SoundI::release                          :      Loop Startup (0000029674813958)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 3
+[LOG] SoundI::release                          :  (0x7ff55960b4b8)
+[LOG] SoundI::release                          :     Footsteps-001 (0x7ff559612dd8)
+[LOG] SoundI::release                          :  (0x7ff553214c88)
+[LOG] SoundI::release                          :     Footsteps-002 (0x7ff553214df8)
+[LOG] SoundI::release                          :  (0x7ff5532147d8)
+[LOG] SoundI::release                          :     Footsteps-003 (0x7ff553214948)
+[LOG] SoundI::release                          :  (0x7ff553214328)
+[LOG] SoundI::release                          :     Footsteps-004 (0x7ff553214498)
+[LOG] SoundI::release                          :  (0x7ff55960c408)
+[LOG] SoundI::release                          :     Wrench-001 (0x7ff55960c578)
+[LOG] SoundI::release                          :  (0x7ff559607748)
+[LOG] SoundI::release                          :     Wrench-002 (0x7ff5596078b8)
+[LOG] SoundI::release                          :  (0x7ff5594e2768)
+[LOG] SoundI::release                          :     Wrench-003 (0x7ff5594e28d8)
+[LOG] SoundI::release                          :  (0x7ff5521291f8)
+[LOG] SoundI::release                          :     Wrench-004 (0x7ff552129368)
+[LOG] SoundI::release                          :  (0x7ff558fb03b8)
+[LOG] SoundI::release                          :     Tool-001 (0x7ff552126b98)
+[LOG] SoundI::release                          :  (0x7ff5594dda48)
+[LOG] SoundI::release                          :     Tool-002 (0x7ff5594e2428)
+[LOG] SoundI::release                          :  (0x7ff558feee98)
+[LOG] SoundI::release                          :     Tool-003 (0x7ff552127eb8)
+[LOG] SoundI::release                          :  (0x7ff552142e08)
+[LOG] SoundI::release                          :     Tool-004 (0x7ff552128ff8)
+[LOG] SoundI::release                          :  (0x7ff55960bf58)
+[LOG] SoundI::release                          :     Tool-005 (0x7ff55960c0c8)
+[LOG] SoundI::release                          :  (0x7ff55216e378)
+[LOG] SoundI::release                          :     Slowdown (0x7ff55216da68)
+[LOG] SoundI::release                          :  (0x7ff552133f98)
+[LOG] SoundI::release                          :     Spinning Click (0x7ff552134108)
+[LOG] SoundI::release                          :  (0x7ff552146b58)
+[LOG] SoundI::release                          :     SlowDown_Clock (0x7ff552146cc8)
+[LOG] SoundI::release                          :  (0x7ff552ea0578)
+[LOG] SoundI::release                          :     Tick_02 (0x7ff552ea06e8)
+[LOG] SoundI::release                          :  (0x7ff552e9dfa8)
+[LOG] SoundI::release                          :     Tick_04 (0x7ff552e99eb8)
+[LOG] SoundI::release                          :  (0x7ff552e9ad28)
+[LOG] SoundI::release                          :     Tick_06 (0x7ff552e9ae98)
+[LOG] SoundI::release                          :  (0x7ff552e9a878)
+[LOG] SoundI::release                          :     Tick_01 (0x7ff552e9a9e8)
+[LOG] SoundI::release                          :  (0x7ff5521457d8)
+[LOG] SoundI::release                          :     Tick_03 (0x7ff552145948)
+[LOG] SoundI::release                          :  (0x7ff5590ed5e8)
+[LOG] SoundI::release                          :     Tick_05 (0x7ff5590ee0c8)
+[LOG] SoundI::release                          :  (0x7ff5590ed768)
+[LOG] SoundI::release                          :     Tick_07 (0x7ff5590ed8d8)
+[LOG] SoundI::release                          :  (0x7ff552e9dca8)
+[LOG] SoundI::release                          :     SlowDown_End (0x7ff552e9de18)
+[LOG] SoundI::release                          :  (0x7ff552e9e118)
+[LOG] SoundI::release                          :      Respawn (0x7ff552e9a538)
+[LOG] SoundI::release                          :  (0x7ff552c8dae8)
+[LOG] SoundI::release                          :      Rewind Loop (0x7ff5575cfa88)
+[LOG] SoundI::release                          :  (0x7ff552ea0d68)
+[LOG] SoundI::release                          :      Loop Startup (0x7ff552ea0ed8)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
