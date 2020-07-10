@@ -45,10 +45,9 @@ public class Pickup: MonoBehaviour
     public float flyingTime = 0.5f;
     public AnimationCurve flyingPattern;
 
-    Collider m_Collider;
-    Canvas m_HUDCanvas;
-    Vector3 m_StartPosition;
-    Vector3 m_FlyingTarget;
+    private Collider m_Collider;
+    private Vector3 m_StartPosition;
+    private Vector3 m_FlyingTarget;    
     enum State
     {
         BEFOREPICKED,
@@ -57,13 +56,13 @@ public class Pickup: MonoBehaviour
     State pickupState;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         m_Collider = GetComponent<Collider>();
         m_Collider.isTrigger = true;
-        m_HUDCanvas = GameObject.FindGameObjectWithTag("HUD").GetComponentInChildren<Canvas>();
         m_StartPosition = transform.position;
         pickupState = State.BEFOREPICKED;
+
         switch (flyingTargetInScreen)
         {
             case Target.TopLeft:
@@ -79,8 +78,8 @@ public class Pickup: MonoBehaviour
                 m_FlyingTarget = new Vector3(Camera.main.pixelWidth, 0, targetOffsetToScreen);
                 break;
             case Target.CustomUIPosition:
-                float width = m_HUDCanvas.GetComponent<RectTransform>().rect.width;
-                float height = m_HUDCanvas.GetComponent<RectTransform>().rect.height;
+                float width = GameManager.HUD.GetComponent<RectTransform>().rect.width;
+                float height = GameManager.HUD.GetComponent<RectTransform>().rect.height;
                 switch (uIPositionAnchor)
                 {
                     case Anchor.BottomLeft:
@@ -166,7 +165,7 @@ public class Pickup: MonoBehaviour
 
         if (pickupVFXPrefab)
         {
-            var pickupVFXInstance = Instantiate(pickupVFXPrefab, transform.position, Quaternion.identity);
+            //var pickupVFXInstance = Instantiate(pickupVFXPrefab, transform.position, Quaternion.identity);
         }
     }
 }

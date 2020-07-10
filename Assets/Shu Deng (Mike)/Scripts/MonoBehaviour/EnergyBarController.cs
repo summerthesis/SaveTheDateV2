@@ -9,7 +9,7 @@ public class EnergyBarController : MonoBehaviour
     private Transform m_EnergyBarEmpty, m_RotationCenter;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         m_EnergyBarEmpty = EnergyBarUI.GetChild(1);
         m_RotationCenter = EnergyBarUI.GetChild(2);

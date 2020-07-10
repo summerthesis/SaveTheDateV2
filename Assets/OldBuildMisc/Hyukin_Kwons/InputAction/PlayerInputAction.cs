@@ -236,7 +236,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8b24a664-9a05-412e-9d2e-4576b5cc5c4e"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -637,6 +637,17 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""action"": ""Cancel/Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""afd7d395-15ee-442a-8d93-e60ff9b2fc33"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel/Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -662,6 +673,156 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""CycleAngles"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MainMenu"",
+            ""id"": ""c170cb10-b5f4-4493-80e5-c7b3383a5b09"",
+            ""actions"": [
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""39dd25c4-f7c7-460e-ac88-2b522c404f3f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""662c3aaa-ec5c-4796-bb1e-be32e1f42a69"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Accept"",
+                    ""type"": ""Button"",
+                    ""id"": ""94371468-080a-4eb7-baf5-895ecabcb6f0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""907c8f9d-c687-4b9e-bacb-e240d8039e59"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""d9d94224-5d4f-4470-a489-6e24f4eab0e2"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32aea564-7a2a-4dd8-8738-801b913b3959"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fab55a6f-712b-4ffe-9bd3-832a893d6420"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0cf87204-8826-49f4-be91-208f87a366af"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d3ab1f4-daf6-43b6-bb70-d2cf5d636915"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e9ca9d2-df15-42cc-a7bf-173090aef64d"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef2d811d-38ef-44a9-97b9-4cd66377dbfd"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ee13a4c-a58b-4736-8673-dabb6293b3b0"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e7978ad-c88a-40b9-a109-ab167209d86d"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23edbaa3-4f7b-489b-8dd3-582d19fe5784"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -726,6 +887,12 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         // CameraDebugAngles
         m_CameraDebugAngles = asset.FindActionMap("CameraDebugAngles", throwIfNotFound: true);
         m_CameraDebugAngles_CycleAngles = m_CameraDebugAngles.FindAction("CycleAngles", throwIfNotFound: true);
+        // MainMenu
+        m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
+        m_MainMenu_Up = m_MainMenu.FindAction("Up", throwIfNotFound: true);
+        m_MainMenu_Down = m_MainMenu.FindAction("Down", throwIfNotFound: true);
+        m_MainMenu_Accept = m_MainMenu.FindAction("Accept", throwIfNotFound: true);
+        m_MainMenu_Cancel = m_MainMenu.FindAction("Cancel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1080,6 +1247,63 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         }
     }
     public CameraDebugAnglesActions @CameraDebugAngles => new CameraDebugAnglesActions(this);
+
+    // MainMenu
+    private readonly InputActionMap m_MainMenu;
+    private IMainMenuActions m_MainMenuActionsCallbackInterface;
+    private readonly InputAction m_MainMenu_Up;
+    private readonly InputAction m_MainMenu_Down;
+    private readonly InputAction m_MainMenu_Accept;
+    private readonly InputAction m_MainMenu_Cancel;
+    public struct MainMenuActions
+    {
+        private @PlayerInputAction m_Wrapper;
+        public MainMenuActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Up => m_Wrapper.m_MainMenu_Up;
+        public InputAction @Down => m_Wrapper.m_MainMenu_Down;
+        public InputAction @Accept => m_Wrapper.m_MainMenu_Accept;
+        public InputAction @Cancel => m_Wrapper.m_MainMenu_Cancel;
+        public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MainMenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMainMenuActions instance)
+        {
+            if (m_Wrapper.m_MainMenuActionsCallbackInterface != null)
+            {
+                @Up.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnUp;
+                @Down.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnDown;
+                @Accept.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnAccept;
+                @Accept.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnAccept;
+                @Accept.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnAccept;
+                @Cancel.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
+            }
+            m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
+                @Accept.started += instance.OnAccept;
+                @Accept.performed += instance.OnAccept;
+                @Accept.canceled += instance.OnAccept;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+            }
+        }
+    }
+    public MainMenuActions @MainMenu => new MainMenuActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -1135,5 +1359,12 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     public interface ICameraDebugAnglesActions
     {
         void OnCycleAngles(InputAction.CallbackContext context);
+    }
+    public interface IMainMenuActions
+    {
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnAccept(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
 }

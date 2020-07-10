@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5544859443925070327}
   - component: {fileID: 8617106928045986299}
   - component: {fileID: 3132969329798911888}
+  - component: {fileID: 781592411}
   m_Layer: 0
   m_Name: Gear3
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5124144280124606504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children: []
   m_Father: {fileID: 3051816761114237467}
   m_RootOrder: 0
@@ -58,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: e6e689ae9c4b4db4c99de5c023af99d5, type: 3}
+  - {fileID: 2100000, guid: f16cc73471b7c9e4f8a151d495658c58, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,6 +92,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0921351, y: 1.0945219, z: 0.14000003}
   m_Center: {x: -0.00000038743016, y: 0.0000014603137, z: 0.050001185}
+--- !u!114 &781592411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124144280124606504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc3f4ca2fd334c45b5781a4de879745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xForceDirection: 0
+  yForceDirection: 0
+  zForceDirection: 1
+  StopSpeed: 0
+  NormalSpeed: 2
+  mSpeed: 0
+  worldPivote: 0
 --- !u!1 &6765012532559464320
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +125,7 @@ GameObject:
   m_Layer: 0
   m_Name: B
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -117,7 +137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6765012532559464320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.44, y: 0, z: 0}
+  m_LocalPosition: {x: 10.44, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3051816761114237467}
@@ -130,7 +150,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6765012532559464320}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &3397112290190817730
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -179,7 +199,7 @@ GameObject:
   - component: {fileID: 3051816761114237467}
   - component: {fileID: 4365392612352610793}
   m_Layer: 8
-  m_Name: Gear_S (2)
+  m_Name: Gear_S
   m_TagString: TimeInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,5 +235,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   B: {fileID: 6765012532559464320}
   StopSpeed: 0
-  NormalSpeed: 20
+  NormalSpeed: 12
+  mSpeed: 0
   IdleDuration: 0
+  mPlayer: {fileID: 0}
+  Parenting: 0
+  mPrevPos: {x: 0, y: 0, z: 0}
+  mCurrentPos: {x: 0, y: 0, z: 0}
+  xx: 0
+  yy: 0
+  zz: 0

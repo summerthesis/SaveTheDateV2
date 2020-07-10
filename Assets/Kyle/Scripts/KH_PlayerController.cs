@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class KH_PlayerController : MonoBehaviour
 {
+    private bool isFlying; private Vector3 FlyingDirection;
     public float moveSpeed = 4.0f; //from https://youtu.be/XhliRnzJe5g (How to Make An Isometric Camera and Character Controller in Unity3D)
     public float jumpForce = 7.0f; //from https://youtu.be/vdOFUFMiPDU (How To Jump in Unity - Unity Jumping Tutorial | Make Your Characters Jump in Unity)
     public float fallMultiplier = 2.5f; //from https://youtu.be/7KiK0Aqtmzc (Better Jumping in Unity With Four Lines of Code)
@@ -16,6 +17,7 @@ public class KH_PlayerController : MonoBehaviour
     private bool jumpInput; //private
     private bool castInput; //private
     private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
+    private bool jumping;
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
     public Animator anim;
@@ -33,9 +35,10 @@ public class KH_PlayerController : MonoBehaviour
     private string is_grounded_anim_param = "IsGrounded";
     private string double_jump_anim_param = "IsDoubleJumping";
 
+    private FMODUnity.StudioEventEmitter eventEmitterRef;
     void Awake()
     {
-        
+        eventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>();
     }
     
     void Start()
@@ -48,7 +51,7 @@ public class KH_PlayerController : MonoBehaviour
         //anim = mPlayer.GetComponent<Animator>();
         //rb = GetComponent<Rigidbody>();
         //playerCollider = GetComponent<BoxCollider>();
-        controls = InputManagerSingleton.Instance;
+        controls = GameManager.PlayerInput;
         controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
         controls.PlayerControls.Jump.started += ctx => jumpInput = true;
@@ -59,15 +62,22 @@ public class KH_PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        forward = Camera.main.transform.forward;
-        forward.y = 0;
-        forward = Vector3.Normalize(forward);
-        right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
-        MovePlayer();
+        if (Camera.main != null)
+        {
+            forward = Camera.main.transform.forward;
+            forward.y = 0;
+            forward = Vector3.Normalize(forward);
+            right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+            MovePlayer();
+        }
     }
-
+    void PlaySound(string path)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path, GetComponent<Transform>().position);
+    }
     void MovePlayer()
     {
+        
         horizontalMovement = movementInput.x;
         verticalMovement = movementInput.y;
 
@@ -89,9 +99,44 @@ public class KH_PlayerController : MonoBehaviour
         //rb.AddForce(movement, ForceMode.Acceleration);
         rb.velocity = new Vector3(groundMovement.x, rb.velocity.y, groundMovement.z);
 
+        if (isFlying)
+        {
+            rb.velocity = FlyingDirection;
+            if (FlyingDirection.x != 0)
+            {
+                if (FlyingDirection.x > 0) FlyingDirection.x -= 0.2f;
+                if (FlyingDirection.x < 0) FlyingDirection.x += 0.2f;
+            }
+            if (FlyingDirection.y != 0)
+            {
+                if (FlyingDirection.y > 0) FlyingDirection.y -= 0.2f;
+                if (FlyingDirection.y < 0) FlyingDirection.y += 0.2f;
+            }
+            if (FlyingDirection.z != 0)
+            {
+                if (FlyingDirection.z > 0) FlyingDirection.z -= 0.2f;
+                if (FlyingDirection.z < 0) FlyingDirection.z += 0.2f;
+            }
+            if (FlyingDirection.x < 1.3f && FlyingDirection.x > -1.3f)
+                FlyingDirection.x = 0;
+            if (FlyingDirection.y < 0.3f && FlyingDirection.y > -1.3f)
+                FlyingDirection.y = 0;
+            if (FlyingDirection.z < 1.3f && FlyingDirection.z > -1.3f)
+                FlyingDirection.z = 0;
+            if (FlyingDirection.x == 0 &&
+                FlyingDirection.y == 0 &&
+                FlyingDirection.z == 0)
+                isFlying = false;
+        }
+
         // JUMPING
         if (IsGrounded())
         {
+            if (jumping)
+            {
+             PlaySound("event:/Characters/Player/Locomotion/Landing");
+             jumping = false;
+            }
             canDoubleJump = true;
             anim.SetBool(is_grounded_anim_param, true);
             anim.SetBool(is_jump_input_anim_param, false);
@@ -108,10 +153,13 @@ public class KH_PlayerController : MonoBehaviour
             anim.SetBool(is_jump_input_anim_param, true);
             if (IsGrounded())
             {
+                PlaySound("event:/Characters/Player/Locomotion/Jump");
                 rb.velocity = Vector3.up * jumpForce;
+                jumping = true;
             }
             else if (canDoubleJump)
             {
+                PlaySound("event:/Characters/Player/Locomotion/Double Jump");
                 rb.velocity = Vector3.up * jumpForce;
                 canDoubleJump = false;
                 anim.SetBool(double_jump_anim_param, true);
@@ -147,10 +195,10 @@ public class KH_PlayerController : MonoBehaviour
         }
 
         // FULL STOP WHEN JOYSTICK IS RELEASED
-        if (horizontalMovement == 0 && verticalMovement == 0)
-        {
-            rb.velocity = new Vector3(0, rb.velocity.y, 0);
-        }
+        //if (horizontalMovement == 0 && verticalMovement == 0)
+        //{
+        //    rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        //}
 
         // DISABLE RIGIDBODY FUMBLING
         rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -185,8 +233,16 @@ public class KH_PlayerController : MonoBehaviour
         Debug.DrawRay(playerCollider.transform.position, Vector3.down * 0.1f, Color.green);
     }
 
+    void SendFlying(Vector3 Dir)
+    {
+        FlyingDirection = Dir;
+        Vector3 impulse = Dir;
+        GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
+        isFlying = true; 
+    }
     private bool IsGrounded()
     {
         return Physics.Raycast(playerCollider.transform.position, Vector3.down, 0.1f, groundLayers);
     }
+ 
 }

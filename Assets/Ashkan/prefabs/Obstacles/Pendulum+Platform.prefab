@@ -345,6 +345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4464964565890666970}
+  - component: {fileID: 7559899589487532978}
   m_Layer: 0
   m_Name: Pendulum+Platform
   m_TagString: Untagged
@@ -369,6 +370,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7559899589487532978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464964565890666973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9867e9b246406749ab38b52f9281672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LinkedObjects: []
 --- !u!1 &7085902793408430438
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,9 +429,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   B: {fileID: 1258688039409739216}
+  mSpeed: 0
   StopSpeed: 0
   NormalSpeed: 4
+  SlowFactor: 0
+  FastFactor: 0
   IdleDuration: 120
+  mPlayer: {fileID: 0}
+  Parenting: 0
+  mPrevPos: {x: 0, y: 0, z: 0}
+  mCurrentPos: {x: 0, y: 0, z: 0}
+  xx: 0
+  yy: 0
+  zz: 0
 --- !u!1 &7085902793412716458
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,9 +488,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   B: {fileID: 1258688039414268700}
+  mSpeed: 0
   StopSpeed: 0
   NormalSpeed: 4
+  SlowFactor: 0
+  FastFactor: 0
   IdleDuration: 120
+  mPlayer: {fileID: 0}
+  Parenting: 0
+  mPrevPos: {x: 0, y: 0, z: 0}
+  mCurrentPos: {x: 0, y: 0, z: 0}
+  xx: 0
+  yy: 0
+  zz: 0
 --- !u!1001 &839914199024205264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -543,6 +577,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.2011473
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637049715236219062, guid: a84fb60a8604d86408ae9ae6b641d8e9,
+        type: 3}
+      propertyPath: SlowFactor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637049715236219062, guid: a84fb60a8604d86408ae9ae6b641d8e9,
+        type: 3}
+      propertyPath: FastFactor
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a84fb60a8604d86408ae9ae6b641d8e9, type: 3}

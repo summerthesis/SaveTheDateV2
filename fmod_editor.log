@@ -7,14 +7,59 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000002545C0768F8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000296278190A8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Priority: 0, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Priority: 0, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
-[LOG] Manager::readBank                        : fileversion = 119, compatVersion = 119 (oldest = 44, newest = 125)
-[LOG] Manager::readBank                        : fileversion = 119, compatVersion = 119 (oldest = 44, newest = 125)
-[LOG] Manager::readBank                        : fileversion = 119, compatVersion = 119 (oldest = 44, newest = 125)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] Manager::readBank                        : fileversion = 125, compatVersion = 119 (oldest = 44, newest = 125)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 3
+[LOG] SoundI::release                          :  (000002962768C008)
+[LOG] SoundI::release                          :     Spinning Click (0000029674814998)
+[LOG] SoundI::release                          :  (000002962768BD28)
+[LOG] SoundI::release                          :     SlowDown_Clock (00000296748137B8)
+[LOG] SoundI::release                          :  (0000029627689C18)
+[LOG] SoundI::release                          :     Tick_02 (00000296748144B8)
+[LOG] SoundI::release                          :  (000002962768BBB8)
+[LOG] SoundI::release                          :     Tick_04 (0000029674814658)
+[LOG] SoundI::release                          :  (000002962768B768)
+[LOG] SoundI::release                          :     Tick_06 (00000296748147F8)
+[LOG] SoundI::release                          :  (000002962768A908)
+[LOG] SoundI::release                          :     Slowdown (0000029674813C98)
+[LOG] SoundI::release                          :  (000002962768BA48)
+[LOG] SoundI::release                          :     Tick_01 (0000029674813AF8)
+[LOG] SoundI::release                          :  (000002962768CA18)
+[LOG] SoundI::release                          :     Tick_03 (0000029674814178)
+[LOG] SoundI::release                          :  (0000029627689098)
+[LOG] SoundI::release                          :     Tick_05 (0000029674814B38)
+[LOG] SoundI::release                          :  (000002962768ABE8)
+[LOG] SoundI::release                          :     Tick_07 (0000029674814318)
+[LOG] SoundI::release                          :  (000002962768B1A8)
+[LOG] SoundI::release                          :     SlowDown_End (0000029674813E38)
+[LOG] SoundI::release                          :  (000002962768B318)
+[LOG] SoundI::release                          :      Respawn (0000029674814CD8)
+[LOG] SoundI::release                          :  (000002962768B8D8)
+[LOG] SoundI::release                          :      Rewind Loop (0000029674813FD8)
+[LOG] SoundI::release                          :  (000002962768AEC8)
+[LOG] SoundI::release                          :      Loop Startup (0000029674813958)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] SystemI::close                           : Closed.

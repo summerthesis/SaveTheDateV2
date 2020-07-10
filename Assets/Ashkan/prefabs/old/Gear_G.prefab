@@ -107,7 +107,9 @@ MonoBehaviour:
   xForceDirection: 0
   yForceDirection: 0
   zForceDirection: 1
-  speedMultiplier: 2
+  StopSpeed: 0
+  NormalSpeed: 1
+  mSpeed: 0
   worldPivote: 0
 --- !u!1 &1915915120507217355
 GameObject:
@@ -123,7 +125,7 @@ GameObject:
   m_Layer: 0
   m_Name: B
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -148,7 +150,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915915120507217355}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &192076615494390039
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -233,5 +235,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   B: {fileID: 1915915120507217355}
   StopSpeed: 0
-  NormalSpeed: 120
-  IdleDuration: 30
+  NormalSpeed: 0
+  mSpeed: 0
+  IdleDuration: 0
+  mPlayer: {fileID: 0}
+  Parenting: 0
+  mPrevPos: {x: 0, y: 0, z: 0}
+  mCurrentPos: {x: 0, y: 0, z: 0}
+  xx: 0
+  yy: 0
+  zz: 0

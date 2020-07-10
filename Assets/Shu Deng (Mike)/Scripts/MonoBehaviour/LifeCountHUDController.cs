@@ -19,7 +19,7 @@ public class LifeCountHUDController : MonoBehaviour
     private State m_State = State.Normal;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < 5; ++i)
         {
