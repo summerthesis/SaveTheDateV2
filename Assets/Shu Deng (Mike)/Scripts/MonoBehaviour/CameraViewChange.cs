@@ -12,6 +12,12 @@ public class CameraViewChange : MonoBehaviour
 
     private Vector3 m_TargetPosition;
     private Quaternion m_TargetRotation;
+    private enum State
+    {
+        INACTIVE,
+        CHANGING
+    }
+    private State m_State = State.INACTIVE;
 
     private void OnTriggerExit(Collider other)
     {
@@ -31,20 +37,25 @@ public class CameraViewChange : MonoBehaviour
                 m_TargetRotation = TargetRotationL.rotation;
                 m_TargetPosition = TargetPositionL;
             }
-
-            //Vector3 direction = -(m_TargetRotation * Vector3.forward);
-            //m_TargetPosition = Camera.main.transform.parent.InverseTransformPoint(GameManager.Player.transform.position + focusOffset + direction * cameraDistance);
-            StartCoroutine(ChangeAngle());
+            m_State = State.CHANGING;
         }            
     }
 
-    private IEnumerator ChangeAngle()
+    private void Update()
     {
-        while (Camera.main.transform.localPosition != m_TargetPosition && Camera.main.transform.rotation != m_TargetRotation)
+        switch (m_State)
         {
-            Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, m_TargetRotation, Time.deltaTime * cameraRotateSpeed);
-            Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, m_TargetPosition, Time.deltaTime * cameraTranslateSpeed);
-            yield return null;        
+            case State.CHANGING:
+                if (Camera.main.transform.localPosition != m_TargetPosition || Camera.main.transform.rotation != m_TargetRotation)
+                {
+                    Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, m_TargetRotation, Time.deltaTime * cameraRotateSpeed);
+                    Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, m_TargetPosition, Time.deltaTime * cameraTranslateSpeed);
+                }
+                else
+                {
+                    m_State = State.INACTIVE;
+                }
+                break;
         }
     }
 }
