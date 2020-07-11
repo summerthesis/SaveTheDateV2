@@ -7,6 +7,7 @@ public class OnBoardingLevelManager : MonoBehaviour
     public Transform TutorialStartTarget;
 
     private bool m_Ended = false;
+    private bool InitSound;
 
     private void Awake()
     {
@@ -28,11 +29,17 @@ public class OnBoardingLevelManager : MonoBehaviour
         KH_PlayerController playerController = other.GetComponent<KH_PlayerController>();
         if (playerController != null && m_Ended == false)
         {
+            
             GameManager.HUD.GetComponentInChildren<FadingCurtainController>().CurtainFadeIn();
             GameManager.PlayerInput.PlayerControls.Move.Disable();
             GameManager.PlayerInput.PlayerControls.Interact.Disable();
             StartCoroutine(MoveToTutorial());
             m_Ended = true;
+            if (InitSound == false)
+            {
+                InitSound = true;
+                PlaySoundOneShot("event:/Level/Onboarding/Portal Enter");
+            }
         }
     }
 
@@ -43,9 +50,13 @@ public class OnBoardingLevelManager : MonoBehaviour
         {
             yield return null;
         }
-
+     
         GameManager.Player.transform.position = TutorialStartTarget.position;
         GameManager.Player.transform.rotation = TutorialStartTarget.rotation;
         TutorialStartTarget.GetComponent<TutorialLevelManager>().StartTutorialLevel();
+    }
+    void PlaySoundOneShot(string path)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path, Camera.main.transform.position);
     }
 }

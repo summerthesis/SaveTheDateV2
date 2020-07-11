@@ -23,11 +23,8 @@ public class MainMenuUI : MonoBehaviour
 
     void Start()
     {
-        MenuItems[0] = GameObject.Find("Highlighter1");
-        MenuItems[1] = GameObject.Find("Highlighter2");
-        MenuItems[2] = GameObject.Find("Highlighter3");
-        MenuItems[3] = GameObject.Find("Highlighter4");
         DeselectAll();
+        ActivateSelection(0);  
     }
     void Update()
     {
@@ -39,7 +36,8 @@ public class MainMenuUI : MonoBehaviour
         if (Selection == 0) Selection = 3;
         else
             Selection--;
-        ActivateSelection(Selection);        
+        ActivateSelection(Selection);
+        PlaySoundOneShot("event:/UI/Up");
     }
     void InputDown()
     {
@@ -48,17 +46,19 @@ public class MainMenuUI : MonoBehaviour
         else
             Selection++;
         ActivateSelection(Selection);
+        PlaySoundOneShot("event:/UI/Down");
     }
     void InputAccept()
     {
         if(Selection == 0)
         {
             SceneManager.LoadScene(1);
+            PlaySoundOneShot("event:/UI/UI_Forward");
         }
     }
     void InputCancel()
     {
-      
+        PlaySoundOneShot("event:/UI/UI_Back");
     }
 
     void DeselectAll()
@@ -82,6 +82,9 @@ public class MainMenuUI : MonoBehaviour
         controls.MainMenu.Disable();
     }
 
+    void PlaySoundOneShot(string path)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path, GetComponent<Transform>().position);
+    }
 
-    
 }

@@ -23,6 +23,7 @@ public class GearDoorController: MonoBehaviour
     private float m_CurTime = 0, m_LastValue, m_CurValue;
     private AnimationCurve m_ReverseSpinning, m_ReverseEjecting, m_ReverseRotating;
     private Transform m_SmallGear;
+    private bool InitOpen;
 
     // Start is called before the first frame update
     void Awake()
@@ -46,25 +47,35 @@ public class GearDoorController: MonoBehaviour
     {
         if (m_DoorState == State.OperatingOpen)
         {
+          
+            
             m_SmallGear.Rotate(Vector3.forward, Time.deltaTime * smallGearSpeed, Space.Self);
         }
         else if (m_DoorState == State.OperatingClose)
         {
             m_SmallGear.Rotate(- Vector3.forward, Time.deltaTime * smallGearSpeed, Space.Self);
         }
+     
     }
 
     public void OpenOrClose()
     {
+        
         if (m_DoorState == State.Open)
         {
             m_DoorState = State.OperatingClose;
-            StartCoroutine(Close());            
+            StartCoroutine(Close());
+         
         }
         else if (m_DoorState == State.Closed)
         {
             m_DoorState = State.OperatingOpen;
             StartCoroutine(Open());
+            if (InitOpen == false)
+            {
+                InitOpen = true;
+                PlaySoundOneShot("event:/Level/Onboarding/Big_Door_Open");
+            }
         }
     }
 
@@ -160,5 +171,9 @@ public class GearDoorController: MonoBehaviour
         gearDoorModel.Rotate(gearDoorModel.forward, m_CurValue - m_LastValue);        
 
         m_DoorState = State.Closed;
-    }   
+    }
+    void PlaySoundOneShot(string path)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path, Camera.main.transform.position);
+    }
 }
