@@ -5,9 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Pickup))]
 public class PickupGear : MonoBehaviour
 {
+   
     void OnPickedUp()
     {
-        FindObjectOfType<GearIconHUDController>().GearCollected();        
+        FindObjectOfType<GearIconHUDController>().GearCollected();
+    
     }
 
     // Start is called before the first frame update
@@ -21,4 +23,5 @@ public class PickupGear : MonoBehaviour
     {
         
     }
+
 }

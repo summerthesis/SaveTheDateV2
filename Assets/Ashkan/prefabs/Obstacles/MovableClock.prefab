@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 8048568570822590544}
   - component: {fileID: -770234749325275753}
   - component: {fileID: -1594813647097188717}
+  - component: {fileID: 4616394899416616448}
   m_Layer: 0
   m_Name: MovableClock
   m_TagString: Untagged
@@ -140,6 +141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mSpeed: 0
   NormalSpeed: 8
+  SlowFactor: 2
+  FastFactor: 2
   Despawner: {fileID: 0}
 --- !u!54 &-1594813647097188717
 Rigidbody:
@@ -157,6 +160,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4616394899416616448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478739913928340035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9867e9b246406749ab38b52f9281672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LinkedObjects: []
 --- !u!114 &3082985207900818035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,10 +188,25 @@ MonoBehaviour:
   xForceDirection: 0
   yForceDirection: 0
   zForceDirection: 1
-  StopSpeed: 0
   NormalSpeed: 2.5
+  SlowFactor: 0
+  FastFactor: 0
+  StopSpeed: 0
   mSpeed: 0
   worldPivote: 0
+--- !u!114 &6708220697461091049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478739914543826981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9867e9b246406749ab38b52f9281672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LinkedObjects: []
 --- !u!114 &3082985207759666789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,10 +222,25 @@ MonoBehaviour:
   xForceDirection: 0
   yForceDirection: 0
   zForceDirection: 1
-  StopSpeed: 0
   NormalSpeed: 5
+  SlowFactor: 0
+  FastFactor: 0
+  StopSpeed: 0
   mSpeed: 0
   worldPivote: 0
+--- !u!114 &7580431568721634257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478739914670705497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9867e9b246406749ab38b52f9281672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LinkedObjects: []
 --- !u!1001 &3082985206615429712
 PrefabInstance:
   m_ObjectHideFlags: 0

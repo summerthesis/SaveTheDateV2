@@ -8,7 +8,9 @@ public class Rotator : MonoBehaviour
     public float yForceDirection = 0.0f;
     [Range(-1.0f, 1.0f)]
     public float zForceDirection = 0.0f;
-    public float StopSpeed, NormalSpeed, mSpeed;
+    public float NormalSpeed, SlowFactor, FastFactor;
+    [HideInInspector]
+    public float StopSpeed, mSpeed;
     private float SlowedSpeed, FastSpeed;
     public bool worldPivote = false;
  
@@ -19,8 +21,8 @@ public class Rotator : MonoBehaviour
     {
         
         if (worldPivote) spacePivot = Space.World;
-        SlowedSpeed = NormalSpeed / 2;
-        FastSpeed = NormalSpeed * 2;
+        SlowedSpeed = NormalSpeed / SlowFactor;
+        FastSpeed = NormalSpeed * FastFactor;
         StopSpeed = 0;
         mSpeed = NormalSpeed;
     }
