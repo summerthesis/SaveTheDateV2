@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController_Test : MonoBehaviour
 {
     public bool moveCamera = true;                      // Whether the camera should be moved by this script.    
     public float smoothing = 7f;                        // Smoothing applied during Slerp, higher is smoother but slower.
