@@ -33,7 +33,10 @@ public class DeathController : MonoBehaviour
         DeathSoundEvent = FMODUnity.RuntimeManager.CreateInstance(DeathSound);
         
     }
-
+    public void AddTransform()
+    {
+        RecordedTransforms.Add(mDeathTransform.transform.position);
+    }
     void Update()
     {
         
@@ -101,22 +104,7 @@ public class DeathController : MonoBehaviour
         }
     }
     
-    void OnTriggerEnter(Collider Col)
-    {
-        if(Col.gameObject.tag == "Checkpoint")
-        {
-            if(Col.gameObject.tag != "CurrentCheckpoint")
-            {
-                Col.gameObject.tag = "CurrentCheckpoint";
-                
-            }
-        }
-    }
-    void OnCollisionEnter()
-    {
-
-    }
-
+   
     void PlaySoundOneShot(string path)
     {
         FMODUnity.RuntimeManager.PlayOneShot(path, GetComponent<Transform>().position);

@@ -17,12 +17,14 @@ public class CheckpointObject : MonoBehaviour
     
     void OnTriggerEnter(Collider Col)
     {
-        if(Col.gameObject.tag == "Checkpoint")
+        if(Col.gameObject.tag == "Player")
         {
-            if(Col.gameObject.tag != "CurrentCheckpoint")
+            if(this.gameObject.tag != "CurrentCheckpoint")
             {
-                Col.gameObject.tag = "CurrentCheckpoint";
+                Debug.Log("CheckPointActivated");
+                this.gameObject.tag = "CurrentCheckpoint";
                 mPlayer.GetComponent<DeathController>().RecordedTransforms.Clear();
+                mPlayer.GetComponent<DeathController>().AddTransform();
             }
         }
     }

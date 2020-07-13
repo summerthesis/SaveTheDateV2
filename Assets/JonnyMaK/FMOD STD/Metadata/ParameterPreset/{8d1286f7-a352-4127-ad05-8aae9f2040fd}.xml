@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{8d1286f7-a352-4127-ad05-8aae9f2040fd}">
+		<property name="name">
+			<value>Gear Number</value>
+		</property>
+		<relationship name="folder">
+			<destination>{eaeed16e-015f-4bc5-92aa-c79ba1458a97}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{d1650739-7179-4a87-8a05-f9e6988dcdbe}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{d1650739-7179-4a87-8a05-f9e6988dcdbe}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>5</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>1</value>
+			<value>2</value>
+			<value>3</value>
+			<value>4</value>
+			<value>5</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

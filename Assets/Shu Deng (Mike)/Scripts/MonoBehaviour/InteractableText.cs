@@ -18,7 +18,7 @@ public class InteractableText : MonoBehaviour
 
     void Start()
     {
-        m_playerInput = InputManagerSingleton.Instance;
+        m_playerInput = GameManager.PlayerInput;
     }
 
     // Update is called once per frame

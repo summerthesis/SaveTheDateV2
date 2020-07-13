@@ -1,21 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 using UnityEngine;
 
 public class IntroController : MonoBehaviour
 {
-    int count = 0;
+    public double vidTime, currentTime;
     // Start is called before the first frame update
     void Start()
     {
-        
+        vidTime = 23;   
     }
 
     // Update is called once per frame
     void Update()
     {
-        count++;
-        if (count > 220) SceneManager.LoadScene(2);
+        currentTime = this.GetComponent<VideoPlayer>().time;
+        if(currentTime >= vidTime)
+        {
+            NextScene();
+        }
     }
+
+    void NextScene()
+    {
+        Debug.Log("Attempting to move to scene 2");
+        SceneManager.LoadScene(2);
+    }
+
 }
