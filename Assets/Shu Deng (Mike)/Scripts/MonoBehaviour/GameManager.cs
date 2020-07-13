@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
             {
                 m_PlayerInputAction = new PlayerInputAction();
                 m_PlayerInputAction.PlayerControls.Enable();
-                m_PlayerInputAction.TimeControls.Enable();                
+                m_PlayerInputAction.TimeControls.Enable();
+                m_PlayerInputAction.CameraDebugAngles.Enable();
             }
             return m_PlayerInputAction;
         }
