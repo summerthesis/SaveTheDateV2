@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4574127225083410824}
-  - component: {fileID: 4574127225083410825}
   m_Layer: 8
   m_Name: FFGear_Vertical
-  m_TagString: TimeInteractable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,30 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4574127225083410825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4574127225083410826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 893eec40113bdac4dbf8c9348bc07de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  B: {fileID: 5502129289124388156}
-  StopSpeed: 0
-  NormalSpeed: 4
-  mSpeed: 0
-  IdleDuration: 120
-  mPlayer: {fileID: 0}
-  Parenting: 0
-  mPrevPos: {x: 0, y: 0, z: 0}
-  mCurrentPos: {x: 0, y: 0, z: 0}
-  xx: 0
-  yy: 0
-  zz: 0
 --- !u!1 &5502129289124388156
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,9 +121,10 @@ GameObject:
   - component: {fileID: 5875700712637051355}
   - component: {fileID: 5875700712637051356}
   - component: {fileID: 5133119351720759154}
+  - component: {fileID: 8785470363025107744}
   m_Layer: 8
   m_Name: Gear3
-  m_TagString: Untagged
+  m_TagString: TimeInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,3 +201,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5987777, y: 1.5987777, z: 0.3000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8785470363025107744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875700712637051358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893eec40113bdac4dbf8c9348bc07de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  B: {fileID: 5502129289124388156}
+  mSpeed: 0
+  StopSpeed: 0
+  NormalSpeed: 8
+  SlowFactor: 2
+  FastFactor: 2
+  IdleDuration: 90
+  mPlayer: {fileID: 0}
+  mPrevPos: {x: 0, y: 0, z: 0}
+  mCurrentPos: {x: 0, y: 0, z: 0}
+  xx: 0
+  yy: 0
+  zz: 0
+  isVertical: 1
+  Parenting: 0
+  movingUpward: 0
+  reachedEnd: 0

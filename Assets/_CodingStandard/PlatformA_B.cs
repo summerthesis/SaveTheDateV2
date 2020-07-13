@@ -15,8 +15,7 @@ public class PlatformA_B : MonoBehaviour
     private int IdleCount;
     [HideInInspector]
     public GameObject mPlayer;
-    [HideInInspector]
-    public bool Parenting;
+    
     [HideInInspector]
     public Vector3 mPrevPos, mCurrentPos;
     [HideInInspector]
@@ -30,7 +29,9 @@ public class PlatformA_B : MonoBehaviour
         CustomEvent
     };
     ObjectStates ObjectState;
-  
+
+    public bool isVertical, Parenting;
+    public bool movingUpward, reachedEnd;
     void Start()
     {
         SlowedSpeed = NormalSpeed / SlowFactor;
@@ -45,8 +46,12 @@ public class PlatformA_B : MonoBehaviour
     }
 
     void Update()
-    {     
-          switch(ObjectState)
+    {
+     
+
+        
+
+        switch (ObjectState)
             {
                 case ObjectStates.Unavailable:
 
@@ -54,16 +59,30 @@ public class PlatformA_B : MonoBehaviour
 
                 case ObjectStates.MoveA_B:
                     Move(PointB);
+                    if (reachedEnd) reachedEnd = false;
                     break;
                 
                 case ObjectStates.MoveB_A:
                     Move(PointA);
+                    if (reachedEnd) reachedEnd = false;
+
                     break;
                 
                 case ObjectStates.Idling:
                     IdleCount--;
-                    if(IdleCount <= 0) ChangeDirection();
-                    break;
+                    if(IdleCount <= 0)
+                    ChangeDirection();
+                    if(IdleCount == IdleDuration-1)
+                    {
+                    reachedEnd = true;
+                    }
+                    if(IdleCount < IdleDuration-5 && reachedEnd)
+                    {
+                    reachedEnd = false;
+                    }
+
+
+                break;
 
                 case ObjectStates.CustomEvent:
 
@@ -72,17 +91,26 @@ public class PlatformA_B : MonoBehaviour
                 default:
                     break;
             }
-        
         mCurrentPos = transform.position;
         xx = mCurrentPos.x - mPrevPos.x;
         yy = mCurrentPos.y - mPrevPos.y;
         zz = mCurrentPos.z - mPrevPos.z;
+        if (mCurrentPos.y > mPrevPos.y) { movingUpward = true; }
+        if (mCurrentPos.y < mPrevPos.y) { movingUpward = false; }
+        if (Parenting)
+        {
+            mPlayer.transform.position += new Vector3(xx, yy, zz);
+        }
+
         mPrevPos = mCurrentPos;
-     
+      
+
     }
+
 
     void Move(Vector3 Point)
     {
+      
         float step = mSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, Point, step);
         if (this.transform.position == Point)
@@ -90,16 +118,23 @@ public class PlatformA_B : MonoBehaviour
             ObjectState = ObjectStates.Idling;  
             IdleCount = IdleDuration;
         }
-        if(Parenting)
-        {
-            mPlayer.transform.position += new Vector3(xx, yy, zz);
-        }
+        
     }
 
     void ChangeDirection()
     {
-        if (this.transform.position == PointA) ObjectState = ObjectStates.MoveA_B;
-        if (this.transform.position == PointB) ObjectState = ObjectStates.MoveB_A;
+        if (this.transform.position == PointA)
+        {
+            ObjectState = ObjectStates.MoveA_B;
+            //reachedEnd = true;
+        }
+            
+        if (this.transform.position == PointB)
+        {
+            ObjectState = ObjectStates.MoveB_A;
+            //reachedEnd = true;
+        }
+        
     }
 
     void TimeSlow()
@@ -164,6 +199,18 @@ public class PlatformA_B : MonoBehaviour
         if (Col.gameObject.tag == "Player")
         {
             Parenting = false;
+        }
+    }
+    void OnCollisionStay(Collision Col)
+    {
+        if (Col.gameObject.tag == "Player")
+        {
+            if(reachedEnd && movingUpward)
+            {
+                mPlayer.SendMessage("SendFlying", new Vector3(0, mSpeed/2, 0));
+                reachedEnd = false;
+                movingUpward = false; 
+            }
         }
     }
 }

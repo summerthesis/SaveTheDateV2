@@ -8,7 +8,8 @@ public class Pendulum : MonoBehaviour
     public float rotationAngle;
     public float stopFactor = 0, slowFactor = 0.5f, fastFactor = 2f, normalSpeed = 3f;    
     public int idleDuration;
-    private float m_Angle, m_Time, m_TimeFactor;
+    [HideInInspector]
+    public float m_Angle, m_Time, m_TimeFactor;
     private int m_IdleCount;
 
     enum ObjectStates
