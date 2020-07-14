@@ -92,6 +92,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 4, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &3553714082850145187
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975208318514955120}
+  m_Material: {fileID: 13400000, guid: 37016aa9fa0e8b34b803d27f4cb59623, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.9504504, y: 2.76, z: 1.7549623}
+  m_Center: {x: -1.3253304e-15, y: -0.060000014, z: 0.22024317}
 --- !u!1001 &6515579624025512569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StonePlatform_Medium
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2103b3d35f733c34ca62d6948447d379,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2103b3d35f733c34ca62d6948447d379,
         type: 3}
@@ -181,6 +199,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 53be18bd421a7e540bdef7192db0bc67, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2103b3d35f733c34ca62d6948447d379, type: 3}
+--- !u!1 &2975208318514955120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 2103b3d35f733c34ca62d6948447d379,
+    type: 3}
+  m_PrefabInstance: {fileID: 6515579624025512569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2238651764021260643 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2103b3d35f733c34ca62d6948447d379,

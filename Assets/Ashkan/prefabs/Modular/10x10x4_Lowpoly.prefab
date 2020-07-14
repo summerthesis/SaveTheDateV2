@@ -92,6 +92,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 4, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &360703257991514077
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8696168486550201880}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.28, y: 3.2400007, z: 2.1867669}
+  m_Center: {x: -0.020000061, y: -0.00000028864682, z: 0.40953293}
 --- !u!1001 &832904506701922065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StonePlatform_Small (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: da0981bfb3bd46d4da0a4f68936dad33,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: da0981bfb3bd46d4da0a4f68936dad33,
         type: 3}
@@ -181,6 +199,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 58854bd54bd039e43b6a2e09347c4ae1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da0981bfb3bd46d4da0a4f68936dad33, type: 3}
+--- !u!1 &8696168486550201880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: da0981bfb3bd46d4da0a4f68936dad33,
+    type: 3}
+  m_PrefabInstance: {fileID: 832904506701922065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5689637266395468811 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: da0981bfb3bd46d4da0a4f68936dad33,
