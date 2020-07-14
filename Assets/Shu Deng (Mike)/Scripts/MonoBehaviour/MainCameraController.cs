@@ -75,7 +75,7 @@ public class MainCameraController : MonoBehaviour
         {
             case State.FOLLOWING_TARGET:
                 Vector3 targetPositionWorld = transform.TransformPoint(m_TargetPosition);
-                if ((Camera.main.transform.position - targetPositionWorld).sqrMagnitude > 0.01f)
+                if ((Camera.main.transform.position - targetPositionWorld).sqrMagnitude > 0.05f)
                     //|| (Camera.main.transform.rotation - m_TargetRotation))
                 {
                     Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, m_TargetRotation, Time.deltaTime * cameraRotateSpeed);
