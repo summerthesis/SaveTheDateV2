@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8617106928045986299}
   - component: {fileID: 3132969329798911888}
   - component: {fileID: 781592411}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gear3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,8 +107,10 @@ MonoBehaviour:
   xForceDirection: 0
   yForceDirection: 0
   zForceDirection: 1
-  StopSpeed: 0
   NormalSpeed: 2
+  SlowFactor: 0
+  FastFactor: 0
+  StopSpeed: 0
   mSpeed: 0
   worldPivote: 0
 --- !u!1 &6765012532559464320
@@ -200,7 +202,7 @@ GameObject:
   - component: {fileID: 4365392612352610793}
   m_Layer: 8
   m_Name: Gear_S
-  m_TagString: TimeInteractable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,9 +236,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   B: {fileID: 6765012532559464320}
+  mSpeed: 0
   StopSpeed: 0
   NormalSpeed: 12
-  mSpeed: 0
+  SlowFactor: 0
+  FastFactor: 0
   IdleDuration: 0
   mPlayer: {fileID: 0}
   Parenting: 0

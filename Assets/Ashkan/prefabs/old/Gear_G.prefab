@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7714081348250990160}
   m_Layer: 8
   m_Name: Gear3
-  m_TagString: TimeInteractable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915915120024028415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 11.2895775, y: 11.2895775, z: 11.2895775}
+  m_LocalPosition: {x: 0, y: 0.0000038147, z: 0.14056}
+  m_LocalScale: {x: 8.478473, y: 8.478473, z: 8.478473}
   m_Children: []
   m_Father: {fileID: 7617662506716348799}
   m_RootOrder: 0
@@ -107,8 +107,10 @@ MonoBehaviour:
   xForceDirection: 0
   yForceDirection: 0
   zForceDirection: 1
-  StopSpeed: 0
   NormalSpeed: 1
+  SlowFactor: 0
+  FastFactor: 0
+  StopSpeed: 0
   mSpeed: 0
   worldPivote: 0
 --- !u!1 &1915915120507217355
@@ -200,7 +202,7 @@ GameObject:
   - component: {fileID: 7617662506716348798}
   m_Layer: 8
   m_Name: Gear_G
-  m_TagString: TimeInteractable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,9 +236,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   B: {fileID: 1915915120507217355}
+  mSpeed: 0
   StopSpeed: 0
   NormalSpeed: 0
-  mSpeed: 0
+  SlowFactor: 0
+  FastFactor: 0
   IdleDuration: 0
   mPlayer: {fileID: 0}
   Parenting: 0
