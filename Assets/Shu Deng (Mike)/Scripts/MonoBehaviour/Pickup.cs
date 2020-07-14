@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Collider))]
 public class Pickup: MonoBehaviour
 {
+    private bool InitSound;
     public enum CallbackBehaviour
     {
         OnPicked,
@@ -128,6 +129,11 @@ public class Pickup: MonoBehaviour
                 SendMessage("OnPickedUp");
             }            
             PlayPickupFeedback();
+            if (InitSound == false)
+            {
+                InitSound = true;
+                PlaySoundOneShot("event:/Characters/Player/Gear Pickup");
+            }
         }
     }
 
@@ -154,7 +160,10 @@ public class Pickup: MonoBehaviour
         }
         Destroy(gameObject);
     }
-
+    void PlaySoundOneShot(string path)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(path, Camera.main.transform.position);
+    }
     public void PlayPickupFeedback()
     {
         if (pickupSFX)
