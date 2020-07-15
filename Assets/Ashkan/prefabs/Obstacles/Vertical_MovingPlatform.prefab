@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8771649959258075602}
   - component: {fileID: 2561905644907513336}
   - component: {fileID: 2561905644907513343}
+  - component: {fileID: 334631313702970393}
   m_Layer: 8
   m_Name: Vertical_MovingPlatform
   m_TagString: TimeInteractable
@@ -106,9 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   B: {fileID: 6949059588669081919}
+  mSpeed: 0
   StopSpeed: 0
   NormalSpeed: 4
-  mSpeed: 0
+  SlowFactor: 4
+  FastFactor: 2
   IdleDuration: 20
   mPlayer: {fileID: 0}
   Parenting: 0
@@ -117,6 +120,19 @@ MonoBehaviour:
   xx: 0
   yy: 0
   zz: 0
+--- !u!114 &334631313702970393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561905644907513342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9867e9b246406749ab38b52f9281672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LinkedObjects: []
 --- !u!1 &6949059588669081919
 GameObject:
   m_ObjectHideFlags: 0
