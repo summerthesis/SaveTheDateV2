@@ -5,6 +5,7 @@ using UnityEngine;
 public class CheckpointObject : MonoBehaviour
 {
     private GameObject mPlayer;
+    public GameObject FirstImage;
     void Start()
     {
         mPlayer = GameObject.FindGameObjectWithTag("Player");
@@ -22,6 +23,7 @@ public class CheckpointObject : MonoBehaviour
             if(this.gameObject.tag != "CurrentCheckpoint")
             {
                 Debug.Log("CheckPointActivated");
+                FirstImage.gameObject.SetActive(false);
                 this.gameObject.tag = "CurrentCheckpoint";
                 mPlayer.GetComponent<DeathController>().RecordedTransforms.Clear();
                 mPlayer.GetComponent<DeathController>().AddTransform();
