@@ -704,7 +704,8 @@ MonoBehaviour:
   guid: e98b2a307c00ab4ba1212121ea97275a
   Banks:
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -730,6 +731,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-4384998234432106423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Slow_Time/SlowTimeEnd
+  m_EditorClassIdentifier: 
+  Name: SlowTimeEnd
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-4382918225071949070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,6 +765,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-4209713728391908885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Portal Loop/Portal Enter
+  m_EditorClassIdentifier: 
+  Name: Portal Enter
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-4149392166220066564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,7 +833,8 @@ MonoBehaviour:
   guid: 6bdbd7d9efd80747a8a1586a29e90d8b
   Banks:
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -860,12 +896,13 @@ MonoBehaviour:
   - {fileID: -4057741006976326423}
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 7163162872385351369}
+  - {fileID: -2121568229745707420}
   MinDistance: 0
   MaxDistance: 0
   Length: 8150
@@ -937,6 +974,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &-3448902062094747860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Gear Pickup/Gear Number
+  m_EditorClassIdentifier: 
+  Name: Gear Number
+  Min: 0
+  Max: 5
+  Default: 0
+  Exists: 1
 --- !u!114 &-3304328562596626643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,12 +1058,13 @@ MonoBehaviour:
   guid: e152ca84fd202c46ae612a896d153409
   Banks:
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 8215957318477411825}
+  - {fileID: -3448902062094747860}
   MinDistance: 0
   MaxDistance: 0
   Length: 189
@@ -1031,6 +1086,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-3021111862733644427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Terrain
+  m_EditorClassIdentifier: 
+  Name: Terrain
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 1
 --- !u!114 &-2951500484857903581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,7 +1259,8 @@ MonoBehaviour:
   - {fileID: -4057741006976326423}
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1196,6 +1269,23 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 2313
 --- !u!114 &-2455026158534055549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Rewind/Respawning
+  m_EditorClassIdentifier: 
+  Name: Respawning
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-2121568229745707420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1246,7 +1336,8 @@ MonoBehaviour:
   Banks:
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1322,7 +1413,8 @@ MonoBehaviour:
   Banks:
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1399,7 +1491,8 @@ MonoBehaviour:
   Banks:
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1442,7 +1535,8 @@ MonoBehaviour:
   Banks:
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1464,7 +1558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 8636068476132930779}
-  - {fileID: 6310285175066502054}
+  - {fileID: 5371163181252722187}
   EditorEvents:
   - {fileID: 7497132717696206845}
   - {fileID: 2932221285481454929}
@@ -1491,10 +1585,10 @@ MonoBehaviour:
   - {fileID: 2028372799745201569}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 6310285175066502054}
+  - {fileID: 5371163181252722187}
   StringsBanks:
   - {fileID: 8636068476132930779}
-  stringsBankWriteTime: 637304233429321637
+  stringsBankWriteTime: 637302656005236586
   cacheVersion: 3
 --- !u!114 &2784193328307980
 MonoBehaviour:
@@ -1601,7 +1695,8 @@ MonoBehaviour:
   Banks:
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1695,6 +1790,24 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+  Exists: 1
+--- !u!114 &693213436658970706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637302656005186830
+  LoadResult: 0
+  FileSizes: []
   Exists: 1
 --- !u!114 &762792398599557943
 MonoBehaviour:
@@ -1805,12 +1918,13 @@ MonoBehaviour:
   Banks:
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 3415787901431125970}
+  - {fileID: -4209713728391908885}
   MinDistance: 1
   MaxDistance: 20
   Length: 3788
@@ -1847,7 +1961,8 @@ MonoBehaviour:
   guid: 630cb8b551fc424fbe591595f71d3f97
   Banks:
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1956,7 +2071,8 @@ MonoBehaviour:
   guid: fa6a6ee15d2e914fba83d4eb22ea55b2
   Banks:
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2120,6 +2236,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &2876987239317535880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Gear Pickup/Gear Number
+  m_EditorClassIdentifier: 
+  Name: Gear Number
+  Min: 0
+  Max: 5
+  Default: 0
+  Exists: 0
 --- !u!114 &2898738722719117459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2174,7 +2307,8 @@ MonoBehaviour:
   - {fileID: -4057741006976326423}
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2216,7 +2350,8 @@ MonoBehaviour:
   Banks:
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2328,12 +2463,13 @@ MonoBehaviour:
   Banks:
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 76635095464481242}
+  - {fileID: -3021111862733644427}
   MinDistance: 1
   MaxDistance: 10000
   Length: 201
@@ -2528,6 +2664,24 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &5371163181252722187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637302656005186830
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &5381566689799869670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2668,7 +2822,8 @@ MonoBehaviour:
   - {fileID: -4057741006976326423}
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2778,7 +2933,8 @@ MonoBehaviour:
   guid: 5d6bff80cb0e5e42a25a130aeaf12de9
   Banks:
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2820,7 +2976,8 @@ MonoBehaviour:
   Banks:
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -2899,15 +3056,33 @@ MonoBehaviour:
   - {fileID: -4057741006976326423}
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -6467447187327577984}
+  - {fileID: -4384998234432106423}
   MinDistance: 0
   MaxDistance: 0
   Length: 9299
+--- !u!114 &7560882009532839832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Slow_Time/SlowTimeEnd
+  m_EditorClassIdentifier: 
+  Name: SlowTimeEnd
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &7569443349513610044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2924,7 +3099,8 @@ MonoBehaviour:
   guid: 0951c56fe56c754f93fd595a3e70dbc7
   Banks:
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3002,7 +3178,8 @@ MonoBehaviour:
   - {fileID: -4057741006976326423}
   - {fileID: -6866614465867980354}
   - {fileID: 7429610847932493471}
-  - {fileID: 6310285175066502054}
+  - {fileID: 693213436658970706}
+  - {fileID: 5371163181252722187}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3045,6 +3222,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &7944943696846111022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Portal Loop/Portal Enter
+  m_EditorClassIdentifier: 
+  Name: Portal Enter
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &7946453180378445333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3149,6 +3343,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &8428316924874937064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Rewind/Respawning
+  m_EditorClassIdentifier: 
+  Name: Respawning
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &8461396526469063093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3248,7 +3459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637304233429321637
+  lastModified: 637302656005236586
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -3288,6 +3499,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &8797335720026645575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Terrain
+  m_EditorClassIdentifier: 
+  Name: Terrain
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 0
 --- !u!114 &8822555688980652736
 MonoBehaviour:
   m_ObjectHideFlags: 0
