@@ -17,11 +17,11 @@ public class CameraViewChange : MonoBehaviour
             if ((other.transform.position - left).sqrMagnitude > 
                 (other.transform.position - right).sqrMagnitude)  // CameraRight
             {
-                FindObjectOfType<MainCameraController>().ChangeView(TargetPositionR, Quaternion.Euler(TargetRotationR));
+                FindObjectOfType<MainCameraController>().ChangeView(TargetPositionR, Quaternion.Euler(TargetRotationR), false);
             }
             else
             {
-                FindObjectOfType<MainCameraController>().ChangeView(TargetPositionL, Quaternion.Euler(TargetRotationL));
+                FindObjectOfType<MainCameraController>().ChangeView(TargetPositionL, Quaternion.Euler(TargetRotationL), false);
             }
         }            
     }
