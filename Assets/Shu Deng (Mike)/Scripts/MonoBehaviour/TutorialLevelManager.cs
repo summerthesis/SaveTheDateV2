@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TutorialLevelManager : MonoBehaviour
 {
+    public Vector3 cameraStartPosition, cameraStartRotation;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class TutorialLevelManager : MonoBehaviour
     public void StartTutorialLevel()
     {
         GameManager.HUD.GetComponentInChildren<FadingCurtainController>().CurtainFadeOut();
+        Camera.main.GetComponentInParent<MainCameraController>().ChangeView(cameraStartPosition, Quaternion.Euler(cameraStartRotation), true);
         StartCoroutine(ReadyPlayer());
     }
 
