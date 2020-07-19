@@ -10,7 +10,7 @@ public class MainCameraController : MonoBehaviour
     private Vector3[] m_DefaultPosition = 
         {new Vector3(16.02193f, 9.490358f, 0f), new Vector3(24.29176f, 13.85903f, 0f)};  // 0 is near, 1 is far position
     private Quaternion m_TargetRotation, m_StartTargetRotation, m_DefaultQuaternion = Quaternion.Euler(new Vector3(27.846f, -90f, 0f));
-    private int m_PositionIndex = 0;
+    private int m_PositionIndex = 1;
     private bool m_CameraInputHandled = false, m_ChangeInstantly = false;
     private float m_TimeProportion;
     private enum State
@@ -22,6 +22,22 @@ public class MainCameraController : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.PlayerInput.CameraDebugAngles.ChangeAngleLeft.performed += ctx =>
+        {
+            CycleView(1);
+            ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion, false);
+        };
+        GameManager.PlayerInput.CameraDebugAngles.ChangeAngleRight.performed += ctx =>
+        {
+            CycleView(-1);
+            ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion, false);
+        };
+
+        GameManager.PlayerInput.CameraDebugAngles.CycleAngles.Disable();
+        GameManager.PlayerInput.CameraDebugAngles.ChangeAngle.Disable();
+
+        /*
+        // Controls camera angle with controller 
         GameManager.PlayerInput.CameraDebugAngles.CycleAngles.performed += ctx =>
         {
             CycleView(1);
@@ -65,7 +81,8 @@ public class MainCameraController : MonoBehaviour
             {
                 m_CameraInputHandled = false;
             }
-        };        
+        };    
+        */
     }
 
     // Update is called once per frame

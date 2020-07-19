@@ -535,7 +535,7 @@
                 {
                     "name": "",
                     "id": "36557dd6-47ce-4843-91d5-8317f703326a",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -557,7 +557,7 @@
                 {
                     "name": "",
                     "id": "f20fba63-65c3-49c4-abbb-6e452df2296a",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -631,7 +631,18 @@
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
+                    "action": "Cancel/Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0281f86b-0530-41e7-8895-381cd52245ec",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "Cancel/Back",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -655,6 +666,22 @@
                     "type": "PassThrough",
                     "id": "97b0d652-d26e-47b6-b731-572ce039744f",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ChangeAngleLeft",
+                    "type": "Button",
+                    "id": "f33c5ff6-704d-4841-8bdc-9092daaa9a19",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ChangeAngleRight",
+                    "type": "Button",
+                    "id": "e42ff36b-5957-4b21-b1e0-c4c8b63bb884",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -725,6 +752,28 @@
                     "action": "ChangeAngle",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "a39e2816-076b-4ba3-997a-ed586762dae8",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ChangeAngleLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4d835fd-934a-42ea-8f4d-1aa3055afddf",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ChangeAngleRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
