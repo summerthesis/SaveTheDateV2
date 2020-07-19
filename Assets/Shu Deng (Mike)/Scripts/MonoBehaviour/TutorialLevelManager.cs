@@ -20,7 +20,7 @@ public class TutorialLevelManager : MonoBehaviour
     public void StartTutorialLevel()
     {
         GameManager.HUD.GetComponentInChildren<FadingCurtainController>().CurtainFadeOut();
-        Camera.main.GetComponentInParent<MainCameraController>().ChangeView(cameraStartPosition, Quaternion.Euler(cameraStartRotation), true);
+        FindObjectOfType<MainCameraController>().ChangeView(cameraStartPosition, Quaternion.Euler(cameraStartRotation), true);
         StartCoroutine(ReadyPlayer());
     }
 
