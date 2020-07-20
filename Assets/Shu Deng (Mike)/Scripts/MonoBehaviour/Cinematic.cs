@@ -18,7 +18,7 @@ public class Cinematic : MonoBehaviour
     private TextUITypewrite m_Text;
     private Transform m_OriginalCameraTransform;
     private bool m_HUDActive, m_JumpAvailable;
-    private const float m_Epsilon = 0.01f;  // A small value approximating to zero
+    private const float m_PositionEpsilon = 0.01f, m_RotationEpsilon = 1f;  // A small value approximating to zero
     private enum State
     {
         IDLING,
@@ -109,7 +109,8 @@ public class Cinematic : MonoBehaviour
                     m_Camera.transform.position, cameraTargetTransform.position, Time.deltaTime * cameraTranslateSpeed);
                 m_Camera.transform.rotation = Quaternion.Slerp(
                     m_Camera.transform.rotation, cameraTargetTransform.rotation, Time.deltaTime * cameraRotateSpeed);
-                if ((m_Camera.transform.position - cameraTargetTransform.position).sqrMagnitude < m_Epsilon)
+                if ((m_Camera.transform.position - cameraTargetTransform.position).sqrMagnitude < m_PositionEpsilon && 
+                    (m_Camera.transform.rotation.eulerAngles - cameraTargetTransform.rotation.eulerAngles).sqrMagnitude < m_RotationEpsilon)
                 {
                     m_State = State.TEXT_RENDERING;
                     if (textContent != "")
@@ -149,7 +150,8 @@ public class Cinematic : MonoBehaviour
                     m_Camera.transform.position, m_OriginalCameraTransform.position, Time.deltaTime * cameraTranslateSpeed);
                 m_Camera.transform.rotation = Quaternion.Slerp(
                     m_Camera.transform.rotation, m_OriginalCameraTransform.rotation, Time.deltaTime * cameraRotateSpeed);
-                if ((m_Camera.transform.position - m_OriginalCameraTransform.position).sqrMagnitude < m_Epsilon)
+                if ((m_Camera.transform.position - m_OriginalCameraTransform.position).sqrMagnitude < m_PositionEpsilon &&
+                    (m_Camera.transform.rotation.eulerAngles - m_OriginalCameraTransform.rotation.eulerAngles).sqrMagnitude < m_RotationEpsilon)
                 {
                     m_State = State.EXIT;
                 }
