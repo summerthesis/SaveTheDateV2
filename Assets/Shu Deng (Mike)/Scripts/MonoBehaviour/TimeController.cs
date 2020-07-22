@@ -66,7 +66,7 @@ public class TimeController : MonoBehaviour
                     m_Energy = maxEnergy;
                 }
                 SetEnergyBarScale();
-                ApplyTimeControlEffect("RestoreToNormal", highlightNeutral, 1);
+                ApplyTimeControlEffect("RestoreToNormal", highlightNeutral, 0);
                 break;
 
             case TimeStates.Slowing:

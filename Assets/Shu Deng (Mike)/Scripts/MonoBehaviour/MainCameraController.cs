@@ -11,7 +11,7 @@ public class MainCameraController : MonoBehaviour
         {new Vector3(16.02193f, 9.490358f, 0f), new Vector3(24.29176f, 13.85903f, 0f)};  // 0 is near, 1 is far position
     private Quaternion m_TargetRotation, m_DefaultQuaternion = Quaternion.Euler(new Vector3(27.846f, -90f, 0f));
     private int m_PositionIndex = 0;
-    private bool m_CameraInputHandled = false;
+    private bool m_CameraInputHandled = false, m_ChangeInstantly = false;
     private enum State
     {
         LOCKED_ON_PLAYER,
@@ -24,7 +24,7 @@ public class MainCameraController : MonoBehaviour
         GameManager.PlayerInput.CameraDebugAngles.CycleAngles.performed += ctx =>
         {
             CycleView(1);
-            ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion);
+            ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion, false);
         };
 
         GameManager.PlayerInput.CameraDebugAngles.ChangeAngle.performed += ctx =>
@@ -56,7 +56,7 @@ public class MainCameraController : MonoBehaviour
                             m_PositionIndex = 1;
                         }
                     }
-                    ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion);
+                    ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion, false);
                     m_CameraInputHandled = true;
                 }               
             }
@@ -75,27 +75,38 @@ public class MainCameraController : MonoBehaviour
         {
             case State.FOLLOWING_TARGET:
                 Vector3 targetPositionWorld = transform.TransformPoint(m_TargetPosition);
-                if ((Camera.main.transform.position - targetPositionWorld).sqrMagnitude > 0.05f)
-                    //|| (Camera.main.transform.rotation - m_TargetRotation))
+                if (m_ChangeInstantly == false)
                 {
-                    Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, m_TargetRotation, Time.deltaTime * cameraRotateSpeed);
-                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, targetPositionWorld, Time.deltaTime * cameraTranslateSpeed);
+                    if ((Camera.main.transform.position - targetPositionWorld).sqrMagnitude > 0.05f
+                    || (Camera.main.transform.rotation.eulerAngles - m_TargetRotation.eulerAngles).sqrMagnitude > 1f)
+                    {
+                        Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, m_TargetRotation, Time.deltaTime * cameraRotateSpeed);
+                        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, targetPositionWorld, Time.deltaTime * cameraTranslateSpeed);
+                    }
+                    else
+                    {
+                        m_State = State.LOCKED_ON_PLAYER;
+                        Camera.main.transform.SetParent(transform);
+                    }
                 }
                 else
                 {
+                    Camera.main.transform.rotation = m_TargetRotation;
+                    Camera.main.transform.position = targetPositionWorld;
                     m_State = State.LOCKED_ON_PLAYER;
                     Camera.main.transform.SetParent(transform);
-                }
+                }                
                 break;
             case State.LOCKED_ON_PLAYER:                
                 break;
         }
     }
 
-    public void ChangeView(Vector3 newPosition, Quaternion newRotation)
+    public void ChangeView(Vector3 newPosition, Quaternion newRotation, bool changeInstantly)
     {
         m_TargetPosition = newPosition;
         m_TargetRotation = newRotation;
+        m_ChangeInstantly = changeInstantly;
         m_State = State.FOLLOWING_TARGET;
         transform.DetachChildren();
     }
