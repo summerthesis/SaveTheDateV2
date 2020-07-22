@@ -548,7 +548,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""36557dd6-47ce-4843-91d5-8317f703326a"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -570,7 +570,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f20fba63-65c3-49c4-abbb-6e452df2296a"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -644,7 +644,29 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel/Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0281f86b-0530-41e7-8895-381cd52245ec"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Cancel/Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02a75711-ea0b-457d-a6a1-9f2dd85c806c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Cancel/Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -668,6 +690,22 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""97b0d652-d26e-47b6-b731-572ce039744f"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeAngleLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""f33c5ff6-704d-4841-8bdc-9092daaa9a19"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeAngleRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""e42ff36b-5957-4b21-b1e0-c4c8b63bb884"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -738,6 +776,28 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""action"": ""ChangeAngle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a39e2816-076b-4ba3-997a-ed586762dae8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangeAngleLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4d835fd-934a-42ea-8f4d-1aa3055afddf"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangeAngleRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -992,6 +1052,8 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_CameraDebugAngles = asset.FindActionMap("CameraDebugAngles", throwIfNotFound: true);
         m_CameraDebugAngles_CycleAngles = m_CameraDebugAngles.FindAction("CycleAngles", throwIfNotFound: true);
         m_CameraDebugAngles_ChangeAngle = m_CameraDebugAngles.FindAction("ChangeAngle", throwIfNotFound: true);
+        m_CameraDebugAngles_ChangeAngleLeft = m_CameraDebugAngles.FindAction("ChangeAngleLeft", throwIfNotFound: true);
+        m_CameraDebugAngles_ChangeAngleRight = m_CameraDebugAngles.FindAction("ChangeAngleRight", throwIfNotFound: true);
         // MainMenu
         m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
         m_MainMenu_Up = m_MainMenu.FindAction("Up", throwIfNotFound: true);
@@ -1326,12 +1388,16 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     private ICameraDebugAnglesActions m_CameraDebugAnglesActionsCallbackInterface;
     private readonly InputAction m_CameraDebugAngles_CycleAngles;
     private readonly InputAction m_CameraDebugAngles_ChangeAngle;
+    private readonly InputAction m_CameraDebugAngles_ChangeAngleLeft;
+    private readonly InputAction m_CameraDebugAngles_ChangeAngleRight;
     public struct CameraDebugAnglesActions
     {
         private @PlayerInputAction m_Wrapper;
         public CameraDebugAnglesActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @CycleAngles => m_Wrapper.m_CameraDebugAngles_CycleAngles;
         public InputAction @ChangeAngle => m_Wrapper.m_CameraDebugAngles_ChangeAngle;
+        public InputAction @ChangeAngleLeft => m_Wrapper.m_CameraDebugAngles_ChangeAngleLeft;
+        public InputAction @ChangeAngleRight => m_Wrapper.m_CameraDebugAngles_ChangeAngleRight;
         public InputActionMap Get() { return m_Wrapper.m_CameraDebugAngles; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1347,6 +1413,12 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @ChangeAngle.started -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngle;
                 @ChangeAngle.performed -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngle;
                 @ChangeAngle.canceled -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngle;
+                @ChangeAngleLeft.started -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleLeft;
+                @ChangeAngleLeft.performed -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleLeft;
+                @ChangeAngleLeft.canceled -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleLeft;
+                @ChangeAngleRight.started -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleRight;
+                @ChangeAngleRight.performed -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleRight;
+                @ChangeAngleRight.canceled -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleRight;
             }
             m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface = instance;
             if (instance != null)
@@ -1357,6 +1429,12 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @ChangeAngle.started += instance.OnChangeAngle;
                 @ChangeAngle.performed += instance.OnChangeAngle;
                 @ChangeAngle.canceled += instance.OnChangeAngle;
+                @ChangeAngleLeft.started += instance.OnChangeAngleLeft;
+                @ChangeAngleLeft.performed += instance.OnChangeAngleLeft;
+                @ChangeAngleLeft.canceled += instance.OnChangeAngleLeft;
+                @ChangeAngleRight.started += instance.OnChangeAngleRight;
+                @ChangeAngleRight.performed += instance.OnChangeAngleRight;
+                @ChangeAngleRight.canceled += instance.OnChangeAngleRight;
             }
         }
     }
@@ -1482,6 +1560,8 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     {
         void OnCycleAngles(InputAction.CallbackContext context);
         void OnChangeAngle(InputAction.CallbackContext context);
+        void OnChangeAngleLeft(InputAction.CallbackContext context);
+        void OnChangeAngleRight(InputAction.CallbackContext context);
     }
     public interface IMainMenuActions
     {
