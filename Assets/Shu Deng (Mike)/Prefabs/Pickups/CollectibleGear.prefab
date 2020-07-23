@@ -57,6 +57,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,6 +69,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -108,7 +110,7 @@ MonoBehaviour:
   effectiveTime: 1
   verticalBobFrequency: 1
   bobbingAmount: 0.5
-  rotatingSpeed: 180
+  rotatingSpeed: 360
   pickupSFX: {fileID: 0}
   pickupVFXPrefab: {fileID: 0}
   flyingTargetInScreen: 4
@@ -120,31 +122,31 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0015048909
-      value: 0.004444444
-      inSlope: 5.104526
-      outSlope: 5.104526
+      time: 0
+      value: 1
+      inSlope: 6.6231337
+      outSlope: 6.6231337
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.040754717
+      outWeight: 0.06091225
     - serializedVersion: 3
       time: 0.5
       value: 2
       inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      outSlope: -2
+      tangentMode: 65
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -4.640956
-      outSlope: -4.640956
-      tangentMode: 0
+      value: 1
+      inSlope: -2
+      outSlope: 0
+      tangentMode: 5
       weightedMode: 0
-      inWeight: 0.042136908
+      inWeight: 0.33333334
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
