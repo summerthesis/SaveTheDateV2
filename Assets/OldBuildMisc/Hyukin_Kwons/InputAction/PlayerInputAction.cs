@@ -618,9 +618,17 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
             ""id"": ""445bd6c3-500f-4cb5-9394-b89d77440fd5"",
             ""actions"": [
                 {
-                    ""name"": ""Cancel/Back"",
+                    ""name"": ""Back"",
                     ""type"": ""Button"",
                     ""id"": ""252539c8-1ad4-4947-9811-4c918c4d4c91"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""19923a52-c973-4434-ae67-92c4c3228e82"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -634,7 +642,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Cancel/Back"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -645,7 +653,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Cancel/Back"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -656,7 +664,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Cancel/Back"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -667,7 +675,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Cancel/Back"",
+                    ""action"": ""Enter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1006,7 +1014,8 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_TimeControls_TimeJumpForward = m_TimeControls.FindAction("TimeJumpForward", throwIfNotFound: true);
         // MenuControls
         m_MenuControls = asset.FindActionMap("MenuControls", throwIfNotFound: true);
-        m_MenuControls_CancelBack = m_MenuControls.FindAction("Cancel/Back", throwIfNotFound: true);
+        m_MenuControls_Back = m_MenuControls.FindAction("Back", throwIfNotFound: true);
+        m_MenuControls_Enter = m_MenuControls.FindAction("Enter", throwIfNotFound: true);
         // CameraDebugAngles
         m_CameraDebugAngles = asset.FindActionMap("CameraDebugAngles", throwIfNotFound: true);
         m_CameraDebugAngles_CycleAngles = m_CameraDebugAngles.FindAction("CycleAngles", throwIfNotFound: true);
@@ -1311,12 +1320,14 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     // MenuControls
     private readonly InputActionMap m_MenuControls;
     private IMenuControlsActions m_MenuControlsActionsCallbackInterface;
-    private readonly InputAction m_MenuControls_CancelBack;
+    private readonly InputAction m_MenuControls_Back;
+    private readonly InputAction m_MenuControls_Enter;
     public struct MenuControlsActions
     {
         private @PlayerInputAction m_Wrapper;
         public MenuControlsActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CancelBack => m_Wrapper.m_MenuControls_CancelBack;
+        public InputAction @Back => m_Wrapper.m_MenuControls_Back;
+        public InputAction @Enter => m_Wrapper.m_MenuControls_Enter;
         public InputActionMap Get() { return m_Wrapper.m_MenuControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1326,16 +1337,22 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_MenuControlsActionsCallbackInterface != null)
             {
-                @CancelBack.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
-                @CancelBack.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
-                @CancelBack.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
+                @Back.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnBack;
+                @Enter.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnEnter;
             }
             m_Wrapper.m_MenuControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @CancelBack.started += instance.OnCancelBack;
-                @CancelBack.performed += instance.OnCancelBack;
-                @CancelBack.canceled += instance.OnCancelBack;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
             }
         }
     }
@@ -1504,7 +1521,8 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     }
     public interface IMenuControlsActions
     {
-        void OnCancelBack(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
     }
     public interface ICameraDebugAnglesActions
     {
