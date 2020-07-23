@@ -11,9 +11,10 @@ public class Cinematic : MonoBehaviour
     [TextArea]
     public string textContent = "";
     public Transform cameraTargetTransform;
+    public Image[] letterBoxes;
+    public GameObject hintToSkip;
 
     private GameObject[] m_OtherCameras;
-    private Image[] m_LetterBoxes;
     private Camera m_Camera, m_MainCamera;
     private TextUITypewrite m_Text;
     private Transform m_OriginalCameraTransform;
@@ -31,12 +32,11 @@ public class Cinematic : MonoBehaviour
     }
     private State m_State;
         
-    void Awake()
+    void Start()  //Dont change to Awake() because this object needs to check textContent to initialize
     {
         if (textContent != "")
         {
             m_State = State.LETTERBOX_FADEIN;
-            m_LetterBoxes = GetComponentsInChildren<Image>();
         }
         else
         {
@@ -73,6 +73,8 @@ public class Cinematic : MonoBehaviour
         }
 
         m_Text = GetComponentInChildren<TextUITypewrite>();
+        hintToSkip.SetActive(false);
+
         GameManager.PlayerInput.PlayerControls.Move.Disable();
         GameManager.PlayerInput.PlayerControls.Interact.Disable();
         if (GameManager.PlayerInput.PlayerControls.Jump.enabled == false)
@@ -95,14 +97,14 @@ public class Cinematic : MonoBehaviour
             case State.IDLING:
                 break;
             case State.LETTERBOX_FADEIN:
-                float a1 = m_LetterBoxes[0].color.a + Time.deltaTime * fadeInSpeed;
+                float a1 = letterBoxes[0].color.a + Time.deltaTime * fadeInSpeed;
                 if (a1 > 1)
                 {
                     a1 = 1f;
                     m_State = State.CAMERA_ADJUST;
                 }
-                m_LetterBoxes[0].color = new Color(0, 0, 0, a1);
-                m_LetterBoxes[1].color = new Color(0, 0, 0, a1);
+                letterBoxes[0].color = new Color(0, 0, 0, a1);
+                letterBoxes[1].color = new Color(0, 0, 0, a1);
                 break;
             case State.CAMERA_ADJUST:
                 m_Camera.transform.position = Vector3.Lerp(
@@ -121,7 +123,8 @@ public class Cinematic : MonoBehaviour
                     else
                     {
                         m_State = State.IDLING;
-                        GameManager.PlayerInput.MenuControls.CancelBack.performed += OnCancelCamera;
+                        GameManager.PlayerInput.MenuControls.Back.performed += OnCancelCamera;
+                        GameManager.PlayerInput.MenuControls.Enter.performed += OnCancelCamera;
                         GameManager.PlayerInput.MenuControls.Enable();
                     }                    
                 }                
@@ -134,16 +137,17 @@ public class Cinematic : MonoBehaviour
                 }
                 break;
             case State.LETTERBOX_FADEOUT:
-                float a2 = m_LetterBoxes[0].color.a - Time.deltaTime * fadeOutSpeed;
+                float a2 = letterBoxes[0].color.a - Time.deltaTime * fadeOutSpeed;
                 if (a2 < 0)
                 {
                     a2 = 0f;
                     m_State = State.IDLING;
-                    GameManager.PlayerInput.MenuControls.CancelBack.performed += OnCancelCamera;
+                    GameManager.PlayerInput.MenuControls.Back.performed += OnCancelCamera;
+                    GameManager.PlayerInput.MenuControls.Enter.performed += OnCancelCamera;
                     GameManager.PlayerInput.MenuControls.Enable();                   
                 }
-                m_LetterBoxes[0].color = new Color(0, 0, 0, a2);
-                m_LetterBoxes[1].color = new Color(0, 0, 0, a2);
+                letterBoxes[0].color = new Color(0, 0, 0, a2);
+                letterBoxes[1].color = new Color(0, 0, 0, a2);
                 break;
             case State.CAMERA_RESTORE:
                 m_Camera.transform.position = Vector3.Lerp(
@@ -187,7 +191,8 @@ public class Cinematic : MonoBehaviour
     void OnCancelCamera(InputAction.CallbackContext ctx)
     {
         m_State = State.CAMERA_RESTORE;
-        GameManager.PlayerInput.MenuControls.CancelBack.performed -= OnCancelCamera;
+        GameManager.PlayerInput.MenuControls.Back.performed -= OnCancelCamera;
+        GameManager.PlayerInput.MenuControls.Enter.performed -= OnCancelCamera;
         GameManager.PlayerInput.MenuControls.Disable();
     }    
 }

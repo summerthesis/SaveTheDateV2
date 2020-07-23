@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class TimeController : MonoBehaviour
 {
@@ -17,19 +18,17 @@ public class TimeController : MonoBehaviour
         energyReplenishRate = 10,  
         maxEnergy = 500, 
         maxCastRange = 15;
-    [ColorUsage(true, true)]
+    [ColorUsage(false, true)]
     public Color highlightFastforward, 
         highlightNeutral, 
         highlightPause, 
         highlightSlow;
 
-    private int m_ShaderIDColor, 
-        m_ShaderIDIsTwinkling, 
-        m_ShaderIDIsHighlighted;
     private float m_Energy = 0, m_StopTimer = 0;
     private GameObject[] m_AllTimeTaggedObjects, 
         m_TimeTaggedObjects;
-    private GameObject oTimeVfx;
+    private GameObject m_OTimeVfx;
+    private OutlineCustomPass m_OutlineCustomPassVolume;
     private PlayerInputAction m_Controls;
     private EnergyBarController m_EnergyBarController;
     private enum TimeStates
@@ -44,12 +43,12 @@ public class TimeController : MonoBehaviour
     void Awake()
     {
         SetupControls();
-        m_EnergyBarController = GameObject.FindGameObjectWithTag("HUD").GetComponentInChildren<EnergyBarController>();
+        m_EnergyBarController = GameObject.FindGameObjectWithTag("HUD").
+            GetComponentInChildren<EnergyBarController>();
         m_AllTimeTaggedObjects = GameObject.FindGameObjectsWithTag("TimeInteractable");
-        m_ShaderIDColor = Shader.PropertyToID("_FresnelColour");
-        m_ShaderIDIsTwinkling = Shader.PropertyToID("_IsTwinkling");
-        m_ShaderIDIsHighlighted = Shader.PropertyToID("_IsHighlighted");
-        oTimeVfx = GameObject.Find("TimeVfx");
+        m_OutlineCustomPassVolume = (OutlineCustomPass)GameObject.Find("Custom Pass Volume_Outline").
+            GetComponent<CustomPassVolume>().customPasses[0];
+        m_OTimeVfx = GameObject.Find("TimeVfx");
         SlowSoundEvent = FMODUnity.RuntimeManager.CreateInstance(SlowSound);
     }
 
@@ -66,7 +65,7 @@ public class TimeController : MonoBehaviour
                     m_Energy = maxEnergy;
                 }
                 SetEnergyBarScale();
-                ApplyTimeControlEffect("RestoreToNormal", highlightNeutral, 0);
+                ApplyTimeControlEffect("RestoreToNormal", highlightNeutral);
                 break;
 
             case TimeStates.Slowing:
@@ -78,7 +77,7 @@ public class TimeController : MonoBehaviour
                 }
                 else
                 {
-                    ApplyTimeControlEffect("TimeSlow", highlightSlow, 0);
+                    ApplyTimeControlEffect("TimeSlow", highlightSlow);
                 }
                 SetEnergyBarScale();                
                 break;
@@ -92,7 +91,7 @@ public class TimeController : MonoBehaviour
                 }
                 else
                 {
-                    ApplyTimeControlEffect("TimeFastForward", highlightFastforward, 0);
+                    ApplyTimeControlEffect("TimeFastForward", highlightFastforward);
                 }
                 SetEnergyBarScale();                
                 break;
@@ -111,7 +110,7 @@ public class TimeController : MonoBehaviour
                 }
                 else
                 {
-                    ApplyTimeControlEffect("TimeStop", highlightPause, 0);
+                    ApplyTimeControlEffect("TimeStop", highlightPause);
                 }                
                 break;
 
@@ -186,18 +185,18 @@ public class TimeController : MonoBehaviour
     }
     private void SendVfxSlow()
     {
-        oTimeVfx.SendMessage("Slow");
+        m_OTimeVfx.SendMessage("Slow");
         SlowSoundEvent.setParameterByName("SlowTimeEnd", 0.0f, true);
         SlowSoundEvent.start();
     }
     private void SendVfxStop()
     {
-        oTimeVfx.SendMessage("Stop");
+        m_OTimeVfx.SendMessage("Stop");
         PlaySoundOneShot("event:/Characters/Player/Ability/Pause Time");
     }
     private void SendVfxFast()
     {
-        oTimeVfx.SendMessage("Fast");
+        m_OTimeVfx.SendMessage("Fast");
     }
     private void SetEnergyBarScale()
     {
@@ -215,43 +214,21 @@ public class TimeController : MonoBehaviour
             }
             else
             {
-                MeshRenderer[] meshRenderers = member.GetComponentsInChildren<MeshRenderer>();
-                if (meshRenderers != null)
-                {
-                    foreach (var meshRenderer in meshRenderers)
-                    {
-                        Material[] materials = meshRenderer.materials;
-                        foreach (var material in materials)
-                        {
-                            material.SetFloat(m_ShaderIDIsHighlighted, 0);
-                        }
-                    }
-                }
+                member.layer = 0;
                 member.SendMessage("RestoreToNormal", SendMessageOptions.DontRequireReceiver);
             }
         }
     }
 
-    private void ApplyTimeControlEffect(string message, Color destinationColor, int isTwinkling)
+    private void ApplyTimeControlEffect(string message, Color destinationColor)
     {
         foreach (GameObject obj in m_TimeTaggedObjects)
         {
-            MeshRenderer[] meshRenderers = obj.GetComponentsInChildren<MeshRenderer>();
-            if (meshRenderers != null)
-            {
-                foreach (var meshRenderer in meshRenderers)
-                {
-                    Material[] materials = meshRenderer.materials;
-                    foreach (var material in materials)
-                    {
-                        material.SetFloat(m_ShaderIDIsHighlighted, 1);
-                        material.SetColor(m_ShaderIDColor, destinationColor);
-                        material.SetInt(m_ShaderIDIsTwinkling, isTwinkling);
-                    }
-                }
-            }
+            obj.layer = 11;
             obj.SendMessage(message);
         }
+
+        m_OutlineCustomPassVolume.outlineColor = destinationColor;
     }
     void PlaySoundOneShot(string path)
     {
