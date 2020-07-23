@@ -29,7 +29,7 @@ public class HrGlassA : MonoBehaviour
         }
         if (mTween.tween.CompletedLoops() == loops && TweenCompleted == false)
         {
-            Debug.Log("completed tween");
+           // Debug.Log("completed tween");
             loops++;
             Completed();
         }
