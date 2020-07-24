@@ -11,12 +11,6 @@ public class LifeCountHUDController : MonoBehaviour
     private Transform[] m_LifeCountIcons = new Transform[5];
     private int m_NumOfLifes;
     private float m_Time = 0;
-    private enum State
-    {
-        Normal,
-        GainedLife
-    }
-    private State m_State = State.Normal;
 
     // Start is called before the first frame update
     void Awake()
@@ -41,7 +35,6 @@ public class LifeCountHUDController : MonoBehaviour
         {
             m_NumOfLifes = 5;
         }
-        m_State = State.GainedLife;
         m_LifeCountIcons[m_NumOfLifes - 1].gameObject.SetActive(true);
         m_LifeCountIcons[m_NumOfLifes - 2].gameObject.SetActive(false);
         StartCoroutine(OnGainedLife());

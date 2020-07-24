@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class OnBoardingLevelManager : MonoBehaviour
 {
-    public Transform TutorialStartTarget;
+    public Transform TutorialStartTarget
+    {
+        get;
+        private set;
+    }
 
     private bool m_Ended = false;
     private bool InitSound;
