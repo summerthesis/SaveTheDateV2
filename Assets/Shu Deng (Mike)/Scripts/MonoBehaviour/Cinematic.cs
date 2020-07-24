@@ -202,10 +202,20 @@ public class Cinematic : MonoBehaviour
 
     void OnCancelCamera(InputAction.CallbackContext ctx)
     {
-        if (m_State == State.TEXT_RENDERING)
+        switch (m_State)
         {
-            m_Text.Input("");
+            case State.TEXT_RENDERING:
+                m_Text.Input("");
+                goto case State.LETTERBOX_FADEOUT;
+            case State.CAMERA_ADJUST:
+            case State.LETTERBOX_FADEOUT:
+                letterBoxes[0].color = new Color(0, 0, 0, 0);
+                letterBoxes[1].color = new Color(0, 0, 0, 0);
+                break;
+            default:
+                break;
         }
+
         m_State = State.CAMERA_RESTORE;
         m_FirstUpdateofState = true;
         GameManager.PlayerInput.MenuControls.Back.performed -= OnCancelCamera;
