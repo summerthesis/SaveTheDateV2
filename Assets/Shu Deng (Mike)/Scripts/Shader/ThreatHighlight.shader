@@ -35,14 +35,14 @@
                 float3 WorldSpaceViewDirection;
             };
 
-            struct GraphVertexInput
+            struct VertexInput
             {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
                 float4 tangent : TANGENT;
             };
 
-            struct GraphVertexOutput
+            struct VertexOutput
             {
                 float4 position : SV_POSITION;
                 float3 WorldSpaceNormal : TEXCOORD0;
@@ -75,48 +75,43 @@
                 Out = lerp(False, True, Predicate);
             }
 
-            GraphVertexInput PopulateVertexData(GraphVertexInput v)
-            {
-                return v;
-            }
-
             float4 PopulateSurfaceData(SurfaceDescriptionInputs IN)
             {
                 float4 surface;
-                float _FresnelEffect_E7A0EDB3_Out_3;
-                Unity_FresnelEffect_float(IN.WorldSpaceNormal, IN.WorldSpaceViewDirection, _FresnelPower, _FresnelEffect_E7A0EDB3_Out_3);
-                float4 _Multiply_CCE9D4BB_Out_2;
-                Unity_Multiply_float((_FresnelEffect_E7A0EDB3_Out_3.xxxx), _FresnelColour, _Multiply_CCE9D4BB_Out_2);                
+                float _FresnelEffect_Out;
+                Unity_FresnelEffect_float(IN.WorldSpaceNormal, IN.WorldSpaceViewDirection, _FresnelPower, _FresnelEffect_Out);
+                float4 _Multiply_Out_Fresnel;
+                Unity_Multiply_float((_FresnelEffect_Out.xxxx), _FresnelColour, _Multiply_Out_Fresnel);                
 
-                float _Remap_F11A93D1_Out_3;
-                Unity_Remap_float(sin(_Time.y * 3), float2 (-1, 1), float2 (0, 1), _Remap_F11A93D1_Out_3);
-                float _Branch_CB18BEDC_Out_3;
-                Unity_Branch_float(_IsTwinkling, _Remap_F11A93D1_Out_3, 1, _Branch_CB18BEDC_Out_3);
-                float4 _Multiply_4220803C_Out_2;
-                Unity_Multiply_float(_Multiply_CCE9D4BB_Out_2, (_Branch_CB18BEDC_Out_3.xxxx), _Multiply_4220803C_Out_2);
+                float _Remap_Out;
+                Unity_Remap_float(sin(_Time.y * 3), float2 (-1, 1), float2 (0, 1), _Remap_Out);
+                float _Branch_Out_IsTwinkling;
+                Unity_Branch_float(_IsTwinkling, _Remap_Out, 1, _Branch_Out_IsTwinkling);
+                float4 _Multiply_Out_Twinkling;
+                Unity_Multiply_float(_Multiply_Out_Fresnel, (_Branch_Out_IsTwinkling.xxxx), _Multiply_Out_Twinkling);
 
-                Unity_Branch_float4(_IsHighlighted, _Multiply_4220803C_Out_2, float4(0, 0, 0, 0), surface);
+                Unity_Branch_float4(_IsHighlighted, _Multiply_Out_Twinkling, float4(0, 0, 0, 0), surface);
                 return surface;
             }
 
-            GraphVertexOutput vert(GraphVertexInput v)
+            VertexOutput vert(VertexInput v)
             {
-                v = PopulateVertexData(v);
-                GraphVertexOutput o;
-                o.position = UnityObjectToClipPos(v.vertex);
+                VertexOutput o;
+                o.position = float4(v.vertex.xyz + v.normal * 0.0001, 1.0);  // inflate a bit the mesh to avoid z - fight
+                o.position = UnityObjectToClipPos(o.position);
                 o.WorldSpaceNormal = normalize(mul(v.normal, (float3x3)unity_WorldToObject));
                 o.WorldSpaceViewDirection = _WorldSpaceCameraPos - mul(unity_ObjectToWorld, float4(v.vertex.xyz, 1.0)).xyz;
                 return o;
             }
 
-            float4 frag(GraphVertexOutput IN) : SV_Target
+            float4 frag(VertexOutput IN) : SV_Target
             {
                 SurfaceDescriptionInputs surfaceInput = (SurfaceDescriptionInputs)0;
                 surfaceInput.WorldSpaceNormal = IN.WorldSpaceNormal;
                 surfaceInput.WorldSpaceViewDirection = IN.WorldSpaceViewDirection;
 
                 float4 surf = PopulateSurfaceData(surfaceInput);
-                return all(isfinite(surf)) ? half4(surf.x, surf.y, surf.z, 0.7f) : float4(1.0f, 0.0f, 1.0f, 1.0f);
+                return all(isfinite(surf)) ? float4(surf.x, surf.y, surf.z, 0.7f) : float4(1.0f, 0.0f, 1.0f, 1.0f);
             }
 
             ENDHLSL

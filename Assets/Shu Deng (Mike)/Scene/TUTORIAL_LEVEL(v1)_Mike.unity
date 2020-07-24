@@ -3087,6 +3087,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 948114332}
     m_Modifications:
+    - target: {fileID: 2209458136795452787, guid: ccee94bc3929529499873a31c04d207e,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 37016aa9fa0e8b34b803d27f4cb59623,
+        type: 2}
     - target: {fileID: 2611305187831115352, guid: ccee94bc3929529499873a31c04d207e,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -4741,6 +4747,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GiantGear
       objectReference: {fileID: 0}
+    - target: {fileID: 564153125819794268, guid: 00f45f65c0f0d7f4e97b7b9fbe7085f0,
+        type: 3}
+      propertyPath: m_TagString
+      value: TimeInteractable
+      objectReference: {fileID: 0}
     - target: {fileID: 3571107799586615631, guid: 00f45f65c0f0d7f4e97b7b9fbe7085f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5818,6 +5829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GiantGear01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c515bf188141c914983dcd4c2777c333,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c515bf188141c914983dcd4c2777c333, type: 3}
@@ -13473,6 +13489,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 024c6f8aa8edd6e429dddaf5a0962b04, type: 3}
+--- !u!1 &710194512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710194513}
+  m_Layer: 0
+  m_Name: _Delete CPV ThreatHighlight object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &710194513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710194512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -270.11523, y: 19.925495, z: 231.8805}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &713886647
 GameObject:
   m_ObjectHideFlags: 0
@@ -24372,7 +24418,7 @@ GameObject:
   - component: {fileID: 1368922952}
   - component: {fileID: 1368922951}
   m_Layer: 0
-  m_Name: Custom Pass Volume_Outline
+  m_Name: Custom Pass Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24394,7 +24440,8 @@ MonoBehaviour:
   fadeRadius: 0
   customPasses:
   - id: 0
-  injectionPoint: 3
+  - id: 1
+  injectionPoint: 2
   references:
     version: 1
     00000000:
@@ -24414,6 +24461,36 @@ MonoBehaviour:
         threshold: 0
         outlineWidth: 5
         outlineShader: {fileID: 4800000, guid: 1b45f198d77729145b4d6d86f6844a72, type: 3}
+        overrideShader: {fileID: 4800000, guid: fa473fd17f8d4424a9c103c12e32cb12,
+          type: 3}
+    00000001:
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: ThreatHighlight
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 2
+        passNames:
+        - Forward
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 4096
+        sortingCriteria: 59
+        overrideMaterial: {fileID: 2100000, guid: f9485b792f38d8741a220a378e3d481a,
+          type: 2}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: 
+        overrideDepthState: 0
+        depthCompareFunction: 4
+        depthWrite: 1
+        shaderPass: 0
 --- !u!4 &1368922952
 Transform:
   m_ObjectHideFlags: 0
@@ -24426,7 +24503,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1372074968
 GameObject:
@@ -27642,84 +27719,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec420d445fdfba43b1c5aad83ab4e08, type: 3}
---- !u!1 &1484460283
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1484460285}
-  - component: {fileID: 1484460284}
-  m_Layer: 0
-  m_Name: Custom Pass Volume_ThreatHighlight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1484460284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484460283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGlobal: 1
-  fadeRadius: 0
-  customPasses:
-  - id: 0
-  injectionPoint: 2
-  references:
-    version: 1
-    00000000:
-      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
-        asm: Unity.RenderPipelines.HighDefinition.Runtime}
-      data:
-        m_Name: ThreatHighlight
-        enabled: 1
-        targetColorBuffer: 0
-        targetDepthBuffer: 0
-        clearFlags: 2
-        passFoldout: 0
-        m_Version: 0
-        filterFoldout: 1
-        rendererFoldout: 1
-        renderQueueType: 2
-        passNames:
-        - Forward
-        layerMask:
-          serializedVersion: 2
-          m_Bits: 4096
-        sortingCriteria: 59
-        overrideMaterial: {fileID: 2100000, guid: f9485b792f38d8741a220a378e3d481a,
-          type: 2}
-        overrideMaterialPassIndex: 0
-        overrideMaterialPassName: 
-        overrideDepthState: 0
-        depthCompareFunction: 4
-        depthWrite: 1
-        shaderPass: 0
---- !u!4 &1484460285
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484460283}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1492063263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28931,17 +28930,17 @@ PrefabInstance:
     - target: {fileID: 1633800183986277153, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1633800183986277153, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1633800183986277153, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1633800183986277153, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
@@ -28971,17 +28970,17 @@ PrefabInstance:
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -151.32
+      value: -53.58
       objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 87.29
+      value: 31.42
       objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 449.98
+      value: 132.18
       objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
@@ -30700,16 +30699,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera_Target
       objectReference: {fileID: 0}
-    - target: {fileID: 5038433708272457759, guid: 287b2ffb4b014e841b4f6eee5459c251,
-        type: 3}
-      propertyPath: m_Version
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5038433708272457759, guid: 287b2ffb4b014e841b4f6eee5459c251,
-        type: 3}
-      propertyPath: m_RenderingPathCustomFrameSettings.bitDatas.data1
-      value: 70005818916701
-      objectReference: {fileID: 0}
     - target: {fileID: 5378051837497919558, guid: 287b2ffb4b014e841b4f6eee5459c251,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31542,6 +31531,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: TimeInteractable
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f843f316f58c83a4089ce65b20a6676b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f843f316f58c83a4089ce65b20a6676b, type: 3}
 --- !u!4 &1719274789 stripped
@@ -31576,7 +31570,7 @@ PrefabInstance:
     - target: {fileID: 4188156732263095816, guid: 028241c85b1c4e5478f11b7f06031c77,
         type: 3}
       propertyPath: cinematicText
-      value: 'lalala
+      value: 'lalalala
 
 '
       objectReference: {fileID: 0}
