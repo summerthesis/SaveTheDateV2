@@ -6,12 +6,13 @@ using UnityEngine;
 public class KH_PlayerController : MonoBehaviour
 {
     private bool isFlying; private Vector3 FlyingDirection;
-    public float moveSpeed = 4.0f; //from https://youtu.be/XhliRnzJe5g (How to Make An Isometric Camera and Character Controller in Unity3D)
-    public float jumpForce = 7.0f; //from https://youtu.be/vdOFUFMiPDU (How To Jump in Unity - Unity Jumping Tutorial | Make Your Characters Jump in Unity)
-    public float fallMultiplier = 2.5f; //from https://youtu.be/7KiK0Aqtmzc (Better Jumping in Unity With Four Lines of Code)
-    public float lowJumpMultiplier = 2.0f;
+    public float moveSpeed = 8.0f; //from https://youtu.be/XhliRnzJe5g (How to Make An Isometric Camera and Character Controller in Unity3D)
+    public float jumpForce = 12.0f; //from https://youtu.be/vdOFUFMiPDU (How To Jump in Unity - Unity Jumping Tutorial | Make Your Characters Jump in Unity)
+    public float fallMultiplier = 5.0f; //from https://youtu.be/7KiK0Aqtmzc (Better Jumping in Unity With Four Lines of Code)
+    public float lowJumpMultiplier = 1.0f;
     public LayerMask groundLayers;
     private Vector3 forward, right;
+    public bool isPlayerControllable = true;
     public PlayerInputAction controls; //public for other scripts
     private Vector2 movementInput; //private
     private bool jumpInput; //private
@@ -126,7 +127,10 @@ public class KH_PlayerController : MonoBehaviour
             if (FlyingDirection.x == 0 &&
                 FlyingDirection.y == 0 &&
                 FlyingDirection.z == 0)
+            {
                 isFlying = false;
+                isPlayerControllable = true;
+            }
         }
 
         // JUMPING
@@ -134,8 +138,8 @@ public class KH_PlayerController : MonoBehaviour
         {
             if (jumping)
             {
-             PlaySound("event:/Characters/Player/Locomotion/Landing");
-             jumping = false;
+                PlaySound("event:/Characters/Player/Locomotion/Landing");
+                jumping = false;
             }
             canDoubleJump = true;
             anim.SetBool(is_grounded_anim_param, true);
@@ -186,19 +190,22 @@ public class KH_PlayerController : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime; //using Time.deltaTime due to acceleration
-            anim.SetFloat(vspeed_anim_param, rb.velocity.y);
+            anim.SetFloat(vspeed_anim_param, rb.velocity.y/jumpForce);
         }
         else if (rb.velocity.y > 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * lowJumpMultiplier * Time.deltaTime; //using Time.deltaTime due to acceleration
-            anim.SetFloat(vspeed_anim_param, rb.velocity.y);
+            anim.SetFloat(vspeed_anim_param, rb.velocity.y/jumpForce);
         }
 
         // FULL STOP WHEN JOYSTICK IS RELEASED
-        //if (horizontalMovement == 0 && verticalMovement == 0)
-        //{
-        //    rb.velocity = new Vector3(0, rb.velocity.y, 0);
-        //}
+        if (isPlayerControllable)
+        {
+            if (horizontalMovement == 0 && verticalMovement == 0)
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            }
+        }
 
         // DISABLE RIGIDBODY FUMBLING
         rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -211,25 +218,18 @@ public class KH_PlayerController : MonoBehaviour
                 transform.forward = heading;
             }
         }
-        anim.SetFloat(hspeed_anim_param, Mathf.Abs(groundMovement.x) + Mathf.Abs(groundMovement.z));
+        //anim.SetFloat(hspeed_anim_param, (Mathf.Abs(groundMovement.x) + Mathf.Abs(groundMovement.z))/moveSpeed);        
+        anim.SetFloat(hspeed_anim_param, Mathf.Abs(horizontalMovement) > Mathf.Abs(verticalMovement) ? Mathf.Abs(horizontalMovement) : Mathf.Abs(verticalMovement));
+        anim.SetFloat("JoystickUpPos", verticalMovement);
+        anim.SetFloat("JoystickRightPos", horizontalMovement);
 
 
         //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         //{
         //    Debug.Log("Idle");
         //}
-        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
-        //{
-        //    Debug.Log("Walk");
-        //}
-        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Run"))
-        //{
-        //    Debug.Log("Run");
-        //}
-        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("JumpStart"))
-        //{
-        //    Debug.Log("JumpStart");
-        //}
+        
+
         Debug.DrawRay(playerCollider.transform.position, Vector3.down * 0.1f, Color.green);
     }
 
@@ -239,6 +239,7 @@ public class KH_PlayerController : MonoBehaviour
         Vector3 impulse = Dir;
         GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
         isFlying = true; 
+        isPlayerControllable = false;
     }
     private bool IsGrounded()
     {
