@@ -13,18 +13,15 @@ public class TimeController : MonoBehaviour
 
     public float slowEnergyCostRate = 9,
         fastforwardEnergyCostRate = 9,
-        stopEnergyCost = 100,
-        stopDuration = 5,
         energyReplenishRate = 10,  
         maxEnergy = 500, 
         maxCastRange = 15;
     [ColorUsage(false, true)]
     public Color highlightFastforward, 
-        highlightNeutral, 
-        highlightPause, 
+        highlightNeutral,  
         highlightSlow;
 
-    private float m_Energy = 0, m_StopTimer = 0;
+    private float m_Energy = 0;
     private GameObject[] m_AllTimeTaggedObjects, 
         m_TimeTaggedObjects;
     private GameObject m_OTimeVfx;
@@ -36,7 +33,6 @@ public class TimeController : MonoBehaviour
         Available,
         Slowing,
         FastForwarding,
-        Stop
     }
     private TimeStates m_TimeState = TimeStates.Available;
 
@@ -46,7 +42,7 @@ public class TimeController : MonoBehaviour
         m_EnergyBarController = GameObject.FindGameObjectWithTag("HUD").
             GetComponentInChildren<EnergyBarController>();
         m_AllTimeTaggedObjects = GameObject.FindGameObjectsWithTag("TimeInteractable");
-        m_OutlineCustomPassVolume = (OutlineCustomPass)GameObject.Find("Custom Pass Volume_Outline").
+        m_OutlineCustomPassVolume = (OutlineCustomPass)GameObject.Find("Custom Pass Volume").
             GetComponent<CustomPassVolume>().customPasses[0];
         m_OTimeVfx = GameObject.Find("TimeVfx");
         SlowSoundEvent = FMODUnity.RuntimeManager.CreateInstance(SlowSound);
@@ -96,24 +92,6 @@ public class TimeController : MonoBehaviour
                 SetEnergyBarScale();                
                 break;
 
-            case TimeStates.Stop:                
-                m_Energy += energyReplenishRate * Time.deltaTime;
-                if (m_Energy > maxEnergy)
-                {
-                    m_Energy = maxEnergy;
-                }
-                SetEnergyBarScale();
-                m_StopTimer += Time.deltaTime;
-                if (m_StopTimer > stopDuration)
-                {                   
-                    m_TimeState = TimeStates.Available;
-                }
-                else
-                {
-                    ApplyTimeControlEffect("TimeStop", highlightPause);
-                }                
-                break;
-
             default:
                 break;
         }
@@ -154,22 +132,6 @@ public class TimeController : MonoBehaviour
         m_TimeState = TimeStates.Available;
     }
 
-    void Stop()
-    {
-        if (m_Energy >= stopEnergyCost)
-        {
-            m_TimeState = TimeStates.Stop;            
-            m_Energy -= stopEnergyCost;
-            SetEnergyBarScale();
-            m_StopTimer = 0;
-        }
-    }
-
-    void JumpForward()
-    {
-        
-    }
-    
     private void SetupControls()
     {
         m_Controls = GameManager.PlayerInput;
@@ -178,21 +140,13 @@ public class TimeController : MonoBehaviour
         m_Controls.TimeControls.TimeFastForward.canceled += ctx => EndFastForward();
         m_Controls.TimeControls.TimeSlow.performed += ctx => Slow();
         m_Controls.TimeControls.TimeSlow.started += ctx => SendVfxSlow();
-        m_Controls.TimeControls.TimeSlow.canceled += ctx => EndSlow();        
-        m_Controls.TimeControls.TimeJumpForward.canceled += ctx => JumpForward();        
-        m_Controls.TimeControls.TimeStop.canceled += ctx => Stop();
-        m_Controls.TimeControls.TimeStop.canceled += ctx => SendVfxStop();
+        m_Controls.TimeControls.TimeSlow.canceled += ctx => EndSlow();
     }
     private void SendVfxSlow()
     {
         m_OTimeVfx.SendMessage("Slow");
         SlowSoundEvent.setParameterByName("SlowTimeEnd", 0.0f, true);
         SlowSoundEvent.start();
-    }
-    private void SendVfxStop()
-    {
-        m_OTimeVfx.SendMessage("Stop");
-        PlaySoundOneShot("event:/Characters/Player/Ability/Pause Time");
     }
     private void SendVfxFast()
     {
