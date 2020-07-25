@@ -86,6 +86,7 @@ public class DeathController : MonoBehaviour
 
                         // START by Shu Deng (Mike)
                         FindObjectOfType<LifeCountHUDController>().LostLife();
+                        Pickup.RespawnDestroyedPickup();
                         FindObjectOfType<MainCameraController>().ChangeView(
                             GameManager.CurrentCheckpoint.GetComponent<CheckpointObject>().CameraTransform, false);
                         // END by Shu Deng (Mike)

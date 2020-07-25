@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Pickup))]
+[CustomEditor(typeof(Pickup)), CanEditMultipleObjects]
 public class PickupEditor : Editor
 {
     private SerializedProperty effectiveTimeProp, vericalBobFreProp, bobbingAmountProp,

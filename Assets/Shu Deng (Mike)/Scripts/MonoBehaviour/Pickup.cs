@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +46,8 @@ public class Pickup: MonoBehaviour
     public float targetOffsetToScreen = 5f;
     public float flyingTime = 0.5f;
     public AnimationCurve flyingPattern;
+    [HideInInspector]
+    public static List<GameObject> destroyedPickupList = new List<GameObject>();
 
     private Collider m_Collider;
     private Vector3 m_StartPosition;
@@ -122,6 +125,7 @@ public class Pickup: MonoBehaviour
         if (pickingPlayer != null)
         {
             pickupState = State.AFTERPICKED;
+            destroyedPickupList.Add(this.gameObject);
             StartCoroutine(PlayFlyingEffect());
             m_Collider.enabled = false;
             if (effectiveTime == CallbackBehaviour.OnPicked)
@@ -160,11 +164,13 @@ public class Pickup: MonoBehaviour
         }
         Destroy(gameObject);
     }
+
     void PlaySoundOneShot(string path)
     {
         FMODUnity.RuntimeManager.PlayOneShot(path, Camera.main.transform.position);
     }
-    public void PlayPickupFeedback()
+
+    private void PlayPickupFeedback()
     {
         if (pickupSFX)
         {
@@ -176,5 +182,18 @@ public class Pickup: MonoBehaviour
         {
             //var pickupVFXInstance = Instantiate(pickupVFXPrefab, transform.position, Quaternion.identity);
         }
+    }
+
+    public static void RespawnDestroyedPickup()
+    {
+        foreach (var obj in destroyedPickupList)
+        {
+
+        }
+    }
+
+    public static void ResetDestroyedPickupList()
+    {
+        destroyedPickupList.Clear();
     }
 }
