@@ -3847,6 +3847,104 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2159211}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &145810462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 145810464}
+  - component: {fileID: 145810463}
+  m_Layer: 0
+  m_Name: Custom Pass Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &145810463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145810462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  fadeRadius: 0
+  customPasses:
+  - id: 0
+  - id: 1
+  injectionPoint: 2
+  references:
+    version: 1
+    00000000:
+      type: {class: OutlineCustomPass, ns: , asm: Assembly-CSharp}
+      data:
+        m_Name: Outline
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        outlineLayer:
+          serializedVersion: 2
+          m_Bits: 2048
+        outlineColor: {r: 1, g: 1, b: 1, a: 1}
+        threshold: 0
+        outlineWidth: 5
+        outlineShader: {fileID: 4800000, guid: 1b45f198d77729145b4d6d86f6844a72, type: 3}
+        overrideShader: {fileID: 4800000, guid: fa473fd17f8d4424a9c103c12e32cb12,
+          type: 3}
+    00000001:
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: ThreatHighlight
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 2
+        passNames:
+        - Forward
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 4096
+        sortingCriteria: 59
+        overrideMaterial: {fileID: 2100000, guid: f9485b792f38d8741a220a378e3d481a,
+          type: 2}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: 
+        overrideDepthState: 0
+        depthCompareFunction: 4
+        depthWrite: 1
+        shaderPass: 0
+--- !u!4 &145810464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145810462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &147624546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6227130926258137780, guid: f342df9d469d78b49b2499078a10b019,
@@ -4511,7 +4609,7 @@ PrefabInstance:
     - target: {fileID: 3815684122472624298, guid: eb3dbcbae1fba9244adf401e5bb893b0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3815684122472624298, guid: eb3dbcbae1fba9244adf401e5bb893b0,
         type: 3}
@@ -6000,7 +6098,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 87a77d144ca748a47a83be77984b848b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 87a77d144ca748a47a83be77984b848b,
         type: 3}
@@ -12002,7 +12100,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 64d5a7fe98819e14e8c030b2976c705d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 64d5a7fe98819e14e8c030b2976c705d,
         type: 3}
@@ -12651,84 +12749,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 913208064}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &589503393
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 589503395}
-  - component: {fileID: 589503394}
-  m_Layer: 0
-  m_Name: Custom Pass Volume_ThreatHighlight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &589503394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589503393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGlobal: 1
-  fadeRadius: 0
-  customPasses:
-  - id: 0
-  injectionPoint: 2
-  references:
-    version: 1
-    00000000:
-      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
-        asm: Unity.RenderPipelines.HighDefinition.Runtime}
-      data:
-        m_Name: ThreatHighlight
-        enabled: 1
-        targetColorBuffer: 0
-        targetDepthBuffer: 0
-        clearFlags: 2
-        passFoldout: 0
-        m_Version: 0
-        filterFoldout: 1
-        rendererFoldout: 1
-        renderQueueType: 2
-        passNames:
-        - Forward
-        layerMask:
-          serializedVersion: 2
-          m_Bits: 4096
-        sortingCriteria: 59
-        overrideMaterial: {fileID: 2100000, guid: f9485b792f38d8741a220a378e3d481a,
-          type: 2}
-        overrideMaterialPassIndex: 0
-        overrideMaterialPassName: 
-        overrideDepthState: 0
-        depthCompareFunction: 4
-        depthWrite: 1
-        shaderPass: 0
---- !u!4 &589503395
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589503393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &595783112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16227,7 +16247,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 9e5dd3f0435ef6e439766ffd385d4b53,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9e5dd3f0435ef6e439766ffd385d4b53,
         type: 3}
@@ -16883,7 +16903,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &823837913 stripped
 Transform:
@@ -18678,7 +18698,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: f33c8e72d35de3c4386837aee641e528,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f33c8e72d35de3c4386837aee641e528,
         type: 3}
@@ -21497,7 +21517,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: f675122b10582dc44b322dae3056763f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f675122b10582dc44b322dae3056763f,
         type: 3}
@@ -23592,7 +23612,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: afc8a1e3da9be2b41858fc150c7a9b82,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: afc8a1e3da9be2b41858fc150c7a9b82,
         type: 3}
@@ -26653,7 +26673,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 2d351fdf22d168241a5910418cff63ca,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2d351fdf22d168241a5910418cff63ca,
         type: 3}
@@ -30722,6 +30742,8 @@ MonoBehaviour:
         threshold: 0
         outlineWidth: 5
         outlineShader: {fileID: 4800000, guid: 1b45f198d77729145b4d6d86f6844a72, type: 3}
+        overrideShader: {fileID: 4800000, guid: fa473fd17f8d4424a9c103c12e32cb12,
+          type: 3}
 --- !u!4 &1502880116
 Transform:
   m_ObjectHideFlags: 0
@@ -30734,7 +30756,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1505943499
 PrefabInstance:
