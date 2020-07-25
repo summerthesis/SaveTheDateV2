@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class TimeController : MonoBehaviour
 {
@@ -12,24 +13,19 @@ public class TimeController : MonoBehaviour
 
     public float slowEnergyCostRate = 9,
         fastforwardEnergyCostRate = 9,
-        stopEnergyCost = 100,
-        stopDuration = 5,
         energyReplenishRate = 10,  
         maxEnergy = 500, 
         maxCastRange = 15;
-    [ColorUsage(true, true)]
+    [ColorUsage(false, true)]
     public Color highlightFastforward, 
-        highlightNeutral, 
-        highlightPause, 
+        highlightNeutral,  
         highlightSlow;
 
-    private int m_ShaderIDColor, 
-        m_ShaderIDIsTwinkling, 
-        m_ShaderIDIsHighlighted;
-    private float m_Energy = 0, m_StopTimer = 0;
+    private float m_Energy = 0;
     private GameObject[] m_AllTimeTaggedObjects, 
         m_TimeTaggedObjects;
-    private GameObject oTimeVfx;
+    private GameObject m_OTimeVfx;
+    private OutlineCustomPass m_OutlineCustomPassVolume;
     private PlayerInputAction m_Controls;
     private EnergyBarController m_EnergyBarController;
     private enum TimeStates
@@ -37,19 +33,18 @@ public class TimeController : MonoBehaviour
         Available,
         Slowing,
         FastForwarding,
-        Stop
     }
     private TimeStates m_TimeState = TimeStates.Available;
 
     void Awake()
     {
         SetupControls();
-        m_EnergyBarController = GameObject.FindGameObjectWithTag("HUD").GetComponentInChildren<EnergyBarController>();
+        m_EnergyBarController = GameObject.FindGameObjectWithTag("HUD").
+            GetComponentInChildren<EnergyBarController>();
         m_AllTimeTaggedObjects = GameObject.FindGameObjectsWithTag("TimeInteractable");
-        m_ShaderIDColor = Shader.PropertyToID("_FresnelColour");
-        m_ShaderIDIsTwinkling = Shader.PropertyToID("_IsTwinkling");
-        m_ShaderIDIsHighlighted = Shader.PropertyToID("_IsHighlighted");
-        oTimeVfx = GameObject.Find("TimeVfx");
+        m_OutlineCustomPassVolume = (OutlineCustomPass)GameObject.Find("Custom Pass Volume").
+            GetComponent<CustomPassVolume>().customPasses[0];
+        m_OTimeVfx = GameObject.Find("TimeVfx");
         SlowSoundEvent = FMODUnity.RuntimeManager.CreateInstance(SlowSound);
     }
 
@@ -66,7 +61,7 @@ public class TimeController : MonoBehaviour
                     m_Energy = maxEnergy;
                 }
                 SetEnergyBarScale();
-                ApplyTimeControlEffect("RestoreToNormal", highlightNeutral, 0);
+                ApplyTimeControlEffect("RestoreToNormal", highlightNeutral);
                 break;
 
             case TimeStates.Slowing:
@@ -78,7 +73,7 @@ public class TimeController : MonoBehaviour
                 }
                 else
                 {
-                    ApplyTimeControlEffect("TimeSlow", highlightSlow, 0);
+                    ApplyTimeControlEffect("TimeSlow", highlightSlow);
                 }
                 SetEnergyBarScale();                
                 break;
@@ -92,27 +87,9 @@ public class TimeController : MonoBehaviour
                 }
                 else
                 {
-                    ApplyTimeControlEffect("TimeFastForward", highlightFastforward, 0);
+                    ApplyTimeControlEffect("TimeFastForward", highlightFastforward);
                 }
                 SetEnergyBarScale();                
-                break;
-
-            case TimeStates.Stop:                
-                m_Energy += energyReplenishRate * Time.deltaTime;
-                if (m_Energy > maxEnergy)
-                {
-                    m_Energy = maxEnergy;
-                }
-                SetEnergyBarScale();
-                m_StopTimer += Time.deltaTime;
-                if (m_StopTimer > stopDuration)
-                {                   
-                    m_TimeState = TimeStates.Available;
-                }
-                else
-                {
-                    ApplyTimeControlEffect("TimeStop", highlightPause, 0);
-                }                
                 break;
 
             default:
@@ -155,22 +132,6 @@ public class TimeController : MonoBehaviour
         m_TimeState = TimeStates.Available;
     }
 
-    void Stop()
-    {
-        if (m_Energy >= stopEnergyCost)
-        {
-            m_TimeState = TimeStates.Stop;            
-            m_Energy -= stopEnergyCost;
-            SetEnergyBarScale();
-            m_StopTimer = 0;
-        }
-    }
-
-    void JumpForward()
-    {
-        
-    }
-    
     private void SetupControls()
     {
         m_Controls = GameManager.PlayerInput;
@@ -179,25 +140,17 @@ public class TimeController : MonoBehaviour
         m_Controls.TimeControls.TimeFastForward.canceled += ctx => EndFastForward();
         m_Controls.TimeControls.TimeSlow.performed += ctx => Slow();
         m_Controls.TimeControls.TimeSlow.started += ctx => SendVfxSlow();
-        m_Controls.TimeControls.TimeSlow.canceled += ctx => EndSlow();        
-        m_Controls.TimeControls.TimeJumpForward.canceled += ctx => JumpForward();        
-        m_Controls.TimeControls.TimeStop.canceled += ctx => Stop();
-        m_Controls.TimeControls.TimeStop.canceled += ctx => SendVfxStop();
+        m_Controls.TimeControls.TimeSlow.canceled += ctx => EndSlow();
     }
     private void SendVfxSlow()
     {
-        oTimeVfx.SendMessage("Slow");
+        m_OTimeVfx.SendMessage("Slow");
         SlowSoundEvent.setParameterByName("SlowTimeEnd", 0.0f, true);
         SlowSoundEvent.start();
     }
-    private void SendVfxStop()
-    {
-        oTimeVfx.SendMessage("Stop");
-        PlaySoundOneShot("event:/Characters/Player/Ability/Pause Time");
-    }
     private void SendVfxFast()
     {
-        oTimeVfx.SendMessage("Fast");
+        m_OTimeVfx.SendMessage("Fast");
     }
     private void SetEnergyBarScale()
     {
@@ -215,43 +168,21 @@ public class TimeController : MonoBehaviour
             }
             else
             {
-                MeshRenderer[] meshRenderers = member.GetComponentsInChildren<MeshRenderer>();
-                if (meshRenderers != null)
-                {
-                    foreach (var meshRenderer in meshRenderers)
-                    {
-                        Material[] materials = meshRenderer.materials;
-                        foreach (var material in materials)
-                        {
-                            material.SetFloat(m_ShaderIDIsHighlighted, 0);
-                        }
-                    }
-                }
+                member.layer = 0;
                 member.SendMessage("RestoreToNormal", SendMessageOptions.DontRequireReceiver);
             }
         }
     }
 
-    private void ApplyTimeControlEffect(string message, Color destinationColor, int isTwinkling)
+    private void ApplyTimeControlEffect(string message, Color destinationColor)
     {
         foreach (GameObject obj in m_TimeTaggedObjects)
         {
-            MeshRenderer[] meshRenderers = obj.GetComponentsInChildren<MeshRenderer>();
-            if (meshRenderers != null)
-            {
-                foreach (var meshRenderer in meshRenderers)
-                {
-                    Material[] materials = meshRenderer.materials;
-                    foreach (var material in materials)
-                    {
-                        material.SetFloat(m_ShaderIDIsHighlighted, 1);
-                        material.SetColor(m_ShaderIDColor, destinationColor);
-                        material.SetInt(m_ShaderIDIsTwinkling, isTwinkling);
-                    }
-                }
-            }
+            obj.layer = 11;
             obj.SendMessage(message);
         }
+
+        m_OutlineCustomPassVolume.outlineColor = destinationColor;
     }
     void PlaySoundOneShot(string path)
     {

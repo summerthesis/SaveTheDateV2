@@ -10,7 +10,7 @@ public class KH_PlayerController : MonoBehaviour
     public float jumpForce = 12.0f; //from https://youtu.be/vdOFUFMiPDU (How To Jump in Unity - Unity Jumping Tutorial | Make Your Characters Jump in Unity)
     public float fallMultiplier = 5.0f; //from https://youtu.be/7KiK0Aqtmzc (Better Jumping in Unity With Four Lines of Code)
     public float lowJumpMultiplier = 1.0f;
-    public LayerMask groundLayers;
+    //public LayerMask groundLayers;
     private Vector3 forward, right;
     public bool isPlayerControllable = true;
     public PlayerInputAction controls; //public for other scripts
@@ -18,6 +18,7 @@ public class KH_PlayerController : MonoBehaviour
     private bool jumpInput; //private
     private bool castInput; //private
     private bool canDoubleJump; //from https://youtu.be/DEGEEZmfTT0 (Simple Double Jump in Unity 2D (Unity Tutorial for Beginners))
+    private bool isGrounded; //avoid calling IsGrounded() more than once
     private bool jumping;
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
@@ -27,7 +28,7 @@ public class KH_PlayerController : MonoBehaviour
     [TextArea]
     public string Notes = "1st Box Collider is the actual Collider, referenced in the movement script, MUST EXTEND SLIGHTLY BEYOND THE FEET OR IsGrounded CHECK WON'T WORK.\n" +
         "2nd Box Collider is slightly wider with NoFriction PhysicsMaterial to prevent player from sticking to the wall mid-jump.\n" +
-        "The ground needs to be tagged w/ Platform for Jumping to work.";
+        "The ground DOES NOT NEED TO BE TAGGED W/ Platform for Jumping to work.";
 
     private string hspeed_anim_param = "HSpeed";
     private string vspeed_anim_param = "VSpeed";
@@ -141,6 +142,7 @@ public class KH_PlayerController : MonoBehaviour
                 PlaySound("event:/Characters/Player/Locomotion/Landing");
                 jumping = false;
             }
+            isGrounded = true;
             canDoubleJump = true;
             anim.SetBool(is_grounded_anim_param, true);
             anim.SetBool(is_jump_input_anim_param, false);
@@ -149,13 +151,15 @@ public class KH_PlayerController : MonoBehaviour
         }
         else
         {
+            isGrounded = false;
             anim.SetBool(is_grounded_anim_param, false);
         }
 
         if (jumpInput)
         {
             anim.SetBool(is_jump_input_anim_param, true);
-            if (IsGrounded())
+            //if (IsGrounded())
+            if (isGrounded)
             {
                 PlaySound("event:/Characters/Player/Locomotion/Jump");
                 rb.velocity = Vector3.up * jumpForce;
@@ -243,7 +247,7 @@ public class KH_PlayerController : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        return Physics.Raycast(playerCollider.transform.position, Vector3.down, 0.1f, groundLayers);
+        return Physics.Raycast(playerCollider.transform.position, Vector3.down, 0.1f);
     }
  
 }

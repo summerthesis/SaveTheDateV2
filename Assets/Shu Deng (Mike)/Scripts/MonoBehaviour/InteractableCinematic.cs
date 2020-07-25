@@ -33,7 +33,7 @@ public class InteractableCinematic : MonoBehaviour
     
     void OnInteract()
     {
-        m_Cinematic = Instantiate(cinematicPrefab, transform).GetComponent<Cinematic>();
+        m_Cinematic = Instantiate(cinematicPrefab, transform).GetComponent<Cinematic>();  //Calls the Awake() immediately 
         if (cinematicText != "")
         {
             m_Cinematic.textContent = cinematicText;

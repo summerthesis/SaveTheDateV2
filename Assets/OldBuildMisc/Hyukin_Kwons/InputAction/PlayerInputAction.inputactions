@@ -502,22 +502,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "TimeStop",
-                    "type": "Button",
-                    "id": "b79dad23-a539-4be1-80eb-8537c3c9e281",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "TimeJumpForward",
-                    "type": "Button",
-                    "id": "f9888814-83ef-4054-965d-b884c2154ce8",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -535,7 +519,7 @@
                 {
                     "name": "",
                     "id": "36557dd6-47ce-4843-91d5-8317f703326a",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -557,44 +541,11 @@
                 {
                     "name": "",
                     "id": "f20fba63-65c3-49c4-abbb-6e452df2296a",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "TimeFastForward",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a97dd005-b8c3-40d6-b1cc-40df864f7758",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TimeStop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b5bb4637-44d3-4346-8378-f31301d40c92",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "TimeStop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "47128d54-e06e-462d-8f18-f9c91261ceba",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TimeJumpForward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -605,9 +556,17 @@
             "id": "445bd6c3-500f-4cb5-9394-b89d77440fd5",
             "actions": [
                 {
-                    "name": "Cancel/Back",
+                    "name": "Back",
                     "type": "Button",
                     "id": "252539c8-1ad4-4947-9811-4c918c4d4c91",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Enter",
+                    "type": "Button",
+                    "id": "19923a52-c973-4434-ae67-92c4c3228e82",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -621,7 +580,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Cancel/Back",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -632,7 +591,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Cancel/Back",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -643,7 +602,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Cancel/Back",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -654,7 +613,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Cancel/Back",
+                    "action": "Enter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

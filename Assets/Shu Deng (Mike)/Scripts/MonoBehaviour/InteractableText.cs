@@ -7,50 +7,40 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Interactable))]
 public class InteractableText : MonoBehaviour
 {
-    public GameObject TextUIPrefab;
-    public Canvas ScreenCanvas;
+    public GameObject textUIPrefab;
+    public Canvas screenCanvas;
     [TextArea]
-    public string Text = 
+    public string text = 
         "This is your first line\nPress Enter and type in the second line";
 
-    private PlayerInputAction m_playerInput;
-    private GameObject m_textUI;
-
-    void Start()
-    {
-        m_playerInput = GameManager.PlayerInput;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private GameObject m_TextUI;
 
     void OnInteract()
     {
-        m_textUI = Instantiate(TextUIPrefab, ScreenCanvas.transform, false);
-        TextUITypewrite typewriter = m_textUI.GetComponentInChildren<TextUITypewrite>();
-        typewriter.Input(Text);
+        m_TextUI = Instantiate(textUIPrefab, screenCanvas.transform, false);
+        TextUITypewrite typewriter = m_TextUI.GetComponentInChildren<TextUITypewrite>();
+        typewriter.Input(text);
         typewriter.Output();
-        m_playerInput.PlayerControls.Disable();
-        m_playerInput.TimeControls.Disable();
+        GameManager.PlayerInput.PlayerControls.Disable();
+        GameManager.PlayerInput.TimeControls.Disable();
         StartCoroutine(WaitThenRespond());
     }
 
     void OnCancel(InputAction.CallbackContext ctx)
     {
-        m_playerInput.MenuControls.CancelBack.performed -= OnCancel;
-        Destroy(m_textUI);
-        m_playerInput.MenuControls.Disable();
-        m_playerInput.PlayerControls.Enable();
-        m_playerInput.TimeControls.Enable();
+        GameManager.PlayerInput.MenuControls.Back.performed -= OnCancel;
+        GameManager.PlayerInput.MenuControls.Enter.performed -= OnCancel;
+        Destroy(m_TextUI);
+        GameManager.PlayerInput.MenuControls.Disable();
+        GameManager.PlayerInput.PlayerControls.Enable();
+        GameManager.PlayerInput.TimeControls.Enable();
     }
 
     IEnumerator WaitThenRespond()
     {
         yield return new WaitForSeconds(2f);
-        m_playerInput.MenuControls.Enable();
-        m_playerInput.MenuControls.CancelBack.performed += OnCancel;
+        GameManager.PlayerInput.MenuControls.Enable();
+        GameManager.PlayerInput.MenuControls.Back.performed += OnCancel;
+        GameManager.PlayerInput.MenuControls.Enter.performed += OnCancel;
     }
 }
