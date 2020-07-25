@@ -94,6 +94,11 @@ public class PauseMenu : MonoBehaviour
         {
             CloseMenu();
         }
+        if(Selection == 2)
+        {
+            Debug.Log("Attempted to Quit");
+            Application.Quit();
+        }
     }
     void InputCancel()
     {
