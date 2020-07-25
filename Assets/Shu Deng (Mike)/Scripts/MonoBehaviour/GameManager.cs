@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
         }        
     }
 
+    public static GameObject CurrentCheckpoint { get; set; }
+
     public void Awake()
     {
         DontDestroyOnLoad(gameObject);        

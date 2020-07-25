@@ -25,15 +25,9 @@ public class InteractableCinematic : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     void OnInteract()
     {
-        m_Cinematic = Instantiate(cinematicPrefab, transform).GetComponent<Cinematic>();  //Calls the Awake() immediately 
+        m_Cinematic = Instantiate(cinematicPrefab).GetComponent<Cinematic>();  //Calls the Awake() immediately 
         if (cinematicText != "")
         {
             m_Cinematic.textContent = cinematicText;

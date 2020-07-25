@@ -179,7 +179,7 @@ public class TimeController : MonoBehaviour
         foreach (GameObject obj in m_TimeTaggedObjects)
         {
             obj.layer = 11;
-            obj.SendMessage(message);
+            obj.SendMessage(message, SendMessageOptions.DontRequireReceiver);
         }
 
         m_OutlineCustomPassVolume.outlineColor = destinationColor;

@@ -134,6 +134,11 @@ public class MainCameraController : MonoBehaviour
         transform.DetachChildren();
     }
 
+    public void ChangeView(LocalCameraTransform localCameraTransform, bool changeInstantly)
+    {
+        ChangeView(localCameraTransform.position, Quaternion.Euler(localCameraTransform.rotation), changeInstantly);
+    }
+
     void CycleView(int direction)
     {
         m_DefaultPosition[0] = Quaternion.AngleAxis(90f * direction, Vector3.up) * m_DefaultPosition[0];

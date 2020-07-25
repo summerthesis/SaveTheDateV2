@@ -6,6 +6,11 @@ public class CheckpointObject : MonoBehaviour
 {
     private GameObject mPlayer;
     public GameObject FirstImage;
+
+    // START by Shu Deng (Mike)
+    public LocalCameraTransform CameraTransform;
+    // END by Shu Deng (Mike)
+
     void Start()
     {
         mPlayer = GameObject.FindGameObjectWithTag("Player");
@@ -27,6 +32,10 @@ public class CheckpointObject : MonoBehaviour
                 this.gameObject.tag = "CurrentCheckpoint";
                 mPlayer.GetComponent<DeathController>().RecordedTransforms.Clear();
                 mPlayer.GetComponent<DeathController>().AddTransform();
+
+                // START by Shu Deng (Mike)
+                GameManager.CurrentCheckpoint = this.gameObject;
+                // END by Shu Deng (Mike)
             }
         }
     }
