@@ -216,6 +216,10 @@ public class Cinematic : MonoBehaviour
                 break;
         }
 
+        if (hintToSkip.activeInHierarchy == true)
+        {
+            hintToSkip.SetActive(false);
+        }
         m_State = State.CAMERA_RESTORE;
         m_FirstUpdateofState = true;
         GameManager.PlayerInput.MenuControls.Back.performed -= OnCancelCamera;

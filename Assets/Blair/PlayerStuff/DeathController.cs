@@ -83,6 +83,12 @@ public class DeathController : MonoBehaviour
                         this.gameObject.GetComponent<Rigidbody>().useGravity = true;
                         mPlayer.GetComponent<BoxCollider>().enabled = true;
                         RecordedTransforms.Add(mDeathTransform.transform.position);
+
+                        // START by Shu Deng (Mike)
+                        FindObjectOfType<LifeCountHUDController>().LostLife();
+                        FindObjectOfType<MainCameraController>().ChangeView(
+                            GameManager.CurrentCheckpoint.GetComponent<CheckpointObject>().CameraTransform, false);
+                        // END by Shu Deng (Mike)
                     }
                 }
            
