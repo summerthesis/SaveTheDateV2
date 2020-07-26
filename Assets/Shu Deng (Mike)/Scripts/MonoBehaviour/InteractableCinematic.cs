@@ -17,9 +17,9 @@ public class InteractableCinematic : MonoBehaviour
     void Awake()
     {
         // Accounting for the resolution
-        if (Camera.main.scaledPixelWidth / Camera.main.scaledPixelHeight < 1.777778f)  // 16:9
+        if (GameManager.MainCamera.scaledPixelWidth / GameManager.MainCamera.scaledPixelHeight < 1.777778f)  // 16:9
         {
-            Vector3 displacement = (1 - 16f * Camera.main.scaledPixelHeight / (9f * Camera.main.scaledPixelWidth))
+            Vector3 displacement = (1 - 16f * GameManager.MainCamera.scaledPixelHeight / (9f * GameManager.MainCamera.scaledPixelWidth))
                 * cameraTargetDistance * cameraMoveTarget.forward;
             cameraMoveTarget.position += displacement;
         }

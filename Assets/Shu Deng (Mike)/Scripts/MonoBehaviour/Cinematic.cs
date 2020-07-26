@@ -16,7 +16,7 @@ public class Cinematic : MonoBehaviour
     public GameObject hintToSkip;
 
     private GameObject[] m_OtherCameras;
-    private Camera m_Camera, m_MainCamera;
+    private Camera m_Camera;
     private TextUITypewrite m_Text;
     private Transform m_OriginalCameraTransform;
     private bool m_HUDActive, m_JumpAvailable, m_FirstUpdateofState = true;
@@ -46,9 +46,9 @@ public class Cinematic : MonoBehaviour
         }
         
         m_Camera = GetComponentInChildren<Camera>();
-        m_OriginalCameraTransform = Camera.main.transform;
-        m_Camera.transform.position = Camera.main.transform.position;
-        m_Camera.transform.rotation = Camera.main.transform.rotation;
+        m_OriginalCameraTransform = GameManager.MainCamera.transform;
+        m_Camera.transform.position = GameManager.MainCamera.transform.position;
+        m_Camera.transform.rotation = GameManager.MainCamera.transform.rotation;
         m_OtherCameras = GameObject.FindGameObjectsWithTag("Camera");
         foreach(var cameraObject in m_OtherCameras)
         {
@@ -58,11 +58,7 @@ public class Cinematic : MonoBehaviour
             }            
         }
 
-        m_MainCamera = Camera.main;
-        if (m_MainCamera != null)
-        {
-            m_MainCamera.gameObject.SetActive(false);
-        }
+        GameManager.MainCamera.gameObject.SetActive(false);
 
         if (GameManager.HUD.transform.GetChild(0).gameObject.activeInHierarchy == true)
         {
@@ -178,10 +174,7 @@ public class Cinematic : MonoBehaviour
                     camera.SetActive(true);
                 }
 
-                if (m_MainCamera != null)
-                {
-                    m_MainCamera.gameObject.SetActive(true);
-                }
+                GameManager.MainCamera.gameObject.SetActive(true);
 
                 if (m_HUDActive == true)
                 {

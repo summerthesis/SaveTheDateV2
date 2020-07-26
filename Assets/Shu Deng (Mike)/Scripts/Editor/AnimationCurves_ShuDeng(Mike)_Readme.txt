@@ -6,5 +6,6 @@ INDEX	DESCRIPTION
 2	Gear Door Controller - Ejecting Pattern
 3	Gear Door Controller - Rotating Pattern
 4	Life Count HUD Controller - Life Count Icon Scaling
+5	Pickup - Flying Pattern
 
 */

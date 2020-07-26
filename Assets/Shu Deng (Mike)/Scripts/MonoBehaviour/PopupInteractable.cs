@@ -13,9 +13,6 @@ public class PopupInteractable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Camera.main != null)
-        {
-            transform.rotation = Camera.main.transform.rotation;
-        }        
+        transform.rotation = GameManager.MainCamera.transform.rotation;
     }
 }

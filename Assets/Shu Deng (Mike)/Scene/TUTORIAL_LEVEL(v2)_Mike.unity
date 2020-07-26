@@ -869,6 +869,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: _CheckPoint (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5923995659332491740, guid: f342df9d469d78b49b2499078a10b019,
+        type: 3}
+      propertyPath: CameraTransform
+      value: 
+      objectReference: {fileID: 11400000, guid: b180676661fc28d448a94663f6aa5fd7,
+        type: 2}
     - target: {fileID: 6227130926258137780, guid: f342df9d469d78b49b2499078a10b019,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3425,6 +3431,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: _CheckPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 5923995659332491740, guid: f342df9d469d78b49b2499078a10b019,
+        type: 3}
+      propertyPath: CameraTransform
+      value: 
+      objectReference: {fileID: 11400000, guid: 16869d3d22faefd4b864857c22766d35,
+        type: 2}
     - target: {fileID: 6227130926258137780, guid: f342df9d469d78b49b2499078a10b019,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6698,6 +6710,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.40779078
       objectReference: {fileID: 0}
+    - target: {fileID: 4239025597814447579, guid: 19c8234abca22a54d86fee63fd7783e3,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4847646350323606418, guid: 19c8234abca22a54d86fee63fd7783e3,
         type: 3}
       propertyPath: m_Name
@@ -8551,35 +8568,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 61249036841026659, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 61249036841026659, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 61249036841026659, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 3927913430612735600, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
         type: 3}
       propertyPath: m_Name
       value: CollectibleGear_11
       objectReference: {fileID: 0}
-    - target: {fileID: 3927913430612735600, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
         type: 3}
-      propertyPath: bobbingAmount
-      value: 0.5
+      propertyPath: targetOffsetToScreen
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec420d445fdfba43b1c5aad83ab4e08, type: 3}
@@ -10231,6 +10228,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: _CheckPoint (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5923995659332491740, guid: f342df9d469d78b49b2499078a10b019,
+        type: 3}
+      propertyPath: CameraTransform
+      value: 
+      objectReference: {fileID: 11400000, guid: cf2161cab285dae43bf657ffab36e9aa,
+        type: 2}
     - target: {fileID: 6227130926258137780, guid: f342df9d469d78b49b2499078a10b019,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11123,7 +11126,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52234
+  m_Name: pb_Mesh20880
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12230,35 +12233,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 61249036841026659, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 61249036841026659, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 61249036841026659, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 3927913430612735600, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
         type: 3}
       propertyPath: m_Name
       value: CollectibleGear_15
       objectReference: {fileID: 0}
-    - target: {fileID: 3927913430612735600, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
         type: 3}
-      propertyPath: bobbingAmount
-      value: 0.5
+      propertyPath: targetOffsetToScreen
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec420d445fdfba43b1c5aad83ab4e08, type: 3}
@@ -14026,7 +14009,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54264
+  m_Name: pb_Mesh22924
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14915,7 +14898,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53322
+  m_Name: pb_Mesh21982
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18296,7 +18279,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52824
+  m_Name: pb_Mesh21470
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21144,6 +21127,26 @@ PrefabInstance:
       propertyPath: bobbingAmount
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+        type: 3}
+      propertyPath: targetOffsetToScreen
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+        type: 3}
+      propertyPath: flyingTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+        type: 3}
+      propertyPath: customUITarget.x
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+        type: 3}
+      propertyPath: customUITarget.y
+      value: 316
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec420d445fdfba43b1c5aad83ab4e08, type: 3}
 --- !u!1001 &1060894834
@@ -22201,17 +22204,17 @@ PrefabInstance:
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -53.58
+      value: 9.53
       objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.42
+      value: 4.87
       objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 132.18
+      value: 23.41
       objectReference: {fileID: 0}
     - target: {fileID: 4588472109618953070, guid: 1aea3d01888762a4aadb4815993090ef,
         type: 3}
@@ -25680,7 +25683,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54240
+  m_Name: pb_Mesh22900
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26176,6 +26179,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: _CheckPoint (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5923995659332491740, guid: f342df9d469d78b49b2499078a10b019,
+        type: 3}
+      propertyPath: CameraTransform
+      value: 
+      objectReference: {fileID: 11400000, guid: cf2161cab285dae43bf657ffab36e9aa,
+        type: 2}
     - target: {fileID: 6227130926258137780, guid: f342df9d469d78b49b2499078a10b019,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26920,6 +26929,26 @@ PrefabInstance:
         type: 3}
       propertyPath: bobbingAmount
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+        type: 3}
+      propertyPath: targetOffsetToScreen
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+        type: 3}
+      propertyPath: flyingTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+        type: 3}
+      propertyPath: customUITarget.x
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+        type: 3}
+      propertyPath: customUITarget.y
+      value: 316
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec420d445fdfba43b1c5aad83ab4e08, type: 3}
@@ -29628,7 +29657,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh52566
+  m_Name: pb_Mesh21212
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -32956,7 +32985,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53794
+  m_Name: pb_Mesh22454
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35892,7 +35921,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54356
+  m_Name: pb_Mesh23016
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -39489,7 +39518,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh53062
+  m_Name: pb_Mesh21718
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -39863,7 +39892,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh54014
+  m_Name: pb_Mesh22674
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -44553,35 +44582,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 61249036841026659, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 61249036841026659, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 61249036841026659, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 3927913430612735600, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
         type: 3}
       propertyPath: m_Name
       value: CollectibleGear_7
       objectReference: {fileID: 0}
-    - target: {fileID: 3927913430612735600, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: targetOffsetToScreen
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
         type: 3}
-      propertyPath: bobbingAmount
+      propertyPath: flyingTime
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+        type: 3}
+      propertyPath: customUITarget.x
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017904310839946559, guid: 5ec420d445fdfba43b1c5aad83ab4e08,
+        type: 3}
+      propertyPath: customUITarget.y
+      value: 316
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec420d445fdfba43b1c5aad83ab4e08, type: 3}
