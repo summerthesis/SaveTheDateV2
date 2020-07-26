@@ -36,6 +36,7 @@ public class KH_PlayerController : MonoBehaviour
     private string is_cast_input_anim_param = "IsCasting";
     private string is_grounded_anim_param = "IsGrounded";
     private string double_jump_anim_param = "IsDoubleJumping";
+    private string is_dead_anim_param = "IsDead";
 
     private FMODUnity.StudioEventEmitter eventEmitterRef;
     void Awake()
@@ -49,7 +50,7 @@ public class KH_PlayerController : MonoBehaviour
         forward.y = 0;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
-        mPlayer = GameObject.Find("Char_KyRos");
+        mPlayer = GameObject.Find("PlayerController");
         //anim = mPlayer.GetComponent<Animator>();
         //rb = GetComponent<Rigidbody>();
         //playerCollider = GetComponent<BoxCollider>();
@@ -101,6 +102,17 @@ public class KH_PlayerController : MonoBehaviour
         //rb.AddForce(movement, ForceMode.Acceleration);
         rb.velocity = new Vector3(groundMovement.x, rb.velocity.y, groundMovement.z);
 
+        // BEING DEAD
+        if (mPlayer.GetComponent<DeathController>().isDead)
+        {
+            anim.SetBool(is_dead_anim_param, true);
+        }
+        else
+        {
+            anim.SetBool(is_dead_anim_param, false);
+        }
+
+        // BEING LAUNCHED
         if (isFlying)
         {
             rb.velocity = FlyingDirection;
