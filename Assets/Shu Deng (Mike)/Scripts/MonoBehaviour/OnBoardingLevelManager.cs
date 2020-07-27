@@ -61,6 +61,6 @@ public class OnBoardingLevelManager : MonoBehaviour
     }
     void PlaySoundOneShot(string path)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(path, Camera.main.transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot(path, GameManager.MainCamera.transform.position);
     }
 }

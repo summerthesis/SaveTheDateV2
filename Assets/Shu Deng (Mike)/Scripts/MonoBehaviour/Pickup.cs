@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +46,8 @@ public class Pickup: MonoBehaviour
     public float targetOffsetToScreen = 5f;
     public float flyingTime = 0.5f;
     public AnimationCurve flyingPattern;
+    [HideInInspector]
+    public static List<GameObject> destroyedPickupList = new List<GameObject>();
 
     private Collider m_Collider;
     private Vector3 m_StartPosition;
@@ -56,27 +59,29 @@ public class Pickup: MonoBehaviour
     };
     State pickupState;
 
-    // Start is called before the first frame update
     void Awake()
     {
         m_Collider = GetComponent<Collider>();
         m_Collider.isTrigger = true;
         m_StartPosition = transform.position;
         pickupState = State.BEFOREPICKED;
+    }
 
+    void Start()  // Dont move the following codes into Awake, for they need Canvas Scaler to awake first
+    {
         switch (flyingTargetInScreen)
         {
             case Target.TopLeft:
-                m_FlyingTarget = new Vector3(0, Camera.main.pixelHeight, targetOffsetToScreen);
+                m_FlyingTarget = new Vector3(0, GameManager.MainCamera.pixelHeight, targetOffsetToScreen);
                 break;
             case Target.TopRight:
-                m_FlyingTarget = new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, targetOffsetToScreen);
+                m_FlyingTarget = new Vector3(GameManager.MainCamera.pixelWidth, GameManager.MainCamera.pixelHeight, targetOffsetToScreen);
                 break;
             case Target.BottomLeft:
                 m_FlyingTarget = new Vector3(0, 0, targetOffsetToScreen);
                 break;
             case Target.BottomRight:
-                m_FlyingTarget = new Vector3(Camera.main.pixelWidth, 0, targetOffsetToScreen);
+                m_FlyingTarget = new Vector3(GameManager.MainCamera.pixelWidth, 0, targetOffsetToScreen);
                 break;
             case Target.CustomUIPosition:
                 float width = GameManager.HUD.GetComponent<RectTransform>().rect.width;
@@ -84,20 +89,20 @@ public class Pickup: MonoBehaviour
                 switch (uIPositionAnchor)
                 {
                     case Anchor.BottomLeft:
-                        m_FlyingTarget.x = customUITarget.x / width * Camera.main.pixelWidth;
-                        m_FlyingTarget.y = customUITarget.y / height * Camera.main.pixelHeight;                        
+                        m_FlyingTarget.x = customUITarget.x;// width * GameManager.MainCamera.pixelWidth;
+                        m_FlyingTarget.y = customUITarget.y;// height * GameManager.MainCamera.pixelHeight;                        
                         break;
                     case Anchor.BottomRight:
-                        m_FlyingTarget.x = (1 + customUITarget.x / width) * Camera.main.pixelWidth;
-                        m_FlyingTarget.y = customUITarget.y / height * Camera.main.pixelHeight;
+                        m_FlyingTarget.x = (1 + customUITarget.x / width) * GameManager.MainCamera.pixelWidth;
+                        m_FlyingTarget.y = customUITarget.y / height * GameManager.MainCamera.pixelHeight;
                         break;
                     case Anchor.TopLeft:
-                        m_FlyingTarget.x = customUITarget.x / width * Camera.main.pixelWidth;
-                        m_FlyingTarget.y = (1 + customUITarget.y / height) * Camera.main.pixelHeight;
+                        m_FlyingTarget.x = customUITarget.x / width * GameManager.MainCamera.pixelWidth;
+                        m_FlyingTarget.y = (1 + customUITarget.y / height) * GameManager.MainCamera.pixelHeight;
                         break;
                     case Anchor.TopRight:
-                        m_FlyingTarget.x = (1 + customUITarget.x / width) * Camera.main.pixelWidth;
-                        m_FlyingTarget.y = (1 + customUITarget.y / height) * Camera.main.pixelHeight;
+                        m_FlyingTarget.x = (1 + customUITarget.x / width) * GameManager.MainCamera.pixelWidth;
+                        m_FlyingTarget.y = (1 + customUITarget.y / height) * GameManager.MainCamera.pixelHeight;
                         break;
                 }
                 m_FlyingTarget.z = targetOffsetToScreen;
@@ -122,13 +127,18 @@ public class Pickup: MonoBehaviour
         if (pickingPlayer != null)
         {
             pickupState = State.AFTERPICKED;
+            ResetPickupTransform();
+            GameObject clone = Instantiate(gameObject, transform.parent);
+            clone.SetActive(false);
+            destroyedPickupList.Add(clone);
+
             StartCoroutine(PlayFlyingEffect());
             m_Collider.enabled = false;
             if (effectiveTime == CallbackBehaviour.OnPicked)
             {
                 SendMessage("OnPickedUp");
             }            
-            PlayPickupFeedback();
+
             if (InitSound == false)
             {
                 InitSound = true;
@@ -139,7 +149,7 @@ public class Pickup: MonoBehaviour
 
     private IEnumerator PlayFlyingEffect()
     {
-        Vector3 target = Camera.main.ScreenToWorldPoint(m_FlyingTarget);
+        Vector3 target = GameManager.MainCamera.ScreenToWorldPoint(m_FlyingTarget);
         float distance = (transform.position - target).magnitude;
         Matrix4x4 matrix = Matrix4x4.LookAt(target, transform.position, Vector3.up);
         float flyingSpeed = distance / flyingTime;
@@ -148,7 +158,7 @@ public class Pickup: MonoBehaviour
         while (z > 0)
         {
             float y = flyingPattern.Evaluate(z / distance);
-            Vector3 curTarget = Camera.main.ScreenToWorldPoint(m_FlyingTarget);
+            Vector3 curTarget = GameManager.MainCamera.ScreenToWorldPoint(m_FlyingTarget);
             transform.position = matrix.MultiplyPoint3x4(new Vector3(0, y, z)) + curTarget - target;
             z -= flyingSpeed * Time.deltaTime;
             yield return null;
@@ -160,11 +170,13 @@ public class Pickup: MonoBehaviour
         }
         Destroy(gameObject);
     }
+
     void PlaySoundOneShot(string path)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(path, Camera.main.transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot(path, GameManager.MainCamera.transform.position);
     }
-    public void PlayPickupFeedback()
+
+    private void PlayPickupFeedback()
     {
         if (pickupSFX)
         {
@@ -176,5 +188,29 @@ public class Pickup: MonoBehaviour
         {
             //var pickupVFXInstance = Instantiate(pickupVFXPrefab, transform.position, Quaternion.identity);
         }
+    }
+
+    void ResetPickupTransform()
+    {
+        transform.position = m_StartPosition;
+        transform.localEulerAngles = Vector3.zero;
+    }
+
+    public static void RespawnDestroyedPickup()
+    {
+        foreach (var obj in destroyedPickupList)
+        {
+            obj.SetActive(true);
+        }
+        destroyedPickupList.Clear();
+    }
+
+    public static void ResetDestroyedPickupList()
+    {
+        foreach (var obj in destroyedPickupList)
+        {
+            Destroy(obj);
+        }
+        destroyedPickupList.Clear();
     }
 }

@@ -35,6 +35,7 @@ public class CheckpointObject : MonoBehaviour
 
                 // START by Shu Deng (Mike)
                 GameManager.CurrentCheckpoint = this.gameObject;
+                Pickup.ResetDestroyedPickupList();
                 // END by Shu Deng (Mike)
             }
         }
