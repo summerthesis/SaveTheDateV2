@@ -35,14 +35,14 @@
         // When sampling RTHandle texture, always use _RTHandleScale.xy to scale your UVs first.
         float2 uv = posInput.positionNDC.xy * _RTHandleScale.xy;
         float4 outline = SAMPLE_TEXTURE2D_X_LOD(_OutlineBuffer, s_linear_clamp_sampler, uv, 0);
-        outline.a = 0;
 
         // This can be serialized
         int iterations = 32;
 
         float angleStep = radians(360 / iterations);
+        float4 fragOutput = float4(0, 0, 0, 0);
 
-        if (Luminance(outline.rgb) < luminanceThreshold)
+        if (outline.r < luminanceThreshold)
         {
             //float3 o = float3(_ScreenSize.zw, 0);
             
@@ -57,16 +57,19 @@
 
                 float2 uvN = uv + _ScreenSize.zw * int2(round(x), round(y));
                 float4 neighbour = SAMPLE_TEXTURE2D_X_LOD(_OutlineBuffer, s_linear_clamp_sampler, uvN, 0);
-                if (Luminance(neighbour) > luminanceThreshold)
+                if (neighbour.r > luminanceThreshold)
                 {
-                    outline.rgb = _OutlineColor.rgb;
-                    outline.a = 1;
+                    if (depth < neighbour.b)
+                    {
+                        fragOutput.rgb = _OutlineColor.rgb;
+                        fragOutput.a = 1;
+                    }
                     break;
                 }
             }
         }
-
-        return outline;
+        
+        return fragOutput;
     }
 
         ENDHLSL

@@ -11,8 +11,7 @@ public class GearDoorController: MonoBehaviour
     public AnimationCurve spinningPattern, ejectingPattern, rotatingPattern;
     public float smallGearSpeed = 180f;
     public GameObject openVFX;
-    [SerializeField] string FMODEventString;
-
+    
     private enum State
     {
         Open,
@@ -75,7 +74,7 @@ public class GearDoorController: MonoBehaviour
             if (InitOpen == false)
             {
                 InitOpen = true;
-                PlaySoundOneShot(FMODEventString);
+                PlaySoundOneShot("event:/Level/Onboarding/Big_Door_Open");
             }
         }
     }
@@ -175,6 +174,6 @@ public class GearDoorController: MonoBehaviour
     }
     void PlaySoundOneShot(string path)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(path,transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot(path, GameManager.MainCamera.transform.position);
     }
 }

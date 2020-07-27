@@ -13,9 +13,9 @@ class OutlineCustomPass : CustomPass
 
     // To make sure the shader will ends up in the build, we keep it's reference in the custom pass
     [SerializeField, HideInInspector]
-    Shader outlineShader;
+    Shader outlineShader, overrideShader;
 
-    Material fullscreenOutline;
+    Material fullscreenOutline, outlineBufferOverride;
     MaterialPropertyBlock outlineProperties;
     ShaderTagId[] shaderTags;
     RTHandle outlineBuffer;
@@ -23,7 +23,9 @@ class OutlineCustomPass : CustomPass
     protected override void Setup(ScriptableRenderContext renderContext, CommandBuffer cmd)
     {
         outlineShader = Shader.Find("Hidden/Outline");
+        overrideShader = Shader.Find("Hidden/OutlineOverride");
         fullscreenOutline = CoreUtils.CreateEngineMaterial(outlineShader);
+        outlineBufferOverride = CoreUtils.CreateEngineMaterial(overrideShader);
         outlineProperties = new MaterialPropertyBlock();
 
         // List all the materials that will be replaced in the frame
@@ -51,9 +53,10 @@ class OutlineCustomPass : CustomPass
             sortingCriteria = SortingCriteria.BackToFront,
             excludeObjectMotionVectors = false,
             layerMask = outlineLayer,
+            overrideMaterial = outlineBufferOverride
         };
 
-        CoreUtils.SetRenderTarget(cmd, outlineBuffer, ClearFlag.Color);
+        CoreUtils.SetRenderTarget(cmd, outlineBuffer, ClearFlag.All);
         HDUtils.DrawRendererList(renderContext, cmd, RendererList.Create(result));
     }
 
@@ -73,6 +76,7 @@ class OutlineCustomPass : CustomPass
     protected override void Cleanup()
     {
         CoreUtils.Destroy(fullscreenOutline);
+        CoreUtils.Destroy(outlineBufferOverride);
         outlineBuffer.Release();
     }
 }

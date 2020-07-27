@@ -46,6 +46,21 @@ public class GameManager : MonoBehaviour
         }        
     }
 
+    private static Camera m_MainCamera;
+    public static Camera MainCamera
+    {
+        get
+        {
+            if (m_MainCamera == null)
+            {
+                m_MainCamera = Camera.main;
+            }
+            return m_MainCamera;
+        }
+    }
+
+    public static GameObject CurrentCheckpoint { get; set; }
+
     public void Awake()
     {
         DontDestroyOnLoad(gameObject);        

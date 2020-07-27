@@ -6,7 +6,7 @@ public class MainCameraController : MonoBehaviour
 {
     public float cameraSpeed = 2.5f; //cameraRotateSpeed = 2.5f, cameraTranslateSpeed = 2.5f
 
-    private Vector3 m_TargetPosition, m_TargetPositionWorld, m_StartTargetPosition;
+    private Vector3 m_TargetPosition, m_StartTargetPosition;
     private Vector3[] m_DefaultPosition = 
         {new Vector3(16.02193f, 9.490358f, 0f), new Vector3(24.29176f, 13.85903f, 0f)};  // 0 is near, 1 is far position
     private Quaternion m_TargetRotation, m_StartTargetRotation, m_DefaultQuaternion = Quaternion.Euler(new Vector3(27.846f, -90f, 0f));
@@ -94,24 +94,24 @@ public class MainCameraController : MonoBehaviour
             case State.FOLLOWING_TARGET:
                 if (m_ChangeInstantly == false)
                 {
-                    if (transform.InverseTransformPoint(Camera.main.transform.position) != m_TargetPosition) // || Camera.main.transform.rotation != m_TargetRotation)
+                    if (transform.InverseTransformPoint(GameManager.MainCamera.transform.position) != m_TargetPosition) // || GameManager.MainCamera.transform.rotation != m_TargetRotation)
                     {
                         m_TimeProportion += Time.deltaTime * cameraSpeed;
-                        Camera.main.transform.rotation = Quaternion.Slerp(m_StartTargetRotation, m_TargetRotation, m_TimeProportion);
-                        Camera.main.transform.position = transform.TransformPoint(Vector3.Lerp(m_StartTargetPosition, m_TargetPosition, m_TimeProportion));
+                        GameManager.MainCamera.transform.rotation = Quaternion.Slerp(m_StartTargetRotation, m_TargetRotation, m_TimeProportion);
+                        GameManager.MainCamera.transform.position = transform.TransformPoint(Vector3.Lerp(m_StartTargetPosition, m_TargetPosition, m_TimeProportion));
                     }
                     else
                     {
                         m_State = State.LOCKED_ON_PLAYER;
-                        Camera.main.transform.SetParent(transform);
+                        GameManager.MainCamera.transform.SetParent(transform);
                     }
                 }
                 else
                 {
-                    Camera.main.transform.rotation = m_TargetRotation;
-                    Camera.main.transform.position = transform.TransformPoint(m_TargetPosition);
+                    GameManager.MainCamera.transform.rotation = m_TargetRotation;
+                    GameManager.MainCamera.transform.position = transform.TransformPoint(m_TargetPosition);
                     m_State = State.LOCKED_ON_PLAYER;
-                    Camera.main.transform.SetParent(transform);
+                    GameManager.MainCamera.transform.SetParent(transform);
                 }                
                 break;
             case State.LOCKED_ON_PLAYER:                
@@ -126,12 +126,17 @@ public class MainCameraController : MonoBehaviour
         m_ChangeInstantly = changeInstantly;
         if (changeInstantly == false)
         {
-            m_StartTargetPosition = transform.InverseTransformPoint(Camera.main.transform.position);
-            m_StartTargetRotation = Camera.main.transform.rotation;
+            m_StartTargetPosition = transform.InverseTransformPoint(GameManager.MainCamera.transform.position);
+            m_StartTargetRotation = GameManager.MainCamera.transform.rotation;
             m_TimeProportion = 0;
         }
         m_State = State.FOLLOWING_TARGET;
         transform.DetachChildren();
+    }
+
+    public void ChangeView(LocalCameraTransform localCameraTransform, bool changeInstantly)
+    {
+        ChangeView(localCameraTransform.position, Quaternion.Euler(localCameraTransform.rotation), changeInstantly);
     }
 
     void CycleView(int direction)
