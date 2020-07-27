@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Collider))]
 public class Pickup: MonoBehaviour
 {
+
     private bool InitSound;
     public enum CallbackBehaviour
     {
@@ -19,8 +20,11 @@ public class Pickup: MonoBehaviour
     public float bobbingAmount = 0.5f;
     [Tooltip("Rotation angle per second")]
     public float rotatingSpeed = 360f;
-    [Tooltip("Sound played on pickup")]
-    public AudioClip pickupSFX;
+    //[Tooltip("Sound played on pickup")]
+    public string FMODgearpickup = "event:/Characters/Player/Gear Pickup";
+    FMOD.Studio.EventInstance FMODgearpickupevent;
+    private int FMODi = 1;
+
     [Tooltip("VFX spawned on pickup")]
     public GameObject pickupVFXPrefab;   
     public enum Target
@@ -46,9 +50,13 @@ public class Pickup: MonoBehaviour
     public float flyingTime = 0.5f;
     public AnimationCurve flyingPattern;
 
+
+
     private Collider m_Collider;
     private Vector3 m_StartPosition;
-    private Vector3 m_FlyingTarget;    
+    private Vector3 m_FlyingTarget;
+
+
     enum State
     {
         BEFOREPICKED,
@@ -63,6 +71,9 @@ public class Pickup: MonoBehaviour
         m_Collider.isTrigger = true;
         m_StartPosition = transform.position;
         pickupState = State.BEFOREPICKED;
+        FMODgearpickupevent = FMODUnity.RuntimeManager.CreateInstance(FMODgearpickup);
+
+
 
         switch (flyingTargetInScreen)
         {
@@ -121,6 +132,8 @@ public class Pickup: MonoBehaviour
         KH_PlayerController pickingPlayer = other.GetComponent<KH_PlayerController>();        
         if (pickingPlayer != null)
         {
+            
+
             pickupState = State.AFTERPICKED;
             StartCoroutine(PlayFlyingEffect());
             m_Collider.enabled = false;
@@ -166,11 +179,20 @@ public class Pickup: MonoBehaviour
     }
     public void PlayPickupFeedback()
     {
-        if (pickupSFX)
+        FMODgearpickupevent.setParameterByName("Gear Number",FMODi, true);
+        PlaySoundOneShot(FMODgearpickup);
+        FMODi ++;
+        if (FMODi > 5)
         {
+            FMODi = 1;
+        }
+
+
+        //if (pickupSFX)
+       // {
             //AudioUtility.CreateSFX(pickupSFX, transform.position, AudioUtility.AudioGroups.Pickup, 0f);
             // To be added with the audio utility
-        }
+       // }
 
         if (pickupVFXPrefab)
         {
