@@ -37,7 +37,10 @@ public class FMODScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("gearpickup");
         if (other.tag == "GearPickup")
+
+            
         {
             switch(_gearnumber)
                 
@@ -73,7 +76,7 @@ public class FMODScript : MonoBehaviour
 
             //FMODUnity.RuntimeManager.PlayOneShot(, GetComponent<Transform>().position);
 
-            Debug.LogError(_gearnumber);
+            //Debug.LogError(_gearnumber);
 
             _gearnumber++;
 
