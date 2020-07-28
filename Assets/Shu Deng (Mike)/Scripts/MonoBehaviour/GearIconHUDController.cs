@@ -34,6 +34,7 @@ public class GearIconHUDController : MonoBehaviour
         {
             if (m_NumOfGears >= 5)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Characters/Player/NewLife");
                 m_NumOfGears -= 5;
                 for (int i = 0; i < 5; ++i)
                 {

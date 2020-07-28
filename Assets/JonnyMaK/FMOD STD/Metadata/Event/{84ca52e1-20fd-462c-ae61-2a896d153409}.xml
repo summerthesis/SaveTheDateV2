@@ -87,9 +87,6 @@
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{25e46cd3-f979-4e1e-90fe-a3742773ad8a}">
-		<relationship name="modules">
-			<destination>{a50d2200-517c-4093-88b1-f47445b3bcc2}</destination>
-		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{f9c4868d-03a6-4959-9038-bfaec3c03a95}</destination>
 		</relationship>
@@ -97,7 +94,6 @@
 	<object class="Timeline" id="{df6271d7-0320-41ad-998f-ae47e855b391}" />
 	<object class="ParameterProxy" id="{2308e0f0-229c-4669-abbf-ccf30fd8f01b}">
 		<relationship name="modules">
-			<destination>{a50d2200-517c-4093-88b1-f47445b3bcc2}</destination>
 			<destination>{d5cc55cc-6e4b-46b1-aace-5804d722926f}</destination>
 			<destination>{8fe50129-73d7-40fb-9d67-8a99f60c2b96}</destination>
 			<destination>{6e9d8010-8986-4120-8380-3598279dd0ee}</destination>
@@ -171,7 +167,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{dbda0f2c-ce0e-4359-b26e-1a6c0465bbe0}">
 		<property name="name">
-			<value>Audio 1</value>
+			<value>PickupMetal</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{6ed2432e-d623-4f97-b726-8c108914c95d}</destination>
@@ -217,7 +213,7 @@
 			<value>-7</value>
 		</property>
 		<property name="name">
-			<value>Audio 2</value>
+			<value>PickupSynth</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{873b41e1-011a-4d00-8d4b-7ea097f8c628}</destination>
@@ -227,14 +223,6 @@
 		</relationship>
 		<relationship name="output">
 			<destination>{143dd162-fcbb-4695-b976-da966e70a580}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{a50d2200-517c-4093-88b1-f47445b3bcc2}">
-		<property name="start">
-			<value>4</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{59e2ec91-de9d-47b4-960c-5ae7ac2b6608}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{f9c4868d-03a6-4959-9038-bfaec3c03a95}">
