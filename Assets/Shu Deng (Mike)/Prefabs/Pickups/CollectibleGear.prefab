@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5017904310839946556}
   m_Layer: 0
   m_Name: CollectibleGear
-  m_TagString: Untagged
+  m_TagString: GearPickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,14 +107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7009dd75456d24ea23fab61e15c207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testfloat: 0
-  fmodEvent: 
-  _FMODgearNumber: 0
   effectiveTime: 1
   verticalBobFrequency: 1
-  ballbaggers: 1
   bobbingAmount: 0.5
   rotatingSpeed: 360
+  pickupSFX: {fileID: 0}
   pickupVFXPrefab: {fileID: 0}
   flyingTargetInScreen: 4
   uIPositionAnchor: 2
