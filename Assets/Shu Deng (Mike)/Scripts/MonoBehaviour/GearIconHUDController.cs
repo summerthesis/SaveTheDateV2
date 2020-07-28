@@ -48,6 +48,7 @@ public class GearIconHUDController : MonoBehaviour
 
     public void GearCollected()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Characters/Player/GearInsertUI");
         ++m_NumOfGears;
         if (m_GearHUDState == State.Normal)
         {
