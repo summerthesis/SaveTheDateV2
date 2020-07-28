@@ -5,32 +5,33 @@ using UnityEngine;
 [RequireComponent(typeof(Interactable))]
 public class InteractableCinematic : MonoBehaviour
 {
-    public GameObject CinematicPrefab;
+    public GameObject cinematicPrefab;
     [TextArea]
-    public string CinematicText = "";
-    public Transform CameraMoveTarget;
+    public string cinematicText = "";
+    public Transform cameraMoveTarget;
+    public float cameraTargetDistance;
 
     private Cinematic m_Cinematic;
 
     // Start is called before the first frame update
     void Awake()
     {
-        
+        // Accounting for the resolution
+        if (GameManager.MainCamera.scaledPixelWidth / GameManager.MainCamera.scaledPixelHeight < 1.777778f)  // 16:9
+        {
+            Vector3 displacement = (1 - 16f * GameManager.MainCamera.scaledPixelHeight / (9f * GameManager.MainCamera.scaledPixelWidth))
+                * cameraTargetDistance * cameraMoveTarget.forward;
+            cameraMoveTarget.position += displacement;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     void OnInteract()
     {
-        m_Cinematic = Instantiate(CinematicPrefab, transform).GetComponent<Cinematic>();
-        if (CinematicText != "")
+        m_Cinematic = Instantiate(cinematicPrefab).GetComponent<Cinematic>();  //Calls the Awake() immediately 
+        if (cinematicText != "")
         {
-            m_Cinematic.textContent = CinematicText;
+            m_Cinematic.textContent = cinematicText;
         }
-        m_Cinematic.cameraTargetTransform = CameraMoveTarget;
+        m_Cinematic.cameraTargetTransform = cameraMoveTarget;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TutorialLevelManager : MonoBehaviour
 {
+    public LocalCameraTransform startCameraTransform;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,8 @@ public class TutorialLevelManager : MonoBehaviour
     public void StartTutorialLevel()
     {
         GameManager.HUD.GetComponentInChildren<FadingCurtainController>().CurtainFadeOut();
+        FindObjectOfType<MainCameraController>().ChangeView(startCameraTransform.position, 
+            Quaternion.Euler(startCameraTransform.rotation), true);
         StartCoroutine(ReadyPlayer());
     }
 

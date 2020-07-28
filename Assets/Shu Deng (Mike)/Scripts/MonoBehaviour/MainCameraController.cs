@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class MainCameraController : MonoBehaviour
 {
-    public float cameraRotateSpeed = 2.5f, cameraTranslateSpeed = 2.5f;
+    public float cameraSpeed = 2.5f; //cameraRotateSpeed = 2.5f, cameraTranslateSpeed = 2.5f
 
-    private Vector3 m_TargetPosition;
+    private Vector3 m_TargetPosition, m_StartTargetPosition;
     private Vector3[] m_DefaultPosition = 
         {new Vector3(16.02193f, 9.490358f, 0f), new Vector3(24.29176f, 13.85903f, 0f)};  // 0 is near, 1 is far position
-    private Quaternion m_TargetRotation, m_DefaultQuaternion = Quaternion.Euler(new Vector3(27.846f, -90f, 0f));
-    private int m_PositionIndex = 0;
-    private bool m_CameraInputHandled = false;
+    private Quaternion m_TargetRotation, m_StartTargetRotation, m_DefaultQuaternion = Quaternion.Euler(new Vector3(27.846f, -90f, 0f));
+    private int m_PositionIndex = 1;
+    private bool m_CameraInputHandled = false, m_ChangeInstantly = false;
+    private float m_TimeProportion;
     private enum State
     {
         LOCKED_ON_PLAYER,
@@ -21,10 +22,26 @@ public class MainCameraController : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.PlayerInput.CameraDebugAngles.ChangeAngleLeft.performed += ctx =>
+        {
+            CycleView(1);
+            ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion, false);
+        };
+        GameManager.PlayerInput.CameraDebugAngles.ChangeAngleRight.performed += ctx =>
+        {
+            CycleView(-1);
+            ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion, false);
+        };
+
+        GameManager.PlayerInput.CameraDebugAngles.CycleAngles.Disable();
+        GameManager.PlayerInput.CameraDebugAngles.ChangeAngle.Disable();
+
+        /*
+        // Controls camera angle with controller 
         GameManager.PlayerInput.CameraDebugAngles.CycleAngles.performed += ctx =>
         {
             CycleView(1);
-            ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion);
+            ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion, false);
         };
 
         GameManager.PlayerInput.CameraDebugAngles.ChangeAngle.performed += ctx =>
@@ -56,7 +73,7 @@ public class MainCameraController : MonoBehaviour
                             m_PositionIndex = 1;
                         }
                     }
-                    ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion);
+                    ChangeView(m_DefaultPosition[m_PositionIndex], m_DefaultQuaternion, false);
                     m_CameraInputHandled = true;
                 }               
             }
@@ -64,7 +81,8 @@ public class MainCameraController : MonoBehaviour
             {
                 m_CameraInputHandled = false;
             }
-        };        
+        };    
+        */
     }
 
     // Update is called once per frame
@@ -74,30 +92,51 @@ public class MainCameraController : MonoBehaviour
         switch (m_State)
         {
             case State.FOLLOWING_TARGET:
-                Vector3 targetPositionWorld = transform.TransformPoint(m_TargetPosition);
-                if ((Camera.main.transform.position - targetPositionWorld).sqrMagnitude > 0.05f)
-                    //|| (Camera.main.transform.rotation - m_TargetRotation))
+                if (m_ChangeInstantly == false)
                 {
-                    Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, m_TargetRotation, Time.deltaTime * cameraRotateSpeed);
-                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, targetPositionWorld, Time.deltaTime * cameraTranslateSpeed);
+                    if (transform.InverseTransformPoint(GameManager.MainCamera.transform.position) != m_TargetPosition) // || GameManager.MainCamera.transform.rotation != m_TargetRotation)
+                    {
+                        m_TimeProportion += Time.deltaTime * cameraSpeed;
+                        GameManager.MainCamera.transform.rotation = Quaternion.Slerp(m_StartTargetRotation, m_TargetRotation, m_TimeProportion);
+                        GameManager.MainCamera.transform.position = transform.TransformPoint(Vector3.Lerp(m_StartTargetPosition, m_TargetPosition, m_TimeProportion));
+                    }
+                    else
+                    {
+                        m_State = State.LOCKED_ON_PLAYER;
+                        GameManager.MainCamera.transform.SetParent(transform);
+                    }
                 }
                 else
                 {
+                    GameManager.MainCamera.transform.rotation = m_TargetRotation;
+                    GameManager.MainCamera.transform.position = transform.TransformPoint(m_TargetPosition);
                     m_State = State.LOCKED_ON_PLAYER;
-                    Camera.main.transform.SetParent(transform);
-                }
+                    GameManager.MainCamera.transform.SetParent(transform);
+                }                
                 break;
             case State.LOCKED_ON_PLAYER:                
                 break;
         }
     }
 
-    public void ChangeView(Vector3 newPosition, Quaternion newRotation)
+    public void ChangeView(Vector3 newPosition, Quaternion newRotation, bool changeInstantly)
     {
         m_TargetPosition = newPosition;
         m_TargetRotation = newRotation;
+        m_ChangeInstantly = changeInstantly;
+        if (changeInstantly == false)
+        {
+            m_StartTargetPosition = transform.InverseTransformPoint(GameManager.MainCamera.transform.position);
+            m_StartTargetRotation = GameManager.MainCamera.transform.rotation;
+            m_TimeProportion = 0;
+        }
         m_State = State.FOLLOWING_TARGET;
         transform.DetachChildren();
+    }
+
+    public void ChangeView(LocalCameraTransform localCameraTransform, bool changeInstantly)
+    {
+        ChangeView(localCameraTransform.position, Quaternion.Euler(localCameraTransform.rotation), changeInstantly);
     }
 
     void CycleView(int direction)

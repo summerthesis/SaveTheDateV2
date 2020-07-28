@@ -515,22 +515,6 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""TimeStop"",
-                    ""type"": ""Button"",
-                    ""id"": ""b79dad23-a539-4be1-80eb-8537c3c9e281"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""TimeJumpForward"",
-                    ""type"": ""Button"",
-                    ""id"": ""f9888814-83ef-4054-965d-b884c2154ce8"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -548,7 +532,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""36557dd6-47ce-4843-91d5-8317f703326a"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -570,44 +554,11 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f20fba63-65c3-49c4-abbb-6e452df2296a"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""TimeFastForward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a97dd005-b8c3-40d6-b1cc-40df864f7758"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TimeStop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b5bb4637-44d3-4346-8378-f31301d40c92"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""TimeStop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""47128d54-e06e-462d-8f18-f9c91261ceba"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TimeJumpForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -618,9 +569,17 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
             ""id"": ""445bd6c3-500f-4cb5-9394-b89d77440fd5"",
             ""actions"": [
                 {
-                    ""name"": ""Cancel/Back"",
+                    ""name"": ""Back"",
                     ""type"": ""Button"",
                     ""id"": ""252539c8-1ad4-4947-9811-4c918c4d4c91"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""19923a52-c973-4434-ae67-92c4c3228e82"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -634,7 +593,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Cancel/Back"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -644,8 +603,30 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cancel/Back"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0281f86b-0530-41e7-8895-381cd52245ec"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02a75711-ea0b-457d-a6a1-9f2dd85c806c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Enter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -668,6 +649,22 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""97b0d652-d26e-47b6-b731-572ce039744f"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeAngleLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""f33c5ff6-704d-4841-8bdc-9092daaa9a19"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeAngleRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""e42ff36b-5957-4b21-b1e0-c4c8b63bb884"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -738,6 +735,28 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""action"": ""ChangeAngle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a39e2816-076b-4ba3-997a-ed586762dae8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangeAngleLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4d835fd-934a-42ea-8f4d-1aa3055afddf"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangeAngleRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -773,6 +792,14 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""907c8f9d-c687-4b9e-bacb-e240d8039e59"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""StartButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""8cc74c0a-ab5e-4e0a-83d4-3d7c8d7b8d30"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -888,6 +915,39 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b9aff52-b124-449e-90c7-c622be00ef07"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""470ce259-5bc7-4d05-8e9c-d13c5b326115"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5642dee8-05dd-4b7f-94ca-e8a2080772e1"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -942,21 +1002,23 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_TimeControls = asset.FindActionMap("TimeControls", throwIfNotFound: true);
         m_TimeControls_TimeSlow = m_TimeControls.FindAction("TimeSlow", throwIfNotFound: true);
         m_TimeControls_TimeFastForward = m_TimeControls.FindAction("TimeFastForward", throwIfNotFound: true);
-        m_TimeControls_TimeStop = m_TimeControls.FindAction("TimeStop", throwIfNotFound: true);
-        m_TimeControls_TimeJumpForward = m_TimeControls.FindAction("TimeJumpForward", throwIfNotFound: true);
         // MenuControls
         m_MenuControls = asset.FindActionMap("MenuControls", throwIfNotFound: true);
-        m_MenuControls_CancelBack = m_MenuControls.FindAction("Cancel/Back", throwIfNotFound: true);
+        m_MenuControls_Back = m_MenuControls.FindAction("Back", throwIfNotFound: true);
+        m_MenuControls_Enter = m_MenuControls.FindAction("Enter", throwIfNotFound: true);
         // CameraDebugAngles
         m_CameraDebugAngles = asset.FindActionMap("CameraDebugAngles", throwIfNotFound: true);
         m_CameraDebugAngles_CycleAngles = m_CameraDebugAngles.FindAction("CycleAngles", throwIfNotFound: true);
         m_CameraDebugAngles_ChangeAngle = m_CameraDebugAngles.FindAction("ChangeAngle", throwIfNotFound: true);
+        m_CameraDebugAngles_ChangeAngleLeft = m_CameraDebugAngles.FindAction("ChangeAngleLeft", throwIfNotFound: true);
+        m_CameraDebugAngles_ChangeAngleRight = m_CameraDebugAngles.FindAction("ChangeAngleRight", throwIfNotFound: true);
         // MainMenu
         m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
         m_MainMenu_Up = m_MainMenu.FindAction("Up", throwIfNotFound: true);
         m_MainMenu_Down = m_MainMenu.FindAction("Down", throwIfNotFound: true);
         m_MainMenu_Accept = m_MainMenu.FindAction("Accept", throwIfNotFound: true);
         m_MainMenu_Cancel = m_MainMenu.FindAction("Cancel", throwIfNotFound: true);
+        m_MainMenu_StartButton = m_MainMenu.FindAction("StartButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1194,16 +1256,12 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     private ITimeControlsActions m_TimeControlsActionsCallbackInterface;
     private readonly InputAction m_TimeControls_TimeSlow;
     private readonly InputAction m_TimeControls_TimeFastForward;
-    private readonly InputAction m_TimeControls_TimeStop;
-    private readonly InputAction m_TimeControls_TimeJumpForward;
     public struct TimeControlsActions
     {
         private @PlayerInputAction m_Wrapper;
         public TimeControlsActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @TimeSlow => m_Wrapper.m_TimeControls_TimeSlow;
         public InputAction @TimeFastForward => m_Wrapper.m_TimeControls_TimeFastForward;
-        public InputAction @TimeStop => m_Wrapper.m_TimeControls_TimeStop;
-        public InputAction @TimeJumpForward => m_Wrapper.m_TimeControls_TimeJumpForward;
         public InputActionMap Get() { return m_Wrapper.m_TimeControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1219,12 +1277,6 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @TimeFastForward.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeFastForward;
                 @TimeFastForward.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeFastForward;
                 @TimeFastForward.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeFastForward;
-                @TimeStop.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
-                @TimeStop.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
-                @TimeStop.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
-                @TimeJumpForward.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeJumpForward;
-                @TimeJumpForward.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeJumpForward;
-                @TimeJumpForward.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeJumpForward;
             }
             m_Wrapper.m_TimeControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1235,12 +1287,6 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @TimeFastForward.started += instance.OnTimeFastForward;
                 @TimeFastForward.performed += instance.OnTimeFastForward;
                 @TimeFastForward.canceled += instance.OnTimeFastForward;
-                @TimeStop.started += instance.OnTimeStop;
-                @TimeStop.performed += instance.OnTimeStop;
-                @TimeStop.canceled += instance.OnTimeStop;
-                @TimeJumpForward.started += instance.OnTimeJumpForward;
-                @TimeJumpForward.performed += instance.OnTimeJumpForward;
-                @TimeJumpForward.canceled += instance.OnTimeJumpForward;
             }
         }
     }
@@ -1249,12 +1295,14 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     // MenuControls
     private readonly InputActionMap m_MenuControls;
     private IMenuControlsActions m_MenuControlsActionsCallbackInterface;
-    private readonly InputAction m_MenuControls_CancelBack;
+    private readonly InputAction m_MenuControls_Back;
+    private readonly InputAction m_MenuControls_Enter;
     public struct MenuControlsActions
     {
         private @PlayerInputAction m_Wrapper;
         public MenuControlsActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CancelBack => m_Wrapper.m_MenuControls_CancelBack;
+        public InputAction @Back => m_Wrapper.m_MenuControls_Back;
+        public InputAction @Enter => m_Wrapper.m_MenuControls_Enter;
         public InputActionMap Get() { return m_Wrapper.m_MenuControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1264,16 +1312,22 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_MenuControlsActionsCallbackInterface != null)
             {
-                @CancelBack.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
-                @CancelBack.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
-                @CancelBack.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
+                @Back.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnBack;
+                @Enter.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnEnter;
             }
             m_Wrapper.m_MenuControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @CancelBack.started += instance.OnCancelBack;
-                @CancelBack.performed += instance.OnCancelBack;
-                @CancelBack.canceled += instance.OnCancelBack;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
             }
         }
     }
@@ -1284,12 +1338,16 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     private ICameraDebugAnglesActions m_CameraDebugAnglesActionsCallbackInterface;
     private readonly InputAction m_CameraDebugAngles_CycleAngles;
     private readonly InputAction m_CameraDebugAngles_ChangeAngle;
+    private readonly InputAction m_CameraDebugAngles_ChangeAngleLeft;
+    private readonly InputAction m_CameraDebugAngles_ChangeAngleRight;
     public struct CameraDebugAnglesActions
     {
         private @PlayerInputAction m_Wrapper;
         public CameraDebugAnglesActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @CycleAngles => m_Wrapper.m_CameraDebugAngles_CycleAngles;
         public InputAction @ChangeAngle => m_Wrapper.m_CameraDebugAngles_ChangeAngle;
+        public InputAction @ChangeAngleLeft => m_Wrapper.m_CameraDebugAngles_ChangeAngleLeft;
+        public InputAction @ChangeAngleRight => m_Wrapper.m_CameraDebugAngles_ChangeAngleRight;
         public InputActionMap Get() { return m_Wrapper.m_CameraDebugAngles; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1305,6 +1363,12 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @ChangeAngle.started -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngle;
                 @ChangeAngle.performed -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngle;
                 @ChangeAngle.canceled -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngle;
+                @ChangeAngleLeft.started -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleLeft;
+                @ChangeAngleLeft.performed -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleLeft;
+                @ChangeAngleLeft.canceled -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleLeft;
+                @ChangeAngleRight.started -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleRight;
+                @ChangeAngleRight.performed -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleRight;
+                @ChangeAngleRight.canceled -= m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface.OnChangeAngleRight;
             }
             m_Wrapper.m_CameraDebugAnglesActionsCallbackInterface = instance;
             if (instance != null)
@@ -1315,6 +1379,12 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @ChangeAngle.started += instance.OnChangeAngle;
                 @ChangeAngle.performed += instance.OnChangeAngle;
                 @ChangeAngle.canceled += instance.OnChangeAngle;
+                @ChangeAngleLeft.started += instance.OnChangeAngleLeft;
+                @ChangeAngleLeft.performed += instance.OnChangeAngleLeft;
+                @ChangeAngleLeft.canceled += instance.OnChangeAngleLeft;
+                @ChangeAngleRight.started += instance.OnChangeAngleRight;
+                @ChangeAngleRight.performed += instance.OnChangeAngleRight;
+                @ChangeAngleRight.canceled += instance.OnChangeAngleRight;
             }
         }
     }
@@ -1327,6 +1397,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     private readonly InputAction m_MainMenu_Down;
     private readonly InputAction m_MainMenu_Accept;
     private readonly InputAction m_MainMenu_Cancel;
+    private readonly InputAction m_MainMenu_StartButton;
     public struct MainMenuActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -1335,6 +1406,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         public InputAction @Down => m_Wrapper.m_MainMenu_Down;
         public InputAction @Accept => m_Wrapper.m_MainMenu_Accept;
         public InputAction @Cancel => m_Wrapper.m_MainMenu_Cancel;
+        public InputAction @StartButton => m_Wrapper.m_MainMenu_StartButton;
         public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1356,6 +1428,9 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @Cancel.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
+                @StartButton.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartButton;
+                @StartButton.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartButton;
+                @StartButton.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartButton;
             }
             m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -1372,6 +1447,9 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
+                @StartButton.started += instance.OnStartButton;
+                @StartButton.performed += instance.OnStartButton;
+                @StartButton.canceled += instance.OnStartButton;
             }
         }
     }
@@ -1421,17 +1499,18 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     {
         void OnTimeSlow(InputAction.CallbackContext context);
         void OnTimeFastForward(InputAction.CallbackContext context);
-        void OnTimeStop(InputAction.CallbackContext context);
-        void OnTimeJumpForward(InputAction.CallbackContext context);
     }
     public interface IMenuControlsActions
     {
-        void OnCancelBack(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
     }
     public interface ICameraDebugAnglesActions
     {
         void OnCycleAngles(InputAction.CallbackContext context);
         void OnChangeAngle(InputAction.CallbackContext context);
+        void OnChangeAngleLeft(InputAction.CallbackContext context);
+        void OnChangeAngleRight(InputAction.CallbackContext context);
     }
     public interface IMainMenuActions
     {
@@ -1439,5 +1518,6 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         void OnDown(InputAction.CallbackContext context);
         void OnAccept(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnStartButton(InputAction.CallbackContext context);
     }
 }

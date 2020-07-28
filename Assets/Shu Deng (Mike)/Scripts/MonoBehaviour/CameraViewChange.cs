@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CameraViewChange : MonoBehaviour
 {
-    public Transform TargetRotationL, TargetRotationR;
-    public Vector3 TargetPositionL, TargetPositionR;
+    public LocalCameraTransform targetLeft, targetRight;
 
     private void OnTriggerExit(Collider other)
     {
@@ -17,11 +16,11 @@ public class CameraViewChange : MonoBehaviour
             if ((other.transform.position - left).sqrMagnitude > 
                 (other.transform.position - right).sqrMagnitude)  // CameraRight
             {
-                FindObjectOfType<MainCameraController>().ChangeView(TargetPositionR, TargetRotationR.rotation);
+                FindObjectOfType<MainCameraController>().ChangeView(targetRight.position, Quaternion.Euler(targetRight.rotation), false);
             }
             else
             {
-                FindObjectOfType<MainCameraController>().ChangeView(TargetPositionL, TargetRotationL.rotation);
+                FindObjectOfType<MainCameraController>().ChangeView(targetLeft.position, Quaternion.Euler(targetLeft.rotation), false);
             }
         }            
     }

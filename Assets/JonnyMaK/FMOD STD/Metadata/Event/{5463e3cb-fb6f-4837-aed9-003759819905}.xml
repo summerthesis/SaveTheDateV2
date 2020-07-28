@@ -95,11 +95,17 @@
 		<property name="length">
 			<value>10.196122448979592</value>
 		</property>
+		<property name="volume">
+			<value>1</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{37a40621-23e5-49f9-b782-76447b65eede}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{01e7508f-069e-4035-b181-eb0c45b183d0}">
+		<property name="volume">
+			<value>5.5</value>
+		</property>
 		<property name="name">
 			<value>Train Tunnel</value>
 		</property>
@@ -137,6 +143,7 @@
 	<object class="MixerBusFader" id="{7f153b67-43f0-4c4a-97ad-513099957b52}" />
 	<object class="MixerBusEffectChain" id="{f1b25f75-afcc-42b7-9ceb-a6427f4ce78f}">
 		<relationship name="effects">
+			<destination>{f6fcaf70-16e0-4a85-aba7-e16afeed044e}</destination>
 			<destination>{5a785f08-9abd-4a01-845d-193c56ece4c1}</destination>
 		</relationship>
 	</object>
@@ -147,7 +154,21 @@
 			<value>0.49999997</value>
 		</property>
 		<property name="maximumDistance">
-			<value>100</value>
+			<value>85</value>
+		</property>
+	</object>
+	<object class="ThreeEQEffect" id="{f6fcaf70-16e0-4a85-aba7-e16afeed044e}">
+		<property name="lowGain">
+			<value>6</value>
+		</property>
+		<property name="highGain">
+			<value>-24</value>
+		</property>
+		<property name="lowCrossover">
+			<value>300</value>
+		</property>
+		<property name="highCrossover">
+			<value>740</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{5a785f08-9abd-4a01-845d-193c56ece4c1}" />
