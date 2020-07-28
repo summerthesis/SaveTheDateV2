@@ -123,6 +123,8 @@ public class PlatformA_B : MonoBehaviour
 
     void ChangeDirection()
     {
+
+        //???FMODUnity.RuntimeManager.PlayOneShot("event:/Level/General/Platform/Metal Hit");
         if (this.transform.position == PointA)
         {
             ObjectState = ObjectStates.MoveA_B;
