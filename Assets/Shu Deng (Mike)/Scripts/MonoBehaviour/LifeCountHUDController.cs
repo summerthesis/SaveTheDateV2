@@ -63,6 +63,7 @@ public class LifeCountHUDController : MonoBehaviour
         m_LifeCountIcons[m_NumOfLives - 1].gameObject.SetActive(true);
         m_LifeCountIcons[m_NumOfLives - 2].gameObject.SetActive(false);
         m_State = State.SCALING_NUMBER;
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/Characters/Player/NewLife");
     }
 
     public void LostLife()

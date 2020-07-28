@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class KH_PlayerController : MonoBehaviour
 {
-    private bool isFlying; private Vector3 FlyingDirection;
+    [HideInInspector]
+    public bool isFlying; 
+    [HideInInspector]
+    public Vector3 FlyingDirection;
     public float moveSpeed = 8.0f; //from https://youtu.be/XhliRnzJe5g (How to Make An Isometric Camera and Character Controller in Unity3D)
     public float jumpForce = 12.0f; //from https://youtu.be/vdOFUFMiPDU (How To Jump in Unity - Unity Jumping Tutorial | Make Your Characters Jump in Unity)
     public float fallMultiplier = 5.0f; //from https://youtu.be/7KiK0Aqtmzc (Better Jumping in Unity With Four Lines of Code)

@@ -18,11 +18,11 @@ public class PauseMenu : MonoBehaviour
     void Awake()
     {
         controls = GameManager.PlayerInput;
-        controls.MainMenu.Up.performed += ctx => InputUp();
-        controls.MainMenu.Down.performed += ctx => InputDown();
-        controls.MainMenu.Accept.performed += ctx => InputAccept();
-        controls.MainMenu.Cancel.performed += ctx => InputCancel();
-        controls.MainMenu.StartButton.performed += ctx => StartPushed();
+        controls.MainMenu1.Up.performed += ctx => InputUp();
+        controls.MainMenu1.Down.performed += ctx => InputDown();
+        controls.MainMenu1.Accept.performed += ctx => InputAccept();
+        controls.MainMenu1.Cancel.performed += ctx => InputCancel();
+        controls.MainMenu1.StartButton.performed += ctx => StartPushed();
     }
 
     void Start()
@@ -126,12 +126,12 @@ public class PauseMenu : MonoBehaviour
 
     void OnEnable()
     {
-        controls.MainMenu.Enable();
+        controls.MainMenu1.Enable();
     }
     void OnDisable()
     {
 
-        controls.MainMenu.Disable();
+        controls.MainMenu1.Disable();
     }
 
     void PlaySoundOneShot(string path)

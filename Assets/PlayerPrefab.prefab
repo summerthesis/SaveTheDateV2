@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4775347328259354072}
   - component: {fileID: 2936295333274101177}
   - component: {fileID: 8972702327200628703}
+  - component: {fileID: 7937707242449359096}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
@@ -85,9 +86,7 @@ MonoBehaviour:
   jumpForce: 14
   fallMultiplier: 5
   lowJumpMultiplier: 1
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 256
+  isPlayerControllable: 1
   anim: {fileID: 1633800183986277154}
   rb: {fileID: 1633800183986277152}
   playerCollider: {fileID: 1633800183986277155}
@@ -133,14 +132,11 @@ MonoBehaviour:
   SlowSound: event:/Characters/Player/Ability/Slow_Time
   slowEnergyCostRate: 9
   fastforwardEnergyCostRate: 9
-  stopEnergyCost: 100
-  stopDuration: 5
   energyReplenishRate: 50
   maxEnergy: 500
   maxCastRange: 15
   highlightFastforward: {r: 0, g: 1.064641, b: 0.3576114, a: 0}
   highlightNeutral: {r: 1.4146746, g: 1.4213793, b: 1.4169564, a: 0}
-  highlightPause: {r: 2.64151, g: 0, b: 0, a: 0}
   highlightSlow: {r: 2.595062, g: 0.46194822, b: 0, a: 0}
 --- !u!114 &4775347328259354072
 MonoBehaviour:
@@ -203,6 +199,20 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 10000
+--- !u!114 &7937707242449359096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633800183986277159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3811ec852673aa14693882812318da0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GearPickupString: event:/Characters/Player/Gear Pickup
+  _gearnumber: 0
 --- !u!1 &2639328179078919380
 GameObject:
   m_ObjectHideFlags: 0
