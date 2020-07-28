@@ -34,9 +34,6 @@
 		<relationship name="timeline">
 			<destination>{4f965ee5-a9be-4154-887c-cf33be14fb85}</destination>
 		</relationship>
-		<relationship name="parameters">
-			<destination>{307bd48a-f542-495b-8d59-ecc3e110e93e}</destination>
-		</relationship>
 		<relationship name="banks">
 			<destination>{2fa4427d-23b8-4bdb-a24b-92682ed2d2e4}</destination>
 		</relationship>
@@ -108,11 +105,6 @@
 		</relationship>
 		<relationship name="markers">
 			<destination>{7dc91e89-f64a-4f87-92e6-c22b55e20a00}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterProxy" id="{307bd48a-f542-495b-8d59-ecc3e110e93e}">
-		<relationship name="preset">
-			<destination>{ed499a7a-deff-48ac-b2f9-87a31ba35716}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{e08cf596-dd7a-485e-8cc1-60acb1510214}">
@@ -208,7 +200,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{930a9e26-805b-4c3c-887a-04f31f745c57}">
 		<property name="volume">
-			<value>10</value>
+			<value>0.5</value>
 		</property>
 		<property name="name">
 			<value>Thunder</value>
@@ -283,9 +275,6 @@
 		<property name="nameOfPropertyBeingAutomated">
 			<value>volume</value>
 		</property>
-		<relationship name="automationCurves">
-			<destination>{e2bd5303-9d92-4fbd-9dd7-cc1af7b96055}</destination>
-		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{acb5431f-196e-49b8-8b30-45a64a207b4c}">
 		<relationship name="effects">
@@ -344,15 +333,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ccc7c4ee-1680-44aa-bcce-63cb11e61a69}" />
-	<object class="AutomationCurve" id="{e2bd5303-9d92-4fbd-9dd7-cc1af7b96055}">
-		<relationship name="parameter">
-			<destination>{ed499a7a-deff-48ac-b2f9-87a31ba35716}</destination>
-		</relationship>
-		<relationship name="automationPoints">
-			<destination>{a74303cd-2efb-4b5d-8cf5-2c2f4a2aa2a0}</destination>
-			<destination>{95c8ccce-e33c-4072-9c38-e9c17c2a766f}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusFader" id="{793614c1-c28c-4551-9e11-9db8a704752c}" />
 	<object class="SpatialiserEffect" id="{91e92594-c6dd-446e-a76b-2a70e9be0f24}">
 		<property name="minimumDistance">
@@ -430,20 +410,4 @@
 	<object class="MixerBusFader" id="{f64067b9-4012-4c9c-950e-445ba596d49f}" />
 	<object class="MixerBusFader" id="{e8bc7146-e664-4d77-a3db-8779ccf75259}" />
 	<object class="MixerBusFader" id="{38cf05cf-174c-40b1-bb55-fc5850ef4d64}" />
-	<object class="AutomationPoint" id="{a74303cd-2efb-4b5d-8cf5-2c2f4a2aa2a0}">
-		<property name="position">
-			<value>0.44774011299435029</value>
-		</property>
-		<property name="value">
-			<value>-4</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{95c8ccce-e33c-4072-9c38-e9c17c2a766f}">
-		<property name="position">
-			<value>0.54096045197740117</value>
-		</property>
-		<property name="value">
-			<value>-4</value>
-		</property>
-	</object>
 </objects>
