@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable))]
 public class InteractableCinematic : MonoBehaviour
 {
     public GameObject cinematicPrefab;

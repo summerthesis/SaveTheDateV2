@@ -15,9 +15,8 @@ public class Interactable : MonoBehaviour
     private GameObject m_Popup;
     private static bool m_InteractBinded = false;
     private static Interactable m_CurrentBinded;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
         GetComponent<BoxCollider>().isTrigger = true;     
     }
