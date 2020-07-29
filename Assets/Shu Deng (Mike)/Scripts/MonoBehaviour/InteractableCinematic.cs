@@ -17,23 +17,17 @@ public class InteractableCinematic : MonoBehaviour
     void Awake()
     {
         // Accounting for the resolution
-        if (Camera.main.scaledPixelWidth / Camera.main.scaledPixelHeight < 1.777778f)  // 16:9
+        if (GameManager.MainCamera.scaledPixelWidth / GameManager.MainCamera.scaledPixelHeight < 1.777778f)  // 16:9
         {
-            Vector3 displacement = (1 - 16f * Camera.main.scaledPixelHeight / (9f * Camera.main.scaledPixelWidth))
+            Vector3 displacement = (1 - 16f * GameManager.MainCamera.scaledPixelHeight / (9f * GameManager.MainCamera.scaledPixelWidth))
                 * cameraTargetDistance * cameraMoveTarget.forward;
             cameraMoveTarget.position += displacement;
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     void OnInteract()
     {
-        m_Cinematic = Instantiate(cinematicPrefab, transform).GetComponent<Cinematic>();
+        m_Cinematic = Instantiate(cinematicPrefab).GetComponent<Cinematic>();  //Calls the Awake() immediately 
         if (cinematicText != "")
         {
             m_Cinematic.textContent = cinematicText;

@@ -515,22 +515,6 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""TimeStop"",
-                    ""type"": ""Button"",
-                    ""id"": ""b79dad23-a539-4be1-80eb-8537c3c9e281"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""TimeJumpForward"",
-                    ""type"": ""Button"",
-                    ""id"": ""f9888814-83ef-4054-965d-b884c2154ce8"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -548,7 +532,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""36557dd6-47ce-4843-91d5-8317f703326a"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -570,44 +554,11 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f20fba63-65c3-49c4-abbb-6e452df2296a"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""TimeFastForward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a97dd005-b8c3-40d6-b1cc-40df864f7758"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TimeStop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b5bb4637-44d3-4346-8378-f31301d40c92"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""TimeStop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""47128d54-e06e-462d-8f18-f9c91261ceba"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TimeJumpForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -618,9 +569,17 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
             ""id"": ""445bd6c3-500f-4cb5-9394-b89d77440fd5"",
             ""actions"": [
                 {
-                    ""name"": ""Cancel/Back"",
+                    ""name"": ""Back"",
                     ""type"": ""Button"",
                     ""id"": ""252539c8-1ad4-4947-9811-4c918c4d4c91"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""19923a52-c973-4434-ae67-92c4c3228e82"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -634,7 +593,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Cancel/Back"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -645,7 +604,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Cancel/Back"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -656,7 +615,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Cancel/Back"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -667,7 +626,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Cancel/Back"",
+                    ""action"": ""Enter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -836,6 +795,14 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""StartButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""8cc74c0a-ab5e-4e0a-83d4-3d7c8d7b8d30"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -948,6 +915,230 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b9aff52-b124-449e-90c7-c622be00ef07"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""470ce259-5bc7-4d05-8e9c-d13c5b326115"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5642dee8-05dd-4b7f-94ca-e8a2080772e1"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MainMenu1"",
+            ""id"": ""f5b98cb9-f776-429d-86a2-05d8c4996f44"",
+            ""actions"": [
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""41dd6057-2151-4c6f-8397-95d2a567dc8c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""287458c2-a28b-4994-897f-11b3a3ee27ae"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Accept"",
+                    ""type"": ""Button"",
+                    ""id"": ""05121e7a-bf7d-4f53-83cc-d6ce8d10b668"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""38435a41-41c7-4134-b20a-1d8fc8c50ebd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""StartButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""06c2260c-c51d-4b59-b970-70ffa2ee117c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""17176bff-1150-413f-8380-0aee2a3c8cc9"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4c8f1c3-1c4e-462b-b7bb-04ead2366507"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be385830-31a7-487f-963e-ea05cda9d519"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bddf831e-01d8-438d-b03b-75e10e62b28a"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3baa4031-cf17-454a-b011-c1c179c171e0"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99a064f3-a633-4f04-b142-9d2561a9c883"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcf86b3c-7e0f-4f63-bf7c-16d7b1365a97"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6230840-cb3c-421c-a573-b4ca66d03f6b"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Accept"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""221402b8-7ab9-4c26-b9a2-4144953ed45c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a3f64a5-043a-4e3d-818e-38514c7c2d40"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79aae559-d5ca-4e33-b218-da07f2cd94b4"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7fb355d6-b6ab-4634-ad84-027044d8636c"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58dc1bea-e6cf-4649-9239-b6aee04f2af4"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1002,11 +1193,10 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_TimeControls = asset.FindActionMap("TimeControls", throwIfNotFound: true);
         m_TimeControls_TimeSlow = m_TimeControls.FindAction("TimeSlow", throwIfNotFound: true);
         m_TimeControls_TimeFastForward = m_TimeControls.FindAction("TimeFastForward", throwIfNotFound: true);
-        m_TimeControls_TimeStop = m_TimeControls.FindAction("TimeStop", throwIfNotFound: true);
-        m_TimeControls_TimeJumpForward = m_TimeControls.FindAction("TimeJumpForward", throwIfNotFound: true);
         // MenuControls
         m_MenuControls = asset.FindActionMap("MenuControls", throwIfNotFound: true);
-        m_MenuControls_CancelBack = m_MenuControls.FindAction("Cancel/Back", throwIfNotFound: true);
+        m_MenuControls_Back = m_MenuControls.FindAction("Back", throwIfNotFound: true);
+        m_MenuControls_Enter = m_MenuControls.FindAction("Enter", throwIfNotFound: true);
         // CameraDebugAngles
         m_CameraDebugAngles = asset.FindActionMap("CameraDebugAngles", throwIfNotFound: true);
         m_CameraDebugAngles_CycleAngles = m_CameraDebugAngles.FindAction("CycleAngles", throwIfNotFound: true);
@@ -1019,6 +1209,14 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         m_MainMenu_Down = m_MainMenu.FindAction("Down", throwIfNotFound: true);
         m_MainMenu_Accept = m_MainMenu.FindAction("Accept", throwIfNotFound: true);
         m_MainMenu_Cancel = m_MainMenu.FindAction("Cancel", throwIfNotFound: true);
+        m_MainMenu_StartButton = m_MainMenu.FindAction("StartButton", throwIfNotFound: true);
+        // MainMenu1
+        m_MainMenu1 = asset.FindActionMap("MainMenu1", throwIfNotFound: true);
+        m_MainMenu1_Up = m_MainMenu1.FindAction("Up", throwIfNotFound: true);
+        m_MainMenu1_Down = m_MainMenu1.FindAction("Down", throwIfNotFound: true);
+        m_MainMenu1_Accept = m_MainMenu1.FindAction("Accept", throwIfNotFound: true);
+        m_MainMenu1_Cancel = m_MainMenu1.FindAction("Cancel", throwIfNotFound: true);
+        m_MainMenu1_StartButton = m_MainMenu1.FindAction("StartButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1256,16 +1454,12 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     private ITimeControlsActions m_TimeControlsActionsCallbackInterface;
     private readonly InputAction m_TimeControls_TimeSlow;
     private readonly InputAction m_TimeControls_TimeFastForward;
-    private readonly InputAction m_TimeControls_TimeStop;
-    private readonly InputAction m_TimeControls_TimeJumpForward;
     public struct TimeControlsActions
     {
         private @PlayerInputAction m_Wrapper;
         public TimeControlsActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @TimeSlow => m_Wrapper.m_TimeControls_TimeSlow;
         public InputAction @TimeFastForward => m_Wrapper.m_TimeControls_TimeFastForward;
-        public InputAction @TimeStop => m_Wrapper.m_TimeControls_TimeStop;
-        public InputAction @TimeJumpForward => m_Wrapper.m_TimeControls_TimeJumpForward;
         public InputActionMap Get() { return m_Wrapper.m_TimeControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1281,12 +1475,6 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @TimeFastForward.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeFastForward;
                 @TimeFastForward.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeFastForward;
                 @TimeFastForward.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeFastForward;
-                @TimeStop.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
-                @TimeStop.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
-                @TimeStop.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeStop;
-                @TimeJumpForward.started -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeJumpForward;
-                @TimeJumpForward.performed -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeJumpForward;
-                @TimeJumpForward.canceled -= m_Wrapper.m_TimeControlsActionsCallbackInterface.OnTimeJumpForward;
             }
             m_Wrapper.m_TimeControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1297,12 +1485,6 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @TimeFastForward.started += instance.OnTimeFastForward;
                 @TimeFastForward.performed += instance.OnTimeFastForward;
                 @TimeFastForward.canceled += instance.OnTimeFastForward;
-                @TimeStop.started += instance.OnTimeStop;
-                @TimeStop.performed += instance.OnTimeStop;
-                @TimeStop.canceled += instance.OnTimeStop;
-                @TimeJumpForward.started += instance.OnTimeJumpForward;
-                @TimeJumpForward.performed += instance.OnTimeJumpForward;
-                @TimeJumpForward.canceled += instance.OnTimeJumpForward;
             }
         }
     }
@@ -1311,12 +1493,14 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     // MenuControls
     private readonly InputActionMap m_MenuControls;
     private IMenuControlsActions m_MenuControlsActionsCallbackInterface;
-    private readonly InputAction m_MenuControls_CancelBack;
+    private readonly InputAction m_MenuControls_Back;
+    private readonly InputAction m_MenuControls_Enter;
     public struct MenuControlsActions
     {
         private @PlayerInputAction m_Wrapper;
         public MenuControlsActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CancelBack => m_Wrapper.m_MenuControls_CancelBack;
+        public InputAction @Back => m_Wrapper.m_MenuControls_Back;
+        public InputAction @Enter => m_Wrapper.m_MenuControls_Enter;
         public InputActionMap Get() { return m_Wrapper.m_MenuControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1326,16 +1510,22 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_MenuControlsActionsCallbackInterface != null)
             {
-                @CancelBack.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
-                @CancelBack.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
-                @CancelBack.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnCancelBack;
+                @Back.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnBack;
+                @Enter.started -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_MenuControlsActionsCallbackInterface.OnEnter;
             }
             m_Wrapper.m_MenuControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @CancelBack.started += instance.OnCancelBack;
-                @CancelBack.performed += instance.OnCancelBack;
-                @CancelBack.canceled += instance.OnCancelBack;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
             }
         }
     }
@@ -1405,6 +1595,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     private readonly InputAction m_MainMenu_Down;
     private readonly InputAction m_MainMenu_Accept;
     private readonly InputAction m_MainMenu_Cancel;
+    private readonly InputAction m_MainMenu_StartButton;
     public struct MainMenuActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -1413,6 +1604,7 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         public InputAction @Down => m_Wrapper.m_MainMenu_Down;
         public InputAction @Accept => m_Wrapper.m_MainMenu_Accept;
         public InputAction @Cancel => m_Wrapper.m_MainMenu_Cancel;
+        public InputAction @StartButton => m_Wrapper.m_MainMenu_StartButton;
         public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1434,6 +1626,9 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @Cancel.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
+                @StartButton.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartButton;
+                @StartButton.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartButton;
+                @StartButton.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartButton;
             }
             m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -1450,10 +1645,78 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
+                @StartButton.started += instance.OnStartButton;
+                @StartButton.performed += instance.OnStartButton;
+                @StartButton.canceled += instance.OnStartButton;
             }
         }
     }
     public MainMenuActions @MainMenu => new MainMenuActions(this);
+
+    // MainMenu1
+    private readonly InputActionMap m_MainMenu1;
+    private IMainMenu1Actions m_MainMenu1ActionsCallbackInterface;
+    private readonly InputAction m_MainMenu1_Up;
+    private readonly InputAction m_MainMenu1_Down;
+    private readonly InputAction m_MainMenu1_Accept;
+    private readonly InputAction m_MainMenu1_Cancel;
+    private readonly InputAction m_MainMenu1_StartButton;
+    public struct MainMenu1Actions
+    {
+        private @PlayerInputAction m_Wrapper;
+        public MainMenu1Actions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Up => m_Wrapper.m_MainMenu1_Up;
+        public InputAction @Down => m_Wrapper.m_MainMenu1_Down;
+        public InputAction @Accept => m_Wrapper.m_MainMenu1_Accept;
+        public InputAction @Cancel => m_Wrapper.m_MainMenu1_Cancel;
+        public InputAction @StartButton => m_Wrapper.m_MainMenu1_StartButton;
+        public InputActionMap Get() { return m_Wrapper.m_MainMenu1; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MainMenu1Actions set) { return set.Get(); }
+        public void SetCallbacks(IMainMenu1Actions instance)
+        {
+            if (m_Wrapper.m_MainMenu1ActionsCallbackInterface != null)
+            {
+                @Up.started -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnUp;
+                @Down.started -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnDown;
+                @Accept.started -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnAccept;
+                @Accept.performed -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnAccept;
+                @Accept.canceled -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnAccept;
+                @Cancel.started -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnCancel;
+                @StartButton.started -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnStartButton;
+                @StartButton.performed -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnStartButton;
+                @StartButton.canceled -= m_Wrapper.m_MainMenu1ActionsCallbackInterface.OnStartButton;
+            }
+            m_Wrapper.m_MainMenu1ActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
+                @Accept.started += instance.OnAccept;
+                @Accept.performed += instance.OnAccept;
+                @Accept.canceled += instance.OnAccept;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+                @StartButton.started += instance.OnStartButton;
+                @StartButton.performed += instance.OnStartButton;
+                @StartButton.canceled += instance.OnStartButton;
+            }
+        }
+    }
+    public MainMenu1Actions @MainMenu1 => new MainMenu1Actions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -1499,12 +1762,11 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
     {
         void OnTimeSlow(InputAction.CallbackContext context);
         void OnTimeFastForward(InputAction.CallbackContext context);
-        void OnTimeStop(InputAction.CallbackContext context);
-        void OnTimeJumpForward(InputAction.CallbackContext context);
     }
     public interface IMenuControlsActions
     {
-        void OnCancelBack(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
     }
     public interface ICameraDebugAnglesActions
     {
@@ -1519,5 +1781,14 @@ public class @PlayerInputAction : IInputActionCollection, IDisposable
         void OnDown(InputAction.CallbackContext context);
         void OnAccept(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnStartButton(InputAction.CallbackContext context);
+    }
+    public interface IMainMenu1Actions
+    {
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnAccept(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnStartButton(InputAction.CallbackContext context);
     }
 }

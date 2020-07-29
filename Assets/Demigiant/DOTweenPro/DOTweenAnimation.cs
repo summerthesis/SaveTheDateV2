@@ -159,6 +159,7 @@ namespace DG.Tweening
                     Debug.LogWarning(string.Format("{0} :: This DOTweenAnimation's target/GameObject is unset: the tween will not be created.", this.gameObject.name), this.gameObject);
                 }
                 return;
+                
             }
 
             if (forcedTargetType != TargetType.Unset) targetType = forcedTargetType;
@@ -486,6 +487,7 @@ namespace DG.Tweening
         public override void DOPlay()
         {
             DOTween.Play(this.gameObject);
+            
         }
 
         public override void DOPlayBackwards()
