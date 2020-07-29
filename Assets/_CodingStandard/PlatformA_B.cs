@@ -73,10 +73,14 @@ public class PlatformA_B : MonoBehaviour
                 
                 case ObjectStates.Idling:
                     IdleCount--;
-                    if(IdleCount <= 0)
+
+                    GetComponent<FMODUnity.StudioEventEmitter>().Stop();
+
+                if (IdleCount <= 0)
                     ChangeDirection();
                     if(IdleCount == IdleDuration-1)
                     {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Level/General/Platform/Metal Hit", GetComponent<Transform>().position);
                     reachedEnd = true;
                     }
                     if(IdleCount < IdleDuration-5 && reachedEnd)
@@ -228,8 +232,8 @@ public class PlatformA_B : MonoBehaviour
 
     IEnumerator FMODreplay()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Level/General/Platform/Metal Hit", GetComponent<Transform>().position);
-        GetComponent<FMODUnity.StudioEventEmitter>().Stop();
+        
+        
         yield return new WaitForSeconds(0.02f);
         GetComponent<FMODUnity.StudioEventEmitter>().Play();
     }
