@@ -8,53 +8,85 @@ public class LifeCountHUDController : MonoBehaviour
     public AnimationCurve lifeCountIconScaling;
     public int initialNumberOfLives = 3;
 
-    private Transform[] m_LifeCountIcons = new Transform[5];
-    private int m_NumOfLifes;
-    private float m_Time = 0;
+    private Transform[] m_LifeCountIcons = new Transform[9];
+    private int m_NumOfLives;
+    private float m_Time = 0, m_AnimationLength;
     private enum State
     {
-        Normal,
-        GainedLife
+        ILDE,
+        SCALING_NUMBER
     }
-    private State m_State = State.Normal;
+    private State m_State = State.ILDE;
 
-    // Start is called before the first frame update
     void Awake()
     {
-        for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < 9; ++i)
         {
             m_LifeCountIcons[i] = lifeCountUI.GetChild(i);
         }
-        m_NumOfLifes = initialNumberOfLives;
-        m_LifeCountIcons[m_NumOfLifes - 1].gameObject.SetActive(true);
+        m_NumOfLives = initialNumberOfLives;
+        m_LifeCountIcons[m_NumOfLives - 1].gameObject.SetActive(true);
+        m_AnimationLength = lifeCountIconScaling.keys[lifeCountIconScaling.length - 1].time;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        switch (m_State)
+        {
+            case State.SCALING_NUMBER:
+                float value;
+                if (m_Time < m_AnimationLength)
+                {
+                    value = lifeCountIconScaling.Evaluate(m_Time);
+                    m_LifeCountIcons[m_NumOfLives - 1].localScale = new Vector3(value, value, value);
+                    m_Time += Time.deltaTime;
+                }
+                else
+                {
+                    m_Time = m_AnimationLength;
+                    value = lifeCountIconScaling.Evaluate(m_Time);
+                    m_LifeCountIcons[m_NumOfLives - 1].localScale = new Vector3(value, value, value);
+                    m_Time = 0;
+                    m_State = State.ILDE;
+                }
+                break;
+        }
     }
 
     public void GainedLife()
     {
-        if (++m_NumOfLifes > 5)
+        ResetCurrentState();
+        if (++m_NumOfLives > 9)
         {
-            m_NumOfLifes = 5;
+            m_NumOfLives = 9;
         }
-        m_State = State.GainedLife;
-        m_LifeCountIcons[m_NumOfLifes - 1].gameObject.SetActive(true);
-        m_LifeCountIcons[m_NumOfLifes - 2].gameObject.SetActive(false);
-        StartCoroutine(OnGainedLife());
+        m_LifeCountIcons[m_NumOfLives - 1].gameObject.SetActive(true);
+        m_LifeCountIcons[m_NumOfLives - 2].gameObject.SetActive(false);
+        m_State = State.SCALING_NUMBER;
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/Characters/Player/NewLife");
     }
 
-    private IEnumerator OnGainedLife()
+    public void LostLife()
     {
-        while (m_Time < 1f)
+        ResetCurrentState();
+        if (--m_NumOfLives > 0)
         {
-            float value = lifeCountIconScaling.Evaluate(m_Time);
-            m_LifeCountIcons[m_NumOfLifes - 1].localScale = new Vector3(value, value, value);
-            m_Time += Time.deltaTime;
-            yield return null;
-        }           
+            m_LifeCountIcons[m_NumOfLives - 1].gameObject.SetActive(true);
+            m_LifeCountIcons[m_NumOfLives].gameObject.SetActive(false);
+            m_State = State.SCALING_NUMBER;
+        }
+        else  // m_NumOfLives == 0
+        {
+            ///TODO FAIL SCENE
+        }
+    }
+
+    private void ResetCurrentState()
+    {
+        if (m_State == State.SCALING_NUMBER)
+        {
+            m_LifeCountIcons[m_NumOfLives - 1].localScale = new Vector3(1, 1, 1);
+            m_Time = 0;
+        }
     }
 }

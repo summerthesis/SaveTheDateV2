@@ -10,6 +10,8 @@ public class HrGlassA : MonoBehaviour
     private int DelayCount, loops = 1;
     public int DelayDuration;
     public float SlowFactor, FastFactor;
+    public string FMODPath;
+
     void Start()
     {
        mTween = GetComponent<DOTweenAnimation>();
@@ -24,12 +26,14 @@ public class HrGlassA : MonoBehaviour
             if (DelayCount > DelayDuration)
             {
                 TweenCompleted = false;
-                mTween.tween.TogglePause();               
+                mTween.tween.TogglePause();
+                Debug.LogError("hourglassspins");
+                FMODUnity.RuntimeManager.PlayOneShot(FMODPath, transform.position);
             }
         }
         if (mTween.tween.CompletedLoops() == loops && TweenCompleted == false)
         {
-            Debug.Log("completed tween");
+           // Debug.Log("completed tween");
             loops++;
             Completed();
         }
