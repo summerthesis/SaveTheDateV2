@@ -10,15 +10,14 @@ public class Interactable : MonoBehaviour
     public GameObject PopupHintPrefab;
     public Vector3 PopupPosition;
     public bool PopupInWorld = false;
-    public event InteractionHandler InteractionEvent;
 
-    public delegate void InteractionHandler();
     private bool m_PopupShowed = false;
     private GameObject m_Popup;
     private static bool m_InteractBinded = false;
     private static Interactable m_CurrentBinded;
-    
-    void Awake()
+
+    // Start is called before the first frame update
+    void Start()
     {
         GetComponent<BoxCollider>().isTrigger = true;     
     }
@@ -59,7 +58,7 @@ public class Interactable : MonoBehaviour
 
     private void OnInteractPerformed(InputAction.CallbackContext ctx)
     {
-        InteractionEvent.Invoke();
+        SendMessage("OnInteract");
     }
 
     private IEnumerator SubscribeInteract()
