@@ -72,16 +72,16 @@ public class Pickup: MonoBehaviour
         switch (flyingTargetInScreen)
         {
             case Target.TopLeft:
-                m_FlyingTarget = new Vector3(0, GameManager.MainCamera.pixelHeight, targetOffsetToScreen);
+                m_FlyingTarget = new Vector3(0, GameManager.MainCamera.scaledPixelHeight, targetOffsetToScreen);
                 break;
             case Target.TopRight:
-                m_FlyingTarget = new Vector3(GameManager.MainCamera.pixelWidth, GameManager.MainCamera.pixelHeight, targetOffsetToScreen);
+                m_FlyingTarget = new Vector3(GameManager.MainCamera.scaledPixelWidth, GameManager.MainCamera.scaledPixelHeight, targetOffsetToScreen);
                 break;
             case Target.BottomLeft:
                 m_FlyingTarget = new Vector3(0, 0, targetOffsetToScreen);
                 break;
             case Target.BottomRight:
-                m_FlyingTarget = new Vector3(GameManager.MainCamera.pixelWidth, 0, targetOffsetToScreen);
+                m_FlyingTarget = new Vector3(GameManager.MainCamera.scaledPixelWidth, 0, targetOffsetToScreen);
                 break;
             case Target.CustomUIPosition:
                 float width = GameManager.HUD.GetComponent<RectTransform>().rect.width;
@@ -89,20 +89,20 @@ public class Pickup: MonoBehaviour
                 switch (uIPositionAnchor)
                 {
                     case Anchor.BottomLeft:
-                        m_FlyingTarget.x = customUITarget.x;// width * GameManager.MainCamera.pixelWidth;
-                        m_FlyingTarget.y = customUITarget.y;// height * GameManager.MainCamera.pixelHeight;                        
+                        m_FlyingTarget.x = customUITarget.x / width * GameManager.MainCamera.scaledPixelWidth;
+                        m_FlyingTarget.y = customUITarget.y / height * GameManager.MainCamera.scaledPixelHeight;                        
                         break;
                     case Anchor.BottomRight:
-                        m_FlyingTarget.x = (1 + customUITarget.x / width) * GameManager.MainCamera.pixelWidth;
-                        m_FlyingTarget.y = customUITarget.y / height * GameManager.MainCamera.pixelHeight;
+                        m_FlyingTarget.x = (1 + customUITarget.x / width) * GameManager.MainCamera.scaledPixelWidth;
+                        m_FlyingTarget.y = customUITarget.y / height * GameManager.MainCamera.scaledPixelHeight;
                         break;
                     case Anchor.TopLeft:
-                        m_FlyingTarget.x = customUITarget.x / width * GameManager.MainCamera.pixelWidth;
-                        m_FlyingTarget.y = (1 + customUITarget.y / height) * GameManager.MainCamera.pixelHeight;
+                        m_FlyingTarget.x = customUITarget.x / width * GameManager.MainCamera.scaledPixelWidth;
+                        m_FlyingTarget.y = (1 + customUITarget.y / height) * GameManager.MainCamera.scaledPixelHeight;
                         break;
                     case Anchor.TopRight:
-                        m_FlyingTarget.x = (1 + customUITarget.x / width) * GameManager.MainCamera.pixelWidth;
-                        m_FlyingTarget.y = (1 + customUITarget.y / height) * GameManager.MainCamera.pixelHeight;
+                        m_FlyingTarget.x = (1 + customUITarget.x / width) * GameManager.MainCamera.scaledPixelWidth;
+                        m_FlyingTarget.y = (1 + customUITarget.y / height) * GameManager.MainCamera.scaledPixelHeight;
                         break;
                 }
                 m_FlyingTarget.z = targetOffsetToScreen;
