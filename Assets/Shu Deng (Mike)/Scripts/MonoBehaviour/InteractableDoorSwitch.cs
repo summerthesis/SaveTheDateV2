@@ -8,20 +8,18 @@ public class InteractableDoorSwitch : MonoBehaviour
 {
     public GameObject GearDoorObject;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GetComponent<Interactable>().InteractionEvent += OnInteract;
     }
 
     void OnInteract()
     {
         GearDoorObject.GetComponentInChildren<GearDoorController>().OpenOrClose();
+    }
+
+    void OnDestroy()
+    {
+        GetComponent<Interactable>().InteractionEvent -= OnInteract;
     }
 }

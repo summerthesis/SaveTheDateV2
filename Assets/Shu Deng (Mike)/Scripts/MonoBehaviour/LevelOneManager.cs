@@ -9,7 +9,7 @@ public class LevelOneManager : MonoBehaviour
     private void Awake()
     {
         FindObjectOfType<MainCameraController>().ChangeView(startCameraTransform.position,
-            Quaternion.Euler(startCameraTransform.rotation), true);i
+            Quaternion.Euler(startCameraTransform.rotation), true);
     }
 
 }

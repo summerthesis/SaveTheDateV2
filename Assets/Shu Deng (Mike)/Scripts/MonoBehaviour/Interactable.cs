@@ -10,7 +10,9 @@ public class Interactable : MonoBehaviour
     public GameObject PopupHintPrefab;
     public Vector3 PopupPosition;
     public bool PopupInWorld = false;
+    public event InteractionHandler InteractionEvent;
 
+    public delegate void InteractionHandler();
     private bool m_PopupShowed = false;
     private GameObject m_Popup;
     private static bool m_InteractBinded = false;
@@ -57,7 +59,7 @@ public class Interactable : MonoBehaviour
 
     private void OnInteractPerformed(InputAction.CallbackContext ctx)
     {
-        SendMessage("OnInteract");
+        InteractionEvent.Invoke();
     }
 
     private IEnumerator SubscribeInteract()

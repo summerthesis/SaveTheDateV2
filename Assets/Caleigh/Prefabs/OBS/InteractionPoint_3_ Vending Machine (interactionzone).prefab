@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 8167447159932721093}
   - component: {fileID: 8167447159932721095}
   - component: {fileID: 8167447159932721094}
+  - component: {fileID: 4946178274897331575}
   - component: {fileID: 8167447159932721088}
   m_Layer: 0
   m_Name: InteractionPoint_3_ Vending Machine (interactionzone)
@@ -56,9 +57,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8167447159932721092}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.85962, y: -5.958704, z: -67.20338}
-  m_LocalScale: {x: 1.4031, y: 1.4031, z: 1.4031}
+  m_LocalScale: {x: 1.4031001, y: 1.4031001, z: 1.4031001}
   m_Children:
   - {fileID: 1651322784513527546}
   m_Father: {fileID: 0}
@@ -93,6 +94,18 @@ MonoBehaviour:
     type: 3}
   PopupPosition: {x: 0, y: 2, z: 1}
   PopupInWorld: 0
+--- !u!114 &4946178274897331575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167447159932721092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dec42f5e26b5f4886d861fd875fa4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8167447159932721088
 MonoBehaviour:
   m_ObjectHideFlags: 0
