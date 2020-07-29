@@ -72,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{cf106072-d5fe-4dd5-a629-c5519efa7654}">
+		<property name="volume">
+			<value>-2</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{c925fca2-e70c-426d-9e93-13cbfd50c065}</destination>
 		</relationship>
@@ -91,6 +94,9 @@
 	<object class="MultiSound" id="{69b1aaff-6ba9-4c2e-ac17-7efd8ea70b7b}">
 		<property name="length">
 			<value>0.58684807256235827</value>
+		</property>
+		<property name="pitch">
+			<value>3.60000014</value>
 		</property>
 		<relationship name="sounds">
 			<destination>{115dfabe-506b-41a8-83d9-acb5a3b783a2}</destination>
@@ -150,13 +156,13 @@
 	<object class="MixerBusFader" id="{f9985458-9a7f-4bb4-aa8c-d8c9c144692e}" />
 	<object class="SpatialiserEffect" id="{186a3562-d7a7-4fed-8cb7-5093feaf9f6f}">
 		<property name="distanceRolloffType">
-			<value>4</value>
+			<value>1</value>
 		</property>
 		<property name="minimumDistance">
 			<value>0</value>
 		</property>
 		<property name="maximumDistance">
-			<value>150</value>
+			<value>90</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{bea53138-4c69-477b-92f6-c2c69ffab335}" />

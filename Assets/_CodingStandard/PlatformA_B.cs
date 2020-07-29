@@ -30,6 +30,8 @@ public class PlatformA_B : MonoBehaviour
     };
     ObjectStates ObjectState;
 
+    //public FMOD.Studio.EventInstance FMODmoving;
+
     public bool isVertical, Parenting;
     public bool movingUpward, reachedEnd;
     void Start()
@@ -43,6 +45,7 @@ public class PlatformA_B : MonoBehaviour
         ObjectState = ObjectStates.MoveA_B;
         mSpeed = NormalSpeed;
         mPlayer = GameObject.FindGameObjectWithTag("Player");
+        
     }
 
     void Update()
@@ -124,17 +127,24 @@ public class PlatformA_B : MonoBehaviour
     void ChangeDirection()
     {
 
-        //???FMODUnity.RuntimeManager.PlayOneShot("event:/Level/General/Platform/Metal Hit");
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/Level/General/Platform/Metal Hit",GetComponent<Transform>().position);
+        //GetComponent<FMODUnity.StudioEventEmitter>().Stop();
+        StartCoroutine(FMODreplay());
+
         if (this.transform.position == PointA)
         {
             ObjectState = ObjectStates.MoveA_B;
             //reachedEnd = true;
+            //GetComponent<FMODUnity.StudioEventEmitter>().Play();
+
         }
-            
+        
+
         if (this.transform.position == PointB)
         {
             ObjectState = ObjectStates.MoveB_A;
             //reachedEnd = true;
+            //GetComponent<FMODUnity.StudioEventEmitter>().Play();
         }
         
     }
@@ -214,5 +224,13 @@ public class PlatformA_B : MonoBehaviour
                 movingUpward = false; 
             }
         }
+    }
+
+    IEnumerator FMODreplay()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Level/General/Platform/Metal Hit", GetComponent<Transform>().position);
+        GetComponent<FMODUnity.StudioEventEmitter>().Stop();
+        yield return new WaitForSeconds(0.02f);
+        GetComponent<FMODUnity.StudioEventEmitter>().Play();
     }
 }

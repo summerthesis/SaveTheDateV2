@@ -56,7 +56,17 @@
 			<destination>{2de36431-b6d8-4f2c-a4a7-61d6e6e79eab}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{67f27533-874d-4262-8b77-bbff9be78593}" />
+	<object class="EventAutomatableProperties" id="{67f27533-874d-4262-8b77-bbff9be78593}">
+		<property name="dopplerEnabled">
+			<value>true</value>
+		</property>
+		<property name="dopplerScale">
+			<value>155</value>
+		</property>
+		<property name="triggerCooldown">
+			<value>760</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{596d5ee7-70e9-41d3-b386-20b37f127ad9}" />
 	<object class="GroupTrack" id="{baedc18d-d9f3-4d1f-b74a-7d13ad90493c}">
 		<relationship name="modules">
@@ -75,6 +85,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{f606442f-7947-48ac-8fb4-6f202918425b}">
+		<property name="pitch">
+			<value>3.79999995</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{984a2344-9856-4e26-ac38-a820fb86fedf}</destination>
 		</relationship>
@@ -97,6 +110,9 @@
 		</property>
 		<property name="length">
 			<value>0.76929705215419497</value>
+		</property>
+		<property name="volume">
+			<value>0.5</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
@@ -148,6 +164,16 @@
 	</object>
 	<object class="MixerBusPanner" id="{d3adb67a-f1b9-4217-87ec-fee14a4ae751}" />
 	<object class="MixerBusFader" id="{9cb73310-44c2-4e5e-af0d-3a4f93359610}" />
-	<object class="SpatialiserEffect" id="{9cd164f5-b4d9-4296-bcc5-ebc37d2743d9}" />
+	<object class="SpatialiserEffect" id="{9cd164f5-b4d9-4296-bcc5-ebc37d2743d9}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="minimumDistance">
+			<value>0</value>
+		</property>
+		<property name="maximumDistance">
+			<value>90</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{0df1fcdd-bc54-4f8c-bc96-2a57843921f2}" />
 </objects>
