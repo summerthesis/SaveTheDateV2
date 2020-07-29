@@ -77,13 +77,18 @@ public class DeathController : MonoBehaviour
                     RecordedTransforms.RemoveAt(RecordedTransforms.Count - 1);
                     if (RecordedTransforms.Count == 0)
                     {
+                        this.GetComponent<KH_PlayerController>().isFlying = false;
+                        this.GetComponent<KH_PlayerController>().FlyingDirection = Vector3.zero;
                         isDead = false;
+
                         deathEventFinished = false;
                         deathEventCount = 0;
                         this.gameObject.GetComponent<Rigidbody>().useGravity = true;
                         mPlayer.GetComponent<BoxCollider>().enabled = true;
-                        RecordedTransforms.Add(mDeathTransform.transform.position);
-
+                        GameObject _currentCheckpoint = GameObject.FindGameObjectWithTag("CurrentCheckpoint");
+                        RecordedTransforms.Add(_currentCheckpoint.GetComponent<CheckpointObject>().
+                            RespawnPosition.transform.position);
+                        this.GetComponent<KH_PlayerController>().rb.velocity = Vector3.zero;
                         // START by Shu Deng (Mike)
                         FindObjectOfType<LifeCountHUDController>().LostLife();
                         Pickup.RespawnDestroyedPickup();

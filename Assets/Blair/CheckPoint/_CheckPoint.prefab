@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &440264184564245776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5283284601072505247}
+  m_Layer: 0
+  m_Name: SpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5283284601072505247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440264184564245776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.34, y: 0.7, z: -7.72}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6227130926258137780}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1404051159937932714
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +43,7 @@ GameObject:
   - component: {fileID: 3807815985795479252}
   m_Layer: 0
   m_Name: _CheckPoint
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +62,7 @@ Transform:
   - {fileID: 3206205250159100434}
   - {fileID: 3493843488570753258}
   - {fileID: 8819129662357332508}
+  - {fileID: 5283284601072505247}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstImage: {fileID: 5669556506886476189}
+  RespawnPosition: {fileID: 440264184564245776}
   CameraTransform: {fileID: 11400000, guid: 49fffb39650366d4f819efa821e725e8, type: 2}
 --- !u!65 &3807815985795479252
 BoxCollider:
@@ -156,6 +188,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &6425021820080116317
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5492296336587722767}
+  m_Material: {fileID: 13400000, guid: 37016aa9fa0e8b34b803d27f4cb59623, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6354729523579941456, guid: 108b88cda997bd84a87166694e0cf78c, type: 3}
 --- !u!1 &5669556506886476189
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +370,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 108b88cda997bd84a87166694e0cf78c, type: 3}
+--- !u!1 &5492296336587722767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 108b88cda997bd84a87166694e0cf78c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4546774688427329798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8819129662357332508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 108b88cda997bd84a87166694e0cf78c,

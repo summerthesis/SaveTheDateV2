@@ -174,6 +174,6 @@ public class GearDoorController: MonoBehaviour
     }
     void PlaySoundOneShot(string path)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(path, GameManager.MainCamera.transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot(path, transform.position);
     }
 }

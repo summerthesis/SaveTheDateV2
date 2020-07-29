@@ -142,7 +142,7 @@ public class Pickup: MonoBehaviour
             if (InitSound == false)
             {
                 InitSound = true;
-                PlaySoundOneShot("event:/Characters/Player/Gear Pickup");
+                //PlaySoundOneShot("event:/Characters/Player/Gear Pickup");
             }
         }
     }
