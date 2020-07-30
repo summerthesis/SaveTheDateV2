@@ -376,10 +376,10 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: -159
-    y: -904
-    width: 5341
-    height: 3639
+    x: -184
+    y: -961
+    width: 5391
+    height: 2970
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -455,7 +455,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":0.0,"g":1.0,"b":0.675999641418457,"a":0.0}'
+      m_SerializableObject: '{"r":1.317647099494934,"g":2.0,"b":1.7803921699523926,"a":0.0}'
     min: -Infinity
     max: Infinity
     descendantCount: 0
@@ -4337,7 +4337,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 42
           m_Value: 0.05
         - m_ExpressionIndex: 44
-          m_Value: 500
+          m_Value: 300
         - m_ExpressionIndex: 45
           m_Value: 3
         - m_ExpressionIndex: 46
@@ -4385,7 +4385,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 8
           m_Value: {x: 0.78431374, y: 4, z: 2.854902, w: 0}
         - m_ExpressionIndex: 9
-          m_Value: {x: 0, y: 1, z: 0.67599964, w: 0}
+          m_Value: {x: 1.3176471, y: 2, z: 1.7803922, w: 0}
         - m_ExpressionIndex: 10
           m_Value: {x: 0, y: 17.005234, z: 15.41361, w: 0}
         - m_ExpressionIndex: 11
@@ -4987,7 +4987,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Rate
-        index: 41
+        index: 44
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: -1
@@ -4999,16 +4999,7 @@ VisualEffectResource:
     - nameId: spawner_output
       index: 2
     values: []
-    tasks:
-    - type: 268435456
-      buffers: []
-      temporaryBuffers: []
-      values:
-      - nameId: Rate
-        index: 44
-      params: []
-      processor: {fileID: 0}
-      shaderSourceIndex: -1
+    tasks: []
   - type: 0
     flags: 0
     capacity: 0
@@ -5017,16 +5008,7 @@ VisualEffectResource:
     - nameId: spawner_output
       index: 3
     values: []
-    tasks:
-    - type: 268435456
-      buffers: []
-      temporaryBuffers: []
-      values:
-      - nameId: Rate
-        index: 44
-      params: []
-      processor: {fileID: 0}
-      shaderSourceIndex: -1
+    tasks: []
   - type: 0
     flags: 0
     capacity: 0
@@ -9089,7 +9071,7 @@ MonoBehaviour:
   m_InputSlots:
   - {fileID: 8926484042661614961}
   m_OutputSlots: []
-  m_Disabled: 0
+  m_Disabled: 1
 --- !u!114 &8926484042661614961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10821,7 +10803,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":0.0,"g":1.0,"b":0.675999641418457,"a":0.0}'
+      m_SerializableObject: '{"r":1.317647099494934,"g":2.0,"b":1.7803921699523926,"a":0.0}'
     m_Space: 2147483647
   m_Property:
     name: o
@@ -11017,7 +10999,7 @@ MonoBehaviour:
   m_InputSlots:
   - {fileID: 8926484042661615067}
   m_OutputSlots: []
-  m_Disabled: 0
+  m_Disabled: 1
 --- !u!114 &8926484042661615067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12970,7 +12952,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 200
+      m_SerializableObject: 300
     m_Space: 2147483647
   m_Property:
     name: Rate
