@@ -17,7 +17,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -470,6 +470,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-8267780067477292095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Gear Pickup/Gear Number
+  m_EditorClassIdentifier: 
+  Name: Gear Number
+  Min: 0
+  Max: 5
+  Default: 0
+  Exists: 1
 --- !u!114 &-8199851181208568134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,7 +520,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/GearInsertUI
   guid: 7e7f2beb595d19419c590e483f75fd22
   Banks:
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -528,6 +545,23 @@ MonoBehaviour:
   Max: 5
   Default: 0
   Exists: 0
+--- !u!114 &-8064952417670742634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Terrain
+  m_EditorClassIdentifier: 
+  Name: Terrain
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 1
 --- !u!114 &-8063956296991922075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -997,7 +1031,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -1057,23 +1091,6 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
---- !u!114 &-6691053924049681908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Slow_Time/SlowTimeEnd
-  m_EditorClassIdentifier: 
-  Name: SlowTimeEnd
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
 --- !u!114 &-6675479960587962311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,7 +1212,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1708,7 +1725,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1871,12 +1888,12 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 7308851275474632675}
+  - {fileID: -8267780067477292095}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -2602,12 +2619,12 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -18804086622293288}
+  - {fileID: 8188777267809522937}
   MinDistance: 0
   MaxDistance: 0
   Length: 8150
@@ -2662,24 +2679,6 @@ MonoBehaviour:
   Max: 4
   Default: 0
   Exists: 0
---- !u!114 &-3813578091656231604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
-  SubDir: 
-  lastModified: 637316445972986314
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
 --- !u!114 &-3806881690060060442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2850,7 +2849,7 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
---- !u!114 &-3402394451109267435
+--- !u!114 &-3429817529322207683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2859,13 +2858,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Gear Rotate/State
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Name: State
-  Min: 0
-  Max: 2
-  Default: 0
+  Path: Assets/JonnyMaK/FMOD STD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637316445972986314
+  LoadResult: 0
+  FileSizes: []
   Exists: 1
 --- !u!114 &-3394367732170631232
 MonoBehaviour:
@@ -3403,7 +3403,7 @@ MonoBehaviour:
   Path: event:/Level/General/HourGlass
   guid: ba4e686e3b1a3640abe238fcf2445df7
   Banks:
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3431,7 +3431,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3439,6 +3439,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2313
+--- !u!114 &-2467503419935954804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Gear Rotate/State
+  m_EditorClassIdentifier: 
+  Name: State
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &-2466207149446322663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3524,7 +3541,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3601,7 +3618,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -4058,7 +4075,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -4443,7 +4460,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -4573,7 +4590,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4666,23 +4683,6 @@ MonoBehaviour:
   Max: 4
   Default: 0
   Exists: 0
---- !u!114 &-18804086622293288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Rewind/Respawning
-  m_EditorClassIdentifier: 
-  Name: Respawning
-  Min: 0
-  Max: 1
-  Default: 0
-  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4697,7 +4697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 8636068476132930779}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   EditorEvents:
   - {fileID: 7497132717696206845}
   - {fileID: 2932221285481454929}
@@ -4739,7 +4739,7 @@ MonoBehaviour:
   - {fileID: 8404909627910992823}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   StringsBanks:
   - {fileID: 8636068476132930779}
   stringsBankWriteTime: 637316445973006300
@@ -4867,7 +4867,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -5395,7 +5395,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -5524,7 +5524,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -5822,6 +5822,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &2088787134238497839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Slow_Time/SlowTimeEnd
+  m_EditorClassIdentifier: 
+  Name: SlowTimeEnd
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &2107367580917105856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5895,7 +5912,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -5920,12 +5937,12 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -3402394451109267435}
+  - {fileID: -2467503419935954804}
   MinDistance: 3
   MaxDistance: 300
   Length: 0
@@ -6153,7 +6170,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -6285,7 +6302,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -6362,7 +6379,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -6542,7 +6559,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -6670,23 +6687,6 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
---- !u!114 &3784176306722968157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Footsteps/Terrain
-  m_EditorClassIdentifier: 
-  Name: Terrain
-  Min: 0
-  Max: 4
-  Default: 0
-  Exists: 1
 --- !u!114 &3786948398803694278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6705,12 +6705,12 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 3784176306722968157}
+  - {fileID: -8064952417670742634}
   MinDistance: 1
   MaxDistance: 300
   Length: 228
@@ -7041,7 +7041,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -7118,7 +7118,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -7160,7 +7160,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -7636,7 +7636,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -7962,7 +7962,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -8073,7 +8073,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -8269,7 +8269,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -8309,23 +8309,6 @@ MonoBehaviour:
   Name: State
   Min: 0
   Max: 2
-  Default: 0
-  Exists: 1
---- !u!114 &7308851275474632675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Gear Pickup/Gear Number
-  m_EditorClassIdentifier: 
-  Name: Gear Number
-  Min: 0
-  Max: 5
   Default: 0
   Exists: 1
 --- !u!114 &7371117692337148388
@@ -8399,12 +8382,12 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -6691053924049681908}
+  - {fileID: 2088787134238497839}
   MinDistance: 0
   MaxDistance: 0
   Length: 9299
@@ -8476,7 +8459,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -8625,7 +8608,7 @@ MonoBehaviour:
   - {fileID: -4896733657627194007}
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -8788,7 +8771,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -8847,7 +8830,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -5040624250185338527}
   - {fileID: 8226804029780577964}
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -8855,6 +8838,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 311
+--- !u!114 &8188777267809522937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Rewind/Respawning
+  m_EditorClassIdentifier: 
+  Name: Respawning
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &8204492674588740867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8940,7 +8940,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/NewLife
   guid: 8b643b213901d646b05162390d9b2492
   Banks:
-  - {fileID: -3813578091656231604}
+  - {fileID: -3429817529322207683}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
