@@ -54,7 +54,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2628077708731984381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3b1004f3d156b1489bff7ae6dcfff14, type: 3}
+  m_Script: {fileID: 11500000, guid: a52e34c610fc3b64e954559ddf5eb6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pendulumTransform: {fileID: 6990283774942128419}
@@ -64,6 +64,9 @@ MonoBehaviour:
   fastFactor: 2
   normalSpeed: 3
   idleDuration: 0
+  m_Angle: 0
+  m_Time: 0
+  m_TimeFactor: 0
 --- !u!65 &4071804728591381174
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -86,10 +89,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7340120097859369472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e09240266c4cf4f81ea6d2e3ce9f58, type: 3}
+  m_Script: {fileID: 11500000, guid: b52f39487814b8e478740e7d63f8b26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentWithTimeScript: {fileID: 2628077708731984381}
+  ParentWithTimeScript: {fileID: 0}
+  mPlayer: {fileID: 0}
+  mType: 0
 --- !u!1001 &2628077707220714041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,11 +102,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2628077708731984378}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: b629551443b6f194a9e9224a11720e4d,
+    - target: {fileID: -8064706628530862883, guid: b629551443b6f194a9e9224a11720e4d,
         type: 3}
-      propertyPath: m_Name
-      value: Pendulum_Rod_Bob
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52a964319a3400244be75f52af61c258, type: 2}
     - target: {fileID: -4216859302048453862, guid: b629551443b6f194a9e9224a11720e4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -157,6 +162,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b629551443b6f194a9e9224a11720e4d,
+        type: 3}
+      propertyPath: m_Name
+      value: Pendulum_Rod_Bob
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042723190441161294, guid: b629551443b6f194a9e9224a11720e4d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52a964319a3400244be75f52af61c258, type: 2}
     - target: {fileID: 2814497192262176931, guid: b629551443b6f194a9e9224a11720e4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -187,16 +202,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.0122
       objectReference: {fileID: 0}
-    - target: {fileID: 1042723190441161294, guid: b629551443b6f194a9e9224a11720e4d,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 52a964319a3400244be75f52af61c258, type: 2}
-    - target: {fileID: -8064706628530862883, guid: b629551443b6f194a9e9224a11720e4d,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 52a964319a3400244be75f52af61c258, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b629551443b6f194a9e9224a11720e4d, type: 3}
 --- !u!4 &6990283774942128419 stripped
