@@ -41,6 +41,8 @@ VisualEffect:
   m_GameObject: {fileID: 70591804}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 9cfc26e91455c2440ab14d17136b7fef, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_PropertySheet:
@@ -83,6 +85,7 @@ VFXRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -100,6 +103,7 @@ VFXRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -185,6 +189,8 @@ VisualEffect:
   m_GameObject: {fileID: 1760842780}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 9cfc26e91455c2440ab14d17136b7fef, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_PropertySheet:
@@ -227,6 +233,7 @@ VFXRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -244,6 +251,7 @@ VFXRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -452,11 +460,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1996337707392780316}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 54f396ca6993cf24aa60a852864cb029,
-        type: 3}
-      propertyPath: m_Name
-      value: SmallGear_Door
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 54f396ca6993cf24aa60a852864cb029,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -527,6 +530,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 54f396ca6993cf24aa60a852864cb029,
+        type: 3}
+      propertyPath: m_Name
+      value: SmallGear_Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54f396ca6993cf24aa60a852864cb029, type: 3}
 --- !u!1001 &6831642188083159814
@@ -536,11 +544,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 339984809799231589}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: df64ff0c832713b418a24683a0340df2,
-        type: 3}
-      propertyPath: m_Name
-      value: BigGear_Door
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: df64ff0c832713b418a24683a0340df2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -610,6 +613,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: df64ff0c832713b418a24683a0340df2,
+        type: 3}
+      propertyPath: m_Name
+      value: BigGear_Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df64ff0c832713b418a24683a0340df2, type: 3}
