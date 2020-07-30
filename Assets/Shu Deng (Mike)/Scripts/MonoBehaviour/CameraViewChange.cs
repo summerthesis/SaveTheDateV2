@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class CameraViewChange : MonoBehaviour
 {
     public LocalCameraTransform targetLeft, targetRight;
+
+    private void Awake()
+    {
+        GetComponent<BoxCollider>().isTrigger = true;
+    }
 
     private void OnTriggerExit(Collider other)
     {
