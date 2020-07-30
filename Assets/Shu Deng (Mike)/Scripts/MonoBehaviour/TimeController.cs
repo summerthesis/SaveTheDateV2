@@ -151,6 +151,7 @@ public class TimeController : MonoBehaviour
     private void SendVfxFast()
     {
         m_OTimeVfx.SendMessage("Fast");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Characters/Player/Ability/Speed_Time");
     }
     private void SetEnergyBarScale()
     {

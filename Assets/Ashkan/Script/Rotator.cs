@@ -13,6 +13,9 @@ public class Rotator : MonoBehaviour
     public float StopSpeed, mSpeed;
     private float SlowedSpeed, FastSpeed;
     public bool worldPivote = false;
+
+    [SerializeField]
+    FMODUnity.StudioEventEmitter FMODAudio;
  
     private Space spacePivot = Space.Self;
  
@@ -25,6 +28,7 @@ public class Rotator : MonoBehaviour
         FastSpeed = NormalSpeed * FastFactor;
         StopSpeed = 0;
         mSpeed = NormalSpeed;
+        FMODAudio.SetParameter("State", 0);
     }
  
     void Update()
@@ -38,6 +42,7 @@ public class Rotator : MonoBehaviour
     void TimeSlow()
     {
         mSpeed = SlowedSpeed;
+        FMODAudio.SetParameter("State", 1);
     }
     void TimeStop()
     {
@@ -46,10 +51,12 @@ public class Rotator : MonoBehaviour
     void TimeFastForward()
     {
         mSpeed = FastSpeed;
+        FMODAudio.SetParameter("State", 2);
     }
     void RestoreToNormal()
     {
         mSpeed = NormalSpeed;
+        FMODAudio.SetParameter("State", 0);
     }
     void JumpForward()
     {

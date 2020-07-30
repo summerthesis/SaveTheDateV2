@@ -120,6 +120,9 @@
 		<property name="length">
 			<value>0.10000000000000001</value>
 		</property>
+		<property name="volume">
+			<value>-5.5</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -145,6 +148,9 @@
 		<property name="length">
 			<value>0.10000000000000001</value>
 		</property>
+		<property name="volume">
+			<value>-1</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -167,6 +173,9 @@
 		</property>
 		<property name="length">
 			<value>0.10000000000000001</value>
+		</property>
+		<property name="volume">
+			<value>1.5</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
@@ -424,10 +433,13 @@
 	<object class="MixerBusFader" id="{b2f31beb-c41d-4c74-8f0b-f731b8cdee3c}" />
 	<object class="SpatialiserEffect" id="{50a0dfcd-285b-4bee-8754-aa124e051e69}">
 		<property name="minimumDistance">
-			<value>3</value>
+			<value>20</value>
 		</property>
 		<property name="maximumDistance">
-			<value>300</value>
+			<value>60</value>
+		</property>
+		<property name="soundSize">
+			<value>22</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{c570e669-9427-43ae-9f29-168f5a6b9bb6}">
@@ -617,7 +629,7 @@
 			<value>45</value>
 		</property>
 		<property name="value">
-			<value>800</value>
+			<value>450</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{f440881e-97f1-400b-a273-424e3a3cfaf0}">

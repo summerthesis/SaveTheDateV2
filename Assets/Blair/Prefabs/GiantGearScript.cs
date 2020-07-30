@@ -9,6 +9,9 @@ public class GiantGearScript : MonoBehaviour
     [HideInInspector]
     public float mSpeed, FastSpeed, SlowedSpeed;
 
+    [SerializeField]
+    FMODUnity.StudioEventEmitter FMODAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,7 @@ public class GiantGearScript : MonoBehaviour
     void TimeSlow()
     {
         mSpeed = SlowedSpeed;
+        FMODAudio.SetParameter("State", 1);
     }
     void TimeStop()
     {
@@ -34,10 +38,12 @@ public class GiantGearScript : MonoBehaviour
     void TimeFastForward()
     {
         mSpeed = FastSpeed;
+        FMODAudio.SetParameter("State", 2);
     }
     void RestoreToNormal()
     {
         mSpeed = NormalSpeed;
+        FMODAudio.SetParameter("State", 0);
     }
     void JumpForward()
     {
