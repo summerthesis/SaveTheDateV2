@@ -12,6 +12,9 @@ public class Pendulum : MonoBehaviour
     public float m_Angle, m_Time, m_TimeFactor;
     private int m_IdleCount;
 
+    [SerializeField]
+    FMODUnity.StudioEventEmitter FMODAudio;
+
     enum ObjectStates
     {
         Unavailable,
@@ -27,6 +30,8 @@ public class Pendulum : MonoBehaviour
         ObjectState = ObjectStates.Move;
         m_Time = 0;
         m_TimeFactor = 1f;
+        FMODAudio.SetParameter("speed", 10f);
+        
     }
 
     // Update is called once per frame
@@ -66,6 +71,10 @@ public class Pendulum : MonoBehaviour
         }
         pendulumTransform.localEulerAngles = new Vector3(0, 0, m_Angle);
         m_Time += Time.deltaTime * m_TimeFactor;
+
+        FMODAudio.Play();
+
+        
     }
 
     void TimeSlow()

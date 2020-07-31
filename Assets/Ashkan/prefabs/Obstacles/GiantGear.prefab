@@ -23,9 +23,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564153125819794268}
-  m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.70710784}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.70710677}
   m_LocalPosition: {x: -233, y: 6, z: -68}
-  m_LocalScale: {x: 4, y: 8, z: 4}
+  m_LocalScale: {x: 6.9984083, y: 13.996817, z: 6.9984083}
   m_Children:
   - {fileID: 8517475204275463370}
   - {fileID: 6521542772371657782}
@@ -87,6 +87,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -98,6 +99,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -120,9 +122,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 37016aa9fa0e8b34b803d27f4cb59623, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -2128599272216676504, guid: e99672fa2bb7c534f852ecc35181d1b7, type: 3}
 --- !u!1 &2888459980910524913
 GameObject:
@@ -137,6 +139,7 @@ GameObject:
   - component: {fileID: 5846712154463702021}
   - component: {fileID: 8427830643092288184}
   - component: {fileID: 8427830643092288191}
+  - component: {fileID: 1505258046}
   m_Layer: 8
   m_Name: Object001
   m_TagString: TimeInteractable
@@ -181,6 +184,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -192,6 +196,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -214,9 +219,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 37016aa9fa0e8b34b803d27f4cb59623, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -3292925553009838691, guid: e99672fa2bb7c534f852ecc35181d1b7, type: 3}
 --- !u!114 &8427830643092288191
 MonoBehaviour:
@@ -231,11 +236,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlowFactor: 2
-  FastFactor: 2
+  FastFactor: 4
   NormalSpeed: 60
   mSpeed: 0
   FastSpeed: 0
   SlowedSpeed: 0
+  FMODAudio: {fileID: 1505258046}
+--- !u!114 &1505258046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2888459980910524913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Level/General/Big Spinner
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &8427830642134960956
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e0c2ef7ec79b145a657d688d78be5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mAngle: {x: 0, y: 20, z: 25}
+  mAngle: {x: 0, y: 25, z: 25}
   mStartPos: {x: 0, y: 0, z: 0}
   mStartRot: {x: 0, y: 0, z: 0}

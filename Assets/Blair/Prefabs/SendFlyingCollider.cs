@@ -38,6 +38,7 @@ public class SendFlyingCollider : MonoBehaviour
             if(mParent.GetComponent<GiantGearScript>().mSpeed ==
                mParent.GetComponent<GiantGearScript>().FastSpeed)
             mPlayer.SendMessage("SendFlying", mAngle);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Level/General/BigSpinFling", transform.position);
         }
     }
 }

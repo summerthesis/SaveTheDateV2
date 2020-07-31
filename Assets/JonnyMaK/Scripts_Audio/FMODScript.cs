@@ -73,17 +73,17 @@ public class FMODScript : MonoBehaviour
                 default:
                     break;
             }
-
-            //FMODUnity.RuntimeManager.PlayOneShot(, GetComponent<Transform>().position);
-
-            //Debug.LogError(_gearnumber);
-
             _gearnumber++;
 
             if (_gearnumber == 5)
             {
                 _gearnumber = 0;
             }
+        }
+
+        if (other.tag == "Audio_Amb")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Level/General/Amb Drone");
         }
     }
 }
