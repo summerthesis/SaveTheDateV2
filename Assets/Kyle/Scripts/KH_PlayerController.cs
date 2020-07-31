@@ -25,14 +25,18 @@ public class KH_PlayerController : MonoBehaviour
     private bool jumping;
     private float horizontalMovement, verticalMovement;
     private GameObject mPlayer;
+    private GameObject mPlayerRoot;
+    private GameObject mPlayerLandingCircle;
     public Animator anim;
     public Rigidbody rb;
     public Collider playerCollider;
+    private MeshRenderer mPlayerLandingCircleRenderer;
     [TextArea]
     public string Notes = "1st Box Collider is the actual Collider, referenced in the movement script, MUST EXTEND SLIGHTLY BEYOND THE FEET OR IsGrounded CHECK WON'T WORK.\n" +
         "2nd Box Collider is slightly wider with NoFriction PhysicsMaterial to prevent player from sticking to the wall mid-jump.\n" +
         "The ground DOES NOT NEED TO BE TAGGED W/ Platform for Jumping to work.";
 
+    // ANIM VARS
     private string hspeed_anim_param = "HSpeed";
     private string vspeed_anim_param = "VSpeed";
     private string is_jump_input_anim_param = "IsJumpInput";
@@ -53,10 +57,13 @@ public class KH_PlayerController : MonoBehaviour
         forward.y = 0;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+        mPlayerRoot = GameObject.Find("PlayerPrefab");
         mPlayer = GameObject.Find("PlayerController");
-        //anim = mPlayer.GetComponent<Animator>();
-        //rb = GetComponent<Rigidbody>();
-        //playerCollider = GetComponent<BoxCollider>();
+        anim = mPlayer.GetComponent<Animator>();
+        rb = mPlayer.GetComponent<Rigidbody>();
+        playerCollider = mPlayer.GetComponent<BoxCollider>();
+        mPlayerLandingCircle = GameObject.Find("Player_LandingCircle");
+        mPlayerLandingCircleRenderer = mPlayerLandingCircle.GetComponent<MeshRenderer>();
         controls = GameManager.PlayerInput;
         controls.PlayerControls.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.PlayerControls.Move.canceled += ctx => movementInput = Vector2.zero;
@@ -163,11 +170,15 @@ public class KH_PlayerController : MonoBehaviour
             anim.SetBool(is_jump_input_anim_param, false);
             anim.SetBool(double_jump_anim_param, false);
             anim.SetFloat(vspeed_anim_param, 0);
+
+            mPlayerLandingCircleRenderer.enabled = false;
         }
         else
         {
             isGrounded = false;
             anim.SetBool(is_grounded_anim_param, false);
+
+            //mPlayerLandingCircleRenderer.enabled = true;
         }
 
         if (jumpInput)
@@ -243,13 +254,33 @@ public class KH_PlayerController : MonoBehaviour
         anim.SetFloat("JoystickRightPos", horizontalMovement);
 
 
+        // LANDING CIRCLE
+        if (!isGrounded)
+        {
+            RaycastHit groundHit;
+            if (Physics.Raycast(rb.transform.position, Vector3.down, out groundHit, jumpForce * 10.0f))
+            {
+                mPlayerLandingCircleRenderer.enabled = true;
+
+                mPlayerLandingCircle.transform.position = new Vector3(rb.position.x, groundHit.point.y + 0.1f, rb.position.z);
+            }
+            else
+            {
+                mPlayerLandingCircleRenderer.enabled = false;
+            }
+        }
+        
+
+        
+
+        // DEBUGGING
         //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         //{
         //    Debug.Log("Idle");
         //}
         
 
-        Debug.DrawRay(playerCollider.transform.position, Vector3.down * 0.1f, Color.green);
+        //Debug.DrawRay(playerCollider.transform.position, Vector3.down * 0.1f, Color.green);
     }
 
     void SendFlying(Vector3 Dir)
