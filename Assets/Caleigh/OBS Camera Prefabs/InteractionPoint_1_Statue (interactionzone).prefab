@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3309912225855788171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2454038798124064364}
+  m_Layer: 0
+  m_Name: CameraZoomTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2454038798124064364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309912225855788171}
+  m_LocalRotation: {x: 0.0015339464, y: -0.9999988, z: 0.00006843265, w: 0.00038167834}
+  m_LocalPosition: {x: -0.2482449, y: 4.235503, z: 0.41282246}
+  m_LocalScale: {x: 0.71270734, y: 0.71270734, z: 0.71270734}
+  m_Children: []
+  m_Father: {fileID: 5024974784423135059}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5024974784423135058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5024974784423135059}
+  - component: {fileID: 5024974784423135057}
+  - component: {fileID: 5024974784423135056}
+  - component: {fileID: 5024974784423135062}
+  - component: {fileID: 1589266114287225499}
+  m_Layer: 0
+  m_Name: InteractionPoint_1_Statue (interactionzone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5024974784423135059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024974784423135058}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 122.5, y: -12.76, z: -195.08}
+  m_LocalScale: {x: 1.4031001, y: 1.4031001, z: 1.4031001}
+  m_Children:
+  - {fileID: 2454038798124064364}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &5024974784423135057
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024974784423135058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.76349, y: 1.1241, z: 3.862181}
+  m_Center: {x: -0.29905295, y: 0, z: -5.064091e-15}
+--- !u!114 &5024974784423135056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024974784423135058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5129117b61ca04bb8ee080c20b04b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PopupHintPrefab: {fileID: 4290845916231875465, guid: 7cd5220645fd12341891a882ceee38f5,
+    type: 3}
+  PopupPosition: {x: 0, y: 2, z: 1.5}
+  PopupInWorld: 0
+--- !u!114 &5024974784423135062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024974784423135058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e6f9a0c65850d4d9cb82931f5befdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1589266114287225499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024974784423135058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb03ac3fb83f75b4ba35122f87fba7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinematicPrefab: {fileID: 5482376676321744609, guid: 2519386e49b27d64795b491b03e27e41,
+    type: 3}
+  cinematicText: "The Universal Engineer \u221E The Architect, The Designer, The
+    Creator \u221E Commissioned by the Office of the Universal Engineer"
+  cameraMoveTarget: {fileID: 2454038798124064364}
+  cameraTargetDistance: 0

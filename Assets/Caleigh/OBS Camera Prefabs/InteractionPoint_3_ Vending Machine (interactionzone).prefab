@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &432553067867488875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 432553067867488874}
+  - component: {fileID: 432553067867488872}
+  - component: {fileID: 432553067867488873}
+  - component: {fileID: 432553067867488879}
+  - component: {fileID: 223973388694062827}
+  m_Layer: 0
+  m_Name: InteractionPoint_3_ Vending Machine (interactionzone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &432553067867488874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432553067867488875}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 105.29, y: -12.82, z: -148.34}
+  m_LocalScale: {x: 1.4031001, y: 1.4031001, z: 1.4031001}
+  m_Children:
+  - {fileID: 7039838704224918357}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &432553067867488872
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432553067867488875}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.046966, y: 0.557385, z: 4.120722}
+  m_Center: {x: 1.5893917, y: 0, z: 0.50561816}
+--- !u!114 &432553067867488873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432553067867488875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5129117b61ca04bb8ee080c20b04b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PopupHintPrefab: {fileID: 4290845916231875465, guid: 7cd5220645fd12341891a882ceee38f5,
+    type: 3}
+  PopupPosition: {x: 0, y: 2, z: 1}
+  PopupInWorld: 0
+--- !u!114 &432553067867488879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432553067867488875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e6f9a0c65850d4d9cb82931f5befdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &223973388694062827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432553067867488875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb03ac3fb83f75b4ba35122f87fba7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinematicPrefab: {fileID: 5482376676321744609, guid: 2519386e49b27d64795b491b03e27e41,
+    type: 3}
+  cinematicText: 
+  cameraMoveTarget: {fileID: 7039838704224918357}
+  cameraTargetDistance: 0
+--- !u!1 &7949940663371567538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7039838704224918357}
+  m_Layer: 0
+  m_Name: CameraZoomTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7039838704224918357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949940663371567538}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.46917123, y: 2.1757772, z: -2.2302182}
+  m_LocalScale: {x: 0.7127075, y: 0.71270746, z: 0.7127075}
+  m_Children: []
+  m_Father: {fileID: 432553067867488874}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

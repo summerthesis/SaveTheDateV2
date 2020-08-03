@@ -4,35 +4,55 @@ using UnityEngine;
 
 public class ClockHandRotation : MonoBehaviour
 {
-    public float StopFactor = 0, SlowFactor = 0.5f, FastFactor = 2f, NormalSpeed = 3f;
+    public float stopFactor = 0, slowFactor = 0.5f, fastFactor = 2f, normalSpeed = 3f;
+    public enum Axis
+    {
+        x,
+        y,
+        z
+    }
+    public Axis rotatingAxis = Axis.z;
     private float m_TimeFactor;
+    private Vector3 m_RotationAxis;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         m_TimeFactor = 1f;
+
+        switch (rotatingAxis)
+        {
+            case Axis.x:
+                m_RotationAxis = new Vector3(1, 0, 0);
+                break;
+            case Axis.y:
+                m_RotationAxis = new Vector3(0, 1, 0);
+                break;
+            case Axis.z:
+                m_RotationAxis = new Vector3(0, 0, 1);
+                break;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        float deltaAngle = Time.deltaTime * NormalSpeed * m_TimeFactor;
-        transform.Rotate(new Vector3(0, 0, 1), deltaAngle, Space.Self);
+        float deltaAngle = Time.deltaTime * normalSpeed * m_TimeFactor;
+        transform.Rotate(m_RotationAxis, deltaAngle, Space.Self);
     }
 
     void TimeSlow()
     {
-        m_TimeFactor = SlowFactor;
+        m_TimeFactor = slowFactor;
     }
 
     void TimeStop()
     {
-        m_TimeFactor = StopFactor;
+        m_TimeFactor = stopFactor;
     }
 
     void TimeFastForward()
     {
-        m_TimeFactor = FastFactor;
+        m_TimeFactor = fastFactor;
     }
 
     void RestoreToNormal()
